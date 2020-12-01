@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using Windows.Storage;
 using System.Collections.ObjectModel;
+using MUXC = Microsoft.UI.Xaml.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -42,10 +43,10 @@ namespace GamePassScores.UWP
             var games = JsonConvert.DeserializeObject<List<Game>>(jsonString);
             foreach(var game in games)
             {
-                Games.Add(game);
+                Games.Add(new GameViewModel(game));
             }
         }
 
-        public ObservableCollection<Game> Games { get; set; } = new ObservableCollection<Game>();
+        public ObservableCollection<GameViewModel> Games { get; set; } = new ObservableCollection<GameViewModel>();
     }
 }

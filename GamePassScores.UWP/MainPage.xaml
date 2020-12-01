@@ -4,18 +4,49 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:GamePassScores.UWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:GamePassScores.Models"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Padding="45">
+    <Grid>
+        <Grid.Background>
+            <AcrylicBrush BackgroundSource="HostBackdrop" TintOpacity="0.8" TintLuminosityOpacity="0.5" TintColor="Transparent" FallbackColor="#107C10"></AcrylicBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="GamePass Score" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
-        <GridView>
-            
+        <TextBlock Padding="30, 30, 30, 10" Grid.Row="0" Text="GamePass Score" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
+        <GridView Padding="20, 0" Margin="0, 10" Grid.Row="1" ItemsSource="{x:Bind Games}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:Game">
+                    <RelativePanel Height="405" Width="275" Margin="10">
+                        <Viewbox Grid.Row="0" Stretch="UniformToFill" StretchDirection="Both" Height="441">
+                            <Image Source="{Binding PosterUrl}" ></Image>
+                        </Viewbox>
+                        
+                        <Grid RelativePanel.AlignBottomWithPanel="True"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Height="125">
+                            <Grid.Background>
+                                <AcrylicBrush TintColor="Black" TintOpacity="0.5"></AcrylicBrush>
+                            </Grid.Background>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Title}" Margin="10" Style="{StaticResource TitleTextBlockStyle}" Foreground="White"></TextBlock>
+                                <Grid Grid.Column="1" Height="125" Width="125" Visibility="{Binding IsScoreAvaliable}">
+                                    <Grid.Background>
+                                        <SolidColorBrush Opacity="0.5" Color="{Binding ScoreColor}"></SolidColorBrush>
+                                    </Grid.Background>
+                                    <TextBlock Text="{Binding Metascore}" HorizontalTextAlignment="Center" TextAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Foreground="White" Padding="0"></TextBlock>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </RelativePanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
         </GridView>
     </Grid>
 </Page>
