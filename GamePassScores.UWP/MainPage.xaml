@@ -6,8 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:GamePassScores.Models"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    NavigationCacheMode="Enabled">
 
     <Grid>
         <Grid.Background>
@@ -17,13 +20,28 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Padding="30, 30, 30, 10" Grid.Row="0" Text="GamePass Score" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
-        <GridView Padding="20, 0" Margin="0, 10" Grid.Row="1" ItemsSource="{x:Bind Games}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
-            <GridView.ItemTemplate>
+        <TextBlock Padding="30, 30, 30, 10" Grid.Row="0" Text="GamePass Scores" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
+        <CommandBar HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent" Margin="10" IsOpen="True">
+            <AppBarButton Icon="Zoom" Label="搜索"></AppBarButton>
+            <AppBarButton Icon="Filter" Label="筛选">
+                <AppBarButton.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem x:Name="OrderByScoreAscendItem" Text="按Metascore升序" Click="OrderByScoreAscendItem_Click"></MenuFlyoutItem>
+                        <MenuFlyoutItem x:Name="OrderByScoreDescendItem" Text="按Metascore降序" Click="OrderByScoreDescendItem_Click"></MenuFlyoutItem>
+                        <MenuFlyoutItem Text="按名字升序"></MenuFlyoutItem>
+                        <MenuFlyoutItem Text="按名字降序"></MenuFlyoutItem>
+                    </MenuFlyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+            <AppBarButton Icon="Account" Label="关于"></AppBarButton>
+        </CommandBar>
+        <controls:AdaptiveGridView Name="GamesView" Padding="20, 0" Margin="0, 10" Grid.Row="1" ItemsSource="{x:Bind Games}" ItemHeight="405" DesiredWidth="275" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                                   animations:ReorderGridAnimation.Duration="300" IsItemClickEnabled="True" ItemClick="GamesView_ItemClick" CacheMode="BitmapCache">
+            <controls:AdaptiveGridView.ItemTemplate>
                 <DataTemplate x:DataType="models:Game">
-                    <RelativePanel Height="405" Width="275" Margin="10">
+                    <RelativePanel Margin="10">
                         <Viewbox Grid.Row="0" Stretch="UniformToFill" StretchDirection="Both" Height="441">
-                            <Image Source="{Binding PosterUrl}" ></Image>
+                            <Image x:Name="PosterImage" Source="{Binding PosterUrl}" ></Image>
                         </Viewbox>
                         
                         <Grid RelativePanel.AlignBottomWithPanel="True"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Height="125">
@@ -36,17 +54,17 @@
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="{Binding Title}" Margin="10" Style="{StaticResource TitleTextBlockStyle}" Foreground="White"></TextBlock>
-                                <Grid Grid.Column="1" Height="125" Width="125" Visibility="{Binding IsScoreAvaliable}">
+                                <Grid Grid.Column="1" Visibility="{Binding IsScoreAvaliable}">
                                     <Grid.Background>
                                         <SolidColorBrush Opacity="0.5" Color="{Binding ScoreColor}"></SolidColorBrush>
                                     </Grid.Background>
-                                    <TextBlock Text="{Binding Metascore}" HorizontalTextAlignment="Center" TextAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Foreground="White" Padding="0"></TextBlock>
+                                    <TextBlock Text="{Binding Metascore}" Margin="10" HorizontalTextAlignment="Center" TextAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Foreground="White" Padding="0"></TextBlock>
                                 </Grid>
                             </Grid>
                         </Grid>
                     </RelativePanel>
                 </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+            </controls:AdaptiveGridView.ItemTemplate>
+        </controls:AdaptiveGridView>
     </Grid>
 </Page>

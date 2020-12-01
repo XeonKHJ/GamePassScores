@@ -15,12 +15,13 @@ namespace GamePassScores.UWP
         public string PosterUrl { set; get; }
         public int Metascore { set; get; } = -1;
         public Uri MetacriticUrl { set; get; }
+        public string ID { set; get; }
         public GameViewModel(Models.Game game)
         {
             Title = game.Title.First().Value;
             Description = game.Description.First().Value;
             PosterUrl = game.PosterUrl;
-
+            ID = game.ID;
             if(game.MetaScore.Count != 0)
             {
                 Metascore = game.MetaScore.First().Value;

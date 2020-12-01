@@ -18,6 +18,8 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using System.Collections.ObjectModel;
 using MUXC = Microsoft.UI.Xaml.Controls;
+using Microsoft.Toolkit.Uwp.UI.Controls;
+using Windows.UI.Xaml.Media.Animation;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -48,5 +50,62 @@ namespace GamePassScores.UWP
         }
 
         public ObservableCollection<GameViewModel> Games { get; set; } = new ObservableCollection<GameViewModel>();
+
+        private void OrderByScoreAscendItem_Click(object sender, RoutedEventArgs e)
+        {
+            var games = Games.ToList();
+            games = games.OrderBy(g => g.Metascore).ToList();
+
+            Games.Clear();
+            foreach(var g in games)
+            {
+                Games.Add(g);
+            }
+        }
+
+        private void OrderByScoreDescendItem_Click(object sender, RoutedEventArgs e)
+        {
+            var games = Games.ToList();
+            games = games.OrderByDescending(g => g.Metascore).ToList();
+
+            Games.Clear();
+            foreach (var g in games)
+            {
+                Games.Add(g);
+            }
+        }
+
+        UIElement animatingElement;
+        private void GamesView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var container = GamesView.ContainerFromItem(e.ClickedItem) as GridViewItem;
+            if (container != null)
+            {
+                //find the image
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("PosterImage");
+                animatingElement = image;
+                //prepare the animation
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("ForwardConnectedAnimation", image);
+            }
+
+            //ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("ForwardConnectedAnimation", sender);
+            Frame.Navigate(typeof(GameDetailPage), e.ClickedItem);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if(animatingElement != null)
+            {
+                var anim = ConnectedAnimationService.GetForCurrentView().GetAnimation("BackwardConnectedAnimation");
+                if (anim != null)
+                {
+                    anim.TryStart(animatingElement);
+                }
+                animatingElement = null;
+            }
+        }
     }
 }

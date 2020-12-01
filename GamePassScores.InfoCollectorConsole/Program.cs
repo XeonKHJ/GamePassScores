@@ -9,6 +9,7 @@ using GamePassScores.Models;
 using System.Text;
 using HtmlAgilityPack;
 using System.Threading;
+using System.Net;
 
 namespace GamePassScores.InfoCollectorConsole
 {
@@ -16,27 +17,36 @@ namespace GamePassScores.InfoCollectorConsole
     {
         static async Task Main(string[] args)
         {
-            //获取游戏列表
-            var gamelistInfo = await GetGameList();
+            #region 获取
+            ////获取游戏列表
+            //var gamelistInfo = await GetGameList();
 
-            //从游戏列表中获取游戏详细信息
-            var gameInfos = await GetGamesInfo(gamelistInfo);
+            ////从游戏列表中获取游戏详细信息
+            //var gameInfos = await GetGamesInfo(gamelistInfo);
 
-            //转换成为我们的对象
-            var games = ConvertToGames(gameInfos);
+            ////转换成为我们的对象
+            //var games = ConvertToGames(gameInfos);
 
-            //获取Metascore
-            await GetMetacriticScoresAsync(games);
+            ////获取Metascore
+            //await GetMetacriticScoresAsync(games);
 
-            //打印一下
-            foreach (var game in games)
-            {
-                Console.WriteLine(game.MetaCriticPathName);
-            }
+            ////打印一下
+            //foreach (var game in games)
+            //{
+            //    Console.WriteLine(game.MetaCriticPathName);
+            //}
+            #endregion
+
+            #region 更新
+            var jsonFile = System.IO.File.ReadAllText("./games.json");
+            var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
+            var fileName = "newgames.json";
+            await UpdateMetacriticScoresAsync(games, Platform.PC);
+            #endregion
 
             //序列化成底层数据模型
-            var serializeGame = JsonConvert.SerializeObject(games);
-            await System.IO.File.WriteAllTextAsync("./games.json", serializeGame);
+            var serializeGames = JsonConvert.SerializeObject(games);
+            await System.IO.File.WriteAllTextAsync("./" + fileName, serializeGames);
         }
 
         static List<Game> ConvertToGames(ProductsModel gameInfos)
@@ -79,7 +89,7 @@ namespace GamePassScores.InfoCollectorConsole
                 for (int i = 0; i < metaCriticPathName.Length; ++i)
                 {
                     var c = metaCriticPathName[i];
-                    string matchString = "01234567890qwertyuiopasdfghjklzxcvbnm";
+                    string matchString = "01234567890qwertyuiopasdfghjklzxcvbnm'";
                     if (!matchString.Contains(c))
                     {
                         metaCriticPathName[i] = ' ';
@@ -113,6 +123,8 @@ namespace GamePassScores.InfoCollectorConsole
                         }
                     }
                 }
+                while (newMetaCriticPathNameArray.Remove('\''));
+
                 var finalMetaCriticPathName = new string(newMetaCriticPathNameArray.ToArray());
                 game.MetaCriticPathName = finalMetaCriticPathName;
 
@@ -307,7 +319,7 @@ namespace GamePassScores.InfoCollectorConsole
 
         static async Task GetMetacriticScoresAsync(List<Game> games)
         {
-            Semaphore semaphore = new Semaphore(20, 20);
+            Semaphore semaphore = new Semaphore(3, 3);
             await Task.Run(() =>
             {
                 foreach (var game in games)
@@ -393,12 +405,90 @@ namespace GamePassScores.InfoCollectorConsole
                 {
                     game.IsMetacriticInfoCorrect = false;
                 }
+
+                switch(response.StatusCode)
+                {
+                    case HttpStatusCode.TooManyRequests:
+                        System.Diagnostics.Debug.WriteLine("Meta Too Many Request!");
+                    break;
+                }
             }
 
 
             semaphore.Release();
             totalC++;
             abcde--;
+        }
+
+        static async Task UpdateMetacriticScoresAsync(List<Game> games, Platform specifyPlatform = Platform.Unknown)
+        {
+            await Task.Run(() =>
+            {
+                Semaphore semaphore = new Semaphore(2, 2);
+                string baseUrlString = "https://www.metacritic.com/game/";
+                foreach (var game in games)
+                {
+                    if (game.MetaScore.Count == 0)
+                    {
+                        foreach (var platform in game.OriginalPlatforms)
+                        {
+                            string platformString = string.Empty;
+                            if (platform != Platform.Unknown && specifyPlatform == Platform.Unknown)
+                            {
+                                switch (platform)
+                                {
+                                    case Platform.XboxOne:
+                                    case Platform.XboxOneX:
+                                        platformString = "xbox-one";
+                                        break;
+                                    case Platform.PC:
+                                        platformString = "pc";
+                                        break;
+                                    case Platform.Xbox360:
+                                        platformString = "xbox-360";
+                                        break;
+                                    case Platform.Xbox:
+                                        platformString = "xbox";
+                                        break;
+                                    case Platform.XboxSeriesX:
+                                    case Platform.XboxSeriesS:
+                                        platformString = "xbox-series-x";
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                switch (specifyPlatform)
+                                {
+                                    case Platform.XboxOne:
+                                    case Platform.XboxOneX:
+                                        platformString = "xbox-one";
+                                        break;
+                                    case Platform.PC:
+                                        platformString = "pc";
+                                        break;
+                                    case Platform.Xbox360:
+                                        platformString = "xbox-360";
+                                        break;
+                                    case Platform.Xbox:
+                                        platformString = "xbox";
+                                        break;
+                                    case Platform.XboxSeriesX:
+                                    case Platform.XboxSeriesS:
+                                        platformString = "xbox-series-x";
+                                        break;
+                                }
+                            }
+
+                            string gameString = game.MetaCriticPathName;
+                            string requestUrlString = baseUrlString + platformString + "/" + gameString + "/";
+
+                            GetMetacriticScore(game, platform, requestUrlString, semaphore);
+                        }
+                    }
+                }
+            });
+
         }
     }
 }
