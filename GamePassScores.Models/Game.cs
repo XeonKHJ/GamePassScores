@@ -19,5 +19,9 @@ namespace GamePassScores.Models
         public List<Platform> OriginalPlatforms { set; get; } = new List<Platform>();
 
         public Dictionary<Platform, Uri> MetacriticUrls = new Dictionary<Platform, Uri>();
+
+        public Dictionary<Platform, int> MetaScore = new Dictionary<Platform, int>();
+        public bool IsMetacriticInfoCorrect { set; get; } = false;
+        public bool IsMetacriticInfoExist { set; get; } = true;
     }
 }

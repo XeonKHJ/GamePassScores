@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using GamePassScores.Models;
 using System.Text;
+using HtmlAgilityPack;
+using System.Threading;
 
 namespace GamePassScores.InfoCollectorConsole
 {
@@ -22,12 +24,12 @@ namespace GamePassScores.InfoCollectorConsole
             var gameInfos = await GetGamesInfo(gamelistInfo);
 
             //转换成为我们的对象
-            foreach(var gameInfo in gameInfos.Products)
+            foreach (var gameInfo in gameInfos.Products)
             {
                 var game = new Game();
                 game.ID = gameInfo.ProductId;
-                
-                foreach(var l in gameInfo.LocalizedProperties)
+
+                foreach (var l in gameInfo.LocalizedProperties)
                 {
                     if (l.Language != null)
                     {
@@ -36,9 +38,9 @@ namespace GamePassScores.InfoCollectorConsole
                     }
 
                     var es = l.EligibilityProperties;
-                    if(es.Affirmations != null)
+                    if (es.Affirmations != null)
                     {
-                        foreach(var a in es.Affirmations)
+                        foreach (var a in es.Affirmations)
                         {
                             switch (a.AffirmationId)
                             {
@@ -54,11 +56,11 @@ namespace GamePassScores.InfoCollectorConsole
                 }
 
                 var metaCriticPathName = game.Title.First().Value.ToLower().ToCharArray();
-                for(int i = 0; i < metaCriticPathName.Length; ++i)
+                for (int i = 0; i < metaCriticPathName.Length; ++i)
                 {
                     var c = metaCriticPathName[i];
                     string matchString = "01234567890qwertyuiopasdfghjklzxcvbnm";
-                    if(!matchString.Contains(c))
+                    if (!matchString.Contains(c))
                     {
                         metaCriticPathName[i] = ' ';
                     }
@@ -67,14 +69,13 @@ namespace GamePassScores.InfoCollectorConsole
                 var newMetaCriticPathName = new string(metaCriticPathName);
                 newMetaCriticPathName = newMetaCriticPathName.Trim();
                 var newMetaCriticPathNameArray = newMetaCriticPathName.ToCharArray().ToList();
-                bool isFollowingSpace = false;
 
                 bool isSpaceDetected = false;
                 for (int i = 0; i < newMetaCriticPathNameArray.Count; ++i)
                 {
-                    if(isSpaceDetected)
+                    if (isSpaceDetected)
                     {
-                        if(newMetaCriticPathNameArray[i] == ' ')
+                        if (newMetaCriticPathNameArray[i] == ' ')
                         {
                             newMetaCriticPathNameArray.RemoveAt(i--);
                         }
@@ -96,7 +97,7 @@ namespace GamePassScores.InfoCollectorConsole
                 game.MetaCriticPathName = finalMetaCriticPathName;
 
                 //修改平台
-                if(gameInfo.Properties.PackageFamilyName.Contains("Xbox360BackwardCompatibil"))
+                if (gameInfo.Properties.PackageFamilyName.Contains("Xbox360BackwardCompatibil"))
                 {
                     game.OriginalPlatforms.Add(Platform.Xbox360);
                 }
@@ -123,8 +124,10 @@ namespace GamePassScores.InfoCollectorConsole
                 games.Add(game);
             }
 
+            await GetMetacriticScoresAsync(games);
+
             //打印一下
-            foreach(var game in games)
+            foreach (var game in games)
             {
                 Console.WriteLine(game.MetaCriticPathName);
             }
@@ -132,107 +135,117 @@ namespace GamePassScores.InfoCollectorConsole
             //序列化成底层数据模型
         }
 
+        static int totalGameFetch = 0;
         static async Task<ProductsModel> GetGamesInfo(string[] gamelistInfo)
         {
             ProductsModel gamePassProductsModel = new ProductsModel();
             ProductsModel eaPlayProductsModel = new ProductsModel();
-            #region 老老实实的并行请求
-            for (int i = 0; i < gamelistInfo.Length; i = i + 20)
+            await Task.Run(() =>
             {
-                int requestNum = 20;
-                if (i + 20 > gamelistInfo.Length)
+                Semaphore semaphore = new Semaphore(10, 10);
+                #region 老老实实的并行请求
+                for (int i = 0; i < gamelistInfo.Length; i = i + 20)
                 {
-                    requestNum = gamelistInfo.Length - i;
-                }
-                string requestProductsString = string.Empty;
-                for (int j = 0; j < requestNum; ++j)
-                {
-                    requestProductsString += gamelistInfo[j + i];
-                    if (j != requestNum - 1)
+                    int requestNum = 20;
+                    if (i + 20 > gamelistInfo.Length)
                     {
-                        requestProductsString += ',';
+                        requestNum = gamelistInfo.Length - i;
                     }
-                }
-
-                string requestUriString = "https://displaycatalog.mp.microsoft.com/v7.0/products?";
-
-                requestUriString += "bigIds=" + requestProductsString + "&" +
-                                "market=US&" +
-                                "languages=en-us&" +
-                                "MS-CV=DGU1mcuYo0WMMp+F.1";
-                var request = new HttpRequestMessage(HttpMethod.Get, new Uri(requestUriString));
-                var httpClient = new HttpClient();
-
-                try
-                {
-                    var response = await httpClient.SendAsync(request).ConfigureAwait(false);
-
-
-                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    string requestProductsString = string.Empty;
+                    for (int j = 0; j < requestNum; ++j)
                     {
-                        var responseString = await response.Content.ReadAsStringAsync();
-                        var productsModel = JsonConvert.DeserializeObject<ProductsModel>(responseString);
-
-
-                        foreach (var p in productsModel.Products)
+                        requestProductsString += gamelistInfo[j + i];
+                        if (j != requestNum - 1)
                         {
-                            bool isGamePassProduct = false;
-                            bool isEaPlayProduct = false;
-                            var localizeProperties = p.LocalizedProperties;
-                            if (p.LocalizedProperties != null)
-                            {
-                                foreach (var l in localizeProperties)
-                                {
-                                    if (l.EligibilityProperties.Affirmations != null)
-                                    {
-                                        var fs = l.EligibilityProperties.Affirmations;
-                                        foreach (var f in fs)
-                                        {
-                                            if (f.AffirmationId == "9WNZS2ZC9L74")
-                                            {
-                                                isGamePassProduct = true;
-                                            }
-                                            if (f.AffirmationId == "B0HFJ7PW900M")
-                                            {
-                                                isEaPlayProduct = true;
-                                            }
-                                        }
-                                    }
-
-                                    if (isGamePassProduct || isEaPlayProduct)
-                                    {
-                                        break;
-                                    }
-                                }
-                            }
-                            if (isGamePassProduct)
-                            {
-                                gamePassProductsModel.Products.Add(p);
-                            }
-                            if (isEaPlayProduct)
-                            {
-                                gamePassProductsModel.Products.Add(p);
-                            }
+                            requestProductsString += ',';
                         }
-                        //Console.WriteLine(responseString);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Fuck, 错了。");
                     }
 
-                    //Console.WriteLine("{0} done!", gameCode);
+                    GetGamesInfoSingleTime(requestProductsString, gamePassProductsModel, semaphore);
+                }
 
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine("fucksdkfjalsdf");
-                }
-            }
+                while (totalThread != 0) ;
+            });
             #endregion
             return gamePassProductsModel;
         }
+        private static int totalThread = 0;
+        static async void GetGamesInfoSingleTime(string requestProductsString, ProductsModel gamePassProductsModel, Semaphore semaphore)
+        {
+            semaphore.WaitOne();
+            ++totalThread;
+            string requestUriString = "https://displaycatalog.mp.microsoft.com/v7.0/products?";
 
+            requestUriString += "bigIds=" + requestProductsString + "&" +
+                            "market=US&" +
+                            "languages=en-us&" +
+                            "MS-CV=DGU1mcuYo0WMMp+F.1";
+
+            var request = new HttpRequestMessage(HttpMethod.Get, new Uri(requestUriString));
+            var httpClient = new HttpClient();
+            var response = await httpClient.SendAsync(request).ConfigureAwait(false);
+
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var responseString = await response.Content.ReadAsStringAsync();
+                var productsModel = JsonConvert.DeserializeObject<ProductsModel>(responseString);
+
+
+                foreach (var p in productsModel.Products)
+                {
+                    bool isGamePassProduct = false;
+                    bool isEaPlayProduct = false;
+                    var localizeProperties = p.LocalizedProperties;
+                    if (p.LocalizedProperties != null)
+                    {
+                        foreach (var l in localizeProperties)
+                        {
+                            if (l.EligibilityProperties.Affirmations != null)
+                            {
+                                var fs = l.EligibilityProperties.Affirmations;
+                                foreach (var f in fs)
+                                {
+                                    if (f.AffirmationId == "9WNZS2ZC9L74")
+                                    {
+                                        isGamePassProduct = true;
+                                    }
+                                    if (f.AffirmationId == "B0HFJ7PW900M")
+                                    {
+                                        isEaPlayProduct = true;
+                                    }
+                                }
+                            }
+
+                            if (isGamePassProduct || isEaPlayProduct)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    lock(gamePassProductsModel)
+                    {
+                        if (isGamePassProduct)
+                        {
+                            gamePassProductsModel.Products.Add(p);
+                        }
+                        if (isEaPlayProduct)
+                        {
+                            gamePassProductsModel.Products.Add(p);
+                        }
+                    }
+                }
+                //Console.WriteLine(responseString);
+            }
+            else
+            {
+                Console.WriteLine("Fuck, 错了。");
+            }
+
+            var semaResult = semaphore.Release();
+            --totalThread;
+            //Console.WriteLine("{0} done!", gameCode);
+        }
         static async Task<string[]> GetGameList()
         {
             string consoleGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=f6f1f99f-9b49-4ccd-b3bf-4d9767a77f5e&language=en-us&market=US";
@@ -262,14 +275,100 @@ namespace GamePassScores.InfoCollectorConsole
             return gameCodes.ToArray();
         }
 
-        static async Task GetMetacriticScores(List<Game> games)
+        static async Task GetMetacriticScoresAsync(List<Game> games)
         {
-            foreach(var game in games)
+            Semaphore semaphore = new Semaphore(5, 5);
+            await Task.Run(() =>
             {
-                HttpClient httpClient = new HttpClient();
-                HttpRequestMessage httpRequestMessage = new HttpRequestMessage();
+                foreach (var game in games)
+                {
 
+                    string baseUrlString = "https://www.metacritic.com/game/";
+
+
+                    foreach (var platform in game.OriginalPlatforms)
+                    {
+                        string platformString = string.Empty;
+                        if (platform != Platform.Unknown)
+                        {
+                            switch (platform)
+                            {
+                                case Platform.XboxOne:
+                                case Platform.XboxOneX:
+                                    platformString = "xbox-one";
+                                    break;
+                                case Platform.PC:
+                                    platformString = "pc";
+                                    break;
+                                case Platform.Xbox360:
+                                    platformString = "xbox-360";
+                                    break;
+                                case Platform.Xbox:
+                                    platformString = "xbox";
+                                    break;
+                                case Platform.XboxSeriesX:
+                                case Platform.XboxSeriesS:
+                                    platformString = "xbox-series-x";
+                                    break;
+                            }
+                        }
+
+                        string gameString = game.MetaCriticPathName;
+                        string requestUrlString = baseUrlString + platformString + "/" + gameString + "/";
+
+                        GetMetacriticScore(game, platform, requestUrlString, semaphore);
+                    }
+                }
+                System.Diagnostics.Debug.WriteLine(totalC);
+                WaitHandle.WaitAll(new WaitHandle[] { semaphore });
+                System.Diagnostics.Debug.WriteLine("Fuck yeah!");
+                System.Diagnostics.Debug.WriteLine(totalC);
+            });
+        }
+        static int abcde = 0;
+        static int totalC = 0;
+        static async void GetMetacriticScore(Game game, Platform platform, string requestUrlString, Semaphore semaphore)
+        {
+            semaphore.WaitOne();
+            abcde++;
+
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrlString);
+            HttpClient httpClient = new HttpClient();
+            var response = await httpClient.SendAsync(request);
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContentString = await response.Content.ReadAsStringAsync();
+                HtmlDocument document = new HtmlDocument();
+                document.LoadHtml(responseContentString);
+                var matchNode = document.DocumentNode.SelectSingleNode("//script[@type='application/ld+json']");
+
+                var jsonText = matchNode.InnerText;
+                var metacriticScoreModel = JsonConvert.DeserializeObject<MetacriticScoreModel>(jsonText);
+
+                lock (game)
+                {
+                    game.IsMetacriticInfoExist = true;
+                    game.IsMetacriticInfoCorrect = true;
+                    if (metacriticScoreModel.aggregateRating != null)
+                    {
+                        game.MetaScore.Add(platform, int.Parse(metacriticScoreModel.aggregateRating.ratingValue));
+                        game.MetacriticUrls.Add(platform, new Uri(requestUrlString));
+                    }
+                }
             }
+            else
+            {
+                lock (game)
+                {
+                    game.IsMetacriticInfoCorrect = false;
+                }
+            }
+
+
+            semaphore.Release();
+            totalC++;
+            abcde--;
         }
     }
 }
