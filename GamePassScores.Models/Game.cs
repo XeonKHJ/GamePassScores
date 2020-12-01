@@ -21,6 +21,8 @@ namespace GamePassScores.Models
         public Dictionary<Platform, Uri> MetacriticUrls = new Dictionary<Platform, Uri>();
 
         public Dictionary<Platform, int> MetaScore = new Dictionary<Platform, int>();
+       
+        public string PosterUrl { set; get; } = string.Empty;
         public bool IsMetacriticInfoCorrect { set; get; } = false;
         public bool IsMetacriticInfoExist { set; get; } = true;
     }

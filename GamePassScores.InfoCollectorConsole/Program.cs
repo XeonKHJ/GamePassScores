@@ -16,7 +16,6 @@ namespace GamePassScores.InfoCollectorConsole
     {
         static async Task Main(string[] args)
         {
-            List<Game> games = new List<Game>();
             //获取游戏列表
             var gamelistInfo = await GetGameList();
 
@@ -24,6 +23,25 @@ namespace GamePassScores.InfoCollectorConsole
             var gameInfos = await GetGamesInfo(gamelistInfo);
 
             //转换成为我们的对象
+            var games = ConvertToGames(gameInfos);
+
+            //获取Metascore
+            await GetMetacriticScoresAsync(games);
+
+            //打印一下
+            foreach (var game in games)
+            {
+                Console.WriteLine(game.MetaCriticPathName);
+            }
+
+            //序列化成底层数据模型
+            var serializeGame = JsonConvert.SerializeObject(games);
+            await System.IO.File.WriteAllTextAsync("./games.json", serializeGame);
+        }
+
+        static List<Game> ConvertToGames(ProductsModel gameInfos)
+        {
+            List<Game> games = new List<Game>();
             foreach (var gameInfo in gameInfos.Products)
             {
                 var game = new Game();
@@ -53,6 +71,8 @@ namespace GamePassScores.InfoCollectorConsole
                             }
                         }
                     }
+
+                    game.PosterUrl = "https:" + (from i in l.Images where i.ImagePurpose.ToLower() == "poster" select i.Uri).First();
                 }
 
                 var metaCriticPathName = game.Title.First().Value.ToLower().ToCharArray();
@@ -106,7 +126,6 @@ namespace GamePassScores.InfoCollectorConsole
                     game.OriginalPlatforms.Add(Platform.XboxOne);
                 }
 
-                string metacritcBaseUrl = "https://www.metacritic.com/game/";
                 switch (game.OriginalPlatforms.First())
                 {
                     case Platform.Xbox360:
@@ -121,19 +140,13 @@ namespace GamePassScores.InfoCollectorConsole
                         break;
                 }
 
+
                 games.Add(game);
             }
 
-            await GetMetacriticScoresAsync(games);
-
-            //打印一下
-            foreach (var game in games)
-            {
-                Console.WriteLine(game.MetaCriticPathName);
-            }
-
-            //序列化成底层数据模型
+            return games;
         }
+
 
         static int totalGameFetch = 0;
         static async Task<ProductsModel> GetGamesInfo(string[] gamelistInfo)
@@ -142,7 +155,7 @@ namespace GamePassScores.InfoCollectorConsole
             ProductsModel eaPlayProductsModel = new ProductsModel();
             await Task.Run(() =>
             {
-                Semaphore semaphore = new Semaphore(10, 10);
+                Semaphore semaphore = new Semaphore(20, 20);
                 #region 老老实实的并行请求
                 for (int i = 0; i < gamelistInfo.Length; i = i + 20)
                 {
@@ -166,6 +179,27 @@ namespace GamePassScores.InfoCollectorConsole
 
                 while (totalThread != 0) ;
             });
+
+            int[] compareResult = new int[gamelistInfo.Length];
+            List<int> stupidResult = new List<int>();
+            for (int i = 0; i < gamelistInfo.Length; ++i)
+            {
+                foreach (var product in gamePassProductsModel.Products)
+                {
+                    if (gamelistInfo[i].ToLower() == product.ProductId.ToLower())
+                    {
+                        compareResult[i] = compareResult[i] + 1;
+                    }
+                }
+            }
+
+            for (int i = 0; i < compareResult.Length; ++i)
+            {
+                if (compareResult[i] != 1)
+                {
+                    stupidResult.Add(i);
+                }
+            }
             #endregion
             return gamePassProductsModel;
         }
@@ -206,7 +240,7 @@ namespace GamePassScores.InfoCollectorConsole
                                 var fs = l.EligibilityProperties.Affirmations;
                                 foreach (var f in fs)
                                 {
-                                    if (f.AffirmationId == "9WNZS2ZC9L74")
+                                    if (f.AffirmationId == "9WNZS2ZC9L74" || f.AffirmationId == "9NC1XH2KD60Z" || f.AffirmationId == "9VP428G6BQ82")
                                     {
                                         isGamePassProduct = true;
                                     }
@@ -223,13 +257,9 @@ namespace GamePassScores.InfoCollectorConsole
                             }
                         }
                     }
-                    lock(gamePassProductsModel)
+                    lock (gamePassProductsModel)
                     {
-                        if (isGamePassProduct)
-                        {
-                            gamePassProductsModel.Products.Add(p);
-                        }
-                        if (isEaPlayProduct)
+                        if (isGamePassProduct || isEaPlayProduct)
                         {
                             gamePassProductsModel.Products.Add(p);
                         }
@@ -277,7 +307,7 @@ namespace GamePassScores.InfoCollectorConsole
 
         static async Task GetMetacriticScoresAsync(List<Game> games)
         {
-            Semaphore semaphore = new Semaphore(5, 5);
+            Semaphore semaphore = new Semaphore(20, 20);
             await Task.Run(() =>
             {
                 foreach (var game in games)
@@ -320,7 +350,7 @@ namespace GamePassScores.InfoCollectorConsole
                     }
                 }
                 System.Diagnostics.Debug.WriteLine(totalC);
-                WaitHandle.WaitAll(new WaitHandle[] { semaphore });
+                while (abcde != 0) ;
                 System.Diagnostics.Debug.WriteLine("Fuck yeah!");
                 System.Diagnostics.Debug.WriteLine(totalC);
             });
