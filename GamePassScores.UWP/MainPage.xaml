@@ -14,36 +14,49 @@
 
     <Grid>
         <Grid.Background>
-            <AcrylicBrush BackgroundSource="HostBackdrop" TintOpacity="0.8" TintLuminosityOpacity="0.5" TintColor="Transparent" FallbackColor="#107C10"></AcrylicBrush>
+            <AcrylicBrush BackgroundSource="HostBackdrop" TintOpacity="0.8" TintLuminosityOpacity="0.8" TintColor="Black" FallbackColor="#107C10"></AcrylicBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        <muxc:TeachingTip x:Name="AboutTip"
+                            Target="{x:Bind AboutButton}"
+                            Title="About me and the App"
+                            Subtitle="It's easier than ever to see control samples in both light and dark theme!"
+                          IsOpen="False">
+            <muxc:TeachingTip.Content>
+                <TextBlock TextWrapping="WrapWholeWords" Margin="0,16,0,0">The app is open sourced on <Hyperlink NavigateUri="https://github.com/XeonKHJ/GamePassScores">GitHub</Hyperlink>.</TextBlock>
+            </muxc:TeachingTip.Content>
+
+        </muxc:TeachingTip>
         <TextBlock Padding="30, 30, 30, 10" Grid.Row="0" Text="GamePass Scores" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
-        <CommandBar HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent" Margin="10" IsOpen="True">
-            <AppBarButton Icon="Zoom" Label="搜索"></AppBarButton>
-            <AppBarButton Icon="Filter" Label="筛选">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <TextBox x:Name="SearchBox" Margin="10" VerticalAlignment="Bottom" Width="150" TextChanged="SearchBox_TextChanged"></TextBox>
+            <CommandBar HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent" Margin="10" IsOpen="False">
+                <AppBarButton Icon="Filter" Label="筛选">
                 <AppBarButton.Flyout>
                     <MenuFlyout>
-                        <MenuFlyoutItem x:Name="OrderByScoreAscendItem" Text="按Metascore升序" Click="OrderByScoreAscendItem_Click"></MenuFlyoutItem>
-                        <MenuFlyoutItem x:Name="OrderByScoreDescendItem" Text="按Metascore降序" Click="OrderByScoreDescendItem_Click"></MenuFlyoutItem>
-                        <MenuFlyoutItem Text="按名字升序"></MenuFlyoutItem>
-                        <MenuFlyoutItem Text="按名字降序"></MenuFlyoutItem>
+                        <MenuFlyoutItem x:Name="OrderByScoreAscendItem" Text="By Metascore In Ascending Order" Click="OrderByScoreAscendItem_Click"></MenuFlyoutItem>
+                        <MenuFlyoutItem x:Name="OrderByScoreDescendItem" Text="By Metascore In Descending Order" Click="OrderByScoreDescendItem_Click"></MenuFlyoutItem>
+                            <MenuFlyoutItem x:Name="OrderByNameAscendItem" Text="By Title In Ascending Order" Click="OrderByNameAscendItem_Click"></MenuFlyoutItem>
+                            <MenuFlyoutItem x:Name="OrderByNameDescendItem" Text="By Title In Descending Order" Click="OrderByNameDescendItem_Click"></MenuFlyoutItem>
                     </MenuFlyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
-            <AppBarButton Icon="Account" Label="关于"></AppBarButton>
+            <AppBarButton x:Name="AboutButton" Icon="Account" Label="关于" Click="AboutButton_Click"></AppBarButton>
         </CommandBar>
-        <controls:AdaptiveGridView Name="GamesView" Padding="20, 0" Margin="0, 10" Grid.Row="1" ItemsSource="{x:Bind Games}" ItemHeight="405" DesiredWidth="275" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+        </StackPanel>
+        <controls:AdaptiveGridView Name="GamesView" Padding="20, 0" Margin="0, 10" Grid.Row="1" ItemsSource="{x:Bind GamesViewModel}" ItemHeight="441" DesiredWidth="275" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
                                    animations:ReorderGridAnimation.Duration="300" IsItemClickEnabled="True" ItemClick="GamesView_ItemClick" CacheMode="BitmapCache">
             <controls:AdaptiveGridView.ItemTemplate>
                 <DataTemplate x:DataType="models:Game">
-                    <RelativePanel Margin="10">
-                        <Viewbox Grid.Row="0" Stretch="UniformToFill" StretchDirection="Both" Height="441">
-                            <Image x:Name="PosterImage" Source="{Binding PosterUrl}" ></Image>
+                    <RelativePanel Margin="10" MaxWidth="275">
+                        <muxc:ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Visibility="{Binding IsImageLoaded}" IsActive="True"></muxc:ProgressRing>
+                        <Viewbox Grid.Row="0" Stretch="UniformToFill" StretchDirection="Both" Height="412.5">
+                            <Image x:Name="PosterImage" Source="{Binding PosterUrl}" Tag="{Binding ID}" ImageOpened="PosterImage_ImageOpened"></Image>
                         </Viewbox>
-                        
+
                         <Grid RelativePanel.AlignBottomWithPanel="True"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Height="125">
                             <Grid.Background>
                                 <AcrylicBrush TintColor="Black" TintOpacity="0.5"></AcrylicBrush>

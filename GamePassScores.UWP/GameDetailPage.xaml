@@ -9,9 +9,17 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <ParallaxView Source="{Binding ElementName=ContentViewer}" VerticalShift="100">
+            <Viewbox Stretch="UniformToFill" StretchDirection="Both">
+                <Image x:Name="PosterView" />
+            </Viewbox>
+        </ParallaxView>
+        <Grid>
+
         <Grid.Background>
-            <AcrylicBrush BackgroundSource="HostBackdrop" TintOpacity="0.8" TintLuminosityOpacity="0.5" TintColor="Transparent" FallbackColor="#107C10"></AcrylicBrush>
+            <AcrylicBrush BackgroundSource="Backdrop" TintOpacity="0.7" TintLuminosityOpacity="0.8" TintColor="Black" FallbackColor="#107C10"></AcrylicBrush>
         </Grid.Background>
+
         <Button x:Name="NavigationBackButton" Style="{StaticResource NavigationBackButtonNormalStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Click="NavigationBackButton_Click"></Button>
         <Grid Margin="45">
             <Grid.ColumnDefinitions>
@@ -20,7 +28,7 @@
             </Grid.ColumnDefinitions>
 
             <Image Grid.Column="0" x:Name="PosterImage" HorizontalAlignment="Right" Margin="100, 90, 10, 90" VerticalAlignment="Center" Source="{Binding imageSource}"></Image>
-            <ScrollViewer Margin="30" Grid.Column="1">
+            <ScrollViewer x:Name="ContentViewer" Margin="30" Grid.Column="1">
             <StackPanel   VerticalAlignment="Center">
                 <TextBlock x:Name="TitleBlock" Text="Title" Margin="10" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
                 <TextBlock x:Name="DescriptionBlock" Text="Description" Margin="10" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
@@ -39,5 +47,7 @@
             </StackPanel>
             </ScrollViewer>
         </Grid>
+    </Grid>
+
     </Grid>
 </Page>

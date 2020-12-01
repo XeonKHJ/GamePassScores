@@ -38,11 +38,19 @@ namespace GamePassScores.InfoCollectorConsole
             #endregion
 
             #region 更新
+            //var jsonFile = System.IO.File.ReadAllText("./games.json");
+            //var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
+            //var fileName = "newgames.json";
+            //await UpdateMetacriticScoresAsync(games, Platform.PC);
+            #endregion
+
+            #region 更新类别
             var jsonFile = System.IO.File.ReadAllText("./games.json");
             var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
             var fileName = "newgames.json";
             await UpdateMetacriticScoresAsync(games, Platform.PC);
             #endregion
+
 
             //序列化成底层数据模型
             var serializeGames = JsonConvert.SerializeObject(games);

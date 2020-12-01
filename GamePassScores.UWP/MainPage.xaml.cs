@@ -45,34 +45,40 @@ namespace GamePassScores.UWP
             var games = JsonConvert.DeserializeObject<List<Game>>(jsonString);
             foreach(var game in games)
             {
-                Games.Add(new GameViewModel(game));
+                GamesViewModel.Add(new GameViewModel(game));
+                if (game.MetaScore.Count == 0)
+                {
+                    game.MetaScore.Add(Platform.Unknown, -1);
+                }
             }
+            Games = games;
         }
 
-        public ObservableCollection<GameViewModel> Games { get; set; } = new ObservableCollection<GameViewModel>();
+        public List<Game> Games = new List<Game>();
+        public ObservableCollection<GameViewModel> GamesViewModel { get; set; } = new ObservableCollection<GameViewModel>();
 
         private void OrderByScoreAscendItem_Click(object sender, RoutedEventArgs e)
         {
-            var games = Games.ToList();
-            games = games.OrderBy(g => g.Metascore).ToList();
-
-            Games.Clear();
-            foreach(var g in games)
-            {
-                Games.Add(g);
-            }
+            Games = Games.OrderBy(g => g.MetaScore.First().Value).ToList();
+            //SearchBox_TextChanged
+            //GamesViewModel.Clear();
+            //foreach(var g in Games)
+            //{
+            //    GamesViewModel.Add(new GameViewModel(g));
+            //}
+            SearchBox_TextChanged(SearchBox, null);
         }
 
         private void OrderByScoreDescendItem_Click(object sender, RoutedEventArgs e)
         {
-            var games = Games.ToList();
-            games = games.OrderByDescending(g => g.Metascore).ToList();
+            Games = Games.OrderByDescending(g => g.MetaScore.First().Value).ToList();
 
-            Games.Clear();
-            foreach (var g in games)
-            {
-                Games.Add(g);
-            }
+            //GamesViewModel.Clear();
+            //foreach (var g in Games)
+            //{
+            //    GamesViewModel.Add(new GameViewModel(g));
+            //}
+            SearchBox_TextChanged(SearchBox, null);
         }
 
         UIElement animatingElement;
@@ -106,6 +112,107 @@ namespace GamePassScores.UWP
                 }
                 animatingElement = null;
             }
+        }
+
+        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        {
+            AboutTip.IsOpen = true;
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            //SearchBox.TextChanged += SearchBox_TextChanged;
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox searchBlock = sender as TextBox;
+            string text = searchBlock.Text;
+            if(text.Trim() != string.Empty)
+            {
+                var games = (from g in Games
+                            where g.Title.First().Value.ToLower().Contains(text.ToLower().Trim())
+                            select new GameViewModel(g)).ToArray();
+               
+
+                bool isViewModelChanged = false;
+                if(games.Length == GamesViewModel.Count)
+                {
+                    for(int i = 0; i < games.Length; ++i)
+                    {
+                        if(games[i].ID != GamesViewModel[i].ID)
+                        {
+                            isViewModelChanged = true;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    isViewModelChanged = true;
+                }
+
+                if(isViewModelChanged)
+                {
+                    GamesViewModel.Clear();
+                    foreach (var g in games)
+                    {
+                        GamesViewModel.Add(g);
+                    }
+                }
+
+            }
+            else
+            {
+                GamesViewModel.Clear();
+                foreach (var game in Games)
+                {
+                    GamesViewModel.Add(new GameViewModel(game));
+                }
+            }
+        }
+
+        private void PosterImage_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            Image image = sender as Image;
+
+            if(image != null && image.Tag != null)
+            {
+                var match = (from g in GamesViewModel where g.ID == image.Tag.ToString() select g).ToList();
+                if (match.Count != 0)
+                {
+                    match.First().IsImageLoaded = Visibility.Collapsed;
+                }
+            }
+        }
+
+        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OrderByNameAscendItem_Click(object sender, RoutedEventArgs e)
+        {
+            Games = Games.OrderBy(g => g.Title.First().Value).ToList();
+
+            //GamesViewModel.Clear();
+            //foreach (var g in Games)
+            //{
+            //    GamesViewModel.Add(new GameViewModel(g));
+            //}
+            SearchBox_TextChanged(SearchBox, null);
+        }
+
+        private void OrderByNameDescendItem_Click(object sender, RoutedEventArgs e)
+        {
+            Games = Games.OrderByDescending(g => g.Title.First().Value).ToList();
+
+            //GamesViewModel.Clear();
+            //foreach (var g in Games)
+            //{
+            //    GamesViewModel.Add(new GameViewModel(g));
+            //}
+            SearchBox_TextChanged(SearchBox, null);
         }
     }
 }

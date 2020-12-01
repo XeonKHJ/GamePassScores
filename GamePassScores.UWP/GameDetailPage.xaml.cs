@@ -39,6 +39,7 @@ namespace GamePassScores.UWP
             var imageSource = ((GameViewModel)e.Parameter).PosterUrl;
             BitmapImage a = new BitmapImage(new Uri(imageSource));
             PosterImage.Source = a;
+            PosterView.Source = a;
             TitleBlock.Text = game.Title;
             DescriptionBlock.Text = game.Description;
             ScoreGrid.Visibility = game.IsScoreAvaliable;

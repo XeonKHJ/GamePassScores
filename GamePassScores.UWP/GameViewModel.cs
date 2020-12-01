@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI;
@@ -8,7 +10,7 @@ using Windows.UI.Xaml;
 
 namespace GamePassScores.UWP
 {
-    public class GameViewModel
+    public class GameViewModel : INotifyPropertyChanged
     {
         public string Title { set; get; }
         public string Description { set; get; }
@@ -25,10 +27,28 @@ namespace GamePassScores.UWP
             if(game.MetaScore.Count != 0)
             {
                 Metascore = game.MetaScore.First().Value;
-                MetacriticUrl = game.MetacriticUrls.First().Value;
+
+                if(game.MetacriticUrls.Count != 0)
+                {
+                    MetacriticUrl = game.MetacriticUrls.First().Value;
+                }
+                
             }
         }
 
+        private Visibility _isImageLoaded = Visibility.Visible;
+        public Visibility IsImageLoaded
+        {
+            set
+            {
+                _isImageLoaded = value;
+                NotifyPropertyChanged();
+            }
+            get
+            {
+                return _isImageLoaded;
+            }
+        }
         public Visibility IsScoreAvaliable
         {
             get
@@ -55,5 +75,12 @@ namespace GamePassScores.UWP
                 }
             }
         }
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
