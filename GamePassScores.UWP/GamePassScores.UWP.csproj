@@ -153,6 +153,18 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\games.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GamePassScores.Models\GamePassScores.Models.csproj">
+      <Project>{54b0280c-ee82-47da-b403-6ff86fa97dd0}</Project>
+      <Name>GamePassScores.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

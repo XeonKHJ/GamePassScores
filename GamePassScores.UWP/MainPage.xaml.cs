@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GamePassScores.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,6 +13,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using Windows.Storage;
+using System.Collections.ObjectModel;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -25,6 +30,22 @@ namespace GamePassScores.UWP
         public MainPage()
         {
             this.InitializeComponent();
+
+            //从json文件读取游戏信息
+            ReadGamesFromJson();
         }
+
+        private async void ReadGamesFromJson()
+        {
+            var jsonFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/games.json"));
+            var jsonString = await FileIO.ReadTextAsync(jsonFile);
+            var games = JsonConvert.DeserializeObject<List<Game>>(jsonString);
+            foreach(var game in games)
+            {
+                Games.Add(game);
+            }
+        }
+
+        public ObservableCollection<Game> Games { get; set; } = new ObservableCollection<Game>();
     }
 }
