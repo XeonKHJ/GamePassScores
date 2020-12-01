@@ -13,5 +13,11 @@ namespace GamePassScores.Models
         public Dictionary<string, string> Description { set; get; } = new Dictionary<string, string>();
 
         public List<SubscriptionServices> Affirmations { set; get; } = new List<SubscriptionServices>();
+
+        public string MetaCriticPathName { set; get; } = string.Empty;
+
+        public List<Platform> OriginalPlatforms { set; get; } = new List<Platform>();
+
+        public Dictionary<Platform, Uri> MetacriticUrls = new Dictionary<Platform, Uri>();
     }
 }

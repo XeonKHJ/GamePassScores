@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using GamePassScores.Models;
+using System.Text;
 
 namespace GamePassScores.InfoCollectorConsole
 {
@@ -51,13 +52,81 @@ namespace GamePassScores.InfoCollectorConsole
                         }
                     }
                 }
+
+                var metaCriticPathName = game.Title.First().Value.ToLower().ToCharArray();
+                for(int i = 0; i < metaCriticPathName.Length; ++i)
+                {
+                    var c = metaCriticPathName[i];
+                    string matchString = "01234567890qwertyuiopasdfghjklzxcvbnm";
+                    if(!matchString.Contains(c))
+                    {
+                        metaCriticPathName[i] = ' ';
+                    }
+                }
+                //去空格
+                var newMetaCriticPathName = new string(metaCriticPathName);
+                newMetaCriticPathName = newMetaCriticPathName.Trim();
+                var newMetaCriticPathNameArray = newMetaCriticPathName.ToCharArray().ToList();
+                bool isFollowingSpace = false;
+
+                bool isSpaceDetected = false;
+                for (int i = 0; i < newMetaCriticPathNameArray.Count; ++i)
+                {
+                    if(isSpaceDetected)
+                    {
+                        if(newMetaCriticPathNameArray[i] == ' ')
+                        {
+                            newMetaCriticPathNameArray.RemoveAt(i--);
+                        }
+                        else
+                        {
+                            isSpaceDetected = false;
+                        }
+                    }
+                    else
+                    {
+                        if (newMetaCriticPathNameArray[i] == ' ')
+                        {
+                            isSpaceDetected = true;
+                            newMetaCriticPathNameArray[i] = '-';
+                        }
+                    }
+                }
+                var finalMetaCriticPathName = new string(newMetaCriticPathNameArray.ToArray());
+                game.MetaCriticPathName = finalMetaCriticPathName;
+
+                //修改平台
+                if(gameInfo.Properties.PackageFamilyName.Contains("Xbox360BackwardCompatibil"))
+                {
+                    game.OriginalPlatforms.Add(Platform.Xbox360);
+                }
+                else
+                {
+                    game.OriginalPlatforms.Add(Platform.XboxOne);
+                }
+
+                string metacritcBaseUrl = "https://www.metacritic.com/game/";
+                switch (game.OriginalPlatforms.First())
+                {
+                    case Platform.Xbox360:
+                        {
+                            string metainfo = "xbox-360/" + game.MetaCriticPathName;
+                        }
+                        break;
+                    case Platform.XboxOne:
+                        {
+                            string metainfo = "xbox-one/" + game.MetaCriticPathName;
+                        }
+                        break;
+                }
+
                 games.Add(game);
             }
 
             //打印一下
             foreach(var game in games)
             {
-                Console.WriteLine(game.Title.First().Value);
+                Console.WriteLine(game.MetaCriticPathName);
             }
 
             //序列化成底层数据模型
@@ -88,8 +157,8 @@ namespace GamePassScores.InfoCollectorConsole
                 string requestUriString = "https://displaycatalog.mp.microsoft.com/v7.0/products?";
 
                 requestUriString += "bigIds=" + requestProductsString + "&" +
-                                "market=HK&" +
-                                "languages=zh-cn&" +
+                                "market=US&" +
+                                "languages=en-us&" +
                                 "MS-CV=DGU1mcuYo0WMMp+F.1";
                 var request = new HttpRequestMessage(HttpMethod.Get, new Uri(requestUriString));
                 var httpClient = new HttpClient();
@@ -180,9 +249,9 @@ namespace GamePassScores.InfoCollectorConsole
                 var content = await response.Content.ReadAsStringAsync();
                 gameListInfoJArray = JsonConvert.DeserializeObject<JArray>(content);
 
-                for(int i = 0; i < gameListInfoJArray.Count; ++i)
+                for (int i = 0; i < gameListInfoJArray.Count; ++i)
                 {
-                    if(gameListInfoJArray[i]["id"] != null)
+                    if (gameListInfoJArray[i]["id"] != null)
                     {
                         gameCodes.Add(gameListInfoJArray[i]["id"].ToString());
                     }
@@ -191,6 +260,16 @@ namespace GamePassScores.InfoCollectorConsole
             gameCodes = gameCodes.Distinct().ToList();
 
             return gameCodes.ToArray();
+        }
+
+        static async Task GetMetacriticScores(List<Game> games)
+        {
+            foreach(var game in games)
+            {
+                HttpClient httpClient = new HttpClient();
+                HttpRequestMessage httpRequestMessage = new HttpRequestMessage();
+
+            }
         }
     }
 }
