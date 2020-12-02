@@ -22,19 +22,20 @@
         </Grid.RowDefinitions>
         <muxc:TeachingTip x:Name="AboutTip"
                             Target="{x:Bind AboutButton}"
-                            Title="About me and the App"
+                            Title="About Me and the App"
                             
                           IsOpen="False">
             <muxc:TeachingTip.Content>
                 <StackPanel>
-                    <TextBlock TextWrapping="WrapWholeWords">I'm a Xbox gamer and you can follow me on <Hyperlink NavigateUri="https://twitter.com/xeonkhj">Twitter</Hyperlink> or <Hyperlink NavigateUri="https://weibo.com/u/1864765370">Weibo</Hyperlink>.</TextBlock>
+                    <TextBlock TextWrapping="WrapWholeWords">I'm a Xbox gamer (ID@XeonKHJ) and you can follow me on <Hyperlink NavigateUri="https://twitter.com/xeonkhj">Twitter</Hyperlink> or <Hyperlink NavigateUri="https://weibo.com/u/1864765370">Weibo</Hyperlink>.</TextBlock>
                     <MenuFlyoutSeparator Padding="0" Margin="0, 10"></MenuFlyoutSeparator>
-                    <TextBlock TextWrapping="WrapWholeWords">Why would I want to make this app?</TextBlock>
+                    <TextBlock TextWrapping="WrapWholeWords" FontWeight="Bold">Why would I want to make this app?</TextBlock>
                     <TextBlock TextWrapping="WrapWholeWords">If it weren't for gamepss, I would defenitivly not have played <Italic>What Remains of Edith Finch</Italic>, which is beautiful indie game that blowed my mind away.</TextBlock>
-                    <TextBlock TextWrapping="WrapWholeWords"></TextBlock>
+                    <TextBlock TextWrapping="WrapWholeWords">It reminds me that we should look beyond those 3A titles. Gamepass gives us a great opportunity to try something completely new. Some of them that you might never heard before may suprise you. This is the App that can help you find those great gamepass games quickly.</TextBlock>
+                    <TextBlock TextWrapping="WrapWholeWords">And by the way, metascore dosn't mean everything, you might also find games that you love but have a low metascore. That's totaly fine. For me, it's <Italic>Mass Effect: Andromeda.</Italic></TextBlock>
                     <MenuFlyoutSeparator Padding="0" Margin="0, 10"></MenuFlyoutSeparator>
-                    <TextBlock TextWrapping="WrapWholeWords">The app is open sourced on <Hyperlink NavigateUri="https://github.com/XeonKHJ/GamePassScores">GitHub</Hyperlink>.</TextBlock>
-                    
+                    <TextBlock TextWrapping="WrapWholeWords" >This app is still in very early stage, you can report any problem or suggesion on <Hyperlink NavigateUri="https://github.com/XeonKHJ/GamePassScores/issues">Github Issue Page</Hyperlink>, and more features are on the way.</TextBlock>
+                    <TextBlock TextWrapping="WrapWholeWords">This app is open sourced on <Hyperlink NavigateUri="https://github.com/XeonKHJ/GamePassScores">GitHub</Hyperlink>.</TextBlock>
                 </StackPanel>
             </muxc:TeachingTip.Content>
 

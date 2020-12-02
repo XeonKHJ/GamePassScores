@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="7b4087e5-5a0a-488a-9d88-54ec906dea2d"
-    Publisher="CN=redal"
-    Version="1.0.0.0" />
+    Name="49B948DFEE.GamepassScores"
+    Publisher="CN=6D1D92C0-BE50-4A21-AFF0-97E77C56134C"
+    Version="1.0.6.0" />
 
-  <mp:PhoneIdentity PhoneProductId="7b4087e5-5a0a-488a-9d88-54ec906dea2d" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="12b2a357-a860-4bf5-97b3-12eaca2a9ab5" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>GamePassScores.UWP</DisplayName>
-    <PublisherDisplayName>redal</PublisherDisplayName>
+    <DisplayName>Gamepass Scores</DisplayName>
+    <PublisherDisplayName>康宏嘉</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -38,7 +38,7 @@
         Description="GamePassScores.UWP"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="#107c10"/>
       </uap:VisualElements>
     </Application>
   </Applications>
