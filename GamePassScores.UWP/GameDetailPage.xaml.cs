@@ -36,19 +36,58 @@ namespace GamePassScores.UWP
         {
             base.OnNavigatedTo(e);
             game = (GameViewModel)e.Parameter;
-            var imageSource = ((GameViewModel)e.Parameter).PosterUrl;
-            BitmapImage a = new BitmapImage(new Uri(imageSource));
-            PosterImage.Source = a;
-            PosterView.Source = a;
+            game.PropertyChanged += Game_PropertyChanged;
+
+            if(game.IsPosterCached)
+            {
+                var posterSource = new BitmapImage(new Uri(game.PosterPath));
+                PosterImage.Source = posterSource;
+                PosterView.Source = posterSource;
+            }
             TitleBlock.Text = game.Title;
             DescriptionBlock.Text = game.Description;
             ScoreGrid.Visibility = game.IsScoreAvaliable;
             ScoreGrid.Background = new SolidColorBrush(game.ScoreColor);
             ScoreBlock.Text = game.Metascore.ToString();
+
+            if(game.Categories.Count > 0)
+            {
+                CategoriesBlock.Visibility = Visibility.Visible;
+                string categoriesString = "Catagory: ";
+                
+                if(game.Categories.Count > 1)
+                {
+                    categoriesString = "Catagories: ";
+
+                }
+
+                foreach (var c in game.Categories)
+                {
+                    categoriesString += c + ", ";
+                }
+                //删掉最后的", "
+                categoriesString = categoriesString.Remove(categoriesString.Length - 2);
+                CategoriesBlock.Text = categoriesString;
+            }
+            else
+            {
+                CategoriesBlock.Visibility = Visibility.Collapsed;
+            }
+
             var anim = ConnectedAnimationService.GetForCurrentView().GetAnimation("ForwardConnectedAnimation");
             if (anim != null)
             {
                 anim.TryStart(PosterImage);
+            }
+        }
+
+        private void Game_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "PosterPath")
+            {
+                var posterSource = new BitmapImage(new Uri(game.PosterPath));
+                PosterImage.Source = posterSource;
+                PosterView.Source = posterSource;
             }
         }
 

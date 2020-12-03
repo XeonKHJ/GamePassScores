@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +31,7 @@ namespace GamePassScores.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            
         }
 
         /// <summary>
@@ -96,5 +98,7 @@ namespace GamePassScores.UWP
             //TODO: 保存应用程序状态并停止任何后台活动
             deferral.Complete();
         }
+
+        public static StorageFolder CacheFolder { set; get; }
     }
 }

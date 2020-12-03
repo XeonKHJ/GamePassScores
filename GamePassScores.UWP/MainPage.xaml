@@ -79,7 +79,7 @@
                         <RelativePanel Margin="10" MaxWidth="240">
                             <muxc:ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Visibility="{Binding IsImageLoaded}" IsActive="True"></muxc:ProgressRing>
                             <Viewbox Grid.Row="0" Stretch="Uniform" StretchDirection="Both" Height="412.5">
-                                <Image x:Name="PosterImage" Source="{Binding PosterUrl}" Tag="{Binding ID}" ImageOpened="PosterImage_ImageOpened"></Image>
+                                <Image x:Name="PosterImage" Source="{Binding PosterPath}" Tag="{Binding ID}" ImageOpened="PosterImage_ImageOpened"></Image>
                             </Viewbox>
 
                             <Grid RelativePanel.AlignBottomWithPanel="True"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Height="125">

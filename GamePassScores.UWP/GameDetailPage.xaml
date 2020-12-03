@@ -16,38 +16,39 @@
         </ParallaxView>
         <Grid>
 
-        <Grid.Background>
-            <AcrylicBrush BackgroundSource="Backdrop" TintOpacity="0.7" TintLuminosityOpacity="0.8" TintColor="Black" FallbackColor="#107C10"></AcrylicBrush>
-        </Grid.Background>
+            <Grid.Background>
+                <AcrylicBrush BackgroundSource="Backdrop" TintOpacity="0.7" TintLuminosityOpacity="0.8" TintColor="Black" FallbackColor="#107C10"></AcrylicBrush>
+            </Grid.Background>
 
-        <Button x:Name="NavigationBackButton" Style="{StaticResource NavigationBackButtonNormalStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Click="NavigationBackButton_Click"></Button>
-        <Grid Margin="45">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+            <Button x:Name="NavigationBackButton" Style="{StaticResource NavigationBackButtonNormalStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Click="NavigationBackButton_Click"></Button>
+            <Grid Margin="45">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <Image Grid.Column="0" x:Name="PosterImage" HorizontalAlignment="Right" Margin="100, 90, 10, 90" VerticalAlignment="Center" Source="{Binding imageSource}"></Image>
-            <ScrollViewer x:Name="ContentViewer" Margin="30" Grid.Column="1">
-            <StackPanel   VerticalAlignment="Center">
-                <TextBlock x:Name="TitleBlock" Text="Title" Margin="10" Style="{StaticResource HeaderTextBlockStyle}" IsTextSelectionEnabled="True"></TextBlock>
-                <TextBlock x:Name="DescriptionBlock" Text="Description" Margin="10" Style="{StaticResource TitleTextBlockStyle}" IsTextSelectionEnabled="True"></TextBlock>
-                    <Button x:Name="ScoreButton" Click="ScoreButton_ClickAsync" Padding="0" Margin="10">
-                        <Button.Content>
-                            <Grid x:Name="ScoreGrid" Grid.Column="1" Height="100" Width="100"  HorizontalAlignment="Left" Visibility="{Binding IsScoreAvaliable}">
-                                <Grid.Background>
-                                    <SolidColorBrush Opacity="0.5" Color="Red"></SolidColorBrush>
-                                </Grid.Background>
-                                <TextBlock x:Name="ScoreBlock" Text="32" Margin="10" HorizontalTextAlignment="Center" TextAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Foreground="White" Padding="0"></TextBlock>
-                            </Grid>
-                        </Button.Content>
-                    </Button>
+                <Image Grid.Column="0" x:Name="PosterImage" HorizontalAlignment="Right" Margin="100, 90, 10, 90" VerticalAlignment="Center" Source="{Binding imageSource}"></Image>
+                <ScrollViewer x:Name="ContentViewer" Margin="30" Grid.Column="1">
+                    <StackPanel   VerticalAlignment="Center">
+                        <TextBlock x:Name="TitleBlock" Text="Title" Margin="10" Style="{StaticResource HeaderTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
+                        <TextBlock x:Name="CategoriesBlock" Margin="10" Visibility="Collapsed" Style="{StaticResource TitleTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
+                        <TextBlock x:Name="DescriptionBlock" Text="Description" Margin="10" Style="{StaticResource TitleTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
+                        <Button x:Name="ScoreButton" Click="ScoreButton_ClickAsync" Padding="0" Margin="10">
+                            <Button.Content>
+                                <Grid x:Name="ScoreGrid" Grid.Column="1" Height="100" Width="100"  HorizontalAlignment="Left" Visibility="{Binding IsScoreAvaliable}">
+                                    <Grid.Background>
+                                        <SolidColorBrush Opacity="0.5" Color="Red"></SolidColorBrush>
+                                    </Grid.Background>
+                                    <TextBlock x:Name="ScoreBlock" Text="32" Margin="10" HorizontalTextAlignment="Center" TextAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Foreground="White" Padding="0"></TextBlock>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
 
-                <Button Margin="10" x:Name="StoreButton" Click="StoreButton_ClickAsync">Open In Microsoft Store</Button>
-            </StackPanel>
-            </ScrollViewer>
+                        <Button Margin="10" x:Name="StoreButton" Click="StoreButton_ClickAsync">Open In Microsoft Store</Button>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
         </Grid>
-    </Grid>
 
     </Grid>
 </Page>

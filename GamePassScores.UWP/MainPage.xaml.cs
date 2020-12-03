@@ -33,8 +33,27 @@ namespace GamePassScores.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
+            CacheFolderChecked += App_CacheFolderChecked;
+            CheckCacheFolder();
             //从json文件读取游戏信息
+            
+        }
+
+        private async void CheckCacheFolder()
+        {
+            var applicationFolder = ApplicationData.Current.LocalFolder;
+            App.CacheFolder = (await ApplicationData.Current.LocalFolder.TryGetItemAsync("PostersCache")) as StorageFolder;
+            if (App.CacheFolder == null)
+            {
+                App.CacheFolder = await applicationFolder.CreateFolderAsync("PostersCache");
+            }
+
+            CacheFolderChecked?.Invoke(null, null);
+        }
+
+        private event EventHandler CacheFolderChecked;
+        private void App_CacheFolderChecked(object sender, EventArgs e)
+        {
             ReadGamesFromJson();
         }
 
