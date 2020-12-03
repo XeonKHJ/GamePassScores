@@ -21,13 +21,13 @@
             </Grid.Background>
 
             <Button x:Name="NavigationBackButton" Style="{StaticResource NavigationBackButtonNormalStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Click="NavigationBackButton_Click"></Button>
-            <Grid Margin="45">
+            <Grid Margin="30">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" ></ColumnDefinition>
-                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition Width="*" ></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                
-                <Image Grid.Column="0" x:Name="PosterImage" HorizontalAlignment="Right" Margin="100, 90, 10, 90" VerticalAlignment="Center" Source="{Binding imageSource}"></Image>
+
+                <Image Grid.Column="0" x:Name="PosterImage" HorizontalAlignment="Right" Margin="30, 90, 10, 90" VerticalAlignment="Center" Source="{Binding imageSource}"></Image>
                 <ScrollViewer x:Name="ContentViewer" Padding="30" Grid.Column="1">
                     <StackPanel   VerticalAlignment="Center">
                         <TextBlock x:Name="TitleBlock" Text="Title" Margin="10" Style="{StaticResource HeaderTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
