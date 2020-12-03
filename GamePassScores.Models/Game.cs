@@ -18,6 +18,8 @@ namespace GamePassScores.Models
 
         public List<Platform> OriginalPlatforms { set; get; } = new List<Platform>();
 
+        List<string> Categories = new List<string>();
+
         public Dictionary<Platform, Uri> MetacriticUrls = new Dictionary<Platform, Uri>();
 
         public Dictionary<Platform, int> MetaScore = new Dictionary<Platform, int>();

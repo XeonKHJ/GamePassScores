@@ -17,14 +17,6 @@ namespace GamePassScores.InfoCollectorConsole
     {
         static string consoleGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=f6f1f99f-9b49-4ccd-b3bf-4d9767a77f5e&language=en-us&market=US";
         static string pcGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=fdd9e2a7-0fee-49f6-ad69-4354098401ff&language=en-us&market=US";
-        class LockCount
-        {
-            public int Counter { set; get; }
-            public LockCount(int counter)
-            {
-                Counter = counter;
-            }
-        }
         static async Task Main(string[] args)
         {
             #region 获取
@@ -48,10 +40,10 @@ namespace GamePassScores.InfoCollectorConsole
             #endregion
 
             #region 更新Metacritic
-            var jsonFile = System.IO.File.ReadAllText("./games.json");
-            var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-            var fileName = "newgames.json";
-            await UpdateMetacriticScoresAsync(games, Platform.XboxOne);
+            //var jsonFile = System.IO.File.ReadAllText("./games.json");
+            //var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
+            //var fileName = "newgames.json";
+            //await UpdateMetacriticScoresAsync(games, Platform.XboxOne);
             #endregion
 
             #region 更新类别
@@ -62,10 +54,30 @@ namespace GamePassScores.InfoCollectorConsole
             //await UpdateMetacriticScoresAsync(games, Platform.PC);
             #endregion
 
+            #region 获取类型列表
+            //获取游戏列表
+            var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
+
+            //从游戏列表中获取游戏详细信息
+            var gameInfos = await GetGamesInfo(gamelistInfo);
+
+            HashSet<string> genres = new HashSet<string>();
+            foreach(var game in gameInfos.Products)
+            {
+                genres.Add(game.Properties.Category);
+                if (game.Properties.Categories != null)
+                {
+                    foreach (var c in game.Properties.Categories)
+                    {
+                        genres.Add(c);
+                    }
+                }
+            }
+            #endregion
 
             //序列化成底层数据模型
-            var serializeGames = JsonConvert.SerializeObject(games);
-            await System.IO.File.WriteAllTextAsync("./" + fileName, serializeGames);
+            //var serializeGames = JsonConvert.SerializeObject(games);
+            //await System.IO.File.WriteAllTextAsync("./" + fileName, serializeGames);
         }
 
         static List<Game> ConvertToGames(ProductsModel gameInfos)
@@ -436,6 +448,7 @@ namespace GamePassScores.InfoCollectorConsole
         }
         static async Task UpdateMetacriticScoresAsync(List<Game> games, Platform specifyPlatform = Platform.Unknown)
         {
+            abcde = 0;
             await Task.Run(() =>
             {
                 Semaphore semaphore = new Semaphore(2, 2);
@@ -502,7 +515,7 @@ namespace GamePassScores.InfoCollectorConsole
                     }
                 }
             });
-
+            while (abcde != 0) ;
         }
 
         static async Task UpdateGamesList(List<Game> games)
