@@ -15,6 +15,16 @@ namespace GamePassScores.InfoCollectorConsole
 {
     class Program
     {
+        static string consoleGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=f6f1f99f-9b49-4ccd-b3bf-4d9767a77f5e&language=en-us&market=US";
+        static string pcGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=fdd9e2a7-0fee-49f6-ad69-4354098401ff&language=en-us&market=US";
+        class LockCount
+        {
+            public int Counter { set; get; }
+            public LockCount(int counter)
+            {
+                Counter = counter;
+            }
+        }
         static async Task Main(string[] args)
         {
             #region 获取
@@ -37,18 +47,19 @@ namespace GamePassScores.InfoCollectorConsole
             //}
             #endregion
 
-            #region 更新
-            //var jsonFile = System.IO.File.ReadAllText("./games.json");
-            //var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-            //var fileName = "newgames.json";
-            //await UpdateMetacriticScoresAsync(games, Platform.PC);
-            #endregion
-
-            #region 更新类别
+            #region 更新Metacritic
             var jsonFile = System.IO.File.ReadAllText("./games.json");
             var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
             var fileName = "newgames.json";
-            await UpdateMetacriticScoresAsync(games, Platform.PC);
+            await UpdateMetacriticScoresAsync(games, Platform.XboxOne);
+            #endregion
+
+            #region 更新类别
+            //var jsonFile = System.IO.File.ReadAllText("./games.json");
+            //var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
+            //var fileName = "newgames.json";
+            //await UpdateGamesList(games);
+            //await UpdateMetacriticScoresAsync(games, Platform.PC);
             #endregion
 
 
@@ -296,13 +307,10 @@ namespace GamePassScores.InfoCollectorConsole
             --totalThread;
             //Console.WriteLine("{0} done!", gameCode);
         }
-        static async Task<string[]> GetGameList()
+        static async Task<string[]> GetGameList(string requestUrl)
         {
-            string consoleGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=f6f1f99f-9b49-4ccd-b3bf-4d9767a77f5e&language=en-us&market=US";
-            string pcGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=fdd9e2a7-0fee-49f6-ad69-4354098401ff&language=en-us&market=US";
-
             HttpClient httpClient = new HttpClient();
-            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, consoleGameListInfoUrl);
+            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, requestUrl);
             var response = await httpClient.SendAsync(requestMessage);
 
             JArray gameListInfoJArray = null;
@@ -382,7 +390,6 @@ namespace GamePassScores.InfoCollectorConsole
             semaphore.WaitOne();
             abcde++;
 
-
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrlString);
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.SendAsync(request);
@@ -427,7 +434,6 @@ namespace GamePassScores.InfoCollectorConsole
             totalC++;
             abcde--;
         }
-
         static async Task UpdateMetacriticScoresAsync(List<Game> games, Platform specifyPlatform = Platform.Unknown)
         {
             await Task.Run(() =>
@@ -497,6 +503,36 @@ namespace GamePassScores.InfoCollectorConsole
                 }
             });
 
+        }
+
+        static async Task UpdateGamesList(List<Game> games)
+        {
+            var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
+            var infos = await GetGamesInfo(gamelistInfo);
+
+            var allGames = ConvertToGames(infos);
+
+            for(int i = 0; i < allGames.Count; ++i)
+            {
+                var game = allGames[i];
+                var oldGameIndex = games.FindIndex(g => g.ID == game.ID);
+                if (oldGameIndex != -1)
+                {
+                    var oldGame = games[i];
+                    game.MetaCriticPathName = oldGame.MetaCriticPathName;
+                    game.IsMetacriticInfoExist = oldGame.IsMetacriticInfoCorrect;
+                    game.MetaScore = oldGame.MetaScore;
+                    game.MetacriticUrls = oldGame.MetacriticUrls;
+                    game.IsMetacriticInfoCorrect = oldGame.IsMetacriticInfoCorrect;
+                    games[i] = oldGame;
+                }
+                else
+                {
+                    games.Add(game);
+                }
+            }
+
+            await UpdateMetacriticScoresAsync(games);
         }
     }
 }
