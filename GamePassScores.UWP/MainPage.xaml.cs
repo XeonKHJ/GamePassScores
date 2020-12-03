@@ -43,13 +43,25 @@ namespace GamePassScores.UWP
             var jsonFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/games.json"));
             var jsonString = await FileIO.ReadTextAsync(jsonFile);
             var games = JsonConvert.DeserializeObject<List<Game>>(jsonString);
+            HashSet<string> genre = new HashSet<string>();
             foreach(var game in games)
             {
+                foreach (var c in game.Categories)
+                {
+                    genre.Add(c);
+                }
+
                 GamesViewModel.Add(new GameViewModel(game));
                 if (game.MetaScore.Count == 0)
                 {
                     game.MetaScore.Add(Platform.Unknown, -1);
                 }
+                
+            }
+            List<string> orderedGenre = genre.OrderBy(g => g).ToList();
+            foreach(var g in orderedGenre)
+            {
+                Categories.Add(new CategorieViewModel(g));
             }
             Games = games;
         }
@@ -57,6 +69,7 @@ namespace GamePassScores.UWP
         public List<Game> Games = new List<Game>();
         public ObservableCollection<GameViewModel> GamesViewModel { get; set; } = new ObservableCollection<GameViewModel>();
 
+        public ObservableCollection<CategorieViewModel> Categories { set; get; } = new ObservableCollection<CategorieViewModel>();
         private void OrderByScoreAscendItem_Click(object sender, RoutedEventArgs e)
         {
             Games = Games.OrderBy(g => g.MetaScore.First().Value).ToList();
@@ -128,12 +141,17 @@ namespace GamePassScores.UWP
         {
             TextBox searchBlock = sender as TextBox;
             string text = searchBlock.Text;
-            if(text.Trim() != string.Empty)
+            var gamesFilteredByCategories = FilterByCategorie(Games.ToArray());
+            if (text.Trim() != string.Empty || gamesFilteredByCategories != null)
             {
-                var games = (from g in Games
-                            where g.Title.First().Value.ToLower().Contains(text.ToLower().Trim())
-                            select new GameViewModel(g)).ToArray();
-               
+                if(gamesFilteredByCategories == null)
+                {
+                    gamesFilteredByCategories = Games.ToArray();
+                }
+                var games = (from g in gamesFilteredByCategories
+                                               where g.Title.First().Value.ToLower().Contains(text.ToLower().Trim())
+                            select g).ToArray();
+
 
                 bool isViewModelChanged = false;
                 if(games.Length == GamesViewModel.Count)
@@ -157,7 +175,7 @@ namespace GamePassScores.UWP
                     GamesViewModel.Clear();
                     foreach (var g in games)
                     {
-                        GamesViewModel.Add(g);
+                        GamesViewModel.Add(new GameViewModel(g));
                     }
                 }
 
@@ -212,6 +230,42 @@ namespace GamePassScores.UWP
             //{
             //    GamesViewModel.Add(new GameViewModel(g));
             //}
+            SearchBox_TextChanged(SearchBox, null);
+        }
+
+        /// <summary>
+        /// 通过类别筛选
+        /// </summary>
+        /// <returns>若为null就是不用筛选，如果要筛选且一个都没有会返回一个空数组的！</returns>
+        private Game[] FilterByCategorie(Game[] games)
+        {
+            Game[] selectedGames = null;
+
+            HashSet<string> checkedcategories = new HashSet<string>();
+            foreach(var c in Categories)
+            {
+                if (c.IsChecked == true)
+                {
+                    checkedcategories.Add(c.Categorie);
+                }
+            }
+
+            if(checkedcategories.Count != 0)
+            {
+                selectedGames = (from g in games
+                                 where g.Categories.Intersect(checkedcategories).Count() != 0
+                                    select g).ToArray();
+            }
+
+            return selectedGames;
+        }
+        private void CategorieCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            SearchBox_TextChanged(SearchBox, null);
+        }
+
+        private void CategorieCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
             SearchBox_TextChanged(SearchBox, null);
         }
     }

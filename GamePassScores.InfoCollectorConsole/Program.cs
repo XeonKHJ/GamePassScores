@@ -47,37 +47,34 @@ namespace GamePassScores.InfoCollectorConsole
             #endregion
 
             #region 更新类别
-            //var jsonFile = System.IO.File.ReadAllText("./games.json");
-            //var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-            //var fileName = "newgames.json";
-            //await UpdateGamesList(games);
-            //await UpdateMetacriticScoresAsync(games, Platform.PC);
+            var jsonFile = System.IO.File.ReadAllText("./games.json");
+            var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
+            var fileName = "newgames.json";
+            await UpdateGamesList(games);
+            await UpdateMetacriticScoresAsync(games, Platform.PC);
             #endregion
 
             #region 获取类型列表
-            //获取游戏列表
-            var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
+            //var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
+            //var gameInfos = await GetGamesInfo(gamelistInfo);
 
-            //从游戏列表中获取游戏详细信息
-            var gameInfos = await GetGamesInfo(gamelistInfo);
-
-            HashSet<string> genres = new HashSet<string>();
-            foreach(var game in gameInfos.Products)
-            {
-                genres.Add(game.Properties.Category);
-                if (game.Properties.Categories != null)
-                {
-                    foreach (var c in game.Properties.Categories)
-                    {
-                        genres.Add(c);
-                    }
-                }
-            }
+            //HashSet<string> genres = new HashSet<string>();
+            //foreach(var game in gameInfos.Products)
+            //{
+            //    genres.Add(game.Properties.Category);
+            //    if (game.Properties.Categories != null)
+            //    {
+            //        foreach (var c in game.Properties.Categories)
+            //        {
+            //            genres.Add(c);
+            //        }
+            //    }
+            //}
             #endregion
 
             //序列化成底层数据模型
-            //var serializeGames = JsonConvert.SerializeObject(games);
-            //await System.IO.File.WriteAllTextAsync("./" + fileName, serializeGames);
+            var serializeGames = JsonConvert.SerializeObject(games);
+            await System.IO.File.WriteAllTextAsync("./" + fileName, serializeGames);
         }
 
         static List<Game> ConvertToGames(ProductsModel gameInfos)
@@ -87,6 +84,15 @@ namespace GamePassScores.InfoCollectorConsole
             {
                 var game = new Game();
                 game.ID = gameInfo.ProductId;
+
+                game.Categories.Add(gameInfo.Properties.Category);
+                if (gameInfo.Properties.Categories != null)
+                {
+                    foreach (var c in gameInfo.Properties.Categories)
+                    {
+                        game.Categories.Add(c);
+                    }
+                }
 
                 foreach (var l in gameInfo.LocalizedProperties)
                 {
@@ -531,13 +537,14 @@ namespace GamePassScores.InfoCollectorConsole
                 var oldGameIndex = games.FindIndex(g => g.ID == game.ID);
                 if (oldGameIndex != -1)
                 {
-                    var oldGame = games[i];
+                    var oldGame = games[oldGameIndex];
                     game.MetaCriticPathName = oldGame.MetaCriticPathName;
                     game.IsMetacriticInfoExist = oldGame.IsMetacriticInfoCorrect;
                     game.MetaScore = oldGame.MetaScore;
                     game.MetacriticUrls = oldGame.MetacriticUrls;
                     game.IsMetacriticInfoCorrect = oldGame.IsMetacriticInfoCorrect;
-                    games[i] = oldGame;
+                    game.OriginalPlatforms = oldGame.OriginalPlatforms;
+                    games[oldGameIndex] = game;
                 }
                 else
                 {

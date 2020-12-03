@@ -42,52 +42,68 @@
         </muxc:TeachingTip>
         <TextBlock Padding="30, 30, 30, 10" Grid.Row="0" Text="GamePass Scores" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-        <TextBox x:Name="SearchBox" Margin="10" VerticalAlignment="Bottom" Width="150" TextChanged="SearchBox_TextChanged"></TextBox>
+            <TextBox x:Name="SearchBox" Margin="10" VerticalAlignment="Bottom" Width="150" TextChanged="SearchBox_TextChanged"></TextBox>
             <CommandBar HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent" Margin="10" IsOpen="False">
                 <AppBarButton Icon="ReShare" Label="Order By">
-                <AppBarButton.Flyout>
-                    <MenuFlyout>
-                        <MenuFlyoutItem x:Name="OrderByScoreAscendItem" Text="By Metascore In Ascending Order" Click="OrderByScoreAscendItem_Click"></MenuFlyoutItem>
-                        <MenuFlyoutItem x:Name="OrderByScoreDescendItem" Text="By Metascore In Descending Order" Click="OrderByScoreDescendItem_Click"></MenuFlyoutItem>
+                    <AppBarButton.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem x:Name="OrderByScoreAscendItem" Text="By Metascore In Ascending Order" Click="OrderByScoreAscendItem_Click"></MenuFlyoutItem>
+                            <MenuFlyoutItem x:Name="OrderByScoreDescendItem" Text="By Metascore In Descending Order" Click="OrderByScoreDescendItem_Click"></MenuFlyoutItem>
                             <MenuFlyoutItem x:Name="OrderByNameAscendItem" Text="By Title In Ascending Order" Click="OrderByNameAscendItem_Click"></MenuFlyoutItem>
                             <MenuFlyoutItem x:Name="OrderByNameDescendItem" Text="By Title In Descending Order" Click="OrderByNameDescendItem_Click"></MenuFlyoutItem>
-                    </MenuFlyout>
-                </AppBarButton.Flyout>
-            </AppBarButton>
-            <AppBarButton x:Name="AboutButton" Icon="Account" Label="About" Click="AboutButton_Click"></AppBarButton>
-        </CommandBar>
+                        </MenuFlyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+                <AppBarButton x:Name="AboutButton" Icon="Account" Label="About" Click="AboutButton_Click"></AppBarButton>
+            </CommandBar>
         </StackPanel>
-        <controls:AdaptiveGridView Name="GamesView" Padding="20, 0" Margin="0, 10" Grid.Row="1" ItemsSource="{x:Bind GamesViewModel}" ItemHeight="360" DesiredWidth="240" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Padding="30, 0, 0, 0" Grid.Column="0">
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Padding="0, 0, 0, 10">Categories</TextBlock>
+                <ListView ItemsSource="{x:Bind Categories}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:CategorieViewModel">
+                            <CheckBox x:Name="CategorieCheckBox" Tag="{Binding Categorie}" Margin="0" Content="{Binding Categorie}" IsChecked="{Binding IsChecked, Mode=TwoWay}" Checked="CategorieCheckBox_Checked" Unchecked="CategorieCheckBox_Unchecked"></CheckBox>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+            <controls:AdaptiveGridView Name="GamesView" Grid.Column="1" Padding="20, 0" Margin="0, 10, 0, 0" ItemsSource="{x:Bind GamesViewModel}" ItemHeight="360" DesiredWidth="240" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
                                    animations:ReorderGridAnimation.Duration="300" IsItemClickEnabled="True" ItemClick="GamesView_ItemClick" CacheMode="BitmapCache">
-            <controls:AdaptiveGridView.ItemTemplate>
-                <DataTemplate x:DataType="models:Game">
-                    <RelativePanel Margin="10" MaxWidth="240">
-                        <muxc:ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Visibility="{Binding IsImageLoaded}" IsActive="True"></muxc:ProgressRing>
-                        <Viewbox Grid.Row="0" Stretch="Uniform" StretchDirection="Both" Height="412.5">
-                            <Image x:Name="PosterImage" Source="{Binding PosterUrl}" Tag="{Binding ID}" ImageOpened="PosterImage_ImageOpened"></Image>
-                        </Viewbox>
+                <controls:AdaptiveGridView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Game">
+                        <RelativePanel Margin="10" MaxWidth="240">
+                            <muxc:ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Visibility="{Binding IsImageLoaded}" IsActive="True"></muxc:ProgressRing>
+                            <Viewbox Grid.Row="0" Stretch="Uniform" StretchDirection="Both" Height="412.5">
+                                <Image x:Name="PosterImage" Source="{Binding PosterUrl}" Tag="{Binding ID}" ImageOpened="PosterImage_ImageOpened"></Image>
+                            </Viewbox>
 
-                        <Grid RelativePanel.AlignBottomWithPanel="True"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Height="125">
-                            <Grid.Background>
-                                <AcrylicBrush TintColor="Black" TintOpacity="0.5"></AcrylicBrush>
-                            </Grid.Background>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5*"></ColumnDefinition>
-                                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding Title}" Margin="10" Style="{StaticResource TitleTextBlockStyle}" Foreground="White"></TextBlock>
-                                <Grid Grid.Column="1" Visibility="{Binding IsScoreAvaliable}">
-                                    <Grid.Background>
-                                        <SolidColorBrush Opacity="0.5" Color="{Binding ScoreColor}"></SolidColorBrush>
-                                    </Grid.Background>
-                                    <TextBlock Text="{Binding Metascore}" Margin="10" HorizontalTextAlignment="Center" TextAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Foreground="White" Padding="0"></TextBlock>
+                            <Grid RelativePanel.AlignBottomWithPanel="True"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Height="125">
+                                <Grid.Background>
+                                    <AcrylicBrush TintColor="Black" TintOpacity="0.5"></AcrylicBrush>
+                                </Grid.Background>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5*"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Title}" Margin="10" Style="{StaticResource TitleTextBlockStyle}" Foreground="White"></TextBlock>
+                                    <Grid Grid.Column="1" Visibility="{Binding IsScoreAvaliable}">
+                                        <Grid.Background>
+                                            <SolidColorBrush Opacity="0.5" Color="{Binding ScoreColor}"></SolidColorBrush>
+                                        </Grid.Background>
+                                        <TextBlock Text="{Binding Metascore}" Margin="10" HorizontalTextAlignment="Center" TextAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" Foreground="White" Padding="0"></TextBlock>
+                                    </Grid>
                                 </Grid>
                             </Grid>
-                        </Grid>
-                    </RelativePanel>
-                </DataTemplate>
-            </controls:AdaptiveGridView.ItemTemplate>
-        </controls:AdaptiveGridView>
+                        </RelativePanel>
+                    </DataTemplate>
+                </controls:AdaptiveGridView.ItemTemplate>
+            </controls:AdaptiveGridView>
+        </Grid>
     </Grid>
 </Page>

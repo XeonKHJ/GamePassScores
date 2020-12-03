@@ -30,8 +30,8 @@
             <Image Grid.Column="0" x:Name="PosterImage" HorizontalAlignment="Right" Margin="100, 90, 10, 90" VerticalAlignment="Center" Source="{Binding imageSource}"></Image>
             <ScrollViewer x:Name="ContentViewer" Margin="30" Grid.Column="1">
             <StackPanel   VerticalAlignment="Center">
-                <TextBlock x:Name="TitleBlock" Text="Title" Margin="10" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
-                <TextBlock x:Name="DescriptionBlock" Text="Description" Margin="10" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+                <TextBlock x:Name="TitleBlock" Text="Title" Margin="10" Style="{StaticResource HeaderTextBlockStyle}" IsTextSelectionEnabled="True"></TextBlock>
+                <TextBlock x:Name="DescriptionBlock" Text="Description" Margin="10" Style="{StaticResource TitleTextBlockStyle}" IsTextSelectionEnabled="True"></TextBlock>
                     <Button x:Name="ScoreButton" Click="ScoreButton_ClickAsync" Padding="0" Margin="10">
                         <Button.Content>
                             <Grid x:Name="ScoreGrid" Grid.Column="1" Height="100" Width="100"  HorizontalAlignment="Left" Visibility="{Binding IsScoreAvaliable}">

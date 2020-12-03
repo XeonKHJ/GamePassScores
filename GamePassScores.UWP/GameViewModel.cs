@@ -12,18 +12,22 @@ namespace GamePassScores.UWP
 {
     public class GameViewModel : INotifyPropertyChanged
     {
+        public Models.Game Game { set; get; } = new Models.Game();
         public string Title { set; get; }
         public string Description { set; get; }
         public string PosterUrl { set; get; }
         public int Metascore { set; get; } = -1;
         public Uri MetacriticUrl { set; get; }
+        public List<string> Categories { set; get; } = new List<string>();
         public string ID { set; get; }
         public GameViewModel(Models.Game game)
         {
+            Game = game;
             Title = game.Title.First().Value;
             Description = game.Description.First().Value;
             PosterUrl = game.PosterUrl;
             ID = game.ID;
+            Categories.AddRange(game.Categories);
             if(game.MetaScore.Count != 0)
             {
                 Metascore = game.MetaScore.First().Value;
