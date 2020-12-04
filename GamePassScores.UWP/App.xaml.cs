@@ -8,6 +8,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.System.Profile;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -33,6 +34,13 @@ namespace GamePassScores.UWP
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
+            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+            {
+                case "Windows.Xbox":
+                    //bool result = Windows.UI.ViewManagement.ApplicationView. ;
+                    break;
+            }
+            
         }
 
         /// <summary>
@@ -42,6 +50,14 @@ namespace GamePassScores.UWP
         /// <param name="e">有关启动请求和过程的详细信息。</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+            {
+                case "Windows.Xbox":
+                    Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().SetDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.UseCoreWindow);
+                    break;
+            }
+            
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // 不要在窗口已包含内容时重复应用程序初始化，

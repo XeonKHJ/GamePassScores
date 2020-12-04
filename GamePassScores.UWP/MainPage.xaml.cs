@@ -21,6 +21,7 @@ using MUXC = Microsoft.UI.Xaml.Controls;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Microsoft.Toolkit.Uwp.UI.Animations;
+using Windows.System.Profile;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -178,6 +179,15 @@ namespace GamePassScores.UWP
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+            {
+                case "Windows.Xbox":
+                    GamesView.DesiredWidth = 160;
+                    GamesView.ItemHeight = 240;
+                    break;
+            }
+
 
             if (animatingElement != null)
             {
