@@ -64,16 +64,27 @@
                 <ColumnDefinition Width="auto"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Padding="30, 0, 0, 0" Grid.Column="0">
+            <ScrollViewer>
+                <StackPanel Padding="30, 0, 0, 0" Grid.Column="0">
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" Padding="0, 0, 0, 10">Categories</TextBlock>
-                <ListView ItemsSource="{x:Bind Categories}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local:CategorieViewModel">
-                            <CheckBox x:Name="CategorieCheckBox" Tag="{Binding Categorie}" Margin="0" Content="{Binding Categorie}" IsChecked="{Binding IsChecked, Mode=TwoWay}" Checked="CategorieCheckBox_Checked" Unchecked="CategorieCheckBox_Unchecked"></CheckBox>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                
+                    <ListView ItemsSource="{x:Bind Categories}" >
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:CategorieViewModel">
+                                <CheckBox x:Name="CategorieCheckBox" Tag="{Binding Categorie}" Margin="0" Content="{Binding Categorie}" IsChecked="{Binding IsChecked, Mode=TwoWay}" Checked="CategorieCheckBox_Checked" Unchecked="CategorieCheckBox_Unchecked"></CheckBox>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                
+                <NavigationViewItemSeparator Padding="0"></NavigationViewItemSeparator>
+                    <muxc:RadioButtons x:Name="InVaultTimeRadioButtons" Margin="10, 0, 0, 10" >
+                        <RadioButton x:Name="AllRadioButton" Content="All" Checked="TimingRadioButton_Checked" IsChecked="True"/>
+                        <RadioButton x:Name="RcentlyAddedRadioButton" Content="Recently Added" Checked="TimingRadioButton_Checked"/>
+                        <RadioButton x:Name="LeavingSoonRadioButton" Content="Leaving Soon" Checked="TimingRadioButton_Checked"/>
+                </muxc:RadioButtons>
             </StackPanel>
+            </ScrollViewer>
             <controls:AdaptiveGridView Name="GamesView" Grid.Column="1" Padding="20, 0" Margin="0, 10, 0, 0" ItemsSource="{x:Bind GamesViewModel}" ItemHeight="360" DesiredWidth="240" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
                                    animations:ReorderGridAnimation.Duration="300" IsItemClickEnabled="True" ItemClick="GamesView_ItemClick" CacheMode="BitmapCache">
                 <controls:AdaptiveGridView.ItemTemplate>

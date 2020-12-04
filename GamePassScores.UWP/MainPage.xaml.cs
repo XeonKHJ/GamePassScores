@@ -92,7 +92,7 @@ namespace GamePassScores.UWP
             var games = JsonConvert.DeserializeObject<List<Game>>(jsonString);
             HashSet<string> genre = new HashSet<string>();
 
-            GamesViewModel.Clear();
+            
             foreach (var game in games)
             {
                 foreach (var c in game.Categories)
@@ -108,11 +108,14 @@ namespace GamePassScores.UWP
 
             }
             List<string> orderedGenre = genre.OrderBy(g => g).ToList();
+            Categories.Clear();
             foreach (var g in orderedGenre)
             {
                 Categories.Add(new CategorieViewModel(g));
             }
             Games = games;
+
+            SearchBox_TextChanged(SearchBox, null);
         }
 
         public List<Game> Games = new List<Game>();
@@ -191,13 +194,18 @@ namespace GamePassScores.UWP
             TextBox searchBlock = sender as TextBox;
             string text = searchBlock.Text;
             var gamesFilteredByCategories = FilterByCategorie(Games.ToArray());
-            if (text.Trim() != string.Empty || gamesFilteredByCategories != null)
+            if(gamesFilteredByCategories == null)
             {
-                if (gamesFilteredByCategories == null)
+                gamesFilteredByCategories = Games.ToArray();
+            }
+            Game[] gamesFilteredByTiming = FilterByTiming(gamesFilteredByCategories);
+            if (text.Trim() != string.Empty || gamesFilteredByTiming != null)
+            {
+                if (gamesFilteredByTiming == null)
                 {
-                    gamesFilteredByCategories = Games.ToArray();
+                    gamesFilteredByTiming = Games.ToArray();
                 }
-                var games = (from g in gamesFilteredByCategories
+                var games = (from g in gamesFilteredByTiming
                              where g.Title.First().Value.ToLower().Contains(text.ToLower().Trim())
                              select g).ToArray();
 
@@ -237,6 +245,24 @@ namespace GamePassScores.UWP
                     GamesViewModel.Add(new GameViewModel(game));
                 }
             }
+        }
+
+        private Game[] FilterByTiming(Game[] gamesFilteredByCategories)
+        {
+            //查看选项
+            var buttons = InVaultTimeRadioButtons;
+            Game[] filteredGames = null;
+
+            if(RcentlyAddedRadioButton!= null && (bool)RcentlyAddedRadioButton.IsChecked)
+            {
+                filteredGames = (from g in gamesFilteredByCategories where g.InVaultTime == InVaultTime.RecentlyAdded select g).ToArray();
+            }
+            else if(LeavingSoonRadioButton != null && (bool)LeavingSoonRadioButton.IsChecked)
+            {
+                filteredGames = (from g in gamesFilteredByCategories where g.InVaultTime == InVaultTime.LeavingSoon select g).ToArray();
+            }
+
+            return filteredGames;
         }
 
         private void PosterImage_ImageOpened(object sender, RoutedEventArgs e)
@@ -321,6 +347,16 @@ namespace GamePassScores.UWP
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             UpateJsonData();
+        }
+
+        //private void InVaultTimeRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    SearchBox_TextChanged(SearchBox, null);
+        //}
+
+        private void TimingRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            SearchBox_TextChanged(SearchBox, null);
         }
     }
 }

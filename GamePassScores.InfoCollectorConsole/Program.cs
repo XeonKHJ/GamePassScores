@@ -18,6 +18,8 @@ namespace GamePassScores.InfoCollectorConsole
         static string consoleGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=f6f1f99f-9b49-4ccd-b3bf-4d9767a77f5e&language=en-us&market=US";
         static string pcGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=fdd9e2a7-0fee-49f6-ad69-4354098401ff&language=en-us&market=US";
         static string recentlyAddConsoleGameListInfo = "https://catalog.gamepass.com/sigls/v2?id=f13cf6b4-57e6-4459-89df-6aec18cf0538&language=en-us&market=US";
+        static string leavingSoonConsoleGameListInfo = "https://catalog.gamepass.com/sigls/v2?id=393f05bf-e596-4ef6-9487-6d4fa0eab987&language=en-us&market=US";
+        static string idAtXboxConsoleGameListInfo = "";
         static async Task Main(string[] args)
         {
             #region 获取
@@ -78,7 +80,7 @@ namespace GamePassScores.InfoCollectorConsole
             await System.IO.File.WriteAllTextAsync("./" + fileName, serializeGames);
         }
 
-        static List<Game> ConvertToGames(ProductsModel gameInfos)
+        static List<Game> ConvertToGames(ProductsModel gameInfos, string[] recentlyAddedList = null, string[] leavingSoonList = null)
         {
             List<Game> games = new List<Game>();
             foreach (var gameInfo in gameInfos.Products)
@@ -92,6 +94,22 @@ namespace GamePassScores.InfoCollectorConsole
                     foreach (var c in gameInfo.Properties.Categories)
                     {
                         game.Categories.Add(c);
+                    }
+                }
+
+                if(recentlyAddedList != null)
+                {
+                    if(recentlyAddedList.Contains(game.ID))
+                    {
+                        game.InVaultTime = InVaultTime.RecentlyAdded;
+                    }
+                }
+
+                if(leavingSoonList != null)
+                {
+                    if (leavingSoonList.Contains(game.ID))
+                    {
+                        game.InVaultTime = InVaultTime.LeavingSoon;
                     }
                 }
 
@@ -534,9 +552,12 @@ namespace GamePassScores.InfoCollectorConsole
         static async Task UpdateGamesList(List<Game> games)
         {
             var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
+            var recentlyAddedList = await GetGameList(recentlyAddConsoleGameListInfo);
+            var leavingSoonList = await GetGameList(leavingSoonConsoleGameListInfo);
             var infos = await GetGamesInfo(gamelistInfo);
 
-            var allGames = ConvertToGames(infos);
+
+            var allGames = ConvertToGames(infos, recentlyAddedList, leavingSoonList);
 
             for(int i = 0; i < allGames.Count; ++i)
             {
