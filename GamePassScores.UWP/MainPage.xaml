@@ -54,7 +54,11 @@
                         </MenuFlyout>
                     </AppBarButton.Flyout>
                 </AppBarButton>
-                <AppBarButton x:Name="RefreshButton" Icon="Refresh" Label="Refresh" Click="RefreshButton_Click">
+                <AppBarButton x:Name="RefreshButton"  Label="Refresh" Click="RefreshButton_Click">
+                    <AppBarButton.Icon>
+                        <SymbolIcon x:Name="RefreshButtonIcon" Symbol="Refresh">
+                        </SymbolIcon>
+                    </AppBarButton.Icon>
                 </AppBarButton>
                 <AppBarButton x:Name="AboutButton" Icon="Account" Label="About" Click="AboutButton_Click"></AppBarButton>
             </CommandBar>

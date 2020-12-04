@@ -20,6 +20,7 @@ using System.Collections.ObjectModel;
 using MUXC = Microsoft.UI.Xaml.Controls;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using Windows.UI.Xaml.Media.Animation;
+using Microsoft.Toolkit.Uwp.UI.Animations;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -116,6 +117,8 @@ namespace GamePassScores.UWP
             Games = games;
 
             SearchBox_TextChanged(SearchBox, null);
+
+            _isRefreshing = false;
         }
 
         public List<Game> Games = new List<Game>();
@@ -251,7 +254,8 @@ namespace GamePassScores.UWP
         {
             //查看选项
             var buttons = InVaultTimeRadioButtons;
-            Game[] filteredGames = null;
+
+            Game[] filteredGames = gamesFilteredByCategories;
 
             if(RcentlyAddedRadioButton!= null && (bool)RcentlyAddedRadioButton.IsChecked)
             {
@@ -344,9 +348,18 @@ namespace GamePassScores.UWP
             SearchBox_TextChanged(SearchBox, null);
         }
 
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        private bool _isRefreshing = false;
+        private float _angle = 360;
+        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
+            _isRefreshing = true;
             UpateJsonData();
+            while (_isRefreshing)
+            {
+                await RefreshButtonIcon.Rotate(value: _angle, centerX: 10.0f, centerY: 10.0f, duration: 1000, delay: 0, easingType: EasingType.Default).StartAsync();
+                _angle += 360;
+            }
+            _angle = 360;
         }
 
         //private void InVaultTimeRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
