@@ -54,6 +54,8 @@
                         </MenuFlyout>
                     </AppBarButton.Flyout>
                 </AppBarButton>
+                <AppBarButton x:Name="RefreshButton" Icon="Refresh" Label="Refresh" Click="RefreshButton_Click">
+                </AppBarButton>
                 <AppBarButton x:Name="AboutButton" Icon="Account" Label="About" Click="AboutButton_Click"></AppBarButton>
             </CommandBar>
         </StackPanel>

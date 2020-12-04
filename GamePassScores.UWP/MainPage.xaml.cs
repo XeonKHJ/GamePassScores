@@ -91,6 +91,8 @@ namespace GamePassScores.UWP
             var jsonString = await FileIO.ReadTextAsync(jsonFile);
             var games = JsonConvert.DeserializeObject<List<Game>>(jsonString);
             HashSet<string> genre = new HashSet<string>();
+
+            GamesViewModel.Clear();
             foreach (var game in games)
             {
                 foreach (var c in game.Categories)
@@ -314,6 +316,11 @@ namespace GamePassScores.UWP
         private void CategorieCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             SearchBox_TextChanged(SearchBox, null);
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpateJsonData();
         }
     }
 }
