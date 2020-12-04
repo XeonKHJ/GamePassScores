@@ -36,7 +36,7 @@ namespace GamePassScores.UWP
             CacheFolderChecked += App_CacheFolderChecked;
             CheckCacheFolder();
             //从json文件读取游戏信息
-            
+
         }
 
         private async void CheckCacheFolder()
@@ -57,13 +57,41 @@ namespace GamePassScores.UWP
             ReadGamesFromJson();
         }
 
+        private async void UpateJsonData()
+        {
+            var httpClient = new Windows.Web.Http.HttpClient();
+
+            var buffer = await httpClient.GetBufferAsync(new Uri("https://raw.githubusercontent.com/XeonKHJ/GamePassScores/master/QueryResults/games.json"));
+
+            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("games.json", CreationCollisionOption.ReplaceExisting);
+
+            await FileIO.WriteBufferAsync(file, buffer);
+
+            ReadGamesFromJson();
+        }
         private async void ReadGamesFromJson()
         {
-            var jsonFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/games.json"));
+            //先检查有没有下载到games.json
+            var downloadedJsonFile = new FileInfo(ApplicationData.Current.LocalFolder.Path + "\\games.json");
+
+            StorageFile jsonFile = null;
+            if (downloadedJsonFile.Exists)
+            {
+                jsonFile = await StorageFile.GetFileFromPathAsync(ApplicationData.Current.LocalFolder.Path + "\\games.json");
+            }
+            else
+            {
+                jsonFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/games.json"));
+
+                //在后台下载Gamepass游戏数据
+                UpateJsonData();
+            }
+
+
             var jsonString = await FileIO.ReadTextAsync(jsonFile);
             var games = JsonConvert.DeserializeObject<List<Game>>(jsonString);
             HashSet<string> genre = new HashSet<string>();
-            foreach(var game in games)
+            foreach (var game in games)
             {
                 foreach (var c in game.Categories)
                 {
@@ -75,10 +103,10 @@ namespace GamePassScores.UWP
                 {
                     game.MetaScore.Add(Platform.Unknown, -1);
                 }
-                
+
             }
             List<string> orderedGenre = genre.OrderBy(g => g).ToList();
-            foreach(var g in orderedGenre)
+            foreach (var g in orderedGenre)
             {
                 Categories.Add(new CategorieViewModel(g));
             }
@@ -135,7 +163,7 @@ namespace GamePassScores.UWP
         {
             base.OnNavigatedTo(e);
 
-            if(animatingElement != null)
+            if (animatingElement != null)
             {
                 var anim = ConnectedAnimationService.GetForCurrentView().GetAnimation("BackwardConnectedAnimation");
                 if (anim != null)
@@ -163,21 +191,21 @@ namespace GamePassScores.UWP
             var gamesFilteredByCategories = FilterByCategorie(Games.ToArray());
             if (text.Trim() != string.Empty || gamesFilteredByCategories != null)
             {
-                if(gamesFilteredByCategories == null)
+                if (gamesFilteredByCategories == null)
                 {
                     gamesFilteredByCategories = Games.ToArray();
                 }
                 var games = (from g in gamesFilteredByCategories
-                                               where g.Title.First().Value.ToLower().Contains(text.ToLower().Trim())
-                            select g).ToArray();
+                             where g.Title.First().Value.ToLower().Contains(text.ToLower().Trim())
+                             select g).ToArray();
 
 
                 bool isViewModelChanged = false;
-                if(games.Length == GamesViewModel.Count)
+                if (games.Length == GamesViewModel.Count)
                 {
-                    for(int i = 0; i < games.Length; ++i)
+                    for (int i = 0; i < games.Length; ++i)
                     {
-                        if(games[i].ID != GamesViewModel[i].ID)
+                        if (games[i].ID != GamesViewModel[i].ID)
                         {
                             isViewModelChanged = true;
                             break;
@@ -189,7 +217,7 @@ namespace GamePassScores.UWP
                     isViewModelChanged = true;
                 }
 
-                if(isViewModelChanged)
+                if (isViewModelChanged)
                 {
                     GamesViewModel.Clear();
                     foreach (var g in games)
@@ -213,7 +241,7 @@ namespace GamePassScores.UWP
         {
             Image image = sender as Image;
 
-            if(image != null && image.Tag != null)
+            if (image != null && image.Tag != null)
             {
                 var match = (from g in GamesViewModel where g.ID == image.Tag.ToString() select g).ToList();
                 if (match.Count != 0)
@@ -261,7 +289,7 @@ namespace GamePassScores.UWP
             Game[] selectedGames = null;
 
             HashSet<string> checkedcategories = new HashSet<string>();
-            foreach(var c in Categories)
+            foreach (var c in Categories)
             {
                 if (c.IsChecked == true)
                 {
@@ -269,11 +297,11 @@ namespace GamePassScores.UWP
                 }
             }
 
-            if(checkedcategories.Count != 0)
+            if (checkedcategories.Count != 0)
             {
                 selectedGames = (from g in games
                                  where g.Categories.Intersect(checkedcategories).Count() != 0
-                                    select g).ToArray();
+                                 select g).ToArray();
             }
 
             return selectedGames;

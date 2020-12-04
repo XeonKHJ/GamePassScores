@@ -192,7 +192,7 @@ namespace GamePassScores.InfoCollectorConsole
 
                 games.Add(game);
             }
-
+            Console.WriteLine("成功转换成老子的模型。");
             return games;
         }
 
@@ -249,6 +249,9 @@ namespace GamePassScores.InfoCollectorConsole
                     stupidResult.Add(i);
                 }
             }
+
+            Console.WriteLine("成功更新游戏信息。");
+
             #endregion
             return gamePassProductsModel;
         }
@@ -348,6 +351,7 @@ namespace GamePassScores.InfoCollectorConsole
             }
             gameCodes = gameCodes.Distinct().ToList();
 
+            Console.WriteLine("成功获取游戏列表。");
             return gameCodes.ToArray();
         }
 
@@ -522,6 +526,8 @@ namespace GamePassScores.InfoCollectorConsole
                 }
             });
             while (abcde != 0) ;
+
+            Console.WriteLine("成功更新Metacritic信息。");
         }
 
         static async Task UpdateGamesList(List<Game> games)
