@@ -110,28 +110,36 @@ namespace GamePassScores.UWP
         {
             var httpClient = new Windows.Web.Http.HttpClient();
 
-            var buffer = await httpClient.GetBufferAsync(new Uri(PosterUrl));
-
-            if(!IsPosterCached)
+            try
             {
-                try
-                {
-                    var file = await App.CacheFolder.CreateFileAsync(ID + ".jpg");
+                var buffer = await httpClient.GetBufferAsync(new Uri(PosterUrl));
 
-                    await FileIO.WriteBufferAsync(file, buffer);
-                }
-                catch (Exception exception)
+                if (!IsPosterCached)
                 {
-                    switch ((uint)exception.HResult)
+                    try
                     {
-                        case 0x800700B7:
-                            System.Diagnostics.Debug.WriteLine("文件已经存在了，应该是在被并行写入，直接抛错就行。");
-                            break;
+                        var file = await App.CacheFolder.CreateFileAsync(ID + ".jpg");
+
+                        await FileIO.WriteBufferAsync(file, buffer);
+                    }
+                    catch (Exception exception)
+                    {
+                        switch ((uint)exception.HResult)
+                        {
+                            case 0x800700B7:
+                                System.Diagnostics.Debug.WriteLine("文件已经存在了，应该是在被并行写入，直接抛错就行。");
+                                break;
+                        }
                     }
                 }
-            }
 
-            NotifyPropertyChanged("PosterPath");
+                NotifyPropertyChanged("PosterPath");
+
+            }
+            catch(Exception exception)
+            {
+                System.Diagnostics.Debug.WriteLine("网络不好，接收不到海报");
+            }
         }
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
