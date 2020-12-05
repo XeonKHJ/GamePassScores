@@ -80,7 +80,7 @@ namespace GamePassScores.InfoCollectorConsole
             await System.IO.File.WriteAllTextAsync("./" + fileName, serializeGames);
         }
 
-        static List<Game> ConvertToGames(ProductsModel gameInfos, string[] recentlyAddedList = null, string[] leavingSoonList = null)
+        static async Task<List<Game>> ConvertToGames(ProductsModel gameInfos, string[] recentlyAddedList = null, string[] leavingSoonList = null)
         {
             List<Game> games = new List<Game>();
             foreach (var gameInfo in gameInfos.Products)
@@ -144,13 +144,19 @@ namespace GamePassScores.InfoCollectorConsole
                 //添加游戏发布日期
                 game.ReleaseDate = gameInfo.MarketProperties.First().OriginalReleaseDate.ToBinary() ;
 
-                try
+                var skuProperties = gameInfo.DisplaySkuAvailabilities.First().Sku.Properties;
+
+                if(skuProperties.Packages.Count > 0)
                 {
                     game.DownloadSize.Add("US", (long)gameInfo.DisplaySkuAvailabilities.First().Sku.Properties.Packages.First().MaxDownloadSizeInBytes);
                 }
-                catch
+                else
                 {
-                    System.Diagnostics.Debug.WriteLine("Fuck");
+                    var newIdjobject = gameInfo.DisplaySkuAvailabilities.First().Sku.Properties.BundledSkus.First();
+                    var newId = ((JValue)((((JObject)newIdjobject).First).First)).Value.ToString();
+                    string[] newIdArray = new string[] { newId };
+                    var newGameInfo = await GetGamesInfo(newIdArray);
+                    game.DownloadSize.Add("US", (long)newGameInfo.Products.First().DisplaySkuAvailabilities.First().Sku.Properties.Packages.First().MaxDownloadSizeInBytes);
                 }
 
                 var metaCriticPathName = game.Title.First().Value.ToLower().ToCharArray();
@@ -570,7 +576,7 @@ namespace GamePassScores.InfoCollectorConsole
             var infos = await GetGamesInfo(gamelistInfo);
 
 
-            var allGames = ConvertToGames(infos, recentlyAddedList, leavingSoonList);
+            var allGames = await ConvertToGames(infos, recentlyAddedList, leavingSoonList);
 
             for(int i = 0; i < allGames.Count; ++i)
             {
