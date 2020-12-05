@@ -27,5 +27,8 @@ namespace GamePassScores.Models
         public string PosterUrl { set; get; } = string.Empty;
         public bool IsMetacriticInfoCorrect { set; get; } = false;
         public bool IsMetacriticInfoExist { set; get; } = true;
+
+        public long ReleaseDate { set; get; }
+        public Dictionary<string, long> DownloadSize { set; get; } = new Dictionary<string, long>();
     }
 }

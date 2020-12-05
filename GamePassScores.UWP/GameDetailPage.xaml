@@ -32,6 +32,7 @@
                     <StackPanel   VerticalAlignment="Center">
                         <TextBlock x:Name="TitleBlock" Text="Title" Margin="10" Style="{StaticResource HeaderTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
                         <TextBlock x:Name="CategoriesBlock" Margin="10" Visibility="Collapsed" Style="{StaticResource TitleTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
+                        <TextBlock x:Name="ReleaseDateBlock" Margin="10" Visibility="Visible" Style="{StaticResource TitleTextBlockStyle}" IsTextScaleFactorEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
                         <TextBlock x:Name="DescriptionBlock" Text="Description" Margin="10" Style="{StaticResource TitleTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
                         <Button x:Name="ScoreButton" Click="ScoreButton_ClickAsync" Padding="0" Margin="10">
                             <Button.Content>

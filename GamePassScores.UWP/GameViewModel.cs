@@ -23,6 +23,7 @@ namespace GamePassScores.UWP
         public string Description { set; get; }
         public string PosterUrl { set; get; }
 
+        public DateTime ReleaseDate { set; get; }
         private string _posterPath;
         public string PosterPath
         {
@@ -54,6 +55,7 @@ namespace GamePassScores.UWP
             PosterUrl = game.PosterUrl;
             ID = game.ID;
             Categories.AddRange(game.Categories);
+            ReleaseDate = DateTime.FromBinary(game.ReleaseDate);
             if (game.MetaScore.Count != 0)
             {
                 Metascore = game.MetaScore.First().Value;

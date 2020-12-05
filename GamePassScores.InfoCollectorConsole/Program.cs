@@ -141,6 +141,18 @@ namespace GamePassScores.InfoCollectorConsole
                     game.PosterUrl = "https:" + (from i in l.Images where i.ImagePurpose.ToLower() == "poster" select i.Uri).First();
                 }
 
+                //添加游戏发布日期
+                game.ReleaseDate = gameInfo.MarketProperties.First().OriginalReleaseDate.ToBinary() ;
+
+                try
+                {
+                    game.DownloadSize.Add("US", (long)gameInfo.DisplaySkuAvailabilities.First().Sku.Properties.Packages.First().MaxDownloadSizeInBytes);
+                }
+                catch
+                {
+                    System.Diagnostics.Debug.WriteLine("Fuck");
+                }
+
                 var metaCriticPathName = game.Title.First().Value.ToLower().ToCharArray();
                 for (int i = 0; i < metaCriticPathName.Length; ++i)
                 {
@@ -155,6 +167,7 @@ namespace GamePassScores.InfoCollectorConsole
                 var newMetaCriticPathName = new string(metaCriticPathName);
                 newMetaCriticPathName = newMetaCriticPathName.Trim();
                 var newMetaCriticPathNameArray = newMetaCriticPathName.ToCharArray().ToList();
+                
 
                 bool isSpaceDetected = false;
                 for (int i = 0; i < newMetaCriticPathNameArray.Count; ++i)

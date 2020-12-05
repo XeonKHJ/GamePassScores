@@ -49,8 +49,8 @@ namespace GamePassScores.UWP
             ScoreGrid.Visibility = game.IsScoreAvaliable;
             ScoreGrid.Background = new SolidColorBrush(game.ScoreColor);
             ScoreBlock.Text = game.Metascore.ToString();
-
-            if(game.Categories.Count > 0)
+            ReleaseDateBlock.Text = string.Format("Release Date: {0}", game.ReleaseDate);
+            if (game.Categories.Count > 0)
             {
                 CategoriesBlock.Visibility = Visibility.Visible;
                 string categoriesString = "Catagory: ";
