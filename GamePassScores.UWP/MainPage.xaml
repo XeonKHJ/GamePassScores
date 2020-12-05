@@ -89,7 +89,7 @@
                     </muxc:RadioButtons>
                 </StackPanel>
             </ScrollViewer>
-            <controls:AdaptiveGridView Name="GamesView" Grid.Column="1" Padding="20, 0" Margin="0, 10, 0, 0" ItemsSource="{x:Bind GamesViewModel}" DesiredWidth="240" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+            <controls:AdaptiveGridView Name="GamesView" Grid.Column="1" Padding="20, 0" Margin="0, 10, 0, 0" ItemsSource="{x:Bind GamesViewModel}" DesiredWidth="240" ItemHeight="{x:Bind GamesViewItemHeight}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
                                    animations:ReorderGridAnimation.Duration="300" IsItemClickEnabled="True" ItemClick="GamesView_ItemClick" CacheMode="BitmapCache">
                 <controls:AdaptiveGridView.ItemTemplate>
                     <DataTemplate x:DataType="models:Game">

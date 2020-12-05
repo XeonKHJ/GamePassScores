@@ -59,6 +59,13 @@ namespace GamePassScores.UWP
             ReadGamesFromJson();
         }
 
+        public double GamesViewItemHeight
+        {
+            get
+            {
+                return GameViewModel.ItemHeight;
+            }
+        }
         private async void UpateJsonData()
         {
             var httpClient = new Windows.Web.Http.HttpClient();

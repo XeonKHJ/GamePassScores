@@ -179,11 +179,11 @@ namespace GamePassScores.UWP
         {
             get
             {
-                double maxWidth = 360;
+                double maxWidth = 303.75;
                 switch (AnalyticsInfo.VersionInfo.DeviceFamily)
                 {
                     case "Windows.Xbox":
-                        maxWidth = 240;
+                        maxWidth = 225;
                         break;
                 }
                 return maxWidth;
