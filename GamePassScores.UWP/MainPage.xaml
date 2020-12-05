@@ -43,7 +43,7 @@
         <TextBlock Padding="30, 10, 30, 10" Grid.Row="0" Text="GamePass Scores" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <TextBox x:Name="SearchBox" Margin="10" VerticalAlignment="Bottom" Width="150" TextChanged="SearchBox_TextChanged"></TextBox>
-            <CommandBar HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent" Margin="10" IsOpen="False">
+            <CommandBar HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent" Margin="10" IsSticky="True">
                 <AppBarButton Icon="ReShare" Label="Order By">
                     <AppBarButton.Flyout>
                         <MenuFlyout>
