@@ -112,7 +112,7 @@
                                     <Grid.Background>
                                         <AcrylicBrush TintColor="Black" TintOpacity="0.5"></AcrylicBrush>
                                     </Grid.Background>
-                                    <TextBlock Text="{Binding Title}" Margin="10, 7" Style="{StaticResource TitleTextBlockStyle}" FontSize="{Binding TitleFontSize}"  Foreground="White"></TextBlock>
+                                    <TextBlock Text="{Binding Title}" Margin="10, 9" Style="{StaticResource TitleTextBlockStyle}" FontSize="{Binding TitleFontSize}"  Foreground="White"></TextBlock>
                                     <Grid Grid.Row="1" Grid.Column="1" Visibility="{Binding IsScoreAvaliable}">
                                         <Grid.Background>
                                             <SolidColorBrush Opacity="0.5" Color="{Binding ScoreColor}"></SolidColorBrush>
