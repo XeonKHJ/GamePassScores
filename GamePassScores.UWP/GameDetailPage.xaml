@@ -44,8 +44,10 @@
                                 </Grid>
                             </Button.Content>
                         </Button>
-
-                        <Button Margin="10" x:Name="StoreButton" Click="StoreButton_ClickAsync">Open In Microsoft Store</Button>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Margin="10" x:Name="StoreButton" Click="StoreButton_ClickAsync">Open In Microsoft Store</Button>
+                            <TextBlock x:Name="SizeBlock" VerticalAlignment="Center" Visibility="Collapsed" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+                        </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

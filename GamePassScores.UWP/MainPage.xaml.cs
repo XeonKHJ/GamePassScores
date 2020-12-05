@@ -132,7 +132,8 @@ namespace GamePassScores.UWP
             }
             Games = games;
 
-            SearchBox_TextChanged(SearchBox, null);
+            //SearchBox_TextChanged(SearchBox, null);
+            OrderByNameAscendItem_Click(null, null);
 
             _isRefreshing = false;
         }
@@ -384,7 +385,6 @@ namespace GamePassScores.UWP
                 await RefreshButtonIcon.Rotate(value: _angle, centerX: 10.0f, centerY: 10.0f, duration: 1000, delay: 0, easingType: EasingType.Default).StartAsync();
                 _angle += 360;
             }
-            _angle = 360;
         }
 
         //private void InVaultTimeRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)

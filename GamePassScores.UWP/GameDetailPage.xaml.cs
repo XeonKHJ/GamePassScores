@@ -50,6 +50,17 @@ namespace GamePassScores.UWP
             ScoreGrid.Background = new SolidColorBrush(game.ScoreColor);
             ScoreBlock.Text = game.Metascore.ToString();
             ReleaseDateBlock.Text = string.Format("Release Date: {0}", game.ReleaseDate);
+            
+            if(game.DownloadSize.Count > 0)
+            {
+                SizeBlock.Visibility = Visibility.Visible;
+                SizeBlock.Text = string.Format("Estimated Download Size: {0}GB", (((double)game.DownloadSize.First().Value) / 1024 / 1024 / 1024).ToString("#.##"));
+            }
+            else
+            {
+                SizeBlock.Visibility = Visibility.Collapsed;
+            }
+
             if (game.Categories.Count > 0)
             {
                 CategoriesBlock.Visibility = Visibility.Visible;

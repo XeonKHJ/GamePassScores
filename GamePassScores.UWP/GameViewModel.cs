@@ -23,6 +23,7 @@ namespace GamePassScores.UWP
         public string Description { set; get; }
         public string PosterUrl { set; get; }
 
+        public Dictionary<string, long> DownloadSize { set; get; } = new Dictionary<string, long>();
         public DateTime ReleaseDate { set; get; }
         private string _posterPath;
         public string PosterPath
@@ -65,6 +66,11 @@ namespace GamePassScores.UWP
                     MetacriticUrl = game.MetacriticUrls.First().Value;
                 }
 
+            }
+
+            if(game.DownloadSize.Count != 0)
+            {
+                DownloadSize = game.DownloadSize;
             }
         }
 
