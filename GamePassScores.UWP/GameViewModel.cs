@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.Storage.Streams;
 using Windows.Storage;
 using System.IO;
+using Windows.System.Profile;
 
 namespace GamePassScores.UWP
 {
@@ -142,6 +143,52 @@ namespace GamePassScores.UWP
             }
         }
 
+        static public double MaxWidth
+        {
+            get
+            {
+                double maxWidth = 202.5;
+                switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+                {
+                    case "Windows.Xbox":
+                        maxWidth = 150;
+                        break;
+                }
+                return maxWidth;
+            }
+        }
+
+        static public double TitleFontSize
+        {
+            get
+            {
+                double titleSize = 20;
+                switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+                {
+                    case "Windows.Xbox":
+                        titleSize = 13;
+                        break;
+                }
+                return titleSize;
+
+            }
+        }
+
+
+        static public double ItemHeight
+        {
+            get
+            {
+                double maxWidth = 360;
+                switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+                {
+                    case "Windows.Xbox":
+                        maxWidth = 240;
+                        break;
+                }
+                return maxWidth;
+            }
+        }
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
