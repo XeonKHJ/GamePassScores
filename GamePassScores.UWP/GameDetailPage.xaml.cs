@@ -54,7 +54,7 @@ namespace GamePassScores.UWP
             if(game.DownloadSize.Count > 0)
             {
                 SizeBlock.Visibility = Visibility.Visible;
-                SizeBlock.Text = string.Format("Estimated Download Size: {0}GB", (((double)game.DownloadSize.First().Value) / 1024 / 1024 / 1024).ToString("#.##"));
+                SizeBlock.Text = string.Format("Estimated Download Size: {0}GB", (((double)game.DownloadSize.First().Value) / 1024 / 1024 / 1024).ToString("0.##"));
             }
             else
             {
