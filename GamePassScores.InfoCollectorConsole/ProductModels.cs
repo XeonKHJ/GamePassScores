@@ -355,7 +355,7 @@ namespace GamePassScores.InfoCollectorConsole
         public string VersionString { get; set; }
         public List<string> SkuDisplayGroupIds { get; set; }
         public bool XboxXPA { get; set; }
-        public List<object> BundledSkus { get; set; }
+        public List<BoundledSku> BundledSkus { get; set; }
         public bool IsRepurchasable { get; set; }
         public int SkuDisplayRank { get; set; }
         public object DisplayPhysicalStoreInventory { get; set; }
@@ -476,7 +476,13 @@ namespace GamePassScores.InfoCollectorConsole
         public List<Remediation2> Remediations { get; set; }
         public string AffirmationId { get; set; }
     }
-
+    public class BoundledSku
+    {
+        public string BigId { get; set; }
+        public int DisplayRank { get; set; }
+        public bool IsPrimary { get; set; }
+        public object FulfillmentType { get; set; }
+    }
     public class DisplaySkuAvailability
     {
         public Sku Sku { get; set; }

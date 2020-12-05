@@ -163,6 +163,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5248544054427387904,
     "DownloadSize": {
+      "US": 3513924
     }
   },
   {
@@ -793,6 +794,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5248519682427387904,
     "DownloadSize": {
+      "US": 46277005312
     }
   },
   {
@@ -1023,6 +1025,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5248112738427387904,
     "DownloadSize": {
+      "US": 120117903360
     }
   },
   {
@@ -1757,6 +1760,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5248888754427387904,
     "DownloadSize": {
+      "US": 61463871488
     }
   },
   {
@@ -2257,6 +2261,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5248862330427387904,
     "DownloadSize": {
+      "US": 46834323456
     }
   },
   {
@@ -2417,6 +2422,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5248700798427387904,
     "DownloadSize": {
+      "US": 5427286016
     }
   },
   {
@@ -2721,6 +2727,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5247918338427387904,
     "DownloadSize": {
+      "US": 46813552640
     }
   },
   {
@@ -2822,6 +2829,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5248779638427387904,
     "DownloadSize": {
+      "US": 143013482496
     }
   },
   {
@@ -3662,6 +3670,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5248244930427387904,
     "DownloadSize": {
+      "US": 85840015360
     }
   },
   {
@@ -3861,6 +3870,7 @@
     "IsMetacriticInfoExist": false,
     "ReleaseDate": 5249081282427387904,
     "DownloadSize": {
+      "US": 712798208
     }
   },
   {
@@ -3995,7 +4005,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5248112018427387904,
     "DownloadSize": {
-      
+      "US": 106511460048
     }
   },
   {
@@ -4195,6 +4205,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5248009058427387904,
     "DownloadSize": {
+      "US": 101939687424
     }
   },
   {
@@ -4537,6 +4548,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5247863906427387904,
     "DownloadSize": {
+      "US": 4575617024
     }
   },
   {
@@ -4635,6 +4647,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5247603842427387904,
     "DownloadSize": {
+      "US": 2540830720
     }
   },
   {
@@ -4798,6 +4811,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5248118066427387904,
     "DownloadSize": {
+      "US": 23446775
     }
   },
   {
@@ -6369,6 +6383,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5248722866427387904,
     "DownloadSize": {
+      "US": 43352756224
     }
   },
   {
@@ -7410,6 +7425,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5247785282427387904,
     "DownloadSize": {
+      "US": 50699866112
     }
   },
   {
@@ -9141,6 +9157,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5249091362427387904,
     "DownloadSize": {
+      "US": 30654894080
     }
   },
   {
@@ -9940,6 +9957,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5249027426427387904,
     "DownloadSize": {
+      "US": 9127452672
     }
   },
   {
@@ -11283,6 +11301,7 @@
     "IsMetacriticInfoExist": true,
     "ReleaseDate": 5247428450427387904,
     "DownloadSize": {
+      "US": 12392013824
     }
   },
   {
@@ -11618,7 +11637,7 @@
     "InVaultTime": 0,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.40136.14125332336761514.8bb2a8ee-0291-4012-97d8-2e92be70a6ac.fbc31ecb-0fbe-45a2-94cd-d6c5eccaea8c",
     "IsMetacriticInfoCorrect": false,
-    "IsMetacriticInfoExist": true,
+    "IsMetacriticInfoExist": false,
     "ReleaseDate": 5249112386427387904,
     "DownloadSize": {
       "US": 32826425344

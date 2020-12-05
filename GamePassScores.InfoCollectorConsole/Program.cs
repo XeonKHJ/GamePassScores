@@ -152,11 +152,25 @@ namespace GamePassScores.InfoCollectorConsole
                 }
                 else
                 {
-                    var newIdjobject = gameInfo.DisplaySkuAvailabilities.First().Sku.Properties.BundledSkus.First();
-                    var newId = ((JValue)((((JObject)newIdjobject).First).First)).Value.ToString();
-                    string[] newIdArray = new string[] { newId };
-                    var newGameInfo = await GetGamesInfo(newIdArray);
-                    game.DownloadSize.Add("US", (long)newGameInfo.Products.First().DisplaySkuAvailabilities.First().Sku.Properties.Packages.First().MaxDownloadSizeInBytes);
+                    try
+                    {
+                        var bundleSkus = gameInfo.DisplaySkuAvailabilities.First().Sku.Properties.BundledSkus;
+                        var bundleIds = from b in bundleSkus select b.BigId;
+                        var bundleProducts = await GetGamesInfo(bundleIds.ToArray());
+
+                        long maxBytes = 0;
+                        foreach (var bp in bundleProducts.Products)
+                        {
+                            var bytes = (long)bp.DisplaySkuAvailabilities.First().Sku.Properties.Packages.First().MaxDownloadSizeInBytes;
+                            maxBytes = bytes > maxBytes ? bytes : maxBytes;
+                        }
+
+                        game.DownloadSize.Add("US", maxBytes);
+                    }
+                    catch
+                    {
+                        System.Diagnostics.Debug.WriteLine("这个捆绑包没大小");
+                    }
                 }
 
                 var metaCriticPathName = game.Title.First().Value.ToLower().ToCharArray();
