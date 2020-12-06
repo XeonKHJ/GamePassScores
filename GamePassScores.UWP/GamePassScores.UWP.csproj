@@ -143,7 +143,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\games.json" />
+    <Content Include="Assets\games.json" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
