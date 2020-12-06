@@ -324,6 +324,7 @@ namespace GamePassScores.InfoCollectorConsole
             
             try
             {
+                Console.WriteLine("发了一个请求");
                 var response = await httpClient.SendAsync(request).ConfigureAwait(false);
 
 
@@ -373,6 +374,7 @@ namespace GamePassScores.InfoCollectorConsole
                         }
                     }
                     //Console.WriteLine(responseString);
+                    Console.WriteLine("结束了一个请求");
                 }
                 else
                 {
@@ -598,6 +600,8 @@ namespace GamePassScores.InfoCollectorConsole
             var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
             var recentlyAddedList = await GetGameList(recentlyAddConsoleGameListInfo);
             var leavingSoonList = await GetGameList(leavingSoonConsoleGameListInfo);
+
+            Console.WriteLine("开始更新游戏信息");
             var infos = await GetGamesInfo(gamelistInfo);
 
 
