@@ -477,6 +477,7 @@ namespace GamePassScores.InfoCollectorConsole
             semaphore.WaitOne();
             abcde++;
 
+            Console.WriteLine("发送MTC请求");
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrlString);
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.SendAsync(request);
@@ -515,7 +516,7 @@ namespace GamePassScores.InfoCollectorConsole
                     break;
                 }
             }
-
+            Console.WriteLine("结束MTC请求");
 
             semaphore.Release();
             totalC++;
