@@ -13,7 +13,7 @@
 
 ### Xbox Version Screenshots
 
-![XboxScreenshot1](https://raw.githubusercontent.com/XeonKHJ/GamePassScores/master/Assets/MicrosoftStoreInfo/PCScreenshot1.png "XboxScreenshot1")
+![XboxScreenshot1](https://raw.githubusercontent.com/XeonKHJ/GamePassScores/master/Assets/MicrosoftStoreInfo/XboxScreenshot1.png "XboxScreenshot1")
 
 ![XboxScreenshot5](https://raw.githubusercontent.com/XeonKHJ/GamePassScores/master/Assets/MicrosoftStoreInfo/XboxScreenshot5.png "XboxScreenshot5")
 
