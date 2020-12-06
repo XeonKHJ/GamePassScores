@@ -256,7 +256,7 @@ namespace GamePassScores.InfoCollectorConsole
             ProductsModel eaPlayProductsModel = new ProductsModel();
             await Task.Run(() =>
             {
-                Semaphore semaphore = new Semaphore(20, 20);
+                Semaphore semaphore = new Semaphore(5, 5);
                 #region 老老实实的并行请求
                 for (int i = 0; i < gamelistInfo.Length; i = i + 20)
                 {
