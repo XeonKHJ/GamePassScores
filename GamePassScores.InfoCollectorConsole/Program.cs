@@ -617,7 +617,7 @@ namespace GamePassScores.InfoCollectorConsole
                     game.MetaCriticPathName = oldGame.MetaCriticPathName;
                     game.IsMetacriticInfoExist = oldGame.IsMetacriticInfoCorrect;
                     //game.MetaScore = oldGame.MetaScore;
-                    game.MetacriticUrls = oldGame.MetacriticUrls;
+                    //game.MetacriticUrls = oldGame.MetacriticUrls;
                     game.IsMetacriticInfoCorrect = oldGame.IsMetacriticInfoCorrect;
                     game.OriginalPlatforms = oldGame.OriginalPlatforms;
                     games[oldGameIndex] = game;
