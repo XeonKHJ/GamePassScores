@@ -321,60 +321,71 @@ namespace GamePassScores.InfoCollectorConsole
 
             var request = new HttpRequestMessage(HttpMethod.Get, new Uri(requestUriString));
             var httpClient = new HttpClient();
-            var response = await httpClient.SendAsync(request).ConfigureAwait(false);
-
-
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            
+            try
             {
-                var responseString = await response.Content.ReadAsStringAsync();
-                var productsModel = JsonConvert.DeserializeObject<ProductsModel>(responseString);
+                var response = await httpClient.SendAsync(request).ConfigureAwait(false);
 
 
-                foreach (var p in productsModel.Products)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    bool isGamePassProduct = false;
-                    bool isEaPlayProduct = false;
-                    var localizeProperties = p.LocalizedProperties;
-                    if (p.LocalizedProperties != null)
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var productsModel = JsonConvert.DeserializeObject<ProductsModel>(responseString);
+
+
+                    foreach (var p in productsModel.Products)
                     {
-                        foreach (var l in localizeProperties)
+                        bool isGamePassProduct = false;
+                        bool isEaPlayProduct = false;
+                        var localizeProperties = p.LocalizedProperties;
+                        if (p.LocalizedProperties != null)
                         {
-                            if (l.EligibilityProperties.Affirmations != null)
+                            foreach (var l in localizeProperties)
                             {
-                                var fs = l.EligibilityProperties.Affirmations;
-                                foreach (var f in fs)
+                                if (l.EligibilityProperties.Affirmations != null)
                                 {
-                                    if (f.AffirmationId == "9WNZS2ZC9L74" || f.AffirmationId == "9NC1XH2KD60Z" || f.AffirmationId == "9VP428G6BQ82")
+                                    var fs = l.EligibilityProperties.Affirmations;
+                                    foreach (var f in fs)
                                     {
-                                        isGamePassProduct = true;
-                                    }
-                                    if (f.AffirmationId == "B0HFJ7PW900M")
-                                    {
-                                        isEaPlayProduct = true;
+                                        if (f.AffirmationId == "9WNZS2ZC9L74" || f.AffirmationId == "9NC1XH2KD60Z" || f.AffirmationId == "9VP428G6BQ82")
+                                        {
+                                            isGamePassProduct = true;
+                                        }
+                                        if (f.AffirmationId == "B0HFJ7PW900M")
+                                        {
+                                            isEaPlayProduct = true;
+                                        }
                                     }
                                 }
-                            }
 
+                                if (isGamePassProduct || isEaPlayProduct)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        lock (gamePassProductsModel)
+                        {
                             if (isGamePassProduct || isEaPlayProduct)
                             {
-                                break;
+                                gamePassProductsModel.Products.Add(p);
                             }
                         }
                     }
-                    lock (gamePassProductsModel)
-                    {
-                        if (isGamePassProduct || isEaPlayProduct)
-                        {
-                            gamePassProductsModel.Products.Add(p);
-                        }
-                    }
+                    //Console.WriteLine(responseString);
                 }
-                //Console.WriteLine(responseString);
+                else
+                {
+                    Console.WriteLine("Fuck, 错了。");
+                }
             }
-            else
+            catch(Exception exception)
             {
-                Console.WriteLine("Fuck, 错了。");
+                Console.WriteLine("Program.cs GetGamesInfoSingleTime");
+                Console.WriteLine(exception.Message);
+                Console.WriteLine(exception.StackTrace);
             }
+
 
             var semaResult = semaphore.Release();
             --totalThread;
