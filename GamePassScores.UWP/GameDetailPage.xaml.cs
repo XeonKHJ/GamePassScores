@@ -37,6 +37,11 @@ namespace GamePassScores.UWP
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            //先以某种方式隐藏截图列表
+            ScreenshotsView.Height = 0;
+            ScreenshotsView.Margin = new Thickness(0);
+
             game = (GameViewModel)e.Parameter;
             game.PropertyChanged += Game_PropertyChanged;
 
@@ -53,6 +58,7 @@ namespace GamePassScores.UWP
             ScoreBlock.Text = game.Metascore.ToString();
             ReleaseDateBlock.Text = string.Format("Release Date: {0}", game.ReleaseDate);
 
+            
             Screenshots.Clear();
             foreach(var g in game.Screenshots)
             {
@@ -133,6 +139,13 @@ namespace GamePassScores.UWP
             {
                 await Launcher.LaunchUriAsync(game.MetacriticUrl);
             }    
+        }
+
+        private void Image_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            ScreenshotsView.Height = 200;
+            ScreenshotsView.Margin = new Thickness(0);
+            ScreenshotsView.Height = double.NaN;
         }
     }
 }
