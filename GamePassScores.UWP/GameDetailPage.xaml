@@ -26,13 +26,15 @@
                     <ColumnDefinition Width="*" ></ColumnDefinition>
                     <ColumnDefinition Width="2*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-
+        
                 <Image Grid.Column="0" x:Name="PosterImage" HorizontalAlignment="Right" Margin="30, 90, 10, 90" VerticalAlignment="Center" Source="{Binding imageSource}"></Image>
                 <ScrollViewer x:Name="ContentViewer" Padding="30" Grid.Column="1">
                     <StackPanel   VerticalAlignment="Center">
                         <TextBlock x:Name="TitleBlock" Text="Title" Margin="10" Style="{StaticResource HeaderTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
                         <TextBlock x:Name="CategoriesBlock" Margin="10" Visibility="Collapsed" Style="{StaticResource TitleTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
                         <TextBlock x:Name="ReleaseDateBlock" Margin="10" Visibility="Visible" Style="{StaticResource TitleTextBlockStyle}" IsTextScaleFactorEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
+                        <FlipView ItemsSource="{Binding game.Screenshots}">
+                        </FlipView>
                         <TextBlock x:Name="DescriptionBlock" Text="Description" Margin="10" Style="{StaticResource TitleTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
                         <Button x:Name="ScoreButton" Click="ScoreButton_ClickAsync" Padding="0" Margin="10">
                             <Button.Content>
