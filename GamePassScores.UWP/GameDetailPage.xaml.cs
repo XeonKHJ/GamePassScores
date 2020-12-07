@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -32,6 +33,7 @@ namespace GamePassScores.UWP
 
         string imageSource = string.Empty;
         GameViewModel game;
+        ObservableCollection<ScreenshotViewModel> Screenshots { set; get; } = new ObservableCollection<ScreenshotViewModel>();
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -50,7 +52,13 @@ namespace GamePassScores.UWP
             ScoreGrid.Background = new SolidColorBrush(game.ScoreColor);
             ScoreBlock.Text = game.Metascore.ToString();
             ReleaseDateBlock.Text = string.Format("Release Date: {0}", game.ReleaseDate);
-            
+
+            Screenshots.Clear();
+            foreach(var g in game.Screenshots)
+            {
+                Screenshots.Add(new ScreenshotViewModel { ScreenshotUrl = g});
+            }
+
             if(game.DownloadSize.Count > 0)
             {
                 SizeBlock.Visibility = Visibility.Visible;

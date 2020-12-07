@@ -48,6 +48,7 @@ namespace GamePassScores.UWP
         public Uri MetacriticUrl { set; get; }
         public List<string> Categories { set; get; } = new List<string>();
         public string ID { set; get; }
+        public List<string> Screenshots { set; get; } = new List<string>();
         public GameViewModel(Models.Game game)
         {
             Game = game;
@@ -57,6 +58,7 @@ namespace GamePassScores.UWP
             ID = game.ID;
             Categories.AddRange(game.Categories);
             ReleaseDate = DateTime.FromBinary(game.ReleaseDate);
+            Screenshots = game.ScreenShots;
             if (game.MetaScore.Count != 0)
             {
                 Metascore = game.MetaScore.First().Value;
