@@ -137,7 +137,7 @@ namespace GamePassScores.InfoCollectorConsole
                             }
                         }
                     }
-
+                    game.ScreenShots =  (from i in l.Images where (i.ImagePurpose.ToLower() == "screenshot") && (!i.ImagePositionInfo.ToLower().Contains("desktop")) select ("https:" + i.Uri)).ToList();
                     game.PosterUrl = "https:" + (from i in l.Images where i.ImagePurpose.ToLower() == "poster" select i.Uri).First();
                 }
 
@@ -177,7 +177,7 @@ namespace GamePassScores.InfoCollectorConsole
                 for (int i = 0; i < metaCriticPathName.Length; ++i)
                 {
                     var c = metaCriticPathName[i];
-                    string matchString = "01234567890qwertyuiopasdfghjklzxcvbnm'";
+                    string matchString = "01234567890qwertyuiopasdfghjklzxcvbnm-!'";
                     if (!matchString.Contains(c))
                     {
                         metaCriticPathName[i] = ' ';
@@ -256,7 +256,7 @@ namespace GamePassScores.InfoCollectorConsole
             ProductsModel eaPlayProductsModel = new ProductsModel();
             await Task.Run(() =>
             {
-                Semaphore semaphore = new Semaphore(2,2);
+                Semaphore semaphore = new Semaphore(20,20);
                 #region 老老实实的并行请求
                 for (int i = 0; i < gamelistInfo.Length; i = i + 20)
                 {
@@ -617,8 +617,8 @@ namespace GamePassScores.InfoCollectorConsole
                     var oldGame = games[oldGameIndex];
                     game.MetaCriticPathName = oldGame.MetaCriticPathName;
                     game.IsMetacriticInfoExist = oldGame.IsMetacriticInfoCorrect;
-                    //game.MetaScore = oldGame.MetaScore;
-                    //game.MetacriticUrls = oldGame.MetacriticUrls;
+                    game.MetaScore = oldGame.MetaScore;
+                    game.MetacriticUrls = oldGame.MetacriticUrls;
                     game.IsMetacriticInfoCorrect = oldGame.IsMetacriticInfoCorrect;
                     game.OriginalPlatforms = oldGame.OriginalPlatforms;
                     games[oldGameIndex] = game;

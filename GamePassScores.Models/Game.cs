@@ -28,6 +28,7 @@ namespace GamePassScores.Models
         public bool IsMetacriticInfoCorrect { set; get; } = false;
         public bool IsMetacriticInfoExist { set; get; } = true;
 
+        public List<string> ScreenShots { set; get; } = new List<string>();
         public long ReleaseDate { set; get; }
         public Dictionary<string, long> DownloadSize { set; get; } = new Dictionary<string, long>();
     }
