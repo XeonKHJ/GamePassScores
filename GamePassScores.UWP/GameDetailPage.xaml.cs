@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
+using Windows.System.Profile;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -41,6 +42,14 @@ namespace GamePassScores.UWP
             //先以某种方式隐藏截图列表
             ScreenshotsView.Height = 0;
             ScreenshotsView.Margin = new Thickness(0);
+
+            //如果是Xbox版本，边界要小一点。
+            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+            {
+                case "Windows.Xbox":
+                    ContentViewer.Padding = new Thickness(30, 0, 30, 0);
+                    break;
+            }
 
             game = (GameViewModel)e.Parameter;
             game.PropertyChanged += Game_PropertyChanged;
@@ -144,7 +153,7 @@ namespace GamePassScores.UWP
         private void Image_ImageOpened(object sender, RoutedEventArgs e)
         {
             ScreenshotsView.Height = 200;
-            ScreenshotsView.Margin = new Thickness(0);
+            ScreenshotsView.Margin = new Thickness(0, 10, 10, 0);
             ScreenshotsView.Height = double.NaN;
         }
 

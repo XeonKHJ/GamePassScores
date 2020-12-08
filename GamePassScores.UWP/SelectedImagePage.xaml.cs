@@ -59,6 +59,7 @@ namespace GamePassScores.UWP
 
         }
 
+        
         private void NavigationBackButton_Click(object sender, RoutedEventArgs e)
         {
 

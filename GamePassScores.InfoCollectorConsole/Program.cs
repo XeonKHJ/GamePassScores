@@ -54,6 +54,7 @@ namespace GamePassScores.InfoCollectorConsole
             var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
             var fileName = "newgames.json";
             await UpdateGamesList(games);
+            await UpdateMetacriticScoresAsync(games, Platform.XboxSeriesX);
             await UpdateMetacriticScoresAsync(games, Platform.PC);
             #endregion
 
