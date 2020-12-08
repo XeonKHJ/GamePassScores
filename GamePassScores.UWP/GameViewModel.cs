@@ -101,11 +101,11 @@ namespace GamePassScores.UWP
         {
             get
             {
-                if (Metascore > 75)
+                if (Metascore >= 75)
                 {
                     return Color.FromArgb(0xff, 0x74, 0xcb, 0x2c);
                 }
-                else if (Metascore > 50)
+                else if (Metascore >= 50)
                 {
                     return Color.FromArgb(0xff, 0xFB, 0xCC, 0x21);
                 }
