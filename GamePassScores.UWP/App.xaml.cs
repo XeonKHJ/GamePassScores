@@ -37,7 +37,8 @@ namespace GamePassScores.UWP
             switch (AnalyticsInfo.VersionInfo.DeviceFamily)
             {
                 case "Windows.Xbox":
-                    //bool result = Windows.UI.ViewManagement.ApplicationView. ;
+                case "Windows.Desktop":
+                    this.RequiresPointerMode = Windows.UI.Xaml.ApplicationRequiresPointerMode.WhenRequested;
                     break;
             }
             
@@ -53,6 +54,7 @@ namespace GamePassScores.UWP
             switch (AnalyticsInfo.VersionInfo.DeviceFamily)
             {
                 case "Windows.Xbox":
+                    
                     Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().SetDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.UseCoreWindow);
                     break;
             }

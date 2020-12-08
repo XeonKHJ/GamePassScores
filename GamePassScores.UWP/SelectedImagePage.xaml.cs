@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System.Profile;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -35,6 +36,15 @@ namespace GamePassScores.UWP
         {
             base.OnNavigatedTo(e);
             ScreenshotViewModels.Clear();
+
+            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+            {
+                case "Windows.Xbox":
+                    NavigationBackButton.Visibility = Visibility.Collapsed;
+                    ScreenshotsView.IsEnabled = false;
+                    ScreenshotsView.AllowFocusWhenDisabled = true;
+                    break;
+            }
 
             var screenViewModelsAndSelectedModel = e.Parameter as Tuple<ObservableCollection<ScreenshotViewModel>, ScreenshotViewModel>;
             

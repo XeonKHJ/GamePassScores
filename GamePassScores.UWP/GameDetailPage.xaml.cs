@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -42,12 +43,14 @@ namespace GamePassScores.UWP
             //先以某种方式隐藏截图列表
             ScreenshotsView.Height = 0;
             ScreenshotsView.Margin = new Thickness(0);
+            ScreenshotsView.IsEnabled = false;
 
             //如果是Xbox版本，边界要小一点。
             switch (AnalyticsInfo.VersionInfo.DeviceFamily)
             {
                 case "Windows.Xbox":
                     ContentViewer.Padding = new Thickness(30, 0, 30, 0);
+                    NavigationBackButton.Visibility = Visibility.Collapsed;
                     break;
             }
 
@@ -152,9 +155,29 @@ namespace GamePassScores.UWP
 
         private void Image_ImageOpened(object sender, RoutedEventArgs e)
         {
+            ScreenshotsView.IsEnabled = true;
             ScreenshotsView.Height = 200;
             ScreenshotsView.Margin = new Thickness(0, 10, 10, 0);
             ScreenshotsView.Height = double.NaN;
+
+
+            //for(int i = 0; i < Screenshots.Count; ++i)
+            //{
+            //    var viewModel = Screenshots[i];
+            //    var uiElement = ScreenshotsView.ContainerFromItem(viewModel) as Grid;
+            //    if(uiElement != null)
+            //    {
+            //        if(i == 0)
+            //        {
+            //            if(NavigationBackButton.Visibility == Visibility.Visible)
+            //            {
+            //                var viewBox = uiElement.Children.First() as Viewbox;
+            //                var image = viewBox.Child as Image;
+            //                viewBox.xy
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         UIElement animatingElement;

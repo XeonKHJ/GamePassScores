@@ -208,9 +208,17 @@ namespace GamePassScores.UWP
             }
         }
 
-        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        private async void AboutButton_ClickAsync(object sender, RoutedEventArgs e)
         {
-            AboutTip.IsOpen = true;
+            //switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+            //{
+            //    case "Windows.Desktop":
+            //        AboutTip.IsOpen = true;
+            //        break;
+            //}
+            AboutDialogue aboutDialogue = new AboutDialogue();
+            var result = await aboutDialogue.ShowAsync();
+            
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -395,6 +403,43 @@ namespace GamePassScores.UWP
         private void TimingRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             SearchBox_TextChanged(SearchBox, null);
+        }
+
+        private void InVaultTimeRadioButtons_GotFocus(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("InVaultTimeRadioButtons_GotFocus");
+        }
+
+        private void InVaultTimeRadioButtons_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var item = e.ClickedItem as RadioButton;
+
+            if(item != null)
+            {
+                item.IsChecked = true;
+            }
+            
+        }
+
+        private void CategoriesView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var item = e.ClickedItem as CategorieViewModel;
+
+            if (item != null)
+            {
+                item.IsChecked = !(item.IsChecked);
+            }
+        }
+
+        private void StackPanel_GotFocus(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("StackPanel_GotFocus");
+
+            if(!OrderBar.IsOpen)
+            {
+                OrderBar.Focus(FocusState.Programmatic);
+                OrderBar.IsOpen = true;
+            }
         }
     }
 }
