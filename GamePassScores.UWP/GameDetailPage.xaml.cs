@@ -147,5 +147,23 @@ namespace GamePassScores.UWP
             ScreenshotsView.Margin = new Thickness(0);
             ScreenshotsView.Height = double.NaN;
         }
+
+        UIElement animatingElement;
+        private void ScreenshotsView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //var container = ScreenshotsView.ContainerFromItem(e.ClickedItem) as ListViewItem;
+            //if (container != null)
+            //{
+            //    //find the image
+            //    var root = (FrameworkElement)container.ContentTemplateRoot;
+            //    var image = (UIElement)root.FindName("ScreenshotImage");
+            //    animatingElement = image;
+            //    //prepare the animation
+            //    ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("ScreenshotForwardConnectedAnimation", image);
+            //}
+
+            //ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("ForwardConnectedAnimation", sender);
+            this.Frame.Navigate(typeof(SelectedImagePage), new Tuple<ObservableCollection<ScreenshotViewModel>, ScreenshotViewModel>(Screenshots, e.ClickedItem as ScreenshotViewModel));
+        }
     }
 }
