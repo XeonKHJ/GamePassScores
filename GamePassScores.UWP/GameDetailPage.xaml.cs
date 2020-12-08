@@ -40,82 +40,84 @@ namespace GamePassScores.UWP
         {
             base.OnNavigatedTo(e);
 
-            //先以某种方式隐藏截图列表
-            ScreenshotsView.Height = 0;
-            ScreenshotsView.Margin = new Thickness(0);
-            ScreenshotsView.IsEnabled = false;
+                //先以某种方式隐藏截图列表
+                ScreenshotsView.Height = 0;
+                ScreenshotsView.Margin = new Thickness(0);
+                ScreenshotsView.IsEnabled = false;
 
-            //如果是Xbox版本，边界要小一点。
-            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
-            {
-                case "Windows.Xbox":
-                    ContentViewer.Padding = new Thickness(30, 0, 30, 0);
-                    NavigationBackButton.Visibility = Visibility.Collapsed;
-                    break;
-            }
+                //如果是Xbox版本，边界要小一点。
+                switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+                {
+                    case "Windows.Xbox":
+                        ContentViewer.Padding = new Thickness(30, 0, 30, 0);
+                        NavigationBackButton.Visibility = Visibility.Collapsed;
+                        break;
+                }
 
-            game = (GameViewModel)e.Parameter;
-            game.PropertyChanged += Game_PropertyChanged;
+                game = (GameViewModel)e.Parameter;
+                game.PropertyChanged += Game_PropertyChanged;
 
-            if(game.IsPosterCached)
-            {
-                var posterSource = new BitmapImage(new Uri(game.PosterPath));
-                PosterImage.Source = posterSource;
-                PosterView.Source = posterSource;
-            }
-            TitleBlock.Text = game.Title;
-            DescriptionBlock.Text = game.Description;
-            ScoreGrid.Visibility = game.IsScoreAvaliable;
-            ScoreGrid.Background = new SolidColorBrush(game.ScoreColor);
-            ScoreBlock.Text = game.Metascore.ToString();
-            ReleaseDateBlock.Text = string.Format("Release Date: {0}", game.ReleaseDate);
+                if (game.IsPosterCached)
+                {
+                    var posterSource = new BitmapImage(new Uri(game.PosterPath));
+                    PosterImage.Source = posterSource;
+                    PosterView.Source = posterSource;
+                }
+                TitleBlock.Text = game.Title;
+                DescriptionBlock.Text = game.Description;
+                ScoreGrid.Visibility = game.IsScoreAvaliable;
+                ScoreGrid.Background = new SolidColorBrush(game.ScoreColor);
+                ScoreBlock.Text = game.Metascore.ToString();
+                ReleaseDateBlock.Text = string.Format("Release Date: {0}", game.ReleaseDate);
 
+
+                Screenshots.Clear();
+                foreach (var g in game.Screenshots)
+                {
+                    Screenshots.Add(new ScreenshotViewModel { ScreenshotUrl = g });
+                }
+
+                if (game.DownloadSize.Count > 0)
+                {
+                    SizeBlock.Visibility = Visibility.Visible;
+                    SizeBlock.Text = string.Format("Estimated Download Size: {0}GB", (((double)game.DownloadSize.First().Value) / 1024 / 1024 / 1024).ToString("0.##"));
+                }
+                else
+                {
+                    SizeBlock.Visibility = Visibility.Collapsed;
+                }
+
+                if (game.Categories.Count > 0)
+                {
+                    CategoriesBlock.Visibility = Visibility.Visible;
+                    string categoriesString = "Catagory: ";
+
+                    if (game.Categories.Count > 1)
+                    {
+                        categoriesString = "Catagories: ";
+
+                    }
+
+                    foreach (var c in game.Categories)
+                    {
+                        categoriesString += c + ", ";
+                    }
+                    //删掉最后的", "
+                    categoriesString = categoriesString.Remove(categoriesString.Length - 2);
+                    CategoriesBlock.Text = categoriesString;
+                }
+                else
+                {
+                    CategoriesBlock.Visibility = Visibility.Collapsed;
+                }
+
+                var anim = ConnectedAnimationService.GetForCurrentView().GetAnimation("ForwardConnectedAnimation");
+                if (anim != null)
+                {
+                    anim.TryStart(PosterImage);
+                }
             
-            Screenshots.Clear();
-            foreach(var g in game.Screenshots)
-            {
-                Screenshots.Add(new ScreenshotViewModel { ScreenshotUrl = g});
-            }
 
-            if(game.DownloadSize.Count > 0)
-            {
-                SizeBlock.Visibility = Visibility.Visible;
-                SizeBlock.Text = string.Format("Estimated Download Size: {0}GB", (((double)game.DownloadSize.First().Value) / 1024 / 1024 / 1024).ToString("0.##"));
-            }
-            else
-            {
-                SizeBlock.Visibility = Visibility.Collapsed;
-            }
-
-            if (game.Categories.Count > 0)
-            {
-                CategoriesBlock.Visibility = Visibility.Visible;
-                string categoriesString = "Catagory: ";
-                
-                if(game.Categories.Count > 1)
-                {
-                    categoriesString = "Catagories: ";
-
-                }
-
-                foreach (var c in game.Categories)
-                {
-                    categoriesString += c + ", ";
-                }
-                //删掉最后的", "
-                categoriesString = categoriesString.Remove(categoriesString.Length - 2);
-                CategoriesBlock.Text = categoriesString;
-            }
-            else
-            {
-                CategoriesBlock.Visibility = Visibility.Collapsed;
-            }
-
-            var anim = ConnectedAnimationService.GetForCurrentView().GetAnimation("ForwardConnectedAnimation");
-            if (anim != null)
-            {
-                anim.TryStart(PosterImage);
-            }
         }
 
         private void Game_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -156,7 +158,17 @@ namespace GamePassScores.UWP
         private void Image_ImageOpened(object sender, RoutedEventArgs e)
         {
             ScreenshotsView.IsEnabled = true;
-            ScreenshotsView.Height = 200;
+
+            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+            {
+                case "Windows.Xbox":
+                    ScreenshotsView.MaxHeight = 200;
+                    break;
+                default:
+                    ScreenshotsView.MaxHeight = 400;
+                    break;
+            }
+           
             ScreenshotsView.Margin = new Thickness(0, 10, 10, 0);
             ScreenshotsView.Height = double.NaN;
 
@@ -181,7 +193,7 @@ namespace GamePassScores.UWP
         }
 
         UIElement animatingElement;
-        private void ScreenshotsView_ItemClick(object sender, ItemClickEventArgs e)
+        private void ScreenshotsView_ItemClick(object sender, ScreenshotViewModel e)
         {
             //var container = ScreenshotsView.ContainerFromItem(e.ClickedItem) as ListViewItem;
             //if (container != null)
@@ -195,7 +207,23 @@ namespace GamePassScores.UWP
             //}
 
             //ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("ForwardConnectedAnimation", sender);
-            this.Frame.Navigate(typeof(SelectedImagePage), new Tuple<ObservableCollection<ScreenshotViewModel>, ScreenshotViewModel>(Screenshots, e.ClickedItem as ScreenshotViewModel));
+            this.Frame.Navigate(typeof(SelectedImagePage), new Tuple<ObservableCollection<ScreenshotViewModel>, ScreenshotViewModel>(Screenshots, e));
+        }
+
+        private void ScreenshotsView_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ScreenshotsView_ItemClick(Screenshots, ScreenshotsView.SelectedItem as ScreenshotViewModel);
+        }
+
+        private void ScreenshotsView_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            switch(e.Key)
+            {
+                case VirtualKey.Space:
+                    ScreenshotsView_ItemClick(Screenshots, ScreenshotsView.SelectedItem as ScreenshotViewModel);
+                    break;
+            }
+            
         }
     }
 }

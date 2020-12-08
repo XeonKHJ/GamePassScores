@@ -70,17 +70,13 @@
                         <TextBlock x:Name="CategoriesBlock" Margin="10, 10, 10, 0" Visibility="Collapsed" Style="{StaticResource TitleTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
                         <TextBlock x:Name="ReleaseDateBlock" Margin="10, 10, 10, 0" Visibility="Visible" Style="{StaticResource TitleTextBlockStyle}" IsTextScaleFactorEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
 
-                        <ListView x:Name="ScreenshotsView" IsFocusEngagementEnabled="True" IsItemClickEnabled="True" Height="200" ItemClick="ScreenshotsView_ItemClick" IsEnabled="False" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="10, 10, 10, 0" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollMode="Disabled" ItemsSource="{x:Bind Screenshots}" ItemContainerStyle="{StaticResource HorizontalItemContainerStyle}" ItemsPanel="{StaticResource HorizontalItemsPanelTemplate}">
-                            <ListView.ItemTemplate>
+                        <FlipView x:Name="ScreenshotsView" XYFocusDown="{x:Bind DescriptionBlock}" Tapped="ScreenshotsView_Tapped" KeyDown="ScreenshotsView_KeyDown" IsEnabled="False" Margin="10, 10, 10, 0" ItemsSource="{x:Bind Screenshots}">
+                            <FlipView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Padding="10" XYFocusLeftNavigationStrategy="RectilinearDistance" XYFocusRightNavigationStrategy="NavigationDirectionDistance">
-                                        <Viewbox Stretch="Uniform" Height="180">
-                                            <Image x:Name="ScreenshotImage" Source="{Binding ScreenshotUrl}" ImageOpened="Image_ImageOpened"></Image>
-                                        </Viewbox>
-                                    </Grid>
+                                    <Image x:Name="ScreenshotImage" Source="{Binding ScreenshotUrl}" ImageOpened="Image_ImageOpened"></Image>
                                 </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                            </FlipView.ItemTemplate>
+                        </FlipView>
                         <TextBlock x:Name="DescriptionBlock" Text="Description" Margin="10" Style="{StaticResource TitleTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
                         <Button x:Name="ScoreButton" Click="ScoreButton_ClickAsync" Padding="0" Margin="10">
                             <Button.Content>
