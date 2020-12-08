@@ -36,11 +36,6 @@ namespace GamePassScores.UWP
             base.OnNavigatedTo(e);
             ScreenshotViewModels.Clear();
 
-
-
-            //ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("ForwardConnectedAnimation", sender);
-            Frame.Navigate(typeof(GameDetailPage), e.ClickedItem);
-
             var screenViewModelsAndSelectedModel = e.Parameter as Tuple<ObservableCollection<ScreenshotViewModel>, ScreenshotViewModel>;
             
             if(screenViewModelsAndSelectedModel != null)
@@ -53,6 +48,12 @@ namespace GamePassScores.UWP
                     {
                         ScreenshotViewModels.Add(s);
                     }
+                }
+
+                var selectedModel = screenViewModelsAndSelectedModel.Item2;
+                if(selectedModel != null)
+                {
+                    ScreenshotsView.SelectedItem = selectedModel;
                 }
             }
 
