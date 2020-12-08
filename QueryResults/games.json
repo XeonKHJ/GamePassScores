@@ -686,7 +686,7 @@
     ],
     "ReleaseDate": 5248021154427387904,
     "DownloadSize": {
-      "US": 28461965312
+      "US": 28488855552
     }
   },
   {
@@ -1376,7 +1376,7 @@
     ],
     "ReleaseDate": 5248112738427387904,
     "DownloadSize": {
-      "US": 120117903360
+      "US": 120225144832
     }
   },
   {
@@ -1471,7 +1471,7 @@
     ],
     "ReleaseDate": 5248536098427387904,
     "DownloadSize": {
-      "US": 1898434560
+      "US": 1871335424
     }
   },
   {
@@ -4265,7 +4265,7 @@
     ],
     "ReleaseDate": 5249008706427387904,
     "DownloadSize": {
-      "US": 62880841
+      "US": 62908063
     }
   },
   {
@@ -5263,7 +5263,7 @@
     ],
     "ReleaseDate": 5248426514427387904,
     "DownloadSize": {
-      "US": 90808008704
+      "US": 85688156160
     }
   },
   {
@@ -5732,7 +5732,7 @@
     ],
     "ReleaseDate": 5248057442427387904,
     "DownloadSize": {
-      "US": 9066254336
+      "US": 9601232896
     }
   },
   {
@@ -6444,7 +6444,7 @@
     ],
     "ReleaseDate": 5248946786427387904,
     "DownloadSize": {
-      "US": 3180244992
+      "US": 3249369088
     }
   },
   {
@@ -12601,7 +12601,7 @@
     ],
     "ReleaseDate": 5248311602427387904,
     "DownloadSize": {
-      "US": 19692797952
+      "US": 19692789760
     }
   },
   {
@@ -15440,6 +15440,89 @@
     "ReleaseDate": 5249112386427387904,
     "DownloadSize": {
       "US": 32826425344
+    }
+  },
+  {
+    "Categories": [
+      "Role playing",
+      "Strategy"
+    ],
+    "MetacriticUrls": {
+    },
+    "MetaScore": {
+    },
+    "ID": "9MZNS9NZ97PF",
+    "Title": {
+      "en": "Monster Sanctuary"
+    },
+    "Description": {
+      "en": "Monster taming meets metroidvania. Collect, train and battle monsters in a lovely side-view pixel world.\r\n\r\nChoose your spectral familiar and follow in your ancestors’ footsteps to become a Monster keeper and save the Monster Sanctuary.\r\n\r\nEmbark on an epic adventure using the powers of the monsters you collect, and the team you build, to unlock an ever-expanding world. On your quest to become the ultimate Monster Keeper you’ll unravel the cause of a mystery that threatens the peace between humans and monsters.\r\n\r\nExplore a Metroidvania inspired world.\r\n\r\nThe powers of your monsters will allow you to explore and expand the world. Cut down vines, smash down walls and glide over gaps- all with the help of your monsters.\r\n\r\nAssemble your team.\r\n\r\nHatch collect and train monsters from across the world and build your team. Every monster has a unique skill tree to allow you to customize and tailor your party.\r\n\r\nClash in tactical 3V3 combat.\r\n\r\nStrategically order your attacks for maximum efficiency, stacking your blows to create combos. Grind and find the best combo to earn the rarest monster eggs!\r\n\r\nBattle Monster Keepers across the world!\r\n\r\nGo head to head in a test of skill and ability in online player vs player! Gather and train monsters, max out their skill trees and take on friends and foes in an epic battle until your monsters are the last standing."
+    },
+    "Affirmations": [
+      0
+    ],
+    "MetaCriticPathName": "monster-sanctuary",
+    "OriginalPlatforms": [
+      3
+    ],
+    "InVaultTime": 0,
+    "PosterUrl": "https://store-images.s-microsoft.com/image/apps.22174.13871023289633408.9023710d-5f63-4b3d-9009-f6d13376289a.01a9cdaf-3cc6-4014-8a21-3fe5d2a69f98",
+    "IsMetacriticInfoCorrect": true,
+    "IsMetacriticInfoExist": true,
+    "ScreenShots": [
+      "https://store-images.s-microsoft.com/image/apps.55976.13871023289633408.9023710d-5f63-4b3d-9009-f6d13376289a.0844dcea-2b2f-4c92-b7e2-035872d3e1d4",
+      "https://store-images.s-microsoft.com/image/apps.39429.13871023289633408.9023710d-5f63-4b3d-9009-f6d13376289a.726b6b74-f117-40ad-aa06-b9b506bbaf49",
+      "https://store-images.s-microsoft.com/image/apps.50222.13871023289633408.9023710d-5f63-4b3d-9009-f6d13376289a.7ffaa6c6-4053-4d26-8e6b-e4edfe8731ea",
+      "https://store-images.s-microsoft.com/image/apps.47259.13871023289633408.9023710d-5f63-4b3d-9009-f6d13376289a.c6a0bf6e-270f-4206-b444-211d157a07aa",
+      "https://store-images.s-microsoft.com/image/apps.59311.13871023289633408.9023710d-5f63-4b3d-9009-f6d13376289a.ea3e120f-8d86-45f7-be70-b8ad3241a44e"
+    ],
+    "ReleaseDate": 5249116022427387904,
+    "DownloadSize": {
+      "US": 986329088
+    }
+  },
+  {
+    "Categories": [
+      "Action & adventure",
+      "Puzzle & trivia"
+    ],
+    "MetacriticUrls": {
+    },
+    "MetaScore": {
+    },
+    "ID": "9P27ZMZ7FDPZ",
+    "Title": {
+      "en": "Call of the Sea"
+    },
+    "Description": {
+      "en": "It is 1934, in the far reaches of the South Pacific. Norah has crossed the ocean following the trail of her missing husband’s expedition and finds herself on a lush island paradise - a nameless, forgotten place, dotted with the remnants of a lost civilization.\r\n\r\nWhat strange secrets does it hold, and what might Norah unearth in her quest for the truth?\r\n\r\nEXPLORE THE BEAUTY\r\nExplore a stunning tropical island (meticulously modelled in Unreal Engine 4), brimming with fantastic sights, lost ruins and occult mysteries.\r\n\r\nMEET NORAH\r\nExperience a charming character study of a woman on her quest to discover the truth of the disappearance of her husband and to find out who she really is, fully voiced by Cissy Jones (Firewatch, The Walking Dead: Season 1).\r\n\r\nDIVE INTO THE DEEP\r\nImmerse yourself in a story-driven adventure full of emotion, suspense and surreal surprises.\r\n\r\nSEARCH FOR MEANING\r\nInvestigate the clues left by a previous voyage, piece together what happened, and solve a variety of clever puzzles.\r\n"
+    },
+    "Affirmations": [
+      0
+    ],
+    "MetaCriticPathName": "call-of-the-sea",
+    "OriginalPlatforms": [
+      3
+    ],
+    "InVaultTime": 0,
+    "PosterUrl": "https://store-images.s-microsoft.com/image/apps.46463.14562710987664012.7bc0702e-3748-40e0-8a1a-40b5348aa74d.28279165-f4b6-44e8-9eb7-406129c2db6d",
+    "IsMetacriticInfoCorrect": true,
+    "IsMetacriticInfoExist": true,
+    "ScreenShots": [
+      "https://store-images.s-microsoft.com/image/apps.40334.13743362462149476.fca1cf48-9b03-4004-a824-97fd70c4c919.07d74a27-14b8-47a8-85e0-6c81b18a9812",
+      "https://store-images.s-microsoft.com/image/apps.34121.13743362462149476.fca1cf48-9b03-4004-a824-97fd70c4c919.a71e397a-1817-4a91-9e96-a392055c0e36",
+      "https://store-images.s-microsoft.com/image/apps.50260.13743362462149476.fca1cf48-9b03-4004-a824-97fd70c4c919.e2680e69-1f2f-477f-9967-27570f9250ea",
+      "https://store-images.s-microsoft.com/image/apps.63659.13743362462149476.fca1cf48-9b03-4004-a824-97fd70c4c919.9d63aa9f-9425-425c-b3c5-c42663ec25b7",
+      "https://store-images.s-microsoft.com/image/apps.6046.13743362462149476.fca1cf48-9b03-4004-a824-97fd70c4c919.bbf493ac-b123-4174-a4a0-b3a865ed59f1",
+      "https://store-images.s-microsoft.com/image/apps.13541.13743362462149476.fca1cf48-9b03-4004-a824-97fd70c4c919.7690952e-19b2-4b29-a39f-60747f32348c",
+      "https://store-images.s-microsoft.com/image/apps.26419.13743362462149476.fca1cf48-9b03-4004-a824-97fd70c4c919.8c1141cd-3958-4b3f-af3e-ac8c0337013d",
+      "https://store-images.s-microsoft.com/image/apps.49253.13743362462149476.fca1cf48-9b03-4004-a824-97fd70c4c919.18e4d641-3873-4d60-bb95-9037501d7fc7",
+      "https://store-images.s-microsoft.com/image/apps.34912.13743362462149476.fca1cf48-9b03-4004-a824-97fd70c4c919.65c4a6ab-f81e-487a-bd18-1b97761cb89d",
+      "https://store-images.s-microsoft.com/image/apps.61117.13743362462149476.fca1cf48-9b03-4004-a824-97fd70c4c919.328fc8f3-e17e-4efd-859c-4693bc64567d"
+    ],
+    "ReleaseDate": 5249115842427387904,
+    "DownloadSize": {
+      "US": 10955722752
     }
   }
 ]
