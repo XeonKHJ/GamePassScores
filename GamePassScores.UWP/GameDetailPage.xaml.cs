@@ -149,10 +149,13 @@ namespace GamePassScores.UWP
 
         private async void ScoreButton_ClickAsync(object sender, RoutedEventArgs e)
         {
-            if(game.MetacriticUrl != null)
-            {
-                await Launcher.LaunchUriAsync(game.MetacriticUrl);
-            }    
+            //if(game.MetacriticUrl != null)
+            //{
+            //    await Launcher.LaunchUriAsync(game.MetacriticUrl);
+            //}    
+
+            //换成进入另一个页面
+            this.Frame.Navigate(typeof(ReviewsPage), game);
         }
 
         private void Image_ImageOpened(object sender, RoutedEventArgs e)
