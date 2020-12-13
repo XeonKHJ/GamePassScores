@@ -9,6 +9,27 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <ListView x:Name="ReviewsView" ItemsSource="{x:Bind Reviews}" IsItemClickEnabled="True" ItemClick="ReviewsView_ItemClickAsync">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:ReviewViewModel">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.Background>
+                                <SolidColorBrush Color="{Binding ScoreColor}"></SolidColorBrush>
+                            </Grid.Background>
+                            <TextBlock Text="{Binding Score}" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Margin="10"></TextBlock>
+                        </Grid>
+                    <StackPanel Grid.Column="1" Margin="10, 0">
+                        <TextBlock Text="{Binding MediaName}" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+                        <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"></TextBlock>
+                    </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

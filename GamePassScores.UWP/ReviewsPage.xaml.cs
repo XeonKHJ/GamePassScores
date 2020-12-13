@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -72,7 +73,7 @@ namespace GamePassScores.UWP
                         int score = int.Parse(scoreNode.InnerText);
 
                         var reviewNode = matchNode.SelectSingleNode(".//div[@class='review_body']");
-                        string review = reviewNode.InnerText.Trim();
+                        string review = reviewNode.InnerText.Trim().Replace(System.Environment.NewLine, " ");
 
                         var sourceNode = matchNode.SelectSingleNode(".//div[@class='source']");
                         string source = sourceNode.InnerText.Trim();
@@ -108,6 +109,24 @@ namespace GamePassScores.UWP
                 System.Diagnostics.Debug.WriteLine("网络不好，无法更新。");
                 //_isRefreshing = false;
             }
+        }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private async void ReviewsView_ItemClickAsync(object sender, ItemClickEventArgs e)
+        {
+            var review = e.ClickedItem as ReviewViewModel;
+            if(review != null)
+            {
+                if (!string.IsNullOrEmpty(review.Url))
+                {
+                    await Launcher.LaunchUriAsync(new Uri(review.Url));
+                }
+            }
+
         }
     }
 }
