@@ -26,7 +26,7 @@ namespace GamePassScores.UWP
 
         public DateTime PublishDate { set; get; }
         public string Description { set; get; }
-        public string Author { set; get; }
+        public string Url { set; get; }
         public int Score { set; get; }
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

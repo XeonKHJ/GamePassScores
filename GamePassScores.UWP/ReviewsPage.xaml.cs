@@ -62,27 +62,27 @@ namespace GamePassScores.UWP
                     //查找class为review_content的DIV标签
                     HtmlDocument document = new HtmlDocument();
                     document.LoadHtml(message);
-                    var matchSection = document.DocumentNode.SelectSingleNode("//ol[@class='reviews critic_reviews']");
+                    var matchSection = document.DocumentNode.SelectSingleNode(".//ol[@class='reviews critic_reviews']");
                     matchSection.SetParent(null);
-                    var matchNodes = matchSection.SelectNodes("//div[@class='review_content']");
+                    var matchNodes = matchSection.SelectNodes(".//div[@class='review_content']");
                     //将每个节点都转换成ReviewViewModel
                     foreach (var matchNode in matchNodes)
                     {
-                        var scoreNode = matchNode.SelectSingleNode("//div[@class='review_grade']");
+                        var scoreNode = matchNode.SelectSingleNode(".//div[@class='review_grade']");
                         int score = int.Parse(scoreNode.InnerText);
 
-                        var reviewNode = matchNode.SelectSingleNode("//div[@class='review_body']");
+                        var reviewNode = matchNode.SelectSingleNode(".//div[@class='review_body']");
                         string review = reviewNode.InnerText.Trim();
 
-                        var sourceNode = matchNode.SelectSingleNode("//div[@class='source']");
+                        var sourceNode = matchNode.SelectSingleNode(".//div[@class='source']");
                         string source = sourceNode.InnerText.Trim();
 
                         //获取链接
-                        var reviewActionNode = matchNode.SelectSingleNode("//li[@class='review_action full_review']");
-                        var href = reviewActionNode.FirstChild.Attributes["href"].Value;
-
+                        var reviewActionNode = matchNode.SelectSingleNode(".//li[@class='review_action full_review']");
+                        var href = reviewActionNode == null ? string.Empty : reviewActionNode.FirstChild.Attributes["href"].Value;
+                        
                         //获取日期
-                        var dateNode = matchNode.SelectSingleNode("//div[@class='date']");
+                        var dateNode = matchNode.SelectSingleNode(".//div[@class='date']");
                         var date = DateTime.Parse(dateNode.InnerText.Trim());
 
                         ReviewViewModel reviewViewModel = new ReviewViewModel()
@@ -91,6 +91,7 @@ namespace GamePassScores.UWP
                             PublishDate = date,
                             Description = review,
                             Score = score,
+                            Url = href
                         };
                         Reviews.Add(reviewViewModel);
                     }
