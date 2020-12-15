@@ -84,7 +84,12 @@ namespace GamePassScores.UWP
                         
                         //获取日期
                         var dateNode = matchNode.SelectSingleNode(".//div[@class='date']");
-                        var date = DateTime.Parse(dateNode.InnerText.Trim());
+
+                        DateTime date = DateTime.MinValue;
+                        if(dateNode != null)
+                        {
+                            date = DateTime.Parse(dateNode.InnerText.Trim());
+                        }
 
                         ReviewViewModel reviewViewModel = new ReviewViewModel()
                         {
