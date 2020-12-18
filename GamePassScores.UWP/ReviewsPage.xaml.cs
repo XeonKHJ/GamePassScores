@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Windows.Web.Http;
 
@@ -41,9 +42,16 @@ namespace GamePassScores.UWP
             if(gameViewModel != null)
             {
                 Game = gameViewModel;
-
+                if (Game.IsPosterCached)
+                {
+                    var posterSource = new BitmapImage(new Uri(Game.PosterPath));
+                    PosterView.Source = posterSource;
+                    PosterImage.Source = posterSource;
+                }
                 GetReviewsFromMetacriticAsync(gameViewModel.MetacriticUrl.AbsoluteUri);
             }
+            
+
         }
 
         private async void GetReviewsFromMetacriticAsync(string gamePageUrl)
@@ -107,6 +115,7 @@ namespace GamePassScores.UWP
                 {
 
                 }
+                LoadingReviewsRing.IsActive = false;
 
             }
             catch (Exception exception)
@@ -132,6 +141,11 @@ namespace GamePassScores.UWP
                 }
             }
 
+        }
+
+        private void NavigationBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
         }
     }
 }

@@ -9,27 +9,72 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ListView x:Name="ReviewsView" ItemsSource="{x:Bind Reviews}" IsItemClickEnabled="True" ItemClick="ReviewsView_ItemClickAsync">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:ReviewViewModel">
-                    <Grid Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Grid.Background>
-                                <SolidColorBrush Color="{Binding ScoreColor}"></SolidColorBrush>
-                            </Grid.Background>
-                            <TextBlock Text="{Binding Score}" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Margin="10"></TextBlock>
-                        </Grid>
-                    <StackPanel Grid.Column="1" Margin="10, 0">
-                        <TextBlock Text="{Binding MediaName}" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
-                        <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"></TextBlock>
+        <ParallaxView Source="{Binding ElementName=ReviewsView}" VerticalShift="200">
+            <Viewbox Stretch="UniformToFill" StretchDirection="Both">
+                <Image x:Name="PosterView" />
+            </Viewbox>
+        </ParallaxView>
+        <Grid>
+            <Grid.Background>
+                <AcrylicBrush BackgroundSource="Backdrop" TintOpacity="0.7" TintColor="{ThemeResource SystemAltMediumColor}" FallbackColor="{ThemeResource SystemAltMediumColor}"></AcrylicBrush>
+            </Grid.Background>
+            <Button x:Name="NavigationBackButton" Style="{StaticResource NavigationBackButtonNormalStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Click="NavigationBackButton_Click"></Button>
+
+
+            <Grid Padding="30">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" VerticalAlignment="Center" Padding="10" HorizontalAlignment="Center">
+                    <Image x:Name="PosterImage"></Image>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="10">
+                            <TextBlock>Metascore</TextBlock>
+                            <Grid x:Name="MetascoreGrid">
+                                <TextBlock x:Name="MetascoreBlock" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Margin="10"></TextBlock>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Margin="10" HorizontalAlignment="Center">
+                            <TextBlock>Average Score</TextBlock>
+                            <Grid x:Name="AverageScoreGrid">
+                                <TextBlock x:Name="AverageScoreBlock"  FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Margin="10"></TextBlock>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Margin="10">
+                            <TextBlock>Mean Square</TextBlock>
+                            <Grid x:Name="MeanSquareGrid">
+                                <TextBlock x:Name="MeanSquareBlock" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Margin="10"></TextBlock>
+                            </Grid>
+                        </StackPanel>
                     </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                </StackPanel>
+                <ProgressRing Grid.Column="1" x:Name="LoadingReviewsRing" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="True" Width="100" Height="100"></ProgressRing>
+                <ListView Grid.Column="1" x:Name="ReviewsView" ItemsSource="{x:Bind Reviews}" IsItemClickEnabled="True" ItemClick="ReviewsView_ItemClickAsync">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:ReviewViewModel">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="{Binding ScoreColor}"></SolidColorBrush>
+                                    </Grid.Background>
+                                    <TextBlock Text="{Binding Score}" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Margin="10"></TextBlock>
+                                </Grid>
+                                <StackPanel Grid.Column="1" Margin="10, 0">
+                                    <TextBlock Text="{Binding MediaName}" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+                                    <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
     </Grid>
+
 </Page>
