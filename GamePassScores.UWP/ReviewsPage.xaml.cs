@@ -49,8 +49,8 @@ namespace GamePassScores.UWP
                     PosterImage.Source = posterSource;
                 }
                 GetReviewsFromMetacriticAsync(gameViewModel.MetacriticUrl.AbsoluteUri);
+                MetascoreBlock.Text = Game.Metascore.ToString();
             }
-            
 
         }
 
@@ -116,7 +116,6 @@ namespace GamePassScores.UWP
 
                 }
                 LoadingReviewsRing.IsActive = false;
-
             }
             catch (Exception exception)
             {
@@ -125,6 +124,10 @@ namespace GamePassScores.UWP
             }
         }
 
+        private async void UpdateScores()
+        {
+            
+        }
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
 
@@ -146,6 +149,17 @@ namespace GamePassScores.UWP
         private void NavigationBackButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
+        }
+
+        private async void Button_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            if (Game != null)
+            {
+                if (Game.MetacriticUrl != null)
+                {
+                    await Launcher.LaunchUriAsync(Game.MetacriticUrl);
+                }
+            }
         }
     }
 }

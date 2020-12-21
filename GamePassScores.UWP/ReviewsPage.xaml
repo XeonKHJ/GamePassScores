@@ -27,29 +27,39 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="3*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" VerticalAlignment="Center" Padding="10" HorizontalAlignment="Center">
-                    <Image x:Name="PosterImage"></Image>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Margin="10">
-                            <TextBlock>Metascore</TextBlock>
-                            <Grid x:Name="MetascoreGrid">
-                                <TextBlock x:Name="MetascoreBlock" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Margin="10"></TextBlock>
+                <Grid Grid.Column="0" VerticalAlignment="Center" Padding="10" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Grid.ColumnSpan="3" x:Name="PosterImage"></Image>
+                    <StackPanel Grid.Row="1" Grid.Column="0" Visibility="Collapsed">
+                        <TextBlock>Metascore</TextBlock>
+                        <Grid x:Name="MetascoreGrid" Background="Green" Width="80" Height="80">
+                            <TextBlock x:Name="MetascoreBlock" FontSize="40" FontWeight="Bold"></TextBlock>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Margin="10" HorizontalAlignment="Center">
+                    <StackPanel Grid.Row="1" Grid.Column="1" Visibility="Collapsed">
                             <TextBlock>Average Score</TextBlock>
                             <Grid x:Name="AverageScoreGrid">
-                                <TextBlock x:Name="AverageScoreBlock"  FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Margin="10"></TextBlock>
+                                <TextBlock x:Name="AverageScoreBlock"  FontSize="40" FontWeight="Bold"></TextBlock>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Margin="10">
-                            <TextBlock>Mean Square</TextBlock>
-                            <Grid x:Name="MeanSquareGrid">
-                                <TextBlock x:Name="MeanSquareBlock" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Margin="10"></TextBlock>
-                            </Grid>
-                        </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="2" Visibility="Collapsed">
+                        <TextBlock>Mean Square</TextBlock>
+                        <Grid x:Name="MeanSquareGrid">
+                            <TextBlock x:Name="MeanSquareBlock" FontSize="40" FontWeight="Bold"></TextBlock>
+                        </Grid>
                     </StackPanel>
-                </StackPanel>
+                    <Button Margin="0, 10" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Click="Button_ClickAsync">View On Metacritic Website</Button>
+                </Grid>
+                    
                 <ProgressRing Grid.Column="1" x:Name="LoadingReviewsRing" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="True" Width="100" Height="100"></ProgressRing>
                 <ListView Grid.Column="1" x:Name="ReviewsView" ItemsSource="{x:Bind Reviews}" IsItemClickEnabled="True" ItemClick="ReviewsView_ItemClickAsync">
                     <ListView.ItemTemplate>
