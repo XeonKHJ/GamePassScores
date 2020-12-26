@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
+using Windows.System.Profile;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -37,6 +38,14 @@ namespace GamePassScores.UWP
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            //如果是Xbox版本，要把返回按钮隐藏起来。
+            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+            {
+                case "Windows.Xbox":
+                    NavigationBackButton.Visibility = Visibility.Collapsed;
+                    break;
+            }
 
             var gameViewModel = e.Parameter as GameViewModel;
             if(gameViewModel != null)

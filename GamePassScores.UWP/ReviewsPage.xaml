@@ -66,14 +66,14 @@
                         <DataTemplate x:DataType="local:ReviewViewModel">
                             <Grid Margin="10">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="70"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0">
                                     <Grid.Background>
                                         <SolidColorBrush Color="{Binding ScoreColor}"></SolidColorBrush>
                                     </Grid.Background>
-                                    <TextBlock Text="{Binding Score}" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Margin="10"></TextBlock>
+                                    <TextBlock Text="{Binding Score}" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"></TextBlock>
                                 </Grid>
                                 <StackPanel Grid.Column="1" Margin="10, 0">
                                     <TextBlock Text="{Binding MediaName}" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
