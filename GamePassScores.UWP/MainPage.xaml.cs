@@ -208,6 +208,7 @@ namespace GamePassScores.UWP
             }
         }
 
+        private bool _isAboutDialogueOpened = false;
         private async void AboutButton_ClickAsync(object sender, RoutedEventArgs e)
         {
             //switch (AnalyticsInfo.VersionInfo.DeviceFamily)
@@ -217,8 +218,9 @@ namespace GamePassScores.UWP
             //        break;
             //}
             AboutDialogue aboutDialogue = new AboutDialogue();
+            _isAboutDialogueOpened = true;
             var result = await aboutDialogue.ShowAsync();
-            
+            _isAboutDialogueOpened = false;
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -439,6 +441,32 @@ namespace GamePassScores.UWP
             {
                 OrderBar.Focus(FocusState.Programmatic);
                 OrderBar.IsOpen = true;
+            }
+        }
+
+        private void Page_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(e.Key);
+            switch(e.Key)
+            {
+                case Windows.System.VirtualKey.GamepadMenu:
+                    if (!OrderBar.IsOpen)
+                    {
+                        OrderBar.Focus(FocusState.Programmatic);
+                        OrderBar.IsOpen = true;
+                    }
+                    else
+                    {
+                        OrderBar.IsOpen = false;
+                    }
+                    break;
+                case Windows.System.VirtualKey.GamepadView:
+                    if(!_isAboutDialogueOpened)
+                    {
+                        AboutButton_ClickAsync(null, null);
+                    }
+                    
+                    break;
             }
         }
     }
