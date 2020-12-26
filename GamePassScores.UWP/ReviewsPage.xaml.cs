@@ -122,15 +122,29 @@ namespace GamePassScores.UWP
                 }
                 else
                 {
-
+                    throw new HtmlWebException(string.Format("Http Code: {0}", response.StatusCode));
                 }
-                LoadingReviewsRing.IsActive = false;
+            }
+            catch (HtmlWebException exception)
+            {
+                ErrorBlock.Text = "Http error!" + System.Environment.NewLine + exception.Message;
+                ErrorBlock.Visibility = Visibility.Visible;
             }
             catch (Exception exception)
             {
-                System.Diagnostics.Debug.WriteLine("网络不好，无法更新。");
-                //_isRefreshing = false;
+                ErrorBlock.Visibility = Visibility.Visible;
+                switch ((uint)exception.HResult)
+                {
+                    case 0x80072ee7:
+                        System.Diagnostics.Debug.WriteLine("网络不好，无法更新。");
+                        ErrorBlock.Text = "Network error!" + System.Environment.NewLine + exception.Message;
+                        break;
+                    default:
+                        ErrorBlock.Text = "Unknown error!" + System.Environment.NewLine + exception.Message;
+                        break;
+                }
             }
+            LoadingReviewsRing.IsActive = false;
         }
 
         private async void UpdateScores()

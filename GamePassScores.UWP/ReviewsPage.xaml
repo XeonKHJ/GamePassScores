@@ -61,6 +61,7 @@
                 </Grid>
                     
                 <ProgressRing Grid.Column="1" x:Name="LoadingReviewsRing" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="True" Width="100" Height="100"></ProgressRing>
+                <TextBlock Grid.Column="1" x:Name="ErrorBlock" Visibility="Collapsed" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center">Network Error!</TextBlock>
                 <ListView Grid.Column="1" x:Name="ReviewsView" ItemsSource="{x:Bind Reviews}" IsItemClickEnabled="True" ItemClick="ReviewsView_ItemClickAsync">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local:ReviewViewModel">
