@@ -54,6 +54,7 @@ namespace GamePassScores.InfoCollectorConsole
             var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
             var fileName = "newgames.json";
             await UpdateGamesList(games);
+            //await UpdateMetacriticScoresAsync(games, Platform.XboxOne);
             await UpdateMetacriticScoresAsync(games, Platform.XboxSeriesX);
             await UpdateMetacriticScoresAsync(games, Platform.PC);
             #endregion
@@ -498,8 +499,8 @@ namespace GamePassScores.InfoCollectorConsole
                     game.IsMetacriticInfoCorrect = true;
                     if (metacriticScoreModel.aggregateRating != null)
                     {
-                        game.MetaScore.Add(platform, int.Parse(metacriticScoreModel.aggregateRating.ratingValue));
-                        game.MetacriticUrls.Add(platform, new Uri(requestUrlString));
+                        game.MetaScore[platform] = int.Parse(metacriticScoreModel.aggregateRating.ratingValue);
+                        game.MetacriticUrls[platform] = new Uri(requestUrlString);
                     }
                 }
             }
@@ -532,8 +533,6 @@ namespace GamePassScores.InfoCollectorConsole
                 string baseUrlString = "https://www.metacritic.com/game/";
                 foreach (var game in games)
                 {
-                    if (game.MetaScore.Count == 0)
-                    {
                         foreach (var platform in game.OriginalPlatforms)
                         {
                             string platformString = string.Empty;
@@ -590,7 +589,7 @@ namespace GamePassScores.InfoCollectorConsole
                             GetMetacriticScore(game, platform, requestUrlString, semaphore);
                         }
                     }
-                }
+                
             });
             while (abcde != 0) ;
 
