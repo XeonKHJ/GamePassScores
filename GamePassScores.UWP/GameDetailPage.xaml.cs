@@ -65,7 +65,7 @@ namespace GamePassScores.UWP
                 }
                 TitleBlock.Text = game.Title;
                 DescriptionBlock.Text = game.Description;
-                ScoreGrid.Visibility = game.IsScoreAvaliable;
+                ScoreButton.Visibility = game.IsScoreAvaliable;
                 ScoreGrid.Background = new SolidColorBrush(game.ScoreColor);
                 ScoreBlock.Text = game.Metascore.ToString();
                 ReleaseDateBlock.Text = string.Format("Release Date: {0}", game.ReleaseDate);

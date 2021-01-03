@@ -78,9 +78,9 @@
                             </FlipView.ItemTemplate>
                         </FlipView>
                         <TextBlock x:Name="DescriptionBlock" Text="Description" Margin="10" Style="{StaticResource TitleTextBlockStyle}" IsTextSelectionEnabled="True" TextWrapping="WrapWholeWords"></TextBlock>
-                        <Button x:Name="ScoreButton" Click="ScoreButton_ClickAsync" Padding="0" Margin="10">
+                        <Button x:Name="ScoreButton" Click="ScoreButton_ClickAsync" Padding="0" Margin="10" Visibility="{Binding IsScoreAvaliable}">
                             <Button.Content>
-                                <Grid x:Name="ScoreGrid" Grid.Column="1" Height="100" Width="100"  HorizontalAlignment="Left" Visibility="{Binding IsScoreAvaliable}">
+                                <Grid x:Name="ScoreGrid" Grid.Column="1" Height="100" Width="100"  HorizontalAlignment="Left">
                                     <Grid.Background>
                                         <SolidColorBrush Color="Red"></SolidColorBrush>
                                     </Grid.Background>
