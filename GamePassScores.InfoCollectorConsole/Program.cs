@@ -55,8 +55,8 @@ namespace GamePassScores.InfoCollectorConsole
             var fileName = "newgames.json";
             await UpdateGamesList(games);
             //await UpdateMetacriticScoresAsync(games, Platform.XboxOne);
-            await UpdateMetacriticScoresAsync(games, Platform.XboxSeriesX);
-            await UpdateMetacriticScoresAsync(games, Platform.PC);
+            //await UpdateMetacriticScoresAsync(games, Platform.XboxSeriesX);
+            //await UpdateMetacriticScoresAsync(games, Platform.PC);
             #endregion
 
             #region 获取类型列表
@@ -629,7 +629,12 @@ namespace GamePassScores.InfoCollectorConsole
                 }
             }
 
+            
+            
+            await UpdateMetacriticScoresAsync(games, Platform.PC);
+            await UpdateMetacriticScoresAsync(games, Platform.XboxSeriesX);
             await UpdateMetacriticScoresAsync(games);
+            //await UpdateMetacriticScoresAsync(games);
         }
     }
 }
