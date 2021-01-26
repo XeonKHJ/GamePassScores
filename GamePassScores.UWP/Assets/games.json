@@ -1376,7 +1376,7 @@
     ],
     "ReleaseDate": 5248112738427387904,
     "DownloadSize": {
-      "US": 120393834496
+      "US": 120400281600
     }
   },
   {
@@ -1471,7 +1471,7 @@
     ],
     "ReleaseDate": 5248536098427387904,
     "DownloadSize": {
-      "US": 1871335424
+      "US": 1908232192
     }
   },
   {
@@ -1602,7 +1602,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.51096.63435052096425467.cd1eef72-5707-4f2b-807d-ab3c5baf858c.feb06dbe-5615-42c2-8e26-fa15d1745896",
-    "IsMetacriticInfoCorrect": true,
+    "IsMetacriticInfoCorrect": false,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.35931.63435052096425467.cd1eef72-5707-4f2b-807d-ab3c5baf858c.8ee5bcc4-e9ee-4b3e-83ec-8be8b9e818a7",
@@ -1806,7 +1806,7 @@
       "Shooter"
     ],
     "MetacriticUrls": {
-      "XboxOne": "https://www.metacritic.com/game/xbox-one/battlefield-4/"
+      "XboxOne": "https://www.metacritic.com/game/pc/battlefield-4/"
     },
     "MetaScore": {
       "XboxOne": 81
@@ -1827,7 +1827,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.1392.67660042887481018.7de2bfcd-48ef-4a6c-bba4-e65d208d67ec.d712d519-5ad0-4aac-9271-ad4424fd3702",
-    "IsMetacriticInfoCorrect": true,
+    "IsMetacriticInfoCorrect": false,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.52262.67660042887481018.7de2bfcd-48ef-4a6c-bba4-e65d208d67ec.199fed4d-de1d-49da-b382-9eba7144152c",
@@ -1867,7 +1867,7 @@
     "OriginalPlatforms": [
       3
     ],
-    "InVaultTime": 2,
+    "InVaultTime": 1,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.13159.69514894066197564.dd8a34b0-40cf-41f6-9ecf-ac303943cb56.8fac9d3b-cb1e-4772-9bdb-48a7807efde2",
     "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
@@ -2018,7 +2018,7 @@
     ],
     "ReleaseDate": 5248613858427387904,
     "DownloadSize": {
-      "US": 10614321152
+      "US": 10443542528
     }
   },
   {
@@ -3021,7 +3021,7 @@
     ],
     "ReleaseDate": 5248862330427387904,
     "DownloadSize": {
-      "US": 45849575424
+      "US": 46118866944
     }
   },
   {
@@ -3199,7 +3199,7 @@
     ],
     "ReleaseDate": 5248730210427387904,
     "DownloadSize": {
-      "US": 5899504443
+      "US": 5883110119
     }
   },
   {
@@ -3327,7 +3327,7 @@
     ],
     "ReleaseDate": 5249009102427387904,
     "DownloadSize": {
-      "US": 1389019136
+      "US": 184373017
     }
   },
   {
@@ -4213,7 +4213,7 @@
     "OriginalPlatforms": [
       3
     ],
-    "InVaultTime": 2,
+    "InVaultTime": 1,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.63328.13518299802182489.415b0b15-4103-48f5-9879-4173d1952a78.8be1c982-a3c4-49e9-ac60-96d77d29ce6e",
     "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
@@ -4869,7 +4869,7 @@
     "OriginalPlatforms": [
       3
     ],
-    "InVaultTime": 2,
+    "InVaultTime": 1,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.63653.68025335868860524.8a7fbb39-874f-4057-b61f-010b2f6ba2ce.f569b862-7e53-43d5-870f-7e3a36d917f6",
     "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
@@ -4909,7 +4909,7 @@
     "OriginalPlatforms": [
       3
     ],
-    "InVaultTime": 2,
+    "InVaultTime": 1,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.3814.68146867127756614.1c8b2bca-894e-4592-ba3a-2f92c663cf1e.46ef9fc3-3716-4879-b531-fe271b1d92ed",
     "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
@@ -5562,7 +5562,7 @@
     ],
     "ReleaseDate": 5248009058427387904,
     "DownloadSize": {
-      "US": 101939687424
+      "US": 101939621888
     }
   },
   {
@@ -5734,7 +5734,7 @@
     ],
     "ReleaseDate": 5248057442427387904,
     "DownloadSize": {
-      "US": 9511206912
+      "US": 9512271872
     }
   },
   {
@@ -7171,7 +7171,7 @@
       "en": "Rocket Arena"
     },
     "Description": {
-      "en": "Mysteries abound on Crater in Season 2 of Rocket Arena!\r\n\r\nRockets rule everything in Rocket Arena, an explosive 3v3 shooter where you’re never out of the action. Master your hero’s unique rockets and abilities to rule the arena and become a champion! Try out an ever-growing roster of fantastic heroes with distinctive powers. Unearth new strategies and tactics based on your squad, explore a wide variety of dynamic maps, and discover the true depth of rocket gameplay. Ready to be blown away?\r\n\r\nSeason 2 features new hero Leef, a new map, limited-time events, challenges and tons of exciting items to collect!\r\n\r\nRocket-Fueled Heroes\r\nExplore a growing roster of unique heroes, each with distinctive personalities, backstories, and rivalries. Master your hero’s fantastic abilities and signature rockets and get the most out of your squad.\r\n\r\nDeath-Defying Action\r\nNever say die, because in Rocket Arena, you can’t! Taking too many hits will blast you out of the arena, but not out of the action. Ride your rocket right back in, choose your landing spot, and return to the fight.\r\n\r\nReach New Strategic Depths (and Heights)\r\nRockets are easy to pick up but challenging to truly master. Learn how to time your dodges, lead your targets, and use items and gadgets like the Rocket Magnet, Trip Mine, and Speed Boost to change the course of combat. Become one with your rocket and you will rule the arena. \r\n\r\nExplore a Bold New World\r\nFrom tropical ruins of The Gemstone Jungle to the high-tech, utopian Boom City, the world of Crater is home to many exotic locales. Each map is highly interactive and filled with hidden tricks, traps, and lore to explore. Use your rockets to jump, climb, and interact with the environment. There’s a world of possibility, so grab your rockets and start exploring!\r\n\r\nEvolve Your Heroes\r\nThe sky’s the limit for your heroes. Every match you play with them earns experience, unlocking Rocket Parts, Totem Parts, and spectacular outfits you can use to customize their look. You’ll also unlock fantastic artifacts as you play -- mix, match, and level them up to give your heroes impressive new stat boosts and abilities! You’ll need every edge you can get to rule the Rocket Championship Tour.\r\n\r\nChange the Game\r\nThere’s more than one way to play. Dive into Knockout for classic 3v3 competitive action, or warm up first against RocketBots and test out your favorite combos. Compete to score goals in Rocketball, control zones in Mega Rocket, and go for the gold in Treasure Hunt. When you’re ready to go rocket-to-rocket with the best, dive into Ranked Play and show ‘em what you’re made of. Let’s Rocket!\r\n\r\nThis game includes optional in-game purchases of virtual currency that can be used to acquire virtual in-game items.\r\n\r\n© 2020 Final Strike Games, Inc. EA and the EA logo are trademarks of Electronic Arts Inc. Trademarks are the property of their respective owners."
+      "en": "Rockets rule everything in Rocket Arena, an explosive 3v3 shooter where you’re never out of the action. Master your hero’s unique rockets and abilities to rule the arena and become a champion! Try out an ever-growing roster of fantastic heroes with distinctive powers. Unearth new strategies and tactics based on your squad, explore a wide variety of dynamic maps, and discover the true depth of rocket gameplay. \r\n\r\nRocket-Fueled Heroes\r\nExplore a growing roster of unique heroes, each with distinctive personalities, backstories, and rivalries. Master your hero’s fantastic abilities and signature rockets and get the most out of your squad.\r\n\r\nDeath-Defying Action\r\nNever say die, because in Rocket Arena, you can’t! Taking too many hits will blast you out of the arena, but not out of the action. Ride your rocket right back in, choose your landing spot, and return to the fight.\r\n\r\nReach New Strategic Depths (and Heights)\r\nRockets are easy to pick up but challenging to truly master. Learn how to time your dodges, lead your targets, and use items and gadgets like the Rocket Magnet, Trip Mine, and Speed Boost to change the course of combat. Become one with your rocket and you will rule the arena. \r\n\r\nExplore a Bold New World\r\nFrom tropical ruins of The Gemstone Jungle to the high-tech, utopian Boom City, the world of Crater is home to many exotic locales. Each map is highly interactive and filled with hidden tricks, traps, and lore to explore. Use your rockets to jump, climb, and interact with the environment. There’s a world of possibility, so grab your rockets and start exploring!\r\n\r\nEvolve Your Heroes\r\nThe sky’s the limit for your heroes. Every match you play with them earns experience, unlocking Rocket Parts, Totem Parts, and spectacular outfits you can use to customize their look. You’ll also unlock fantastic artifacts as you play -- mix, match, and level them up to give your heroes impressive new stat boosts and abilities! You’ll need every edge you can get to rule the Rocket Championship Tour.\r\n\r\nChange the Game\r\nThere’s more than one way to play. Dive into Knockout for classic 3v3 competitive action, or warm up first against RocketBots and test out your favorite combos. Compete to score goals in Rocketball, control zones in Mega Rocket, and go for the gold in Treasure Hunt. When you’re ready to go rocket-to-rocket with the best, dive into Ranked Play and show ‘em what you’re made of. Let’s Rocket!\r\n\r\nThis game includes optional in-game purchases of virtual currency that can be used to acquire virtual in-game items.\r\n\r\n© 2020 Final Strike Games, Inc. EA and the EA logo are trademarks of Electronic Arts Inc. Trademarks are the property of their respective owners."
     },
     "Affirmations": [
       1
@@ -7181,21 +7181,22 @@
       3
     ],
     "InVaultTime": 2,
-    "PosterUrl": "https://store-images.s-microsoft.com/image/apps.8539.13894853419150806.710eb82b-1986-49c3-9168-efbd58edc848.eb3c4b69-ec8a-42b0-910a-15ff2df8ef01",
+    "PosterUrl": "https://store-images.s-microsoft.com/image/apps.52564.13894853419150806.2e0da314-9dfb-4eb0-aea5-a81bf4ed41aa.ccda62fb-6c10-4f8f-aae7-7d08c1433a8d",
     "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
-      "https://store-images.s-microsoft.com/image/apps.47152.14286590279247668.bc4abc90-93d5-453d-8768-3fba5ea08a6d.c7a2f763-56fd-48c6-be61-15cd414438a6",
-      "https://store-images.s-microsoft.com/image/apps.23986.14286590279247668.bc4abc90-93d5-453d-8768-3fba5ea08a6d.2e70351b-886c-48b4-87ad-3602127b7fee",
-      "https://store-images.s-microsoft.com/image/apps.46449.14286590279247668.bc4abc90-93d5-453d-8768-3fba5ea08a6d.1123c730-2132-415b-b902-61f4a5e55a1d",
-      "https://store-images.s-microsoft.com/image/apps.61672.14286590279247668.bc4abc90-93d5-453d-8768-3fba5ea08a6d.8b61f44c-8f8c-4286-9800-f41036ec5191",
-      "https://store-images.s-microsoft.com/image/apps.13576.14286590279247668.bc4abc90-93d5-453d-8768-3fba5ea08a6d.8e8fbcdd-e50b-46a5-8267-659e3eb452c8",
-      "https://store-images.s-microsoft.com/image/apps.36481.14286590279247668.0f87c12a-34d8-4651-8757-a837becc6749.e127bbaa-196b-4156-87ee-7b5c8ca2619d",
-      "https://store-images.s-microsoft.com/image/apps.52586.14286590279247668.0f87c12a-34d8-4651-8757-a837becc6749.c425d7f1-aadd-4b3c-9322-e220b140c8a8"
+      "https://store-images.s-microsoft.com/image/apps.47152.13894853419150806.2e0da314-9dfb-4eb0-aea5-a81bf4ed41aa.04af1963-5ce9-4388-986f-76b5661b87f8",
+      "https://store-images.s-microsoft.com/image/apps.44273.13894853419150806.2e0da314-9dfb-4eb0-aea5-a81bf4ed41aa.1c036bfb-75c7-453e-b46f-cb798a755acb",
+      "https://store-images.s-microsoft.com/image/apps.23986.13894853419150806.2e0da314-9dfb-4eb0-aea5-a81bf4ed41aa.01107c2c-173d-48a3-9643-9670c0871312",
+      "https://store-images.s-microsoft.com/image/apps.46449.13894853419150806.2e0da314-9dfb-4eb0-aea5-a81bf4ed41aa.0b1d3e5f-0831-4af9-8247-e51e28d765cd",
+      "https://store-images.s-microsoft.com/image/apps.61672.13894853419150806.2e0da314-9dfb-4eb0-aea5-a81bf4ed41aa.464fb248-3c2c-42e1-927f-b8d5d6f74aed",
+      "https://store-images.s-microsoft.com/image/apps.10741.13894853419150806.2e0da314-9dfb-4eb0-aea5-a81bf4ed41aa.17f41560-0bcc-4704-9188-af2bf9847078",
+      "https://store-images.s-microsoft.com/image/apps.36481.13894853419150806.710eb82b-1986-49c3-9168-efbd58edc848.355e4225-7ff9-46da-bfd8-3d9fef75c4e8",
+      "https://store-images.s-microsoft.com/image/apps.52586.13894853419150806.710eb82b-1986-49c3-9168-efbd58edc848.1faf6fe1-331c-4873-9dca-772a25616ac7"
     ],
     "ReleaseDate": 5248988978427387904,
     "DownloadSize": {
-      "US": 11438637056
+      "US": 11982626816
     }
   },
   {
@@ -7465,7 +7466,7 @@
     "OriginalPlatforms": [
       3
     ],
-    "InVaultTime": 2,
+    "InVaultTime": 1,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.40211.14495877115207630.23c33762-a1b0-45ca-ae1d-a10d15aa8f9c.79466cef-2f98-4688-837b-5d62731e7043",
     "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
@@ -7662,7 +7663,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.18720.68005754082254855.39795a60-73cf-4461-87d9-7f112c30c43c.46888afa-996b-4016-b5b4-c2e0b78171e2",
-    "IsMetacriticInfoCorrect": false,
+    "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.1164.68005754082254855.39795a60-73cf-4461-87d9-7f112c30c43c.93d3662b-92b9-44b9-9eb1-44299a73b730",
@@ -7734,10 +7735,10 @@
       "Shooter"
     ],
     "MetacriticUrls": {
-      "XboxOne": "https://www.metacritic.com/game/pc/sniper-elite-4/"
+      "XboxOne": "https://www.metacritic.com/game/xbox-one/sniper-elite-4/"
     },
     "MetaScore": {
-      "XboxOne": 78
+      "XboxOne": 81
     },
     "ID": "BZ5VLVX84STW",
     "Title": {
@@ -7755,7 +7756,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.27193.64044195348567726.135f2cd2-9709-4fe7-a7ca-fefaee870959.37e06c0d-e07a-4d2d-9592-495971ca7f75",
-    "IsMetacriticInfoCorrect": false,
+    "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.59005.64044195348567726.135f2cd2-9709-4fe7-a7ca-fefaee870959.f5df44b7-ec1d-4775-ba34-8ce02c79c81f",
@@ -7779,10 +7780,10 @@
       "Fighting"
     ],
     "MetacriticUrls": {
-      "XboxOne": "https://www.metacritic.com/game/pc/soulcalibur-vi/"
+      "XboxOne": "https://www.metacritic.com/game/xbox-one/soulcalibur-vi/"
     },
     "MetaScore": {
-      "XboxOne": 80
+      "XboxOne": 84
     },
     "ID": "C3V22FQD8N84",
     "Title": {
@@ -7800,7 +7801,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.64256.66844059373005859.084edff3-e994-44d9-8b5e-a9ead1faff94.e8441619-aa72-45d1-ae8c-c98af2c88016",
-    "IsMetacriticInfoCorrect": false,
+    "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.47940.66844059373005859.71e84fa3-7936-4d04-9fae-8299637f106c.4e23e317-adec-4a3b-8149-dbf398b298f1",
@@ -7853,7 +7854,7 @@
     ],
     "ReleaseDate": 5249019686427387904,
     "DownloadSize": {
-      "US": 1771628969
+      "US": 7223332864
     }
   },
   {
@@ -7997,7 +7998,7 @@
       "Sports"
     ],
     "MetacriticUrls": {
-      "XboxOne": "https://www.metacritic.com/game/pc/fifa-17/"
+      "XboxOne": "https://www.metacritic.com/game/xbox-one/fifa-17/"
     },
     "MetaScore": {
       "XboxOne": 84
@@ -8018,7 +8019,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.47248.70571305831533235.28202246-3c59-42b5-9b55-a87c4dec7066.cbea826a-7477-40d1-adee-515320647e46",
-    "IsMetacriticInfoCorrect": false,
+    "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.5785.70571305831533235.28202246-3c59-42b5-9b55-a87c4dec7066.d323b7bd-912d-4331-b984-bb4e90882b99",
@@ -8107,7 +8108,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.64015.65337579303130468.175d411f-fc67-43af-8f06-604de8de180e.231f3370-59ff-42a0-a6b3-766e18447cea",
-    "IsMetacriticInfoCorrect": false,
+    "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.11697.65337579303130468.175d411f-fc67-43af-8f06-604de8de180e.63816695-5b06-48f4-8f08-fb9d1bbeb5dd",
@@ -8147,7 +8148,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.156.64798281879073043.8d046c05-2968-4394-b85e-b27268656500.639ab033-c0b1-4f16-b64d-cf6d77e3725d",
-    "IsMetacriticInfoCorrect": false,
+    "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.17993.64798281879073043.8d046c05-2968-4394-b85e-b27268656500.ba22203e-6488-49dd-8149-367e7f96e577",
@@ -8192,7 +8193,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.42705.67329475825645372.7b68b132-250e-4704-a8a7-c18cca273b07.ae6f4b0e-554d-40fc-981a-dd8b1d3858e4",
-    "IsMetacriticInfoCorrect": false,
+    "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.41869.67329475825645372.7b68b132-250e-4704-a8a7-c18cca273b07.b0b3a62f-86d5-45dc-88bb-67c03cbb2f1f",
@@ -8245,7 +8246,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.1795.63178139801958626.aab0cb5f-a9f5-4f7c-9e82-085bc9c75499.842ac7b9-4b14-45cc-9097-a6df3ba49420",
-    "IsMetacriticInfoCorrect": false,
+    "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.28269.63178139801958626.aab0cb5f-a9f5-4f7c-9e82-085bc9c75499.c133222f-b89d-46ee-a3db-95627e75639f",
@@ -8335,7 +8336,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.52912.67187354709168902.a3bedf41-e05c-46af-b28a-9001abece0fc.1a9b6265-15b9-4437-8521-8f033e3ffd86",
-    "IsMetacriticInfoCorrect": false,
+    "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.61548.67187354709168902.a3bedf41-e05c-46af-b28a-9001abece0fc.d6dd9539-a93b-4180-add7-df9879a6ac1e",
@@ -8381,7 +8382,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.16587.14319795905285934.e0483a2e-7ffd-4af8-9779-3a48be285697.ba310598-82a0-4b2c-bfa9-b69472b8a370",
-    "IsMetacriticInfoCorrect": false,
+    "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.57032.14319795905285934.e0483a2e-7ffd-4af8-9779-3a48be285697.3b7a2b8e-f546-4018-8314-4b4fe2e1b930",
@@ -8405,10 +8406,10 @@
       "Sports"
     ],
     "MetacriticUrls": {
-      "XboxOne": "https://www.metacritic.com/game/pc/efootball-pes-2020/"
+      "XboxOne": "https://www.metacritic.com/game/xbox-one/efootball-pes-2020/"
     },
     "MetaScore": {
-      "XboxOne": 81
+      "XboxOne": 82
     },
     "ID": "BP4KK0NCLCHQ",
     "Title": {
@@ -8426,7 +8427,7 @@
     ],
     "InVaultTime": 1,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.38998.67738212027997379.4cfa34ad-8c75-401a-8f41-69350c1297a2.f73aad45-82e8-4f7d-9d07-6ea3c10b0429",
-    "IsMetacriticInfoCorrect": false,
+    "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.18567.67738212027997379.5bce207b-0a08-4b39-8a30-4a8671a67a4c.ed3bc900-f7db-42aa-af88-b4863a4917f0",
@@ -8491,10 +8492,10 @@
       "Sports"
     ],
     "MetacriticUrls": {
-      "XboxOne": "https://www.metacritic.com/game/pc/f1-2019/"
+      "XboxOne": "https://www.metacritic.com/game/xbox-one/f1-2019/"
     },
     "MetaScore": {
-      "XboxOne": 87
+      "XboxOne": 89
     },
     "ID": "BP4H9HD3FSWB",
     "Title": {
@@ -8512,7 +8513,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.36580.67735221696398075.49489fa4-dc9f-47cb-8619-0fffafc3d441.0c746ce2-55a8-4506-804e-004f737df2f5",
-    "IsMetacriticInfoCorrect": false,
+    "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.33749.67735221696398075.49489fa4-dc9f-47cb-8619-0fffafc3d441.d926ffa5-ec32-4ad0-9c54-c949177d3add",
@@ -8665,10 +8666,10 @@
       "Role playing"
     ],
     "MetacriticUrls": {
-      "XboxOne": "https://www.metacritic.com/game/xbox-one/fallout-76/"
+      "XboxOne": "https://www.metacritic.com/game/pc/fallout-76/"
     },
     "MetaScore": {
-      "XboxOne": 49
+      "XboxOne": 52
     },
     "ID": "BS6WJ2L56B10",
     "Title": {
@@ -8686,7 +8687,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.18492.70143269474194625.be3cf828-9ca8-430f-9714-9bcc590c48fc.a8c35893-36ab-4f8f-a945-3e1be9ff794a",
-    "IsMetacriticInfoCorrect": true,
+    "IsMetacriticInfoCorrect": false,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.60056.70143269474194625.be3cf828-9ca8-430f-9714-9bcc590c48fc.82d175f6-add9-4a02-9c8d-6c1defb49f3c",
@@ -8765,10 +8766,10 @@
       "Simulation"
     ],
     "MetacriticUrls": {
-      "XboxOne": "https://www.metacritic.com/game/xbox-one/farming-simulator-17/"
+      "XboxOne": "https://www.metacritic.com/game/pc/farming-simulator-17/"
     },
     "MetaScore": {
-      "XboxOne": 65
+      "XboxOne": 69
     },
     "ID": "C45KV8Q992HV",
     "Title": {
@@ -8786,7 +8787,7 @@
     ],
     "InVaultTime": 1,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.32861.66445546520609419.4a3b03bf-e99b-4622-bb87-89586f01c3b4.2d40dd18-a733-4e35-8579-24f4be2c309a",
-    "IsMetacriticInfoCorrect": true,
+    "IsMetacriticInfoCorrect": false,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
       "https://store-images.s-microsoft.com/image/apps.42774.66445546520609419.4a3b03bf-e99b-4622-bb87-89586f01c3b4.cd6de580-5818-4548-961f-dd15f6be74e4",
@@ -11560,7 +11561,7 @@
     ],
     "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.51280.14226270511206590.d3f6ff8c-e233-41d7-af44-309db86bfc65.c3b924f9-c159-49f3-958b-4f229bff41d4",
-    "IsMetacriticInfoCorrect": true,
+    "IsMetacriticInfoCorrect": false,
     "IsMetacriticInfoExist": true,
     "ScreenShots": [
     ],
@@ -13756,7 +13757,7 @@
     ],
     "ReleaseDate": 5248558562427387904,
     "DownloadSize": {
-      "US": 49387851776
+      "US": 49549123584
     }
   },
   {
@@ -14813,7 +14814,7 @@
     ],
     "ReleaseDate": 5248402178427387904,
     "DownloadSize": {
-      "US": 22737465344
+      "US": 22945935360
     }
   },
   {
@@ -15134,7 +15135,7 @@
     ],
     "ReleaseDate": 5247894146427387904,
     "DownloadSize": {
-      "US": 22915096576
+      "US": 23650217984
     }
   },
   {
@@ -15506,7 +15507,7 @@
       "XboxOne": "https://www.metacritic.com/game/xbox-one/call-of-the-sea/"
     },
     "MetaScore": {
-      "XboxOne": 82
+      "XboxOne": 80
     },
     "ID": "9P27ZMZ7FDPZ",
     "Title": {
@@ -15819,7 +15820,7 @@
       "XboxOne": "https://www.metacritic.com/game/xbox-series-x/morkredd/"
     },
     "MetaScore": {
-      "XboxOne": 63
+      "XboxOne": 60
     },
     "ID": "9PKD7RG0TQP4",
     "Title": {
@@ -15853,7 +15854,7 @@
     ],
     "ReleaseDate": 5249118434427387904,
     "DownloadSize": {
-      "US": 5678764032
+      "US": 5677465600
     }
   },
   {
@@ -15880,7 +15881,7 @@
     "OriginalPlatforms": [
       3
     ],
-    "InVaultTime": 0,
+    "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.28816.13706168114776082.962d26d6-8d62-4fdb-bb9f-680c84d005e3.ff2628b5-9d7e-4a7f-957d-cc07bac8ce26",
     "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
@@ -15923,7 +15924,7 @@
     "OriginalPlatforms": [
       3
     ],
-    "InVaultTime": 0,
+    "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.48964.14282482603081127.c4d52cdd-54c3-4c5a-a125-98e300817fa7.1f2b59f5-250c-4ac6-8f3f-3278f9453ca4",
     "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
@@ -15967,7 +15968,7 @@
     "OriginalPlatforms": [
       3
     ],
-    "InVaultTime": 0,
+    "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.29424.13732308681387652.912ddfff-827b-4ec6-879c-11fe5776733d.6487f903-ca26-4d1f-93c3-014f5d5fde9b",
     "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
@@ -16014,7 +16015,7 @@
     "OriginalPlatforms": [
       3
     ],
-    "InVaultTime": 0,
+    "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.43919.13730273714404372.ea561b73-8f7b-40a2-b473-ec2ebf0c6300.dc3d6ec4-0b1f-4f01-a975-533226a28eba",
     "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
@@ -16103,7 +16104,7 @@
     "OriginalPlatforms": [
       3
     ],
-    "InVaultTime": 0,
+    "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.30938.68154223333149423.db499d68-44a6-48cc-864e-333506fc6ded.eae8dd47-73f6-4937-9696-7e6597aa6d30",
     "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
@@ -16148,7 +16149,7 @@
     "OriginalPlatforms": [
       3
     ],
-    "InVaultTime": 0,
+    "InVaultTime": 2,
     "PosterUrl": "https://store-images.s-microsoft.com/image/apps.57479.67309809726168278.238b1eb9-bece-4b2e-b1e8-19ca99512d56.7399948a-f615-497e-8e65-18acd0adf133",
     "IsMetacriticInfoCorrect": true,
     "IsMetacriticInfoExist": true,
@@ -16383,6 +16384,107 @@
     "ReleaseDate": 5249067962427387904,
     "DownloadSize": {
       "US": 7256576000
+    }
+  },
+  {
+    "Categories": [
+      "Action & adventure",
+      "Simulation",
+      "Strategy"
+    ],
+    "MetacriticUrls": {
+      "XboxOne": "https://www.metacritic.com/game/xbox-one/desperados-iii/"
+    },
+    "MetaScore": {
+      "XboxOne": 85
+    },
+    "ID": "BRRC2X2GQGC7",
+    "Title": {
+      "en": "Desperados III"
+    },
+    "Description": {
+      "en": "Desperados III is a story-driven, hardcore tactical stealth game, set in a ruthless Wild West scenario. Play smart if you want to succeed. A good plan can make the difference between survival and finding yourself at the business end of a pistol.\r\n\r\nIn this long-awaited prequel to the beloved classic Desperados: Wanted Dead or Alive, John Cooper will join forces with the runaway bride Kate, the shady hitman Doc McCoy, the giant trapper Hector, and Isabelle, a mysterious lady from New Orleans. On Cooper’s quest for redemption, his adventures lead him and his gang from rural towns, over swamps and riverbanks, and finally to a dramatic showdown worthy of Wild West legends. \r\n\r\nDrifter, gunslinger, and natural leader Cooper can kill quietly with a knife, or take out multiple foes with his revolvers. Strongman Hector carries a giant bear trap and can slay the toughest opponents with his trusty axe. Cold blooded bounty hunter McCoy likes to be methodical, using lures, knockout gas, poison syringes and a custom long-range pistol. Kate can fool almost any man with the right outfit, and kills discreetly with her hidden gun. And then there is this mysterious woman from New Orleans, Isabelle…\r\n\r\n\r\nCombine your team’s special skills to overcome each tough challenge in your own style. Plan your moves wisely and execute them perfectly in real time to sneak past your enemies while remaining undetected.\r\n"
+    },
+    "Affirmations": [
+      0
+    ],
+    "MetaCriticPathName": "desperados-iii",
+    "OriginalPlatforms": [
+      3
+    ],
+    "InVaultTime": 0,
+    "PosterUrl": "https://store-images.s-microsoft.com/image/apps.47872.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.79de8dde-fad4-40dd-9895-12d93d6f4757",
+    "IsMetacriticInfoCorrect": true,
+    "IsMetacriticInfoExist": true,
+    "ScreenShots": [
+      "https://store-images.s-microsoft.com/image/apps.54591.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.f7108771-6890-49c5-aa33-33791ce3c2e3",
+      "https://store-images.s-microsoft.com/image/apps.46617.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.7d983851-2c1c-47bb-b1ec-c028d91cf383",
+      "https://store-images.s-microsoft.com/image/apps.21926.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.d1a3debb-4da2-4e34-9302-d672fd17a8da",
+      "https://store-images.s-microsoft.com/image/apps.64743.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.b11c50fb-cb1c-42be-8656-3fb8da56d744",
+      "https://store-images.s-microsoft.com/image/apps.12389.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.b57b7e99-b595-4f71-af8e-4c3e8b3c04ee",
+      "https://store-images.s-microsoft.com/image/apps.60146.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.6482b004-1a61-4aff-a812-977737d9c4aa",
+      "https://store-images.s-microsoft.com/image/apps.41200.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.df777948-ae97-4395-9170-b535f6af84c5",
+      "https://store-images.s-microsoft.com/image/apps.11744.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.baa4c1ed-c309-4496-89ac-59ff2cdcdfdd",
+      "https://store-images.s-microsoft.com/image/apps.14878.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.16b562a6-13d0-4296-8868-e71800e61def",
+      "https://store-images.s-microsoft.com/image/apps.9266.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.e57b05bd-7e8c-434b-8ad4-e0d9f74ac62e",
+      "https://store-images.s-microsoft.com/image/apps.27092.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.e414feb1-534d-40bc-ac83-0a9779563f1f",
+      "https://store-images.s-microsoft.com/image/apps.47901.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.b518431a-8489-4347-b991-a6a405c05fcb",
+      "https://store-images.s-microsoft.com/image/apps.49680.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.d0df5cff-de34-4562-a036-ee15a9b2da84",
+      "https://store-images.s-microsoft.com/image/apps.8368.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.7395a0cf-ec8c-49cb-a2f3-9f53cc671fb3",
+      "https://store-images.s-microsoft.com/image/apps.26154.69279568107563806.aef146f2-f29f-4284-af8c-ab045edb6329.c87942ce-a227-498f-a456-e7501514abea",
+      "https://store-images.s-microsoft.com/image/apps.43998.69279568107563806.aef146f2-f29f-4284-af8c-ab045edb6329.222ea0ee-16bb-46c7-943b-5138abe15c7b",
+      "https://store-images.s-microsoft.com/image/apps.30986.69279568107563806.aef146f2-f29f-4284-af8c-ab045edb6329.7cf37794-cf45-4cb6-911d-55e98e5c59f4",
+      "https://store-images.s-microsoft.com/image/apps.23145.69279568107563806.aef146f2-f29f-4284-af8c-ab045edb6329.53a94bb4-f34d-4902-a0b8-22126baa24bf",
+      "https://store-images.s-microsoft.com/image/apps.44971.69279568107563806.aef146f2-f29f-4284-af8c-ab045edb6329.8702fb7f-3e35-4886-ab7d-7bc5eb322c7b",
+      "https://store-images.s-microsoft.com/image/apps.54993.69279568107563806.aef146f2-f29f-4284-af8c-ab045edb6329.a83131af-5033-45f5-a43a-72072beb973d",
+      "https://store-images.s-microsoft.com/image/apps.40126.69279568107563806.aef146f2-f29f-4284-af8c-ab045edb6329.61a2f524-18fc-4b97-8866-568c52fa33f2",
+      "https://store-images.s-microsoft.com/image/apps.16529.69279568107563806.aef146f2-f29f-4284-af8c-ab045edb6329.25a121a7-6c6a-4d8a-b563-240ec93ebe13"
+    ],
+    "ReleaseDate": 5248965326427387904,
+    "DownloadSize": {
+      "US": 24001007616
+    }
+  },
+  {
+    "Categories": [
+      "Action & adventure",
+      "Family & kids",
+      "Puzzle & trivia"
+    ],
+    "MetacriticUrls": {
+      "XboxOne": "https://www.metacritic.com/game/xbox-one/donut-county/"
+    },
+    "MetaScore": {
+      "XboxOne": 87
+    },
+    "ID": "9N6V2181GHLM",
+    "Title": {
+      "en": "Donut County"
+    },
+    "Description": {
+      "en": "Donut County is a story-based physics puzzle game where you play as an ever-growing hole in the ground. Meet cute characters, steal their trash, and throw them in a hole.\r\n\r\nWhere Trash is Treasure\r\nRaccoons have taken over Donut County with remote-controlled trash-stealing holes. You play as BK, a hole-driving raccoon who swallows up his friends and their homes to earn idiotic prizes. \r\n\r\nWhen BK falls into one of his own holes, he’s confronted by his best friend Mira and the residents of Donut County, who are all stuck 999 feet underground… and they demand answers!\r\n\r\nThe Hole Keeps Growing\r\n• EXPLORE every character’s home, each with their own unique environment.\r\n• MOVE the hole to swallow up their stuff, growing bigger each time.\r\n• COMBINE objects inside for crazy effects: cook soup, breed bunnies, launch fireworks, and more.\r\n• CATAPULT things back out of the hole. You can use it to solve puzzles...or just destroy stuff.\r\n• DEVOUR everything. The hole won’t stop until the whole county is all gone.\r\n \r\nDonut County was created by Ben Esposito, designer on What Remains of Edith Finch and The Unfinished Swan. It is the result of six years of solo development, dozens of donuts (for research), and one fateful encounter with a raccoon.\r\n\r\nThe PC version of this game does not support Xbox Live"
+    },
+    "Affirmations": [
+      0
+    ],
+    "MetaCriticPathName": "donut-county",
+    "OriginalPlatforms": [
+      3
+    ],
+    "InVaultTime": 0,
+    "PosterUrl": "https://store-images.s-microsoft.com/image/apps.9487.14011542784181932.80ac6320-df7b-4be6-9355-e9083a5d2063.bb7adc22-496e-4006-a148-669d0ac3898f",
+    "IsMetacriticInfoCorrect": true,
+    "IsMetacriticInfoExist": true,
+    "ScreenShots": [
+      "https://store-images.s-microsoft.com/image/apps.63368.14011542784181932.80ac6320-df7b-4be6-9355-e9083a5d2063.f058917d-5022-434f-9628-302658151635",
+      "https://store-images.s-microsoft.com/image/apps.58073.14011542784181932.80ac6320-df7b-4be6-9355-e9083a5d2063.2dc20a79-41ff-495b-8a92-064f4011787f",
+      "https://store-images.s-microsoft.com/image/apps.25594.14011542784181932.80ac6320-df7b-4be6-9355-e9083a5d2063.f568b576-5d8a-4c2d-bb13-0dfe8eb64731",
+      "https://store-images.s-microsoft.com/image/apps.8431.14011542784181932.80ac6320-df7b-4be6-9355-e9083a5d2063.2c8b3859-e53a-4a34-be1b-2aa24a426606",
+      "https://store-images.s-microsoft.com/image/apps.3155.14011542784181932.80ac6320-df7b-4be6-9355-e9083a5d2063.ab105389-9e57-42f6-8841-5b3447e20d07"
+    ],
+    "ReleaseDate": 5248492898427387904,
+    "DownloadSize": {
+      "US": 588505088
     }
   }
 ]
