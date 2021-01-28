@@ -487,21 +487,29 @@ namespace GamePassScores.InfoCollectorConsole
             {
                 var responseContentString = await response.Content.ReadAsStringAsync();
                 HtmlDocument document = new HtmlDocument();
-                document.LoadHtml(responseContentString);
-                var matchNode = document.DocumentNode.SelectSingleNode("//script[@type='application/ld+json']");
 
-                var jsonText = matchNode.InnerText;
-                var metacriticScoreModel = JsonConvert.DeserializeObject<MetacriticScoreModel>(jsonText);
-
-                lock (game)
+                if(!string.IsNullOrEmpty(responseContentString))
                 {
-                    game.IsMetacriticInfoExist = true;
-                    game.IsMetacriticInfoCorrect = true;
-                    if (metacriticScoreModel.aggregateRating != null)
+                    document.LoadHtml(responseContentString);
+                    var matchNode = document.DocumentNode.SelectSingleNode("//script[@type='application/ld+json']");
+
+                    var jsonText = matchNode.InnerText;
+                    var metacriticScoreModel = JsonConvert.DeserializeObject<MetacriticScoreModel>(jsonText);
+
+                    lock (game)
                     {
-                        game.MetaScore[platform] = int.Parse(metacriticScoreModel.aggregateRating.ratingValue);
-                        game.MetacriticUrls[platform] = new Uri(requestUrlString);
+                        game.IsMetacriticInfoExist = true;
+                        game.IsMetacriticInfoCorrect = true;
+                        if (metacriticScoreModel.aggregateRating != null)
+                        {
+                            game.MetaScore[platform] = int.Parse(metacriticScoreModel.aggregateRating.ratingValue);
+                            game.MetacriticUrls[platform] = new Uri(requestUrlString);
+                        }
                     }
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("游戏的Metacritic信息正确，http回应却是空。");
                 }
             }
             else
