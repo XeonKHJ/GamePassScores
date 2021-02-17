@@ -72,13 +72,15 @@ namespace GamePassScores.UWP
 
             try
             {
-                var buffer = await httpClient.GetBufferAsync(new Uri("https://raw.githubusercontent.com/XeonKHJ/GamePassScores/master/QueryResults/games.json"));
+                var buffer = await httpClient.GetBufferAsync(new Uri("https://github.com/XeonKHJ/GamePassScores/blob/master/QueryResults/games.json?raw=true"));
 
                 var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("games.json", CreationCollisionOption.ReplaceExisting);
 
                 await FileIO.WriteBufferAsync(file, buffer);
 
                 ReadGamesFromJson();
+
+                System.Diagnostics.Debug.WriteLine("更新成功");
             }
             catch(Exception exception)
             {
