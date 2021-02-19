@@ -1,5 +1,8 @@
 # Gamepass Scores
 
+### Download
+<a href='//www.microsoft.com/store/apps/9NJDMV83KSWT?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="280" height="104"/></a>
+
 ### Latest Update
 - Add Xbox support.
 - Add download size information.
