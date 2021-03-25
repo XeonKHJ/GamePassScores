@@ -478,7 +478,10 @@ namespace GamePassScores.InfoCollectorConsole
         {
             semaphore.WaitOne();
             abcde++;
-
+            if(abcde>2)
+            {
+                System.Diagnostics.Debug.WriteLine("fuck, it's too much");
+            }
             Console.WriteLine("发送MTC请求");
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrlString);
             HttpClient httpClient = new HttpClient();
