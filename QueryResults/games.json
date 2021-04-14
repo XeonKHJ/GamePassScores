@@ -683,7 +683,7 @@
         ],
         "ReleaseDate": 5248021154427387904,
         "DownloadSize": {
-            "US": 29916831744
+            "US": 30417534976
         }
     },
     {
@@ -1371,7 +1371,7 @@
         ],
         "ReleaseDate": 5248112738427387904,
         "DownloadSize": {
-            "US": 120555937792
+            "US": 120579518464
         }
     },
     {
@@ -1466,7 +1466,7 @@
         ],
         "ReleaseDate": 5248536098427387904,
         "DownloadSize": {
-            "US": 1908228096
+            "US": 1959071744
         }
     },
     {
@@ -1951,7 +1951,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 2,
+        "InVaultTime": 1,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.57154.14206288516140383.9abb7b51-66f2-454d-8490-76521abe2483.3f8e9e2f-f515-4316-a7d4-32507d1a6a0c",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -2022,10 +2022,10 @@
             "Shooter"
         ],
         "MetacriticUrls": {
-            "XboxOne": "https://www.metacritic.com/game/xbox-one/destiny-2/"
+            "XboxOne": "https://www.metacritic.com/game/pc/destiny-2/"
         },
         "MetaScore": {
-            "XboxOne": 87
+            "XboxOne": 83
         },
         "ID": "BPQ955FQFPH6",
         "Title": {
@@ -2043,7 +2043,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.30303.68655995542193491.618ba70a-85c2-47a4-944e-7a9b39528ca8.c3eb629f-7dac-460f-adc2-ba0f395b6c66",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.33511.68655995542193491.8ebaffb9-0b52-40b0-9395-b18addc8fafa.7fa0444b-90f1-4731-93a6-18fc03644ba1",
@@ -2059,7 +2059,7 @@
         ],
         "ReleaseDate": 5248741478427387904,
         "DownloadSize": {
-            "US": 77910642688
+            "US": 77917384704
         }
     },
     {
@@ -2067,10 +2067,10 @@
             "Shooter"
         ],
         "MetacriticUrls": {
-            "XboxOne": "https://www.metacritic.com/game/xbox-one/destiny-2-forsaken/"
+            "XboxOne": "https://www.metacritic.com/game/pc/destiny-2-forsaken/"
         },
         "MetaScore": {
-            "XboxOne": 86
+            "XboxOne": 84
         },
         "ID": "BQ56JMH9S69F",
         "Title": {
@@ -2088,7 +2088,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.42440.68331807765411716.0de9a156-f450-49fe-b5d4-3da72ae89f76.fb3d883c-8fc8-4b02-9c71-e667b1babd0d",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.18433.68331807765411716.086db5b1-639f-454d-9847-0127a95681e1.0cfeeb3e-dbc0-4063-b5e9-fa9b70ddb725",
@@ -2534,7 +2534,7 @@
             "Role playing"
         ],
         "MetacriticUrls": {
-            "XboxOne": "https://www.metacritic.com/game/xbox-one/dragon-age-inquisition/"
+            "XboxOne": "https://www.metacritic.com/game/pc/dragon-age-inquisition/"
         },
         "MetaScore": {
             "XboxOne": 85
@@ -2555,7 +2555,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.59172.66474211586744867.e24f67e1-7195-4bf7-9758-84e7723c0673.f1ac78b0-3728-4d7f-8ccd-11a5398dbdfa",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.46207.66474211586744867.e24f67e1-7195-4bf7-9758-84e7723c0673.041c60ca-64d6-4418-8035-4f6274d90bf9",
@@ -2630,7 +2630,7 @@
         ],
         "ReleaseDate": 5249028362427387904,
         "DownloadSize": {
-            "US": 6549811200
+            "US": 6636998656
         }
     },
     {
@@ -3011,7 +3011,7 @@
         ],
         "ReleaseDate": 5248862330427387904,
         "DownloadSize": {
-            "US": 49496465408
+            "US": 51062083584
         }
     },
     {
@@ -3737,7 +3737,7 @@
             "en-us": "Halo: The Master Chief Collection"
         },
         "Description": {
-            "en-us": "XBOX GAME PASS MEMBERS – Download and play by selecting \"Halo: The Master Chief Collection\", “Halo 3: ODST” and “Halo: Reach” under \"In this bundle\". \r\n\r\nSeason 5 has arrived as the latest FREE update for Halo: The Master Chief Collection! Infamous and long-awaited, the \"GRD\" helmet for Halo: Reach is finally available for unlock in the Collection alongside the Mariner helmet and EXO/TCSC chest piece. In Halo 3 discover brand new weapon skins and, for the first time in over a decade, unlock new armor! With over 60 individual pieces of armor and 12 complete sets, there has never been a better time to outfit your Spartan in the Collection. \r\n\r\nImproved, refreshed and better than ever; The Master Chief's entire story is now optimized for Xbox Series X|S. Enjoy next-generation features like faster load times, cross-generation play, adjustable FOV, an improved split screen experience and up to 4K resolution at 120FPS.*\r\nHonoring the iconic hero and his epic journey, the Master Chief’s entire story is brought together as Halo: The Master Chief Collection. Halo: Combat Evolved Anniversary, Halo 2: Anniversary, Halo 3, and Halo 4 and now Halo: Reach and Halo 3: ODST are all included in one integrated experience. \r\n\r\nThe Master Chief Collection Digital Bundle is the most expansive Halo experience yet, with a total of 67 campaign missions plus more than 120 multiplayer (including the original Halo Combat Evolved maps), Spartan Ops maps and countless ways to play with community created Forge content. Now updated with Xbox Series X enhancements, this is the collection Halo fans have been waiting for!* \r\n\r\n*All Up Disclaimer – Improved split screen and 4K at 120FPS only available on Xbox Series X, 1080p resolution at 120FPS available on Xbox Series S. Some game features, including hidden terminal videos, require broadband internet; ISP fees apply. Online multiplayer features require Xbox Live Gold membership (sold separately). \r\n\r\n\r\nThe Complete Master Chief Story – Honoring the iconic hero and his epic journey, The Master Chief’s entire story is brought together as Halo: The Master Chief Collection.  Halo: Combat Evolved Anniversary, Halo 2: Anniversary, Halo 3, and Halo 4 are all included with a total of 45 campaign missions plus more than 100 multiplayer maps (including the original Halo Combat Evolved maps) and Spartan Ops maps.  Now updated with Xbox One X enhancements to provide up to 4K UHD and HDR support, this is the collection Halo fans have been waiting for!*\r\n\r\n\r\n\r\nHalo 2: Anniversary – Celebrating Halo 2's 10-year anniversary, the iconic fan favorite returns, featuring a fully re-mastered campaign with “Classic Mode” letting you instantly switch between the re-mastered game and the original game from 2004.  Uncover new Halo 5: Guardians story elements with extended cut scenes, hidden terminal videos, and utilize all new skulls to experience the campaign in a whole new way.  Including all 25 original multiplayer maps just as fans remember them, plus 6 completely re-imagined maps.  Play the game that defined online multiplayer on consoles and get ready for the next Halo chapter.\r\n\r\n\r\n\r\nNewly Updated – Recently refreshed with new features such as local offline LAN support, intelligent download of specific content, faster load times, and Xbox One X enhancements such as 4K UHD and HDR support* as well as optimization and refinements to matchmaking, Halo: The Master Chief Collection continues to be the definitive place to experience the origin of the Master Chief saga.\r\n\r\n\r\n\r\n*All Up Disclaimer – Xbox One X required for 4K UHD and HDR support. Some game features, including hidden terminal videos, require broadband internet; ISP fees apply. Online multiplayer features require Xbox Live Gold membership (sold separately). Halo: Nightfall: 5 episode live action series is streaming only. Xbox One or Windows 8.1 or higher and broadband internet required; ISP fees apply. Must be 17+. Halo: Nightfall dates, content, and features subject to change. See www.xbox.com/halo"
+            "en-us": "XBOX GAME PASS MEMBERS – Download and play by selecting \"Halo: The Master Chief Collection\", “Halo 3: ODST” and “Halo: Reach” under \"In this bundle\". \r\n\r\nSeason 6 is available now as the latest FREE update for Halo: The Master Chief Collection! Enjoy new content like:\r\n•\tNew Halo 3 Armors: Inspired by the Halo: Fireteam Raven arcade game, players can unlock four new armor sets, vehicle skins and weapon skins styled after the legendary strike team.\r\n•\tNew Customization options: Create a Spartan that’s uniquely yours with all new cosmetic effects like animated visors and back accessories for Halo 3 alongside over 100 additional Season 6 rewards.  \r\n•\tSeason Points Exchange: Exchange season points for exclusive new cosmetic items as well as prior seasonal challenge rewards\r\n\r\nImproved, refreshed and better than ever; The Master Chief's entire story is now optimized for Xbox Series X|S. Enjoy next-generation features like faster load times, cross-generation play, adjustable FOV, an improved split screen experience and up to 4K resolution at 120FPS.*\r\nHonoring the iconic hero and his epic journey, the Master Chief’s entire story is brought together as Halo: The Master Chief Collection. Halo: Combat Evolved Anniversary, Halo 2: Anniversary, Halo 3, and Halo 4 and now Halo: Reach and Halo 3: ODST are all included in one integrated experience. \r\n\r\nThe Master Chief Collection Digital Bundle is the most expansive Halo experience yet, with a total of 67 campaign missions plus more than 120 multiplayer (including the original Halo Combat Evolved maps), Spartan Ops maps and countless ways to play with community created Forge content. Now updated with Xbox Series X enhancements, this is the collection Halo fans have been waiting for!* \r\n\r\n*All Up Disclaimer – Improved split screen and 4K at 120FPS only available on Xbox Series X, 1080p resolution at 120FPS available on Xbox Series S. Some game features, including hidden terminal videos, require broadband internet; ISP fees apply. Online multiplayer features require Xbox Live Gold membership (sold separately). \r\n\r\n\r\nThe Complete Master Chief Story – Honoring the iconic hero and his epic journey, The Master Chief’s entire story is brought together as Halo: The Master Chief Collection.  Halo: Combat Evolved Anniversary, Halo 2: Anniversary, Halo 3, and Halo 4 are all included with a total of 45 campaign missions plus more than 100 multiplayer maps (including the original Halo Combat Evolved maps) and Spartan Ops maps.  Now updated with Xbox One X enhancements to provide up to 4K UHD and HDR support, this is the collection Halo fans have been waiting for!*\r\n\r\n\r\n\r\nHalo 2: Anniversary – Celebrating Halo 2's 10-year anniversary, the iconic fan favorite returns, featuring a fully re-mastered campaign with “Classic Mode” letting you instantly switch between the re-mastered game and the original game from 2004.  Uncover new Halo 5: Guardians story elements with extended cut scenes, hidden terminal videos, and utilize all new skulls to experience the campaign in a whole new way.  Including all 25 original multiplayer maps just as fans remember them, plus 6 completely re-imagined maps.  Play the game that defined online multiplayer on consoles and get ready for the next Halo chapter.\r\n\r\n\r\n\r\nNewly Updated – Recently refreshed with new features such as local offline LAN support, intelligent download of specific content, faster load times, and Xbox One X enhancements such as 4K UHD and HDR support* as well as optimization and refinements to matchmaking, Halo: The Master Chief Collection continues to be the definitive place to experience the origin of the Master Chief saga.\r\n\r\n\r\n\r\n*All Up Disclaimer – Xbox One X required for 4K UHD and HDR support. Some game features, including hidden terminal videos, require broadband internet; ISP fees apply. Online multiplayer features require Xbox Live Gold membership (sold separately). Halo: Nightfall: 5 episode live action series is streaming only. Xbox One or Windows 8.1 or higher and broadband internet required; ISP fees apply. Must be 17+. Halo: Nightfall dates, content, and features subject to change. See www.xbox.com/halo"
         },
         "Affirmations": [
             0
@@ -3764,7 +3764,7 @@
         ],
         "ReleaseDate": 5248779638427387904,
         "DownloadSize": {
-            "US": 149193187328
+            "US": 153715843072
         }
     },
     {
@@ -4006,7 +4006,7 @@
             "en": "Human Fall Flat"
         },
         "Description": {
-            "en": "***NEW LEVELS 'CITY' AND 'GOLF' PLUS NEW 'BABY OUTFIT' SKIN AVAILABLE NOW***\r\n\r\nGet sporty with up to seven other Humans and take on golf, crossbows, bowling and basketball in TWO brand new Human: Fall Flat levels - Golf and City!\r\n\r\nPack your clubs, clambour into the nearest cart and don't forget to practice your swing. Human: Fall Flat heads to the green in brand new level Golf!  \r\n\r\nThen traverse neon-lit skyscrapers, tackle strenuous sports and soar through the night sky on your very own drone as Human: Fall Flat heads to the futuristic Urban nightlife of new level City!\r\n\r\nHuman: Fall Flat is a hilarious, light-hearted physics platformer set in a world of floating dreamscapes. \r\n \r\nEach dream level provides a new environment to navigate, from mansions, castles and Aztec adventures to snowy mountains, eerie nightscapes and industrial locations. Multiple routes through each level, and perfectly playful puzzles ensure exploration and ingenuity are rewarded. \r\n \r\nOf course, your Human's wobbly movements don't make things easy, and whether you're jumping, climbing, carrying or swinging, things can easily go very wrong - with very funny results. \r\n \r\nShould your Human fall from a rope, misjudge a platform or even get pushed off a cliff by a friend, never fear: they will simply fall back into the dream, ready to try again and again.\r\n \r\nHuman: Fall Flat can be played solo or with up to 8 players online for even more laughter. What's more, regular free level releases mean there's no end to the fun in sight!"
+            "en": "***NEW LEVELS 'CITY' AND 'GOLF' PLUS NEW 'BABY OUTFIT' SKIN AVAILABLE NOW***\r\n\r\nIncludes 16 great levels. Over 25million units sold across all formats.\r\n\r\nGet sporty with up to seven other Humans and take on golf, crossbows, bowling and basketball in TWO brand new Human: Fall Flat levels - Golf and City!\r\n\r\nPack your clubs, clambour into the nearest cart and don't forget to practice your swing. Human: Fall Flat heads to the green in brand new level Golf!  \r\n\r\nThen traverse neon-lit skyscrapers, tackle strenuous sports and soar through the night sky on your very own drone as Human: Fall Flat heads to the futuristic Urban nightlife of new level City!\r\n\r\nHuman: Fall Flat is a hilarious, light-hearted physics platformer set in a world of floating dreamscapes. \r\n \r\nEach dream level provides a new environment to navigate, from mansions, castles and Aztec adventures to snowy mountains, eerie nightscapes and industrial locations. Multiple routes through each level, and perfectly playful puzzles ensure exploration and ingenuity are rewarded. \r\n \r\nOf course, your Human's wobbly movements don't make things easy, and whether you're jumping, climbing, carrying or swinging, things can easily go very wrong - with very funny results. \r\n \r\nShould your Human fall from a rope, misjudge a platform or even get pushed off a cliff by a friend, never fear: they will simply fall back into the dream, ready to try again and again.\r\n \r\nHuman: Fall Flat can be played solo or with up to 8 players online for even more laughter. What's more, regular free level releases mean there's no end to the fun in sight!"
         },
         "Affirmations": [
             0
@@ -4016,7 +4016,7 @@
             3
         ],
         "InVaultTime": 2,
-        "PosterUrl": "https://store-images.s-microsoft.com/image/apps.27750.69811231537758929.b385e1ea-dde1-46bf-9a0c-b93c26313985.bc6fe0d7-4ad5-4002-bc80-d20e8d342536",
+        "PosterUrl": "https://store-images.s-microsoft.com/image/apps.44616.69811231537758929.9d19d3fb-e3a2-4807-b670-1f69fb462c7a.323e4b5b-34eb-462e-b7b0-1ec74de7e597",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
@@ -4292,7 +4292,7 @@
             "Shooter"
         ],
         "MetacriticUrls": {
-            "XboxOne": "https://www.metacritic.com/game/xbox-one/journey-to-the-savage-planet/"
+            "XboxOne": "https://www.metacritic.com/game/pc/journey-to-the-savage-planet/"
         },
         "MetaScore": {
             "XboxOne": 76
@@ -4313,7 +4313,7 @@
         ],
         "InVaultTime": 1,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.28465.64018774417873828.42c2f71f-f575-4f9b-aa08-dc41fe05171e.f17c14ed-3c1e-4d64-8ca5-f5df194aa6f4",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.18814.64018774417873828.01daf028-7a45-4940-bdb9-64208ea93f95.0d36df10-97d8-48b0-bc98-30059acbde8e",
@@ -4753,7 +4753,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.60784.71597820832557840.e1152296-698b-4aca-9594-43b0dac12143.58ebd352-af58-4421-81ff-d9962745ebfe",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.28832.71597820832557840.e1152296-698b-4aca-9594-43b0dac12143.409a49af-6b80-4da3-96f7-1d6b01e0edc2",
@@ -5234,7 +5234,7 @@
         ],
         "ReleaseDate": 5248426514427387904,
         "DownloadSize": {
-            "US": 86145015808
+            "US": 86193016832
         }
     },
     {
@@ -5305,7 +5305,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.45547.63913435932326454.e2b842ea-6d9b-4f6a-8954-699c7d61d0bc.a46fe964-9eec-48e8-b6b7-e4fdc642b862",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.54755.63913435932326454.525c7050-d130-4499-9877-17f95a4036bd.9bfe6490-2894-4fef-8716-d0728d8c0df5",
@@ -5450,10 +5450,10 @@
             "Action & adventure"
         ],
         "MetacriticUrls": {
-            "XboxOne": "https://www.metacritic.com/game/xbox-one/the-dark-pictures---man-of-medan/"
+            "XboxOne": "https://www.metacritic.com/game/pc/the-dark-pictures---man-of-medan/"
         },
         "MetaScore": {
-            "XboxOne": 69
+            "XboxOne": 75
         },
         "ID": "BZZ0Q9ZMM7GX",
         "Title": {
@@ -5471,7 +5471,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.51719.64499457304317555.ab5a2d14-dee8-4f97-8feb-bd7575c8c5e9.f88423a4-ce00-4ef3-bcef-c3f5d4fe2d81",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.59317.64499457304317555.ab5a2d14-dee8-4f97-8feb-bd7575c8c5e9.52db4431-7b92-4c83-a6a1-9d60595619f0",
@@ -5527,7 +5527,7 @@
         ],
         "ReleaseDate": 5248009058427387904,
         "DownloadSize": {
-            "US": 103639552000
+            "US": 103647014912
         }
     },
     {
@@ -5658,10 +5658,10 @@
             "Strategy"
         ],
         "MetacriticUrls": {
-            "XboxOne": "https://www.metacritic.com/game/xbox-one/the-long-dark/"
+            "XboxOne": "https://www.metacritic.com/game/pc/the-long-dark/"
         },
         "MetaScore": {
-            "XboxOne": 76
+            "XboxOne": 77
         },
         "ID": "C41ZDFQ82M1G",
         "Title": {
@@ -5679,7 +5679,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.25018.66934420265726607.03d94e0d-1a0f-40bb-b6d6-a016e0effe60.e4ccb5aa-ae91-4fab-aebf-2731fcd35ad9",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.34228.66934420265726607.5a950982-8099-41fa-930a-d56586065d9d.e1206e55-300f-4a2f-9ac3-d28cbf4ea45d",
@@ -5752,10 +5752,10 @@
             "Role playing"
         ],
         "MetacriticUrls": {
-            "XboxOne": "https://www.metacritic.com/game/xbox-one/the-outer-worlds/"
+            "XboxOne": "https://www.metacritic.com/game/pc/the-outer-worlds/"
         },
         "MetaScore": {
-            "XboxOne": 85
+            "XboxOne": 82
         },
         "ID": "BVTKN6CQ8W5F",
         "Title": {
@@ -5773,7 +5773,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.19260.71127714305215144.dfbe21c8-4e10-4861-b737-47393066d41d.e4e4e15c-dc47-4608-80a4-564c7284796a",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.47153.71127714305215144.58366278-20e5-41f8-9a0a-40a89cc9c785.ac1dcebb-a3f3-4efc-abea-0ec3f0c77351",
@@ -5792,7 +5792,7 @@
         ],
         "ReleaseDate": 5248761602427387904,
         "DownloadSize": {
-            "US": 57715306496
+            "US": 57715294208
         }
     },
     {
@@ -6364,7 +6364,7 @@
         ],
         "ReleaseDate": 5248101182427387904,
         "DownloadSize": {
-            "US": 466323011
+            "US": 338489707
         }
     },
     {
@@ -7399,7 +7399,7 @@
         "ScreenShots": [],
         "ReleaseDate": 5248257170427387904,
         "DownloadSize": {
-            "US": 60284987372
+            "US": 53121937408
         }
     },
     {
@@ -8060,7 +8060,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 2,
+        "InVaultTime": 1,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.64015.65337579303130468.175d411f-fc67-43af-8f06-604de8de180e.231f3370-59ff-42a0-a6b3-766e18447cea",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -8100,7 +8100,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 2,
+        "InVaultTime": 1,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.156.64798281879073043.8d046c05-2968-4394-b85e-b27268656500.639ab033-c0b1-4f16-b64d-cf6d77e3725d",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -8552,7 +8552,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.4730.66274487452813675.86971dec-0f03-42bb-b657-322859f064f4.130a3c09-259d-4961-8a49-70176caf3c2b",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.52670.66274487452813675.86971dec-0f03-42bb-b657-322859f064f4.73a12d1b-bb2c-4144-81ab-57d823166b7f",
@@ -9163,10 +9163,10 @@
             "Other"
         ],
         "MetacriticUrls": {
-            "XboxOne": "https://www.metacritic.com/game/xbox-one/night-call/"
+            "XboxOne": "https://www.metacritic.com/game/pc/night-call/"
         },
         "MetaScore": {
-            "XboxOne": 65
+            "XboxOne": 68
         },
         "ID": "9NZKR4V4QGD4",
         "Title": {
@@ -9184,7 +9184,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.16117.14036634077751875.6e4d87e1-8927-4690-8257-dea8b6ff5c44.36d6d6f4-5aee-4e35-bc18-7aaaddc42ab5",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.37927.14036634077751875.bf309416-9509-4f83-afe5-880f4fefe311.8f95a148-f3a4-4e4d-9f30-e9759439bce9",
@@ -9327,7 +9327,7 @@
         ],
         "ReleaseDate": 5248365890427387904,
         "DownloadSize": {
-            "US": 12700307456
+            "US": 12999938048
         }
     },
     {
@@ -10145,7 +10145,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 2,
+        "InVaultTime": 1,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.21087.67874117791580972.f61f8959-04c2-435b-b48e-c542d4290fb2.29ffc176-deee-4c94-b9db-abd164866557",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -10206,9 +10206,9 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 2,
+        "InVaultTime": 1,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.6185.63229793561102392.82a53f71-30be-4d5b-9844-26b83937b0ad.21769fbd-c5ff-4915-8e06-d269ce2fad88",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.61313.63229793561102392.82a53f71-30be-4d5b-9844-26b83937b0ad.22559a6a-e8bd-47c5-a920-363e558661b1",
@@ -10253,7 +10253,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 2,
+        "InVaultTime": 1,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.49793.65484800287653002.e58b8c02-8690-4171-ad25-444642d95b19.8d35a6a3-ab01-422b-8c5c-39babebf91f3",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -10297,7 +10297,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 2,
+        "InVaultTime": 1,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.56168.69507354136225387.98b1bbfb-a21e-45dc-962b-9d4b05ac732f.15840859-b2bc-4c83-9ca5-ac19dbe4791c",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -10427,7 +10427,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 2,
+        "InVaultTime": 1,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.16018.66002033364259166.0454145f-1403-4ef5-b606-ea9871b5642a.ad1d0b7a-4da5-4be2-a794-78385a7b0236",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -10800,7 +10800,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 2,
+        "InVaultTime": 1,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.20729.14378604131770680.b6b5a8ca-e766-4938-b45e-8543e36147b7.1beeb9a9-3466-4f87-a534-5ad19e30744e",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -11712,7 +11712,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 2,
+        "InVaultTime": 1,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.1085.14206133284686181.2e3c1108-1e65-40ee-a776-35df7749d20b.d55723e6-9566-4986-89dd-850daffcf97c",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -11734,10 +11734,10 @@
             "Shooter"
         ],
         "MetacriticUrls": {
-            "XboxOne": "https://www.metacritic.com/game/xbox-one/gears-5/"
+            "XboxOne": "https://www.metacritic.com/game/xbox-series-x/gears-5/"
         },
         "MetaScore": {
-            "XboxOne": 84
+            "XboxOne": 83
         },
         "ID": "C2KDNLT2H7DM",
         "Title": {
@@ -11755,7 +11755,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.10933.65494054591008504.4eae27ba-1cfe-4af2-950a-4af81f8cd22a.b5b2909d-8884-48d0-b25a-68d6518c9b73",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.56810.65494054591008504.5f620ed5-a2e8-4562-98cd-e9a4423fe48f.9165d8b0-bb6b-4170-9544-c37807af60ba",
@@ -11771,7 +11771,7 @@
         ],
         "ReleaseDate": 5248722758427387904,
         "DownloadSize": {
-            "US": 95505383424
+            "US": 96533291008
         }
     },
     {
@@ -12336,7 +12336,7 @@
         "ScreenShots": [],
         "ReleaseDate": 5494964198427387904,
         "DownloadSize": {
-            "US": 4153212928
+            "US": 4146606080
         }
     },
     {
@@ -12408,7 +12408,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.10920.69279545232152045.f1a4a87c-fcc9-4b7c-a620-f6c56eb2d5ad.537d404f-d551-430c-8000-9a4c657bf354",
-        "IsMetacriticInfoCorrect": false,
+        "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.16052.69279545232152045.f1a4a87c-fcc9-4b7c-a620-f6c56eb2d5ad.63ec6233-66fc-4713-8e43-3ca5a586bade",
@@ -12647,7 +12647,7 @@
         ],
         "ReleaseDate": 5248553378427387904,
         "DownloadSize": {
-            "US": 9427062784
+            "US": 9427050496
         }
     },
     {
@@ -12997,7 +12997,7 @@
         ],
         "ReleaseDate": 5248252706427387904,
         "DownloadSize": {
-            "US": 6586318848
+            "US": 6609911808
         }
     },
     {
@@ -13691,7 +13691,7 @@
         ],
         "ReleaseDate": 5248558562427387904,
         "DownloadSize": {
-            "US": 50348433408
+            "US": 50502352896
         }
     },
     {
@@ -14155,7 +14155,7 @@
             "en-us": "Children of Morta"
         },
         "Description": {
-            "en-us": "IT RUNS IN THE FAMILY\r\n\r\nChildren of Morta is an action RPG with a rogue-lite approach to character development, where you don’t play a single character - but a whole, extraordinary family of heroes. Hack’n’slash through hordes of enemies in procedurally generated dungeons, caves and lands and lead the family of Bergsons, with all their flaws and virtues, against the forthcoming Corruption.\r\n\r\nFEATURES\r\n\r\nGAMEPLAY\r\nGameplay-wise it's a unique mix of action-adventure RPG, rogue-lite and hack and slash game. By leveling up, you develop not only individual characters but also the entire family. There is no permadeath and you can change family members between the dungeon runs. \r\n\r\nLOCAL CO-OP\r\nPlay as two Bergsons together against the Corruption! Additional controller required. (Online co-op to be added in the future)\r\n\r\nSTORY\r\nThe story takes place in a distant land but copes with themes and emotions common to all of us: love and hope, longing and uncertainty, ultimately loss... and sacrifice we are willing to make to save the ones we care the most for. Ultimately, it's about a family of heroes standing against the encroaching darkness.\r\n\r\nDUNGEON CRAWLING\r\nAll the dungeons in the game are procedurally generated, which means their layout is different with each adventure. There can be from two to four levels of each dungeon, with a unique boss fight at the end. You can always get back to the previous dungeons to get extra XP or finish all the side quests.\r\n\r\nCHARACTERS & SKILLS\r\nRanged attacks, magic spells, blocks, stuns, healing, evasions and passive skills - it's all there for you to discover, unlock and upgrade. You can choose from seven different family members, each one having unique skill sets. The father, John - a protective warrior with a sword and shield. The elder daughter Linda - a precise archer. Kevin, a quiet fighter equipped with deadly daggers. Lucy - a lively and bold fire mage. Mark - a mindful martial arts fighter. Joey - who smashes his enemies with a sledgehammer. And the latest addition to the family - Apan, a mighty healer and a firm defender in one.\r\n\r\nART STYLE\r\nA combination of hand painted pixel art and frame-by-frame animations partnered with modern lighting techniques come to life to create the beautifully dangerous world of Children of Morta!\r\n"
+            "en-us": "IT RUNS IN THE FAMILY\r\n\r\nChildren of Morta is an action RPG with a rogue-lite approach to character development, where you don’t play a single character - but a whole, extraordinary family of heroes. Hack’n’slash through hordes of enemies in procedurally generated dungeons, caves and lands and lead the family of Bergsons, with all their flaws and virtues, against the forthcoming Corruption.\r\n\r\nFEATURES\r\n\r\nGAMEPLAY\r\nGameplay-wise it's a unique mix of action-adventure RPG, rogue-lite and hack and slash game. By leveling up, you develop not only individual characters but also the entire family. There is no permadeath and you can change family members between the dungeon runs. \r\n\r\nLOCAL CO-OP\r\nPlay as two Bergsons together against the Corruption! Additional controller required. (Online co-op to be added in the future)\r\n\r\nSTORY\r\nThe story takes place in a distant land but copes with themes and emotions common to all of us: love and hope, longing and uncertainty, ultimately loss... and sacrifice we are willing to make to save the ones we care the most for. Ultimately, it's about a family of heroes standing against the encroaching darkness.\r\n\r\nDUNGEON CRAWLING\r\nAll the dungeons in the game are procedurally generated, which means their layout is different with each adventure. There can be from two to four levels of each dungeon, with a unique boss fight at the end. You can always get back to the previous dungeons to get extra XP or finish all the side quests.\r\n\r\nCHARACTERS & SKILLS\r\nRanged attacks, magic spells, blocks, stuns, healing, evasions and passive skills - it's all there for you to discover, unlock and upgrade. You can choose from seven different family members, each one having unique skill sets. The father, John - a protective warrior with a sword and shield. The elder daughter Linda - a precise archer. Kevin, a quiet fighter equipped with deadly daggers. Lucy - a lively and bold fire mage. Mark - a mindful martial arts fighter. Joey - who smashes his enemies with a sledgehammer. And the latest addition to the family - Apan, a mighty healer and a firm defender in one.\r\n\r\nART STYLE\r\nA combination of hand painted pixel art and frame-by-frame animations partnered with modern lighting techniques come to life to create the beautifully dangerous world of Children of Morta!\r\n\r\nFAMILY TRIALS\r\nA mode separate from the Main Story campaign, offering new systems, items, objectives, character builds, and more - all set in a series of completely randomized dungeons.\r\n"
         },
         "Affirmations": [
             0
@@ -14178,11 +14178,16 @@
             "https://store-images.s-microsoft.com/image/apps.48472.14624995180811495.06017401-9ca0-48fd-9938-c5eb1cc1647c.4650bffc-3161-4849-bb5b-729b987a817f",
             "https://store-images.s-microsoft.com/image/apps.17533.14624995180811495.06017401-9ca0-48fd-9938-c5eb1cc1647c.e7888d3e-7811-4881-a059-cb0b9f6003c8",
             "https://store-images.s-microsoft.com/image/apps.2355.14624995180811495.ae38a125-b628-4368-b2b7-7aee6730da52.4393f49e-fe03-49d4-90fc-84ae97236e13",
-            "https://store-images.s-microsoft.com/image/apps.5865.14624995180811495.ae38a125-b628-4368-b2b7-7aee6730da52.94940d85-9591-4aa8-8e73-c0cffc89b3db"
+            "https://store-images.s-microsoft.com/image/apps.5865.14624995180811495.ae38a125-b628-4368-b2b7-7aee6730da52.94940d85-9591-4aa8-8e73-c0cffc89b3db",
+            "https://store-images.s-microsoft.com/image/apps.16273.14624995180811495.cbe83c15-2454-4b23-bc7c-73a4b2726a43.24ba7e1f-63b9-4836-a24f-bc736a8e20d1",
+            "https://store-images.s-microsoft.com/image/apps.34384.14624995180811495.cbe83c15-2454-4b23-bc7c-73a4b2726a43.89e1bdf8-e65e-4c97-890b-f080d3d58b50",
+            "https://store-images.s-microsoft.com/image/apps.62317.14624995180811495.cbe83c15-2454-4b23-bc7c-73a4b2726a43.60a889e3-b820-48cd-b9e9-107bb778ec76",
+            "https://store-images.s-microsoft.com/image/apps.60788.14624995180811495.cbe83c15-2454-4b23-bc7c-73a4b2726a43.769e7e7c-d848-4fd7-a48a-7f6f9a0988c1",
+            "https://store-images.s-microsoft.com/image/apps.28405.14624995180811495.cbe83c15-2454-4b23-bc7c-73a4b2726a43.4e14cbfa-c707-428f-8b99-7ed2eaf1fe4f"
         ],
         "ReleaseDate": 5248753466427387904,
         "DownloadSize": {
-            "US": 1570076609
+            "US": 1431572662
         }
     },
     {
@@ -14734,21 +14739,20 @@
             3
         ],
         "InVaultTime": 2,
-        "PosterUrl": "https://store-images.s-microsoft.com/image/apps.21108.64374245401097180.8642489f-f514-4c9f-bf0a-1ad028417cf8.1837b0cd-168b-4385-959c-e1634d7f2a58",
+        "PosterUrl": "https://store-images.s-microsoft.com/image/apps.53144.64374245401097180.e2846ec8-5ea4-4f00-b328-5b29114f3591.548c9f3c-5a2c-4dab-af82-80ac9f0a3064",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
-            "https://store-images.s-microsoft.com/image/apps.31211.64374245401097180.8642489f-f514-4c9f-bf0a-1ad028417cf8.8c1e700e-1bc1-4dd5-8c03-a6286fa9d92b",
-            "https://store-images.s-microsoft.com/image/apps.65231.64374245401097180.8642489f-f514-4c9f-bf0a-1ad028417cf8.92f2bda4-9a73-4754-83c0-5ffcae1268db",
-            "https://store-images.s-microsoft.com/image/apps.32296.64374245401097180.8642489f-f514-4c9f-bf0a-1ad028417cf8.6f93352a-aefc-467f-86ba-d770a05959be",
-            "https://store-images.s-microsoft.com/image/apps.11943.64374245401097180.8642489f-f514-4c9f-bf0a-1ad028417cf8.39bf928f-2674-4c84-8fdd-ff4f53921bed",
-            "https://store-images.s-microsoft.com/image/apps.37586.64374245401097180.8642489f-f514-4c9f-bf0a-1ad028417cf8.8281f140-d18b-47ea-ab30-ab4e3dba259e",
-            "https://store-images.s-microsoft.com/image/apps.30870.64374245401097180.8642489f-f514-4c9f-bf0a-1ad028417cf8.be478c1d-3816-431e-95ae-ba887f7e56b3",
-            "https://store-images.s-microsoft.com/image/apps.12359.64374245401097180.8642489f-f514-4c9f-bf0a-1ad028417cf8.135bb93e-e9c3-4178-9ad5-56fb7f985988"
+            "https://store-images.s-microsoft.com/image/apps.30074.64374245401097180.e2846ec8-5ea4-4f00-b328-5b29114f3591.758f22c2-4d04-46e4-94ce-7966b657e984",
+            "https://store-images.s-microsoft.com/image/apps.8135.64374245401097180.e2846ec8-5ea4-4f00-b328-5b29114f3591.e8c064dd-40c4-42f3-b394-a2d19546d267",
+            "https://store-images.s-microsoft.com/image/apps.21229.64374245401097180.e2846ec8-5ea4-4f00-b328-5b29114f3591.b8a86580-5040-4697-bcfe-744768a94ad1",
+            "https://store-images.s-microsoft.com/image/apps.61522.64374245401097180.e2846ec8-5ea4-4f00-b328-5b29114f3591.4b2a83ed-8cd1-47ae-a483-52b5c987928f",
+            "https://store-images.s-microsoft.com/image/apps.15842.64374245401097180.e2846ec8-5ea4-4f00-b328-5b29114f3591.b56d8887-6702-4392-9a61-bdf2c19645d6",
+            "https://store-images.s-microsoft.com/image/apps.19155.64374245401097180.e2846ec8-5ea4-4f00-b328-5b29114f3591.0e813db8-d47b-4133-a500-7c87701b7878"
         ],
         "ReleaseDate": 5248402178427387904,
         "DownloadSize": {
-            "US": 23040516096
+            "US": 23544324096
         }
     },
     {
@@ -14792,7 +14796,7 @@
         ],
         "ReleaseDate": 5248577570427387904,
         "DownloadSize": {
-            "US": 1474208614
+            "US": 1670356992
         }
     },
     {
@@ -15426,7 +15430,7 @@
         ],
         "ReleaseDate": 5249116022427387904,
         "DownloadSize": {
-            "US": 986390528
+            "US": 817786880
         }
     },
     {
@@ -15566,10 +15570,10 @@
             "Role playing"
         ],
         "MetacriticUrls": {
-            "XboxOne": "https://www.metacritic.com/game/pc/greedfall/"
+            "XboxOne": "https://www.metacritic.com/game/xbox-one/greedfall/"
         },
         "MetaScore": {
-            "XboxOne": 72
+            "XboxOne": 78
         },
         "ID": "BWMH4RQ4Q06F",
         "Title": {
@@ -15587,7 +15591,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.4031.71572041439194678.5d05371d-9189-4603-8b72-d531bae40af1.381ad754-ba88-44f8-ad34-6d05ada7e873",
-        "IsMetacriticInfoCorrect": false,
+        "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.33616.71572041439194678.5d05371d-9189-4603-8b72-d531bae40af1.687737b2-0d86-4d2f-9677-c1825ecbdf19",
@@ -15740,7 +15744,7 @@
         ],
         "ReleaseDate": 5249116706427387904,
         "DownloadSize": {
-            "US": 2469359616
+            "US": 2310430720
         }
     },
     {
@@ -15871,7 +15875,7 @@
         ],
         "ReleaseDate": 5248918130427387904,
         "DownloadSize": {
-            "US": 19647709184
+            "US": 19647770624
         }
     },
     {
@@ -15959,7 +15963,7 @@
         ],
         "ReleaseDate": 5249123618427387904,
         "DownloadSize": {
-            "US": 1068879872
+            "US": 1337757696
         }
     },
     {
@@ -16262,7 +16266,7 @@
         ],
         "ReleaseDate": 5249043410427387904,
         "DownloadSize": {
-            "US": 41727336448
+            "US": 42942013440
         }
     },
     {
@@ -16305,7 +16309,7 @@
         ],
         "ReleaseDate": 5249067962427387904,
         "DownloadSize": {
-            "US": 6196498432
+            "US": 6262947840
         }
     },
     {
@@ -16315,10 +16319,10 @@
             "Strategy"
         ],
         "MetacriticUrls": {
-            "XboxOne": "https://www.metacritic.com/game/xbox-one/desperados-iii/"
+            "XboxOne": "https://www.metacritic.com/game/pc/desperados-iii/"
         },
         "MetaScore": {
-            "XboxOne": 85
+            "XboxOne": 86
         },
         "ID": "BRRC2X2GQGC7",
         "Title": {
@@ -16336,7 +16340,7 @@
         ],
         "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.47872.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.79de8dde-fad4-40dd-9895-12d93d6f4757",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.54591.69279568107563806.60ac94f6-7a41-4b96-9b72-299546460040.f7108771-6890-49c5-aa33-33791ce3c2e3",
@@ -16662,7 +16666,7 @@
         ],
         "ReleaseDate": 5249159906427387904,
         "DownloadSize": {
-            "US": 40296058880
+            "US": 40296054784
         }
     },
     {
@@ -16730,7 +16734,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.50361.66140674465174653.87b233ab-7e5c-417b-9d55-ad08143ae685.603f7c63-bb75-441a-a2f8-1c17d6744a02",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -16801,7 +16805,7 @@
         ],
         "ReleaseDate": 5249091830427387904,
         "DownloadSize": {
-            "US": 1479152559
+            "US": 1523345073
         }
     },
     {
@@ -16854,7 +16858,7 @@
         ],
         "ReleaseDate": 5249165954427387904,
         "DownloadSize": {
-            "US": 2969628672
+            "US": 2603397120
         }
     },
     {
@@ -16883,7 +16887,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.14936.14216887906907763.d6b5bad9-17c0-4907-ae6e-baaa5cf14fb5.85e0dbd0-5854-4e79-8937-c0cd59d19e70",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -16900,7 +16904,7 @@
         ],
         "ReleaseDate": 5249088194427387904,
         "DownloadSize": {
-            "US": 65066151936
+            "US": 67287871488
         }
     },
     {
@@ -16993,7 +16997,7 @@
         ],
         "ReleaseDate": 5248710770427387904,
         "DownloadSize": {
-            "US": 20032704512
+            "US": 20032737280
         }
     },
     {
@@ -17104,7 +17108,7 @@
         ],
         "ReleaseDate": 5249159906427387904,
         "DownloadSize": {
-            "US": 40296058880
+            "US": 40296054784
         }
     },
     {
@@ -17131,7 +17135,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.31289.65371894126242138.81c958b9-c96e-47c6-81fa-93c549ea1a80.d4e80794-bb66-4944-9b45-d4f6f32dde91",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17175,7 +17179,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.22940.14303655336501012.2beb08d9-395e-453b-b5e3-0d4ac24d9d15.0a18faa9-5741-4971-99ce-55b5f0925b78",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17216,7 +17220,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.47582.14361385044335696.d9d52dee-3885-40bf-b48d-1934a8ba4324.eb556951-fe84-4612-a8b3-383aef56221f",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17260,7 +17264,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.27543.69234794984509140.ef3477c5-d6c7-4bd4-b5c7-7664d0e9e1be.77ffed61-812f-4b16-8942-868b796f45d4",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17305,7 +17309,7 @@
         "OriginalPlatforms": [
             2
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.42981.63316511565903586.d62160f8-6032-426e-af13-d87fe2d204a7.f3794cc2-595b-4388-8533-73979efc2e4a",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17356,7 +17360,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.41543.65523398993639028.2c280ccc-7f03-4d25-8060-07f62a42af2f.6d66b18d-3dde-4ccf-8703-824fc30c3a23",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17399,7 +17403,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.50286.66091604408099736.4cc75ea1-c6a0-40ec-b7f9-7fdb8da581b2.124090f5-4333-4929-af8b-62b4331439d4",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17450,9 +17454,9 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.22398.14532518131065620.bff68f8c-9807-492e-aaaf-4cc25fdcc5b0.f2040ce2-1c2d-43d8-894c-41e875da10b4",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.61071.14532518131065620.3a2ab3ac-a97f-495b-b400-15388b453765.5f8c41b0-541f-4c16-8e12-fe2dcb6ca777",
@@ -17467,7 +17471,7 @@
         ],
         "ReleaseDate": 5249109722427387904,
         "DownloadSize": {
-            "US": 4531982336
+            "US": 4729790464
         }
     },
     {
@@ -17475,10 +17479,10 @@
             "Sports"
         ],
         "MetacriticUrls": {
-            "XboxOne": "https://www.metacritic.com/game/xbox-one/nba-2k21/"
+            "XboxOne": "https://www.metacritic.com/game/xbox-series-x/nba-2k21/"
         },
         "MetaScore": {
-            "XboxOne": 67
+            "XboxOne": 80
         },
         "ID": "9P0Q1F7P0KR1",
         "Title": {
@@ -17494,9 +17498,9 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.21520.14522552561148096.987376a7-b8c2-4bec-8d4f-48e4b6df5630.1a1aefd0-15dd-44a2-8303-be7a96288f1e",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.13256.14522552561148096.1d7d161c-f904-4160-b763-beb06a2a4bb9.760735f6-dce1-4477-b156-380cad26810e",
@@ -17508,7 +17512,7 @@
         ],
         "ReleaseDate": 5249033762427387904,
         "DownloadSize": {
-            "US": 81389719552
+            "US": 81515917312
         }
     },
     {
@@ -17516,7 +17520,7 @@
             "Role playing"
         ],
         "MetacriticUrls": {
-            "Xbox360": "https://www.metacritic.com/game/xbox-360/the-elder-scrolls-iv-oblivion/"
+            "Xbox360": "https://www.metacritic.com/game/pc/the-elder-scrolls-iv-oblivion/"
         },
         "MetaScore": {
             "Xbox360": 94
@@ -17535,9 +17539,9 @@
         "OriginalPlatforms": [
             2
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.315.67239414110062952.96aaa173-4598-4591-add8-4e72f4c963c7.9b47d169-12bd-4000-a162-66c0ad7099a0",
-        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoCorrect": false,
         "IsMetacriticInfoExist": true,
         "ScreenShots": [
             "https://store-images.s-microsoft.com/image/apps.47998.67239414110062952.96aaa173-4598-4591-add8-4e72f4c963c7.e9859afa-129b-4dc4-8ccd-bb4430bc1e95",
@@ -17578,7 +17582,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.59248.14120809452087441.818fe8ac-e097-48f7-86e0-5c1a7894b43b.0156d9d0-ac0f-4527-ac80-32fb3085fe2f",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17595,7 +17599,7 @@
         ],
         "ReleaseDate": 5248949044198956797,
         "DownloadSize": {
-            "US": 47890997248
+            "US": 47930556416
         }
     },
     {
@@ -17622,7 +17626,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.47287.14455276314504583.b84d8ee8-f76f-4e88-9259-e3c11d418c41.ba1660dc-c8a4-44b4-b64c-3e083ca918fb",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17639,7 +17643,7 @@
         ],
         "ReleaseDate": 5248964469533710215,
         "DownloadSize": {
-            "US": 52972404736
+            "US": 53028360192
         }
     },
     {
@@ -17667,7 +17671,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.60509.70764866595776237.49bcb933-4bfd-4b64-a764-f2ef10fde8d5.b9b34a2c-bf98-43f6-8b2f-3e532f37edda",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17712,7 +17716,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.64069.68153994599451024.9f03bc8c-e4ac-4d66-9e8a-c64ec1810cc0.3e090fdb-9dfd-4b5c-805f-d1d0b0a62c55",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17752,7 +17756,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.37742.13886780434132750.58497d0f-3220-4d2f-a7ff-96dcff27bc5f.e10ab652-fd3c-4438-94fc-0d7f958d5609",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17796,7 +17800,7 @@
         "OriginalPlatforms": [
             3
         ],
-        "InVaultTime": 0,
+        "InVaultTime": 2,
         "PosterUrl": "https://store-images.s-microsoft.com/image/apps.18647.14311014949668376.25a6b443-a817-4a82-b4ec-852ef07ef120.0adc334f-0158-4d30-b1e6-3737f2a95621",
         "IsMetacriticInfoCorrect": true,
         "IsMetacriticInfoExist": true,
@@ -17821,8 +17825,12 @@
             "Other",
             "Puzzle & trivia"
         ],
-        "MetacriticUrls": {},
-        "MetaScore": {},
+        "MetacriticUrls": {
+            "XboxOne": "https://www.metacritic.com/game/xbox-one/genesis-noir/"
+        },
+        "MetaScore": {
+            "XboxOne": 82
+        },
         "ID": "9PHK9D8CLQCG",
         "Title": {
             "en": "Genesis Noir"
@@ -17852,7 +17860,7 @@
         ],
         "ReleaseDate": 5249197058427387904,
         "DownloadSize": {
-            "US": 2490474496
+            "US": 2555039744
         }
     },
     {
@@ -17951,8 +17959,12 @@
         "Categories": [
             "Action & adventure"
         ],
-        "MetacriticUrls": {},
-        "MetaScore": {},
+        "MetacriticUrls": {
+            "XboxOne": "https://www.metacritic.com/game/xbox-one/yakuza-6-the-song-of-life/"
+        },
+        "MetaScore": {
+            "XboxOne": 87
+        },
         "ID": "9NK3ZFC5R579",
         "Title": {
             "en": "Yakuza 6: The Song of Life"
@@ -18117,6 +18129,232 @@
         "ReleaseDate": 5249058098427387904,
         "DownloadSize": {
             "US": 26748452864
+        }
+    },
+    {
+        "Categories": [
+            "Action & adventure"
+        ],
+        "MetacriticUrls": {
+            "XboxOne": "https://www.metacritic.com/game/xbox-one/grand-theft-auto-v/"
+        },
+        "MetaScore": {
+            "XboxOne": 97
+        },
+        "ID": "BPJ686W6S0NH",
+        "Title": {
+            "en-us": "Grand Theft Auto V"
+        },
+        "Description": {
+            "en-us": "Experience Rockstar Games' critically acclaimed open world game, Grand Theft Auto V.\r\n\r\nWhen a young street hustler, a retired bank robber and a terrifying psychopath find themselves entangled with some of the most frightening and deranged elements of the criminal underworld, the U.S. government and the entertainment industry, they must pull off a series of dangerous heists to survive in a ruthless city in which they can trust nobody, least of all each other.\r\n\r\nExplore the stunning world of Los Santos and Blaine County in the ultimate Grand Theft Auto V experience, featuring a range of technical upgrades and enhancements for new and returning players. In addition to increased draw distances and higher resolution, players can expect a range of additions and improvements including:\r\n\r\n• New weapons, vehicles and activities\r\n• Additional wildlife\r\n• Denser traffic\r\n• New foliage system\r\n• Enhanced damage and weather effects, and much more\r\n\r\nGrand Theft Auto V also comes with Grand Theft Auto Online, the dynamic and ever-evolving Grand Theft Auto universe with online play now for up to 30 players on Xbox One. All existing gameplay upgrades and Rockstar-created content released since the launch of Grand Theft Auto Online is available for the Xbox One with much more to come.\r\n\r\nSPECIAL CONTENT FOR RETURNING PLAYERS\r\nPlayers returning from the Xbox 360 version get special access to a host of content on Xbox One including rare versions of classic vehicles to collect from across the Grand Theft Auto series such as the Dukes, the Dodo Seaplane and a faster, more maneuverable Blimp; activities including wildlife photography and new shooting range challenges, new weapons and more.\r\n\r\nSpecial access content requires Rockstar Games Social Club account. Visit rockstargames.com/v/bonuscontent for details.\r\n\r\nYou must accept the software license terms available at rockstargames.com/eula; online account terms at rockstargames.com/socialclub. Non-transferable access to special features such as exclusive/unlockable/downloadable/online content, services, or functions, such as multiplayer services or bonus content, may require single-use serial code, additional fee, and/or online account registration (13+). Access to special features may require internet connection, may not be available to all users or at all times, and may, upon 30 days notice, be terminated, modified, or offered under different terms. Violation of EULA, Code of Conduct, or other policies may result in restriction or termination of access to game or online account. For customer & tech support visit rockstargames.com/support. For information about online services, fees, restrictions, or software license terms that may apply to this game, please visit  www.rockstargames.com . \r\n\r\nCertain limits apply to purchase, use, and redemption. See EULA www.rockstargames.com/eula and Terms of Service www.rockstargames.com/legal for details.\r\n\r\n©2008 - 2014 Rockstar Games, Inc. Rockstar Games, Grand Theft Auto, the GTA Five, and the Rockstar Games R* marks and logos are trademarks and/or registered trademarks of Take-Two Interactive Software, Inc. in the U.S.A. and/or foreign countries."
+        },
+        "Affirmations": [
+            0
+        ],
+        "MetaCriticPathName": "grand-theft-auto-v",
+        "OriginalPlatforms": [
+            3
+        ],
+        "InVaultTime": 0,
+        "PosterUrl": "https://store-images.s-microsoft.com/image/apps.32034.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.9b094362-c51d-49e5-9e92-80710c585fca",
+        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoExist": true,
+        "ScreenShots": [
+            "https://store-images.s-microsoft.com/image/apps.2499.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.095d516a-f787-4d3c-8dee-bb92b388b190",
+            "https://store-images.s-microsoft.com/image/apps.2499.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.095d516a-f787-4d3c-8dee-bb92b388b190",
+            "https://store-images.s-microsoft.com/image/apps.52182.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.0226b0f3-27d9-438e-bc44-76921ee9beee",
+            "https://store-images.s-microsoft.com/image/apps.42374.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.6c930589-2365-4248-b2fb-c12b68fee224",
+            "https://store-images.s-microsoft.com/image/apps.53045.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.b0fc9521-3c26-4d46-91a3-6a49919674a5",
+            "https://store-images.s-microsoft.com/image/apps.18345.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.03a8b471-ebc7-4a1c-a152-0c7e275c2f58",
+            "https://store-images.s-microsoft.com/image/apps.12183.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.62a3d88d-162b-46db-b11e-f6594f90a89d",
+            "https://store-images.s-microsoft.com/image/apps.22937.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.217e525e-b19f-4b3b-8e2a-bdec3bacd369",
+            "https://store-images.s-microsoft.com/image/apps.35295.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.d10ff5e4-561d-4539-946b-1a69092d5b22",
+            "https://store-images.s-microsoft.com/image/apps.16906.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.3eacb260-8396-47ee-8c63-750addb467d6",
+            "https://store-images.s-microsoft.com/image/apps.35295.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.d10ff5e4-561d-4539-946b-1a69092d5b22",
+            "https://store-images.s-microsoft.com/image/apps.17623.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.411c7f64-6382-4128-95d9-89196afe4cde",
+            "https://store-images.s-microsoft.com/image/apps.12183.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.62a3d88d-162b-46db-b11e-f6594f90a89d",
+            "https://store-images.s-microsoft.com/image/apps.42374.68565266983380288.0f5ef871-88c0-45f7-b108-6aacbc041fcf.6c930589-2365-4248-b2fb-c12b68fee224"
+        ],
+        "ReleaseDate": 5247204674427387904,
+        "DownloadSize": {
+            "US": 81988456448
+        }
+    },
+    {
+        "Categories": [
+            "Sports"
+        ],
+        "MetacriticUrls": {
+            "XboxOne": "https://www.metacritic.com/game/xbox-one/nhl-21/"
+        },
+        "MetaScore": {
+            "XboxOne": 81
+        },
+        "ID": "BWZ8BZ85X5HK",
+        "Title": {
+            "en-us": "NHL® 21"
+        },
+        "Description": {
+            "en-us": "Recognize Greatness in EA SPORTS™ NHL® 21.\r\n\r\nIn EA SPORTS NHL 21, it’s the most creative, inventive and fearless players that are worth celebrating. This year, you’ll be able to pull off moves inspired by the league’s most groundbreaking innovators. An expanded and redesigned Be A Pro mode makes the journey to become one of the league’s best players more immersive than ever, with a dynamic conversation system that shapes everything from your relationship with the coaching staff, to your endorsement deals and salary — even your off-ice interactions with teammates will affect your on-ice chemistry. NHL 21 also introduces the new HUT RUSH — a mode that lets you jump into HUT games quickly, rack up achievements, and unlock rewards by scoring with style. Not all goals are created equal, and NHL 21 recognizes the plays that make the highlight reel and turn good players to great ones. Recognize Creativity, Recognize Revolutionary, Recognize Future. NHL 21. Recognize Greatness. \r\n\r\nThis game includes optional in-game purchases of virtual currency that can be used to acquire a random selection of virtual in-game items.\r\n\r\nCONDITIONS AND RESTRICTIONS APPLY. SEE https://www.ea.com/games/nhl/game-and-offer-disclaimers FOR DETAILS.\r\n\r\nNHL, the NHL Shield and the word mark and image of the Stanley Cup are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2020. All Rights Reserved. Officially Licensed Product of the National Hockey League. "
+        },
+        "Affirmations": [
+            1
+        ],
+        "MetaCriticPathName": "nhl-21",
+        "OriginalPlatforms": [
+            3
+        ],
+        "InVaultTime": 0,
+        "PosterUrl": "https://store-images.s-microsoft.com/image/apps.39787.63357699820087664.92d7f7a6-7714-4d87-892b-75563af82c3d.a2916554-f7fd-49f3-9044-bec1854b96a9",
+        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoExist": true,
+        "ScreenShots": [
+            "https://store-images.s-microsoft.com/image/apps.43964.63357699820087664.7166059f-9ee6-4e94-b49e-682252ff0b5e.ce126e2e-f49f-4ccb-89d3-5d59e6f3725f",
+            "https://store-images.s-microsoft.com/image/apps.56866.63357699820087664.7166059f-9ee6-4e94-b49e-682252ff0b5e.138d68e4-9466-43fb-b060-b02943082903",
+            "https://store-images.s-microsoft.com/image/apps.34735.63357699820087664.7166059f-9ee6-4e94-b49e-682252ff0b5e.d85f46a2-da63-4625-a556-675e3e9fe04c",
+            "https://store-images.s-microsoft.com/image/apps.50751.63357699820087664.7166059f-9ee6-4e94-b49e-682252ff0b5e.0d18a984-2c6c-4968-8da2-b19059e80168",
+            "https://store-images.s-microsoft.com/image/apps.28310.63357699820087664.7166059f-9ee6-4e94-b49e-682252ff0b5e.a11cbc26-330e-40a0-9c92-8004b50840de",
+            "https://store-images.s-microsoft.com/image/apps.63912.63357699820087664.7166059f-9ee6-4e94-b49e-682252ff0b5e.ffaf4055-9e5f-470e-b4a4-eb37a0c555fa"
+        ],
+        "ReleaseDate": 5249070194427387904,
+        "DownloadSize": {
+            "US": 42889064448
+        }
+    },
+    {
+        "Categories": [
+            "Action & adventure",
+            "Role playing",
+            "Shooter"
+        ],
+        "MetacriticUrls": {
+            "XboxOne": "https://www.metacritic.com/game/xbox-series-x/outriders/"
+        },
+        "MetaScore": {
+            "XboxOne": 74
+        },
+        "ID": "C083G6BGJ334",
+        "Title": {
+            "en-us": "OUTRIDERS"
+        },
+        "Description": {
+            "en-us": "OUTRIDERS is a 1-3 player co-op RPG shooter set in an original, dark and desperate sci-fi universe.\r\n\r\nAs mankind bleeds out in the trenches of Enoch, you’ll create your own Outrider and embark on a journey across the hostile planet.\r\n\r\nWith rich storytelling spanning a diverse world, you’ll leave behind the slums and shanty towns of the First City and traverse forests, mountains and desert in the pursuit of a mysterious signal.\r\n\r\nCombining intense gunplay with violent powers and an arsenal of increasingly twisted weaponry and gear-sets, OUTRIDERS offers countless hours of gameplay from one of the finest shooter developers in the industry – People Can Fly.\r\n\r\nGame leverages Smart Delivery allowing access to both the Xbox One title and Xbox Series X|S title when available"
+        },
+        "Affirmations": [
+            0
+        ],
+        "MetaCriticPathName": "outriders",
+        "OriginalPlatforms": [
+            3
+        ],
+        "InVaultTime": 0,
+        "PosterUrl": "https://store-images.s-microsoft.com/image/apps.10712.64676761359365869.23ae6d7f-e795-4e0d-805f-b3b54879666e.f6f5d5f9-9464-4154-936a-13e8bc0df0bc",
+        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoExist": true,
+        "ScreenShots": [
+            "https://store-images.s-microsoft.com/image/apps.12684.64676761359365869.0c5cbac3-e713-46ae-a827-58273c43afbc.9278d673-733e-44b9-847e-3825e7ec3544",
+            "https://store-images.s-microsoft.com/image/apps.38301.64676761359365869.0c5cbac3-e713-46ae-a827-58273c43afbc.6fe6142b-99ef-4fef-8fb0-5af2b93400c7",
+            "https://store-images.s-microsoft.com/image/apps.24519.64676761359365869.0c5cbac3-e713-46ae-a827-58273c43afbc.09d21c8d-9f91-469f-9d68-a3b9ef29f158",
+            "https://store-images.s-microsoft.com/image/apps.13404.64676761359365869.0c5cbac3-e713-46ae-a827-58273c43afbc.fd0e6355-b1d1-4693-b02c-fd03a4d9465a",
+            "https://store-images.s-microsoft.com/image/apps.56373.64676761359365869.0c5cbac3-e713-46ae-a827-58273c43afbc.9892c0f2-0a05-49f6-9fb5-027104565101",
+            "https://store-images.s-microsoft.com/image/apps.21166.64676761359365869.0c5cbac3-e713-46ae-a827-58273c43afbc.d475abc8-3673-4168-98f7-88f08d577919",
+            "https://store-images.s-microsoft.com/image/apps.13613.64676761359365869.0c5cbac3-e713-46ae-a827-58273c43afbc.981e84dc-f69d-4425-8113-00395f92644d",
+            "https://store-images.s-microsoft.com/image/apps.322.64676761359365869.0c5cbac3-e713-46ae-a827-58273c43afbc.f396a88b-221b-4312-9aea-63c133280b47",
+            "https://store-images.s-microsoft.com/image/apps.45895.64676761359365869.0c5cbac3-e713-46ae-a827-58273c43afbc.5882240e-480c-425b-8a7f-bb06da95c22f",
+            "https://store-images.s-microsoft.com/image/apps.26710.64676761359365869.0c5cbac3-e713-46ae-a827-58273c43afbc.87ed83bc-4700-4f9d-9dde-9ff32172aff7"
+        ],
+        "ReleaseDate": 5249214338427387904,
+        "DownloadSize": {
+            "US": 62235705344
+        }
+    },
+    {
+        "Categories": [
+            "Action & adventure",
+            "Shooter"
+        ],
+        "MetacriticUrls": {
+            "XboxOne": "https://www.metacritic.com/game/xbox-one/zombie-army-4-dead-war/"
+        },
+        "MetaScore": {
+            "XboxOne": 77
+        },
+        "ID": "9PLSCHRN5715",
+        "Title": {
+            "en": "Zombie Army 4: Dead War"
+        },
+        "Description": {
+            "en": "Hitler’s hordes are back for more in this spine-chilling shooter from the makers of Sniper Elite 4! Abominable occult enemies, epic weapons and a harrowing new campaign for 1-4 players await in 1940s Europe, as you fight to save humankind from undead Armageddon!\r\n\r\nThe resistance have defeated Zombie Hitler and cast him into Hell – but the dead rise once again with greater hunger than before! Continue the alternate history of Zombie Army Trilogy in huge new levels, and uncover a sinister plan that takes the Survivor Brigade across Italy and beyond! \r\n\r\nExperience genre-defining ballistics, build the slayer that suits you and harness the power of fire, lightning and divine essence as you upgrade your guns to fight back against the dead. When the horde surrounds you, tear them apart with enhanced melee combat and flesh-rending takedown moves!"
+        },
+        "Affirmations": [
+            0
+        ],
+        "MetaCriticPathName": "zombie-army-4-dead-war",
+        "OriginalPlatforms": [
+            3
+        ],
+        "InVaultTime": 0,
+        "PosterUrl": "https://store-images.s-microsoft.com/image/apps.57045.14307155302772688.6d2bb19d-e8cc-4826-bd21-920020654895.8c854128-fe7f-43cb-aa88-cfc11f91f65d",
+        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoExist": true,
+        "ScreenShots": [
+            "https://store-images.s-microsoft.com/image/apps.44452.14307155302772688.6d2bb19d-e8cc-4826-bd21-920020654895.cec4f2c6-ad92-460d-ab5b-60efdd9ed79a",
+            "https://store-images.s-microsoft.com/image/apps.61177.14307155302772688.6d2bb19d-e8cc-4826-bd21-920020654895.e7ce8f14-d60e-418c-a18b-e599e982cacc",
+            "https://store-images.s-microsoft.com/image/apps.59309.14307155302772688.6d2bb19d-e8cc-4826-bd21-920020654895.1ada881a-143d-4135-9519-b6070c8a2be5",
+            "https://store-images.s-microsoft.com/image/apps.51780.14307155302772688.6d2bb19d-e8cc-4826-bd21-920020654895.cb777698-a7aa-4193-ab23-8e8b5b12b979",
+            "https://store-images.s-microsoft.com/image/apps.40841.14307155302772688.6d2bb19d-e8cc-4826-bd21-920020654895.7fd67d24-91ea-42a4-b770-68295cf15d3e",
+            "https://store-images.s-microsoft.com/image/apps.12373.14307155302772688.6d2bb19d-e8cc-4826-bd21-920020654895.6c1aaa8b-0f0b-4764-b05e-8bde78d79323",
+            "https://store-images.s-microsoft.com/image/apps.24395.14307155302772688.6d2bb19d-e8cc-4826-bd21-920020654895.b58890f2-1026-4fcf-b77a-843c49c801dc",
+            "https://store-images.s-microsoft.com/image/apps.14822.14307155302772688.6d2bb19d-e8cc-4826-bd21-920020654895.36753552-5698-4835-bba3-4400df8b405b"
+        ],
+        "ReleaseDate": 5248849730427387904,
+        "DownloadSize": {
+            "US": 61644091392
+        }
+    },
+    {
+        "Categories": [
+            "Action & adventure",
+            "Platformer"
+        ],
+        "MetacriticUrls": {
+            "XboxOne": "https://www.metacritic.com/game/xbox-one/narita-boy/"
+        },
+        "MetaScore": {
+            "XboxOne": 69
+        },
+        "ID": "9NBL782WBHK6",
+        "Title": {
+            "en": "Narita Boy"
+        },
+        "Description": {
+            "en": "Flashback to the 80s. The Creator, a genius of his time, creates a video game console called Narita One with its flagship title being a game called Narita Boy. \r\n\r\nNarita Boy becomes a tremendous hit! Copies of cartridges are flying off physical shelves worldwide. Within weeks Narita Boy is the best-selling video game of all time, critically acclaimed for its power-fantasy wielding the Techno-sword and taking players on a journey like no other.\r\n\r\nMeanwhile, inside the binaural code the digital realm connects with reality. Him has returned and deleted The Creator’s memories. Supervisor program, Motherboard, and her agents have activated the Narita Boy protocol. \r\n\r\nThe Stallions are coming, and the Digital Kingdom needs a hero. \r\n\r\nThe Game \r\n\r\nBecome symphonic in Narita Boy! A radical action-adventure as a legendary pixel hero trapped as a mere echo within the Digital Kingdom. Discover the mysteries behind the Techno-sword, lock swords with the corrupt and tainted Stallions. Save the world! \r\n\r\nPixel perfectionist – The shining example of a perfectionist at work. Experience the visuals of a retro-era brought to life with hand-drawn animations. \r\n\r\nExplore the mysteries of the Digital Kingdom – Venture up, down, left, and right to discover the darkest depths of the broken binary code in this never-ending story*. \r\n\r\nMax out the Trichroma – Equipped with the only weapon able to defeat the Stallion threat, take the Techno-sword and plunge it into the digital hearts of your enemies. Do not let this empire strike back, be the true blade runner. \r\n\r\nDiehard enemies – Face foes only imagined from your darkest fever-dreams! \r\n\r\nShow those bosses the bytes – Face-off against tons of totally radical and awesome bosses. Become the boss terminator, by overcoming the deadly Crab, DragonBot, Black Rainbow, and so much more!\r\n\r\nSounds of the retro-grade-times - Feel fresh waves of synth wash over you while travelling the Digital Kingdom. With kickin’ beats that will send you back to the future. \r\n\r\n*there is an end to the story. "
+        },
+        "Affirmations": [
+            0
+        ],
+        "MetaCriticPathName": "narita-boy",
+        "OriginalPlatforms": [
+            3
+        ],
+        "InVaultTime": 0,
+        "PosterUrl": "https://store-images.s-microsoft.com/image/apps.17524.13511334762102279.20d0136b-3bfe-4ba4-b8a6-c63db0ef5500.2dbe1f5d-f665-4afa-a4a6-493008be372f",
+        "IsMetacriticInfoCorrect": true,
+        "IsMetacriticInfoExist": true,
+        "ScreenShots": [
+            "https://store-images.s-microsoft.com/image/apps.48816.13511334762102279.1174659a-e81e-4458-8192-19bac9ede8b3.96bf1c20-93c9-4097-b675-17c223a00d9b",
+            "https://store-images.s-microsoft.com/image/apps.8889.13511334762102279.1174659a-e81e-4458-8192-19bac9ede8b3.fee9619d-5802-49c8-8854-aa134f62c561",
+            "https://store-images.s-microsoft.com/image/apps.63520.13511334762102279.1174659a-e81e-4458-8192-19bac9ede8b3.88032af2-10aa-4fba-bcee-60d2774d652c",
+            "https://store-images.s-microsoft.com/image/apps.2923.13511334762102279.1174659a-e81e-4458-8192-19bac9ede8b3.7198de39-af0f-4d24-ae73-e6389698733e",
+            "https://store-images.s-microsoft.com/image/apps.38276.13511334762102279.1174659a-e81e-4458-8192-19bac9ede8b3.10f779c5-3884-4d33-9670-a07d84ed97d6",
+            "https://store-images.s-microsoft.com/image/apps.25746.13511334762102279.1174659a-e81e-4458-8192-19bac9ede8b3.ac81e914-62e3-4486-a869-df5c093df11e",
+            "https://store-images.s-microsoft.com/image/apps.48469.13511334762102279.1174659a-e81e-4458-8192-19bac9ede8b3.12146c46-c62f-4ff0-a296-0f246d96e68a",
+            "https://store-images.s-microsoft.com/image/apps.34863.13511334762102279.1174659a-e81e-4458-8192-19bac9ede8b3.a88550fa-d257-4e1a-bb32-1f71ae374137",
+            "https://store-images.s-microsoft.com/image/apps.57828.13511334762102279.1174659a-e81e-4458-8192-19bac9ede8b3.af6d9be8-e501-44b5-b7e9-b54e68870a41"
+        ],
+        "ReleaseDate": 5249212610427387904,
+        "DownloadSize": {
+            "US": 1370775552
         }
     }
 ]
