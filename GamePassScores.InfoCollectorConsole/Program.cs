@@ -53,7 +53,7 @@ namespace GamePassScores.InfoCollectorConsole
             var jsonFile = System.IO.File.ReadAllText("./games.json");
             var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
             var fileName = "newgames.json";
-            await UpdateGamesList(games);
+            var newGames = await UpdateGamesList(games);
             //await UpdateMetacriticScoresAsync(games, Platform.XboxOne);
             //await UpdateMetacriticScoresAsync(games, Platform.XboxSeriesX);
             //await UpdateMetacriticScoresAsync(games, Platform.PC);
@@ -78,7 +78,7 @@ namespace GamePassScores.InfoCollectorConsole
             #endregion
 
             //序列化成底层数据模型
-            var serializeGames = JsonConvert.SerializeObject(games);
+            var serializeGames = JsonConvert.SerializeObject(newGames);
             await System.IO.File.WriteAllTextAsync("./" + fileName, serializeGames);
         }
 
@@ -425,7 +425,7 @@ namespace GamePassScores.InfoCollectorConsole
         static async Task GetMetacriticScoresAsync(List<Game> games)
         {
             Semaphore semaphore = new Semaphore(3, 3);
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
                 foreach (var game in games)
                 {
@@ -463,7 +463,7 @@ namespace GamePassScores.InfoCollectorConsole
                         string gameString = game.MetaCriticPathName;
                         string requestUrlString = baseUrlString + platformString + "/" + gameString + "/";
 
-                        GetMetacriticScore(game, platform, requestUrlString, semaphore);
+                        await GetMetacriticScore(game, platform, requestUrlString, semaphore);
                     }
                 }
                 System.Diagnostics.Debug.WriteLine(totalC);
@@ -474,13 +474,13 @@ namespace GamePassScores.InfoCollectorConsole
         }
         static int abcde = 0;
         static int totalC = 0;
-        static async void GetMetacriticScore(Game game, Platform platform, string requestUrlString, Semaphore semaphore)
+        static async Task GetMetacriticScore(Game game, Platform platform, string requestUrlString, Semaphore semaphore)
         {
             semaphore.WaitOne();
             abcde++;
-            if(abcde>2)
+            while(abcde>2)
             {
-                System.Diagnostics.Debug.WriteLine("fuck, it's too much");
+                System.Diagnostics.Debug.WriteLine("abcde > 2");
             }
             Console.WriteLine("发送MTC请求");
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrlString);
@@ -531,14 +531,18 @@ namespace GamePassScores.InfoCollectorConsole
             }
             Console.WriteLine("结束MTC请求");
 
-            semaphore.Release();
+            lock(semaphore)
+            {
+                semaphore.Release();
+            }
+            
             totalC++;
             abcde--;
         }
         static async Task UpdateMetacriticScoresAsync(List<Game> games, Platform specifyPlatform = Platform.Unknown)
         {
             abcde = 0;
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
                 Semaphore semaphore = new Semaphore(2, 2);
                 string baseUrlString = "https://www.metacritic.com/game/";
@@ -597,7 +601,7 @@ namespace GamePassScores.InfoCollectorConsole
                             string gameString = game.MetaCriticPathName;
                             string requestUrlString = baseUrlString + platformString + "/" + gameString + "/";
 
-                            GetMetacriticScore(game, platform, requestUrlString, semaphore);
+                            await GetMetacriticScore(game, platform, requestUrlString, semaphore);
                         }
                     }
                 
@@ -607,7 +611,7 @@ namespace GamePassScores.InfoCollectorConsole
             Console.WriteLine("成功更新Metacritic信息。");
         }
 
-        static async Task UpdateGamesList(List<Game> games)
+        static async Task<List<Game>> UpdateGamesList(List<Game> games)
         {
             var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
             var recentlyAddedList = await GetGameList(recentlyAddConsoleGameListInfo);
@@ -616,7 +620,7 @@ namespace GamePassScores.InfoCollectorConsole
             Console.WriteLine("开始更新游戏信息");
             var infos = await GetGamesInfo(gamelistInfo);
 
-
+            List<Game> newGames = new List<Game>();
             var allGames = await ConvertToGames(infos, recentlyAddedList, leavingSoonList);
 
             for(int i = 0; i < allGames.Count; ++i)
@@ -633,19 +637,23 @@ namespace GamePassScores.InfoCollectorConsole
                     game.IsMetacriticInfoCorrect = oldGame.IsMetacriticInfoCorrect;
                     game.OriginalPlatforms = oldGame.OriginalPlatforms;
                     games[oldGameIndex] = game;
+                    newGames.Add(game);
                 }
                 else
                 {
-                    games.Add(game);
+                    newGames.Add(game);
                 }
             }
 
             
             
-            await UpdateMetacriticScoresAsync(games, Platform.PC);
-            await UpdateMetacriticScoresAsync(games, Platform.XboxSeriesX);
-            await UpdateMetacriticScoresAsync(games);
+            await UpdateMetacriticScoresAsync(newGames, Platform.PC);
+            await UpdateMetacriticScoresAsync(newGames, Platform.XboxSeriesX);
+            await UpdateMetacriticScoresAsync(newGames);
             //await UpdateMetacriticScoresAsync(games);
+
+
+            return newGames;
         }
     }
 }
