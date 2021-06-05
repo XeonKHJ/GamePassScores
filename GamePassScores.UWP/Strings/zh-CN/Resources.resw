@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ButtonAbout" xml:space="preserve">
-    <value>About</value>
+    <value>关于</value>
   </data>
   <data name="PlatformConsole.Text" xml:space="preserve">
-    <value>Console</value>
+    <value>游戏机</value>
   </data>
   <data name="PlatformPC.Text" xml:space="preserve">
-    <value>PC</value>
+    <value>电脑</value>
   </data>
   <data name="RecentlyAdded.Text" xml:space="preserve">
-    <value>Recently Added</value>
+    <value>最近添加</value>
   </data>
 </root>

@@ -96,7 +96,9 @@
                     <NavigationViewItemSeparator Padding="0" IsEnabled="False"></NavigationViewItemSeparator>
                     <ListView x:Name="InVaultTimeRadioButtons" IsItemClickEnabled="True" ItemClick="InVaultTimeRadioButtons_ItemClick" Margin="0, 0, 0, 10" XYFocusUp="{x:Bind CategoriesView}" GotFocus="InVaultTimeRadioButtons_GotFocus" XYFocusRight="{x:Bind GamesView}">
                         <RadioButton x:Name="AllRadioButton" Content="All" Checked="TimingRadioButton_Checked" IsChecked="True" GroupName="InVaultTimeRadioButtons"/>
-                        <RadioButton x:Name="RcentlyAddedRadioButton" Content="Recently Added" Checked="TimingRadioButton_Checked" GroupName="InVaultTimeRadioButtons"/>
+                        <RadioButton x:Name="RcentlyAddedRadioButton" Checked="TimingRadioButton_Checked" GroupName="InVaultTimeRadioButtons">
+                            <TextBlock x:Uid="RecentlyAdded"></TextBlock>
+                        </RadioButton>
                         <RadioButton x:Name="LeavingSoonRadioButton" Content="Leaving Soon" Checked="TimingRadioButton_Checked" GroupName="InVaultTimeRadioButtons"/>
                     </ListView>
                 </StackPanel>
