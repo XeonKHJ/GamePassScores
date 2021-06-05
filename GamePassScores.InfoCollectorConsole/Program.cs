@@ -10,6 +10,8 @@ using System.Text;
 using HtmlAgilityPack;
 using System.Threading;
 using System.Net;
+using LibGit2Sharp;
+using LibGit2Sharp.Handlers;
 
 namespace GamePassScores.InfoCollectorConsole
 {
@@ -20,8 +22,32 @@ namespace GamePassScores.InfoCollectorConsole
         static string recentlyAddConsoleGameListInfo = "https://catalog.gamepass.com/sigls/v2?id=f13cf6b4-57e6-4459-89df-6aec18cf0538&language=en-us&market=US";
         static string leavingSoonConsoleGameListInfo = "https://catalog.gamepass.com/sigls/v2?id=393f05bf-e596-4ef6-9487-6d4fa0eab987&language=en-us&market=US";
         static string idAtXboxConsoleGameListInfo = "";
+        static string repoLocalPath = "";
+        static string repoUserName = "";
+        static string repoPassword = "";
+        static string oldGameInfoFiles = "";
+        static string newGameInfoFileName = "";
         static async Task Main(string[] args)
         {
+            // Get repo info.
+            switch (args.Length)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 4:
+                    break;
+                default:
+                    break;
+            }
+            oldGameInfoFiles = args[0];
+            newGameInfoFileName = args[1];
+            repoLocalPath = args[2];
+            repoUserName = args[3];
+            repoPassword = args[4];
+
+
             //HttpClient.DefaultProxy = new WebProxy("127.0.0.1", 1080);
             #region 获取
             ////获取游戏列表
@@ -51,13 +77,20 @@ namespace GamePassScores.InfoCollectorConsole
             #endregion
 
             #region 更新类别
-            var jsonFile = System.IO.File.ReadAllText("./games.json");
+            if (string.IsNullOrEmpty(oldGameInfoFiles))
+            {
+                oldGameInfoFiles = "./games.json";
+            }
+            var jsonFile = System.IO.File.ReadAllText(oldGameInfoFiles);
             var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-            var fileName = "newgames.json";
+
+            if (string.IsNullOrEmpty(newGameInfoFileName))
+            {
+                newGameInfoFileName = "newgames.json";
+            }
+
+            var fileName = newGameInfoFileName;
             var newGames = await UpdateGamesList(games);
-            //await UpdateMetacriticScoresAsync(games, Platform.XboxOne);
-            //await UpdateMetacriticScoresAsync(games, Platform.XboxSeriesX);
-            //await UpdateMetacriticScoresAsync(games, Platform.PC);
             #endregion
 
             #region 获取类型列表
@@ -80,7 +113,34 @@ namespace GamePassScores.InfoCollectorConsole
 
             //序列化成底层数据模型
             var serializeGames = JsonConvert.SerializeObject(newGames);
-            await System.IO.File.WriteAllTextAsync("./" + fileName, serializeGames);
+            await System.IO.File.WriteAllTextAsync(fileName, serializeGames);
+        }
+
+        static void UploadGameList(string repoLocalPath, string username, string password)
+        {
+            using (var repo = new Repository("C:\\Dev\\Repos\\GamePassScoresInfo\\GamePassScores"))
+            {
+                // Stage the file
+                repo.Index.Add("ConsoleGames.txt");
+                repo.Index.Write();
+
+                // Create the committer's signature and commit
+                Signature author = new Signature("GameInfo Collectors", "dont@me.please", DateTime.Now);
+                Signature committer = author;
+
+                // Commit to the repository
+                Commit commit = repo.Commit("Update games' info.", author, committer);
+
+                LibGit2Sharp.PushOptions options = new LibGit2Sharp.PushOptions();
+                options.CredentialsProvider = new CredentialsHandler(
+                    (url, usernameFromUrl, types) =>
+                        new UsernamePasswordCredentials()
+                        {
+                            Username = username,
+                            Password = password
+                        });
+                repo.Network.Push(repo.Branches["GameInfos"], options);
+            }
         }
 
         static async Task<List<Game>> ConvertToGames(ProductsModel gameInfos, string[] recentlyAddedList = null, string[] leavingSoonList = null)
