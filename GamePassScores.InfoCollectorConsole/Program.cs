@@ -113,12 +113,13 @@ namespace GamePassScores.InfoCollectorConsole
 
             //序列化成底层数据模型
             var serializeGames = JsonConvert.SerializeObject(newGames);
-            await System.IO.File.WriteAllTextAsync(fileName, serializeGames);
+            await System.IO.File.WriteAllTextAsync(repoLocalPath + "/" + fileName, serializeGames);
+            UploadGameList(repoLocalPath, repoUserName, repoPassword);
         }
 
         static void UploadGameList(string repoLocalPath, string username, string password)
         {
-            using (var repo = new Repository("C:\\Dev\\Repos\\GamePassScoresInfo\\GamePassScores"))
+            using (var repo = new Repository(repoLocalPath))
             {
                 // Stage the file
                 repo.Index.Add("ConsoleGames.txt");
