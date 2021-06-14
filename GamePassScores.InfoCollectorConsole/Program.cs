@@ -29,101 +29,112 @@ namespace GamePassScores.InfoCollectorConsole
         static string newGameInfoFileName = "";
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Recevie {0} args", args);
-
-            for(int i = 0; i < args.Length; ++i)
+            try
             {
-                Console.WriteLine("Arg {0}: {1}", i, args[i]);
+                Console.WriteLine("Recevie {0} args", args);
+
+                for (int i = 0; i < args.Length; ++i)
+                {
+                    Console.WriteLine("Arg {0}: {1}", i, args[i]);
+                }
+                // Get repo info.
+                switch (args.Length)
+                {
+                    case 0:
+
+                        break;
+                    case 1:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        break;
+                }
+
+                oldGameInfoFiles = args[0];
+                newGameInfoFileName = args[1];
+                repoLocalPath = args[2];
+                repoUserName = args[3];
+                repoPassword = args[4];
+
+                //HttpClient.DefaultProxy = new WebProxy("127.0.0.1", 1080);
+                #region 获取
+                ////获取游戏列表
+                //var gamelistInfo = await GetGameList();
+
+                ////从游戏列表中获取游戏详细信息
+                //var gameInfos = await GetGamesInfo(gamelistInfo);
+
+                ////转换成为我们的对象
+                //var games = ConvertToGames(gameInfos);
+
+                ////获取Metascore
+                //await GetMetacriticScoresAsync(games);
+
+                ////打印一下
+                //foreach (var game in games)
+                //{
+                //    Console.WriteLine(game.MetaCriticPathName);
+                //}
+                #endregion
+
+                #region 更新Metacritic
+                //var jsonFile = System.IO.File.ReadAllText("./games.json");
+                //var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
+                //var fileName = "newgames.json";
+                //await UpdateMetacriticScoresAsync(games, Platform.XboxOne);
+                #endregion
+
+                #region 更新类别
+                if (string.IsNullOrEmpty(oldGameInfoFiles))
+                {
+                    oldGameInfoFiles = "./games.json";
+                }
+                var jsonFile = System.IO.File.ReadAllText(oldGameInfoFiles);
+                var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
+
+                if (string.IsNullOrEmpty(newGameInfoFileName))
+                {
+                    newGameInfoFileName = "newgames.json";
+                }
+
+                var fileName = newGameInfoFileName;
+                var newGames = await UpdateGamesList(games);
+                #endregion
+
+
+                LogTraceInfo("成功更新游戏信息");
+
+                #region 获取类型列表
+                //var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
+                //var gameInfos = await GetGamesInfo(gamelistInfo);
+
+                //HashSet<string> genres = new HashSet<string>();
+                //foreach(var game in gameInfos.Products)
+                //{
+                //    genres.Add(game.Properties.Category);
+                //    if (game.Properties.Categories != null)
+                //    {
+                //        foreach (var c in game.Properties.Categories)
+                //        {
+                //            genres.Add(c);
+                //        }
+                //    }
+                //}
+                #endregion
+
+                //序列化成底层数据模型
+                var serializeGames = JsonConvert.SerializeObject(newGames);
+                await System.IO.File.WriteAllTextAsync(fileName, serializeGames);
+                UploadGameList(repoLocalPath, repoUserName, repoPassword);
+                LogTraceInfo("游戏信息上传完成。");
             }
-            // Get repo info.
-            switch (args.Length)
+            catch (Exception exception)
             {
-                case 0:
-                    
-                    break;
-                case 1:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                default:
-                    break;
+                Console.WriteLine("Exception! {0}", exception.Message);
             }
-
-            oldGameInfoFiles = args[0];
-            newGameInfoFileName = args[1];
-            repoLocalPath = args[2];
-            repoUserName = args[3];
-            repoPassword = args[4];
-
-            //HttpClient.DefaultProxy = new WebProxy("127.0.0.1", 1080);
-            #region 获取
-            ////获取游戏列表
-            //var gamelistInfo = await GetGameList();
-
-            ////从游戏列表中获取游戏详细信息
-            //var gameInfos = await GetGamesInfo(gamelistInfo);
-
-            ////转换成为我们的对象
-            //var games = ConvertToGames(gameInfos);
-
-            ////获取Metascore
-            //await GetMetacriticScoresAsync(games);
-
-            ////打印一下
-            //foreach (var game in games)
-            //{
-            //    Console.WriteLine(game.MetaCriticPathName);
-            //}
-            #endregion
-
-            #region 更新Metacritic
-            //var jsonFile = System.IO.File.ReadAllText("./games.json");
-            //var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-            //var fileName = "newgames.json";
-            //await UpdateMetacriticScoresAsync(games, Platform.XboxOne);
-            #endregion
-
-            #region 更新类别
-            if (string.IsNullOrEmpty(oldGameInfoFiles))
-            {
-                oldGameInfoFiles = "./games.json";
-            }
-            var jsonFile = System.IO.File.ReadAllText(oldGameInfoFiles);
-            var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-
-            if (string.IsNullOrEmpty(newGameInfoFileName))
-            {
-                newGameInfoFileName = "newgames.json";
-            }
-
-            var fileName = newGameInfoFileName;
-            var newGames = await UpdateGamesList(games);
-            #endregion
-
-            #region 获取类型列表
-            //var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
-            //var gameInfos = await GetGamesInfo(gamelistInfo);
-
-            //HashSet<string> genres = new HashSet<string>();
-            //foreach(var game in gameInfos.Products)
-            //{
-            //    genres.Add(game.Properties.Category);
-            //    if (game.Properties.Categories != null)
-            //    {
-            //        foreach (var c in game.Properties.Categories)
-            //        {
-            //            genres.Add(c);
-            //        }
-            //    }
-            //}
-            #endregion
-
-            //序列化成底层数据模型
-            var serializeGames = JsonConvert.SerializeObject(newGames);
-            await System.IO.File.WriteAllTextAsync(fileName, serializeGames);
-            UploadGameList(repoLocalPath, repoUserName, repoPassword);
         }
 
         static void UploadGameList(string repoLocalPath, string username, string password)
@@ -146,7 +157,7 @@ namespace GamePassScores.InfoCollectorConsole
 
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     System.Diagnostics.Debug.WriteLine(ex.Message);
@@ -165,9 +176,9 @@ namespace GamePassScores.InfoCollectorConsole
                             });
                     repo.Network.Push(repo.Branches["GameInfos"], options);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine("ex.Message");
+                    Console.WriteLine(ex.Message);
                     System.Diagnostics.Debug.WriteLine("Push fault:{0}", ex.Message);
                 }
             }
@@ -371,11 +382,8 @@ namespace GamePassScores.InfoCollectorConsole
                         }
                     }
 
-                    GetGamesInfoSingleTime(requestProductsString, gamePassProductsModel, semaphore);
-                }
-
-                while (totalThread != 0) ;
-            });
+                await GetGamesInfoSingleTime(requestProductsString, gamePassProductsModel);
+            }
 
             int[] compareResult = new int[gamelistInfo.Length];
             List<int> stupidResult = new List<int>();
@@ -403,11 +411,9 @@ namespace GamePassScores.InfoCollectorConsole
             #endregion
             return gamePassProductsModel;
         }
-        private static int totalThread = 0;
-        static async void GetGamesInfoSingleTime(string requestProductsString, ProductsModel gamePassProductsModel, Semaphore semaphore)
+
+        static async Task GetGamesInfoSingleTime(string requestProductsString, ProductsModel gamePassProductsModel)
         {
-            semaphore.WaitOne();
-            ++totalThread;
             string requestUriString = "https://displaycatalog.mp.microsoft.com/v7.0/products?";
 
             requestUriString += "bigIds=" + requestProductsString + "&" +
@@ -420,9 +426,9 @@ namespace GamePassScores.InfoCollectorConsole
 
             try
             {
-                Console.WriteLine("发了一个请求");
+                Console.WriteLine("正在请求产品{0}的详细信息。", requestProductsString);
                 var response = await httpClient.SendAsync(request).ConfigureAwait(false);
-
+                Console.WriteLine("请求{0}完成。", requestProductsString);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -484,10 +490,7 @@ namespace GamePassScores.InfoCollectorConsole
                 Console.WriteLine(exception.StackTrace);
             }
 
-
-            var semaResult = semaphore.Release();
-            --totalThread;
-            //Console.WriteLine("{0} done!", gameCode);
+            Console.WriteLine("请求{0}线程完成。", requestProductsString);
         }
         static async Task<string[]> GetGameList(string requestUrl)
         {
@@ -576,7 +579,7 @@ namespace GamePassScores.InfoCollectorConsole
             {
                 System.Diagnostics.Debug.WriteLine("abcde > 2");
             }
-            Console.WriteLine("发送MTC请求");
+            Console.WriteLine("正在对游戏{0}获取MTC分数信息。", game.Title.First().Value);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrlString);
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.SendAsync(request);
@@ -746,6 +749,18 @@ namespace GamePassScores.InfoCollectorConsole
 
 
             return newGames;
+        }
+
+        static void LogTraceInfo(string info)
+        {
+            Console.WriteLine(info);
+        }
+
+        static void HandleError(Exception exception)
+        {
+            Console.WriteLine("Error occurd!");
+            Console.WriteLine(exception);
+            Console.WriteLine();
         }
     }
 }
