@@ -49,7 +49,6 @@ namespace GamePassScores.InfoCollectorConsole
             repoUserName = args[3];
             repoPassword = args[4];
 
-
             //HttpClient.DefaultProxy = new WebProxy("127.0.0.1", 1080);
             #region 获取
             ////获取游戏列表
@@ -132,17 +131,35 @@ namespace GamePassScores.InfoCollectorConsole
                 Signature committer = author;
 
                 // Commit to the repository
-                Commit commit = repo.Commit("Update games' info.", author, committer);
 
-                LibGit2Sharp.PushOptions options = new LibGit2Sharp.PushOptions();
-                options.CredentialsProvider = new CredentialsHandler(
-                    (url, usernameFromUrl, types) =>
-                        new UsernamePasswordCredentials()
-                        {
-                            Username = username,
-                            Password = password
-                        });
-                repo.Network.Push(repo.Branches["GameInfos"], options);
+                try
+                {
+                    Commit commit = repo.Commit("Update games' info.", author, committer);
+
+
+                }
+                catch(Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                }
+
+                try
+                {
+                    PushOptions options = new PushOptions();
+
+                    options.CredentialsProvider = new CredentialsHandler(
+                        (url, usernameFromUrl, types) =>
+                            new UsernamePasswordCredentials()
+                            {
+                                Username = username,
+                                Password = password
+                            });
+                    repo.Network.Push(repo.Branches["GameInfos"], options);
+                }
+                catch(Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("Push fault:{0}", ex.Message);
+                }
             }
         }
 

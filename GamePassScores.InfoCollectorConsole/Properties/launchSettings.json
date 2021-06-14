@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GamePassScores.InfoCollectorConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Dev\\Repos\\GamePassScoresInfo\\GamePassScores\\ConsoleGames.json\" \"C:\\Dev\\Repos\\GamePassScoresInfo\\GamePassScores\\ConsoleGames.json\" \"C:\\Dev\\Repos\\GamePassScoresInfo\\GamePassScores\" XeonKHJ xeonh19970505"
+    }
+  }
+}
