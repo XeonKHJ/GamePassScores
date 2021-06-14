@@ -148,6 +148,7 @@ namespace GamePassScores.InfoCollectorConsole
                 }
                 catch(Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
                     System.Diagnostics.Debug.WriteLine(ex.Message);
                 }
 
@@ -166,6 +167,7 @@ namespace GamePassScores.InfoCollectorConsole
                 }
                 catch(Exception ex)
                 {
+                    Console.WriteLine("ex.Message");
                     System.Diagnostics.Debug.WriteLine("Push fault:{0}", ex.Message);
                 }
             }
@@ -260,6 +262,7 @@ namespace GamePassScores.InfoCollectorConsole
                     }
                     catch
                     {
+                        Console.WriteLine("这个捆绑包没大小");
                         System.Diagnostics.Debug.WriteLine("这个捆绑包没大小");
                     }
                 }
