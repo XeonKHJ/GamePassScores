@@ -29,10 +29,17 @@ namespace GamePassScores.InfoCollectorConsole
         static string newGameInfoFileName = "";
         static async Task Main(string[] args)
         {
+            Console.WriteLine("Recevie {0} args", args);
+
+            for(int i = 0; i < args.Length; ++i)
+            {
+                Console.WriteLine("Arg {0}: {1}", i, args[i]);
+            }
             // Get repo info.
             switch (args.Length)
             {
                 case 0:
+                    
                     break;
                 case 1:
                     break;
@@ -43,6 +50,7 @@ namespace GamePassScores.InfoCollectorConsole
                 default:
                     break;
             }
+
             oldGameInfoFiles = args[0];
             newGameInfoFileName = args[1];
             repoLocalPath = args[2];
