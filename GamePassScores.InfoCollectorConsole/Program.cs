@@ -174,7 +174,7 @@ namespace GamePassScores.InfoCollectorConsole
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine("ex.Message");
+                    Console.WriteLine(ex.Message);
                     System.Diagnostics.Debug.WriteLine("Push fault:{0}", ex.Message);
                 }
             }
@@ -752,6 +752,18 @@ namespace GamePassScores.InfoCollectorConsole
 
 
             return newGames;
+        }
+
+        static void LogTraceInfo(string info)
+        {
+            Console.WriteLine(info);
+        }
+
+        static void HandleError(Exception exception)
+        {
+            Console.WriteLine("Error occurd!");
+            Console.WriteLine(exception);
+            Console.WriteLine();
         }
     }
 }
