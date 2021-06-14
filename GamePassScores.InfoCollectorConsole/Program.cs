@@ -104,9 +104,6 @@ namespace GamePassScores.InfoCollectorConsole
                 var newGames = await UpdateGamesList(games);
                 #endregion
 
-
-                LogTraceInfo("成功更新游戏信息");
-
                 #region 获取类型列表
                 //var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
                 //var gameInfos = await GetGamesInfo(gamelistInfo);
@@ -129,9 +126,8 @@ namespace GamePassScores.InfoCollectorConsole
                 var serializeGames = JsonConvert.SerializeObject(newGames);
                 await System.IO.File.WriteAllTextAsync(fileName, serializeGames);
                 UploadGameList(repoLocalPath, repoUserName, repoPassword);
-                LogTraceInfo("游戏信息上传完成。");
             }
-            catch (Exception exception)
+            catch(Exception exception)
             {
                 Console.WriteLine("Exception! {0}", exception.Message);
             }
@@ -157,7 +153,7 @@ namespace GamePassScores.InfoCollectorConsole
 
 
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     System.Diagnostics.Debug.WriteLine(ex.Message);
@@ -176,7 +172,7 @@ namespace GamePassScores.InfoCollectorConsole
                             });
                     repo.Network.Push(repo.Branches["GameInfos"], options);
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     System.Diagnostics.Debug.WriteLine("Push fault:{0}", ex.Message);
@@ -382,8 +378,11 @@ namespace GamePassScores.InfoCollectorConsole
                         }
                     }
 
-                await GetGamesInfoSingleTime(requestProductsString, gamePassProductsModel);
-            }
+                    GetGamesInfoSingleTime(requestProductsString, gamePassProductsModel, semaphore);
+                }
+
+                while (totalThread != 0) ;
+            });
 
             int[] compareResult = new int[gamelistInfo.Length];
             List<int> stupidResult = new List<int>();
@@ -411,9 +410,11 @@ namespace GamePassScores.InfoCollectorConsole
             #endregion
             return gamePassProductsModel;
         }
-
-        static async Task GetGamesInfoSingleTime(string requestProductsString, ProductsModel gamePassProductsModel)
+        private static int totalThread = 0;
+        static async void GetGamesInfoSingleTime(string requestProductsString, ProductsModel gamePassProductsModel, Semaphore semaphore)
         {
+            semaphore.WaitOne();
+            ++totalThread;
             string requestUriString = "https://displaycatalog.mp.microsoft.com/v7.0/products?";
 
             requestUriString += "bigIds=" + requestProductsString + "&" +
@@ -491,6 +492,9 @@ namespace GamePassScores.InfoCollectorConsole
             }
 
             Console.WriteLine("请求{0}线程完成。", requestProductsString);
+            var semaResult = semaphore.Release();
+            --totalThread;
+            //Console.WriteLine("{0} done!", gameCode);
         }
         static async Task<string[]> GetGameList(string requestUrl)
         {
@@ -579,7 +583,7 @@ namespace GamePassScores.InfoCollectorConsole
             {
                 System.Diagnostics.Debug.WriteLine("abcde > 2");
             }
-            Console.WriteLine("正在对游戏{0}获取MTC分数信息。", game.Title.First().Value);
+            Console.WriteLine("发送MTC请求");
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrlString);
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.SendAsync(request);
