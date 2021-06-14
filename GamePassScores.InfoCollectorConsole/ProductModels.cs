@@ -33,18 +33,18 @@ namespace GamePassScores.InfoCollectorConsole
 
     public class Image
     {
-        public string FileId { get; set; }
-        public object EISListingIdentifier { get; set; }
-        public string BackgroundColor { get; set; }
-        public string Caption { get; set; }
-        public int FileSizeInBytes { get; set; }
-        public string ForegroundColor { get; set; }
-        public int Height { get; set; }
+        //public string FileId { get; set; }
+        //public object EISListingIdentifier { get; set; }
+        //public string BackgroundColor { get; set; }
+        //public string Caption { get; set; }
+        //public int FileSizeInBytes { get; set; }
+        //public string ForegroundColor { get; set; }
+        //public int Height { get; set; }
         public string ImagePositionInfo { get; set; }
         public string ImagePurpose { get; set; }
-        public string UnscaledImageSHA256Hash { get; set; }
+        //public string UnscaledImageSHA256Hash { get; set; }
         public string Uri { get; set; }
-        public int Width { get; set; }
+        //public int Width { get; set; }
     }
 
     public class PreviewImage
@@ -86,28 +86,28 @@ namespace GamePassScores.InfoCollectorConsole
 
     public class LocalizedProperty
     {
-        public string DeveloperName { get; set; }
-        public string PublisherName { get; set; }
-        public string PublisherWebsiteUri { get; set; }
-        public string SupportUri { get; set; }
+        //public string DeveloperName { get; set; }
+        //public string PublisherName { get; set; }
+        //public string PublisherWebsiteUri { get; set; }
+        //public string SupportUri { get; set; }
         public EligibilityProperties EligibilityProperties { get; set; }
-        public List<object> Franchises { get; set; }
+        //public List<object> Franchises { get; set; }
         public List<Image> Images { get; set; }
-        public List<Video> Videos { get; set; }
+        //public List<Video> Videos { get; set; }
         public string ProductDescription { get; set; }
         public string ProductTitle { get; set; }
-        public string ShortTitle { get; set; }
-        public string SortTitle { get; set; }
-        public object FriendlyTitle { get; set; }
-        public string ShortDescription { get; set; }
-        public List<SearchTitle> SearchTitles { get; set; }
-        public string VoiceTitle { get; set; }
-        public object RenderGroupDetails { get; set; }
-        public List<object> ProductDisplayRanks { get; set; }
-        public object InteractiveModelConfig { get; set; }
-        public bool Interactive3DEnabled { get; set; }
+        ////public string ShortTitle { get; set; }
+        //public string SortTitle { get; set; }
+        //public object FriendlyTitle { get; set; }
+        //public string ShortDescription { get; set; }
+        //public List<SearchTitle> SearchTitles { get; set; }
+        //public string VoiceTitle { get; set; }
+        //public object RenderGroupDetails { get; set; }
+        //public List<object> ProductDisplayRanks { get; set; }
+        //public object InteractiveModelConfig { get; set; }
+        //public bool Interactive3DEnabled { get; set; }
         public string Language { get; set; }
-        public List<string> Markets { get; set; }
+        //public List<string> Markets { get; set; }
     }
 
     public class ContentRating
@@ -139,12 +139,12 @@ namespace GamePassScores.InfoCollectorConsole
     public class MarketProperty
     {
         public DateTime OriginalReleaseDate { get; set; }
-        public int MinimumUserAge { get; set; }
-        public List<ContentRating> ContentRatings { get; set; }
-        public List<RelatedProduct> RelatedProducts { get; set; }
-        public List<UsageData> UsageData { get; set; }
-        public object BundleConfig { get; set; }
-        public List<string> Markets { get; set; }
+        //public int MinimumUserAge { get; set; }
+        //public List<ContentRating> ContentRatings { get; set; }
+        //public List<RelatedProduct> RelatedProducts { get; set; }
+        //public List<UsageData> UsageData { get; set; }
+        //public object BundleConfig { get; set; }
+        //public List<string> Markets { get; set; }
     }
 
     public class Attribute
@@ -307,78 +307,78 @@ namespace GamePassScores.InfoCollectorConsole
 
     public class Package
     {
-        public List<Application> Applications { get; set; }
-        public List<string> Architectures { get; set; }
-        public List<string> Capabilities { get; set; }
-        public List<object> DeviceCapabilities { get; set; }
-        public List<object> ExperienceIds { get; set; }
-        public List<FrameworkDependency> FrameworkDependencies { get; set; }
-        public List<object> HardwareDependencies { get; set; }
-        public List<object> HardwareRequirements { get; set; }
-        public string Hash { get; set; }
-        public string HashAlgorithm { get; set; }
-        public bool IsStreamingApp { get; set; }
-        public List<string> Languages { get; set; }
+        //public List<Application> Applications { get; set; }
+        //public List<string> Architectures { get; set; }
+        //public List<string> Capabilities { get; set; }
+        //public List<object> DeviceCapabilities { get; set; }
+        //public List<object> ExperienceIds { get; set; }
+        //public List<FrameworkDependency> FrameworkDependencies { get; set; }
+        //public List<object> HardwareDependencies { get; set; }
+        //public List<object> HardwareRequirements { get; set; }
+        //public string Hash { get; set; }
+        //public string HashAlgorithm { get; set; }
+        //public bool IsStreamingApp { get; set; }
+        //public List<string> Languages { get; set; }
         public object MaxDownloadSizeInBytes { get; set; }
-        public object MaxInstallSizeInBytes { get; set; }
-        public string PackageFormat { get; set; }
-        public string PackageFamilyName { get; set; }
-        public object MainPackageFamilyNameForDlc { get; set; }
-        public string PackageFullName { get; set; }
-        public string PackageId { get; set; }
-        public string ContentId { get; set; }
-        public string KeyId { get; set; }
-        public int PackageRank { get; set; }
-        public string PackageUri { get; set; }
-        public List<PlatformDependency> PlatformDependencies { get; set; }
-        public string PlatformDependencyXmlBlob { get; set; }
-        public string ResourceId { get; set; }
-        public string Version { get; set; }
-        public List<PackageDownloadUri> PackageDownloadUris { get; set; }
-        public List<object> DriverDependencies { get; set; }
-        public FulfillmentData2 FulfillmentData { get; set; }
+        //public object MaxInstallSizeInBytes { get; set; }
+        //public string PackageFormat { get; set; }
+        //public string PackageFamilyName { get; set; }
+        //public object MainPackageFamilyNameForDlc { get; set; }
+        //public string PackageFullName { get; set; }
+        //public string PackageId { get; set; }
+        //public string ContentId { get; set; }
+        //public string KeyId { get; set; }
+        //public int PackageRank { get; set; }
+        //public string PackageUri { get; set; }
+        //public List<PlatformDependency> PlatformDependencies { get; set; }
+        //public string PlatformDependencyXmlBlob { get; set; }
+        //public string ResourceId { get; set; }
+        //public string Version { get; set; }
+        //public List<PackageDownloadUri> PackageDownloadUris { get; set; }
+        //public List<object> DriverDependencies { get; set; }
+        //public FulfillmentData2 FulfillmentData { get; set; }
     }
 
     public class Properties2
     {
-        public object EarlyAdopterEnrollmentUrl { get; set; }
-        public FulfillmentData FulfillmentData { get; set; }
-        public string FulfillmentType { get; set; }
-        public object FulfillmentPluginId { get; set; }
-        public bool HasThirdPartyIAPs { get; set; }
-        public DateTime LastUpdateDate { get; set; }
-        public HardwareProperties HardwareProperties { get; set; }
-        public List<object> HardwareRequirements { get; set; }
-        public List<string> HardwareWarningList { get; set; }
-        public string InstallationTerms { get; set; }
+        //public object EarlyAdopterEnrollmentUrl { get; set; }
+        //public FulfillmentData FulfillmentData { get; set; }
+        //public string FulfillmentType { get; set; }
+        //public object FulfillmentPluginId { get; set; }
+        //public bool HasThirdPartyIAPs { get; set; }
+        //public DateTime LastUpdateDate { get; set; }
+        //public HardwareProperties HardwareProperties { get; set; }
+        //public List<object> HardwareRequirements { get; set; }
+        //public List<string> HardwareWarningList { get; set; }
+        //public string InstallationTerms { get; set; }
         public List<Package> Packages { get; set; }
-        public string VersionString { get; set; }
-        public List<string> SkuDisplayGroupIds { get; set; }
-        public bool XboxXPA { get; set; }
+        //public string VersionString { get; set; }
+        //public List<string> SkuDisplayGroupIds { get; set; }
+        //public bool XboxXPA { get; set; }
         public List<BoundledSku> BundledSkus { get; set; }
-        public bool IsRepurchasable { get; set; }
-        public int SkuDisplayRank { get; set; }
-        public object DisplayPhysicalStoreInventory { get; set; }
-        public List<object> VisibleToB2BServiceIds { get; set; }
-        public List<object> AdditionalIdentifiers { get; set; }
-        public bool IsTrial { get; set; }
-        public bool IsPreOrder { get; set; }
-        public bool IsBundle { get; set; }
+        //public bool IsRepurchasable { get; set; }
+        //public int SkuDisplayRank { get; set; }
+        //public object DisplayPhysicalStoreInventory { get; set; }
+        //public List<object> VisibleToB2BServiceIds { get; set; }
+        //public List<object> AdditionalIdentifiers { get; set; }
+        //public bool IsTrial { get; set; }
+        //public bool IsPreOrder { get; set; }
+        //public bool IsBundle { get; set; }
     }
 
     public class Sku
     {
-        public DateTime LastModifiedDate { get; set; }
-        public List<LocalizedProperty2> LocalizedProperties { get; set; }
-        public List<MarketProperty2> MarketProperties { get; set; }
+        //public DateTime LastModifiedDate { get; set; }
+        //public List<LocalizedProperty2> LocalizedProperties { get; set; }
+        //public List<MarketProperty2> MarketProperties { get; set; }
         public string ProductId { get; set; }
         public Properties2 Properties { get; set; }
-        public string SkuASchema { get; set; }
-        public string SkuBSchema { get; set; }
-        public string SkuId { get; set; }
-        public string SkuType { get; set; }
-        public object RecurrencePolicy { get; set; }
-        public object SubscriptionPolicyId { get; set; }
+        //public string SkuASchema { get; set; }
+        //public string SkuBSchema { get; set; }
+        //public string SkuId { get; set; }
+        //public string SkuType { get; set; }
+        //public object RecurrencePolicy { get; set; }
+        //public object SubscriptionPolicyId { get; set; }
     }
 
     public class AllowedPlatform
@@ -472,7 +472,9 @@ namespace GamePassScores.InfoCollectorConsole
         public int DisplayRank { get; set; }
         public List<AlternateId2> AlternateIds { get; set; }
         public bool RemediationRequired { get; set; }
-        public LicensingData LicensingData { get; set; }
+
+        // Not gonna use.
+        //public LicensingData LicensingData { get; set; }
         public List<Remediation2> Remediations { get; set; }
         public string AffirmationId { get; set; }
     }
@@ -486,7 +488,7 @@ namespace GamePassScores.InfoCollectorConsole
     public class DisplaySkuAvailability
     {
         public Sku Sku { get; set; }
-        public List<Availability> Availabilities { get; set; }
+        //public List<Availability> Availabilities { get; set; }
     }
 
     public class Product
