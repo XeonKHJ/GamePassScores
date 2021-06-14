@@ -345,6 +345,7 @@ namespace GamePassScores.InfoCollectorConsole
 
         static int totalGameFetch = 0;
         static int parallelNum = 2;
+        static int requestNum = 20;
         static async Task<ProductsModel> GetGamesInfo(string[] gamelistInfo)
         {
             ProductsModel gamePassProductsModel = new ProductsModel();
@@ -353,10 +354,9 @@ namespace GamePassScores.InfoCollectorConsole
             {
                 Semaphore semaphore = new Semaphore(parallelNum, parallelNum);
                 #region 老老实实的并行请求
-                for (int i = 0; i < gamelistInfo.Length; i = i + parallelNum)
+                for (int i = 0; i < gamelistInfo.Length; i = i + requestNum)
                 {
-                    int requestNum = parallelNum;
-                    if (i + parallelNum > gamelistInfo.Length)
+                    if (i + requestNum > gamelistInfo.Length)
                     {
                         requestNum = gamelistInfo.Length - i;
                     }
