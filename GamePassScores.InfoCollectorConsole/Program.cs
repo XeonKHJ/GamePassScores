@@ -38,6 +38,8 @@ namespace GamePassScores.InfoCollectorConsole
                     break;
                 case 4:
                     break;
+                case 5:
+                    break;
                 default:
                     break;
             }
@@ -113,7 +115,7 @@ namespace GamePassScores.InfoCollectorConsole
 
             //序列化成底层数据模型
             var serializeGames = JsonConvert.SerializeObject(newGames);
-            await System.IO.File.WriteAllTextAsync(repoLocalPath + "/" + fileName, serializeGames);
+            await System.IO.File.WriteAllTextAsync(fileName, serializeGames);
             UploadGameList(repoLocalPath, repoUserName, repoPassword);
         }
 
@@ -122,7 +124,7 @@ namespace GamePassScores.InfoCollectorConsole
             using (var repo = new Repository(repoLocalPath))
             {
                 // Stage the file
-                repo.Index.Add("ConsoleGames.txt");
+                repo.Index.Add("ConsoleGames.json");
                 repo.Index.Write();
 
                 // Create the committer's signature and commit
