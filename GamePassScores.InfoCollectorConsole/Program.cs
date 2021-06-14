@@ -419,9 +419,9 @@ namespace GamePassScores.InfoCollectorConsole
 
             try
             {
-                Console.WriteLine("发了一个请求");
+                Console.WriteLine("正在请求产品{0}的详细信息。", requestProductsString);
                 var response = await httpClient.SendAsync(request).ConfigureAwait(false);
-
+                Console.WriteLine("请求{0}完成。", requestProductsString);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -483,7 +483,7 @@ namespace GamePassScores.InfoCollectorConsole
                 Console.WriteLine(exception.StackTrace);
             }
 
-
+            Console.WriteLine("请求{0}线程完成。", requestProductsString);
             var semaResult = semaphore.Release();
             --totalThread;
             //Console.WriteLine("{0} done!", gameCode);
