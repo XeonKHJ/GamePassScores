@@ -104,6 +104,9 @@ namespace GamePassScores.InfoCollectorConsole
                 var newGames = await UpdateGamesList(games);
                 #endregion
 
+
+                LogTraceInfo("成功更新游戏信息");
+
                 #region 获取类型列表
                 //var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
                 //var gameInfos = await GetGamesInfo(gamelistInfo);
@@ -126,8 +129,9 @@ namespace GamePassScores.InfoCollectorConsole
                 var serializeGames = JsonConvert.SerializeObject(newGames);
                 await System.IO.File.WriteAllTextAsync(fileName, serializeGames);
                 UploadGameList(repoLocalPath, repoUserName, repoPassword);
+                LogTraceInfo("游戏信息上传完成。");
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 Console.WriteLine("Exception! {0}", exception.Message);
             }
@@ -153,7 +157,7 @@ namespace GamePassScores.InfoCollectorConsole
 
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     System.Diagnostics.Debug.WriteLine(ex.Message);
@@ -172,7 +176,7 @@ namespace GamePassScores.InfoCollectorConsole
                             });
                     repo.Network.Push(repo.Branches["GameInfos"], options);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     System.Diagnostics.Debug.WriteLine("Push fault:{0}", ex.Message);
@@ -352,36 +356,32 @@ namespace GamePassScores.InfoCollectorConsole
 
         static int totalGameFetch = 0;
         static int parallelNum = 1;
-        static int requestNum = 20;
+        static int expectedRequestNum = 20;
         static async Task<ProductsModel> GetGamesInfo(string[] gamelistInfo)
         {
             ProductsModel gamePassProductsModel = new ProductsModel();
             ProductsModel eaPlayProductsModel = new ProductsModel();
-            await Task.Run(() =>
-            {
-                Semaphore semaphore = new Semaphore(parallelNum, parallelNum);
-                #region 老老实实的并行请求
-                for (int i = 0; i < gamelistInfo.Length; i = i + requestNum)
-                {
-                    if (i + requestNum > gamelistInfo.Length)
-                    {
-                        requestNum = gamelistInfo.Length - i;
-                    }
-                    string requestProductsString = string.Empty;
-                    for (int j = 0; j < requestNum; ++j)
-                    {
-                        requestProductsString += gamelistInfo[j + i];
-                        if (j != requestNum - 1)
-                        {
-                            requestProductsString += ',';
-                        }
-                    }
 
-                    GetGamesInfoSingleTime(requestProductsString, gamePassProductsModel, semaphore);
+            #region 老老实实的并行请求
+            for (int i = 0; i < gamelistInfo.Length; i = i + expectedRequestNum)
+            {
+                int requestNum = expectedRequestNum;
+                if (i + expectedRequestNum > gamelistInfo.Length)
+                {
+                    requestNum = gamelistInfo.Length - i;
+                }
+                string requestProductsString = string.Empty;
+                for (int j = 0; j < requestNum; ++j)
+                {
+                    requestProductsString += gamelistInfo[j + i];
+                    if (j != requestNum - 1)
+                    {
+                        requestProductsString += ',';
+                    }
                 }
 
-                while (totalThread != 0) ;
-            });
+                await GetGamesInfoSingleTime(requestProductsString, gamePassProductsModel);
+            }
 
             int[] compareResult = new int[gamelistInfo.Length];
             List<int> stupidResult = new List<int>();
@@ -409,11 +409,9 @@ namespace GamePassScores.InfoCollectorConsole
             #endregion
             return gamePassProductsModel;
         }
-        private static int totalThread = 0;
-        static async void GetGamesInfoSingleTime(string requestProductsString, ProductsModel gamePassProductsModel, Semaphore semaphore)
+
+        static async Task GetGamesInfoSingleTime(string requestProductsString, ProductsModel gamePassProductsModel)
         {
-            semaphore.WaitOne();
-            ++totalThread;
             string requestUriString = "https://displaycatalog.mp.microsoft.com/v7.0/products?";
 
             requestUriString += "bigIds=" + requestProductsString + "&" +
@@ -491,9 +489,6 @@ namespace GamePassScores.InfoCollectorConsole
             }
 
             Console.WriteLine("请求{0}线程完成。", requestProductsString);
-            var semaResult = semaphore.Release();
-            --totalThread;
-            //Console.WriteLine("{0} done!", gameCode);
         }
         static async Task<string[]> GetGameList(string requestUrl)
         {
@@ -582,7 +577,7 @@ namespace GamePassScores.InfoCollectorConsole
             {
                 System.Diagnostics.Debug.WriteLine("abcde > 2");
             }
-            Console.WriteLine("发送MTC请求");
+            Console.WriteLine("正在对游戏{0}获取MTC分数信息。", game.Title.First().Value);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrlString);
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.SendAsync(request);
