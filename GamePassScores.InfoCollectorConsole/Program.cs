@@ -344,7 +344,7 @@ namespace GamePassScores.InfoCollectorConsole
 
 
         static int totalGameFetch = 0;
-        static int parallelNum = 2;
+        static int parallelNum = 1;
         static int requestNum = 20;
         static async Task<ProductsModel> GetGamesInfo(string[] gamelistInfo)
         {
