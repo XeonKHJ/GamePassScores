@@ -164,7 +164,7 @@ namespace GamePassScores.InfoCollectorConsole
 
     public class Properties
     {
-        public List<Attribute> Attributes { get; set; }
+        //public List<Attribute> Attributes { get; set; }
         public bool CanInstallToSDCard { get; set; }
         public string Category { get; set; }
         public List<string> Categories { get; set; }
@@ -481,9 +481,9 @@ namespace GamePassScores.InfoCollectorConsole
     public class BoundledSku
     {
         public string BigId { get; set; }
-        public int DisplayRank { get; set; }
-        public bool IsPrimary { get; set; }
-        public object FulfillmentType { get; set; }
+        //public int DisplayRank { get; set; }
+        //public bool IsPrimary { get; set; }
+        //public object FulfillmentType { get; set; }
     }
     public class DisplaySkuAvailability
     {
