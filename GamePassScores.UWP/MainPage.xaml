@@ -45,7 +45,7 @@
             <TextBox x:Name="SearchBox" Margin="10" VerticalAlignment="Bottom" Width="150" TextChanged="SearchBox_TextChanged"></TextBox>
             <StackPanel VerticalAlignment="Bottom" Margin="10">
                 <CommandBar x:Name="OrderBar" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent"  IsSticky="True">
-                    <AppBarButton Icon="Sort" Label="Sort">
+                    <AppBarButton Icon="Sort" x:Uid="AppBarSort">
                         <AppBarButton.Flyout>
                             <MenuFlyout>
                                 <MenuFlyoutItem x:Name="OrderByScoreAscendItem" Text="By Metascore In Ascending Order" Click="OrderByScoreAscendItem_Click"></MenuFlyoutItem>
@@ -55,13 +55,13 @@
                             </MenuFlyout>
                         </AppBarButton.Flyout>
                     </AppBarButton>
-                    <AppBarButton x:Name="RefreshButton"  Label="Refresh" Click="RefreshButton_Click">
+                    <AppBarButton x:Name="RefreshButton" x:Uid="AppBarRefresh" Click="RefreshButton_Click">
                         <AppBarButton.Icon>
                             <SymbolIcon x:Name="RefreshButtonIcon" Symbol="Refresh">
                             </SymbolIcon>
                         </AppBarButton.Icon>
                     </AppBarButton>
-                    <AppBarButton x:Name="AboutButton" Icon="Account" Label="About" Click="AboutButton_ClickAsync"></AppBarButton>
+                    <AppBarButton x:Name="AboutButton" Icon="Account" x:Uid="AppBarAbout" Click="AboutButton_ClickAsync"></AppBarButton>
                 </CommandBar>
             </StackPanel>
         </StackPanel>
@@ -72,7 +72,7 @@
             </Grid.ColumnDefinitions>
             <ScrollViewer>
                 <StackPanel Padding="30, 0, 0, 0" Grid.Column="0">
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Padding="0, 0, 0, 10">Categories</TextBlock>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Padding="0, 0, 0, 10" x:Uid="Categories"></TextBlock>
                                         <ListView x:Name="PlatformsView" IsItemClickEnabled="True" ItemClick="InVaultTimeRadioButtons_ItemClick" Margin="0, 0, 0, 10" XYFocusUp="{x:Bind CategoriesView}" GotFocus="InVaultTimeRadioButtons_GotFocus" XYFocusRight="{x:Bind GamesView}">
                         <RadioButton x:Name="PCRadioButton" IsChecked="True" GroupName="PlatformsRadioButtons">
                             <RadioButton.Content>
@@ -95,11 +95,15 @@
                     </ListView>
                     <NavigationViewItemSeparator Padding="0" IsEnabled="False"></NavigationViewItemSeparator>
                     <ListView x:Name="InVaultTimeRadioButtons" IsItemClickEnabled="True" ItemClick="InVaultTimeRadioButtons_ItemClick" Margin="0, 0, 0, 10" XYFocusUp="{x:Bind CategoriesView}" GotFocus="InVaultTimeRadioButtons_GotFocus" XYFocusRight="{x:Bind GamesView}">
-                        <RadioButton x:Name="AllRadioButton" Content="All" Checked="TimingRadioButton_Checked" IsChecked="True" GroupName="InVaultTimeRadioButtons"/>
+                        <RadioButton x:Name="AllRadioButton" Checked="TimingRadioButton_Checked" IsChecked="True" GroupName="InVaultTimeRadioButtons">
+                            <TextBlock x:Uid="All"></TextBlock>
+                        </RadioButton>
                         <RadioButton x:Name="RcentlyAddedRadioButton" Checked="TimingRadioButton_Checked" GroupName="InVaultTimeRadioButtons">
                             <TextBlock x:Uid="RecentlyAdded"></TextBlock>
                         </RadioButton>
-                        <RadioButton x:Name="LeavingSoonRadioButton" Content="Leaving Soon" Checked="TimingRadioButton_Checked" GroupName="InVaultTimeRadioButtons"/>
+                        <RadioButton x:Name="LeavingSoonRadioButton" Checked="TimingRadioButton_Checked" GroupName="InVaultTimeRadioButtons">
+                            <TextBlock x:Uid="LeavingSoon"></TextBlock>
+                        </RadioButton>
                     </ListView>
                 </StackPanel>
             </ScrollViewer>

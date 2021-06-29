@@ -117,11 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="All.Text" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="AppBarAbout.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="AppBarRefresh.Label" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="AppBarSort.Label" xml:space="preserve">
+    <value>排序</value>
+  </data>
   <data name="ButtonAbout" xml:space="preserve">
     <value>关于</value>
   </data>
+  <data name="Categories.Text" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="LeavingSoon.Text" xml:space="preserve">
+    <value>即将离开</value>
+  </data>
   <data name="PlatformConsole.Text" xml:space="preserve">
-    <value>游戏机</value>
+    <value>主机</value>
   </data>
   <data name="PlatformPC.Text" xml:space="preserve">
     <value>电脑</value>
