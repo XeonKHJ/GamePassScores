@@ -12,7 +12,15 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     NavigationCacheMode="Enabled"
     KeyDown="Page_KeyDown">
-
+    <Page.Resources>
+        <Storyboard x:Name="storyboard">
+            <DoubleAnimation Storyboard.TargetName="RefreshIconTransform" Storyboard.TargetProperty="Angle" To="{x:Bind RefreshIconRotateAngle}" >
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </Page.Resources>
     <Grid>
         <Grid.Background>
             <AcrylicBrush BackgroundSource="HostBackdrop" TintOpacity="0.8" TintColor="{ThemeResource SystemAltMediumColor}" FallbackColor="{ThemeResource SystemAltMediumColor}"></AcrylicBrush>
@@ -58,6 +66,9 @@
                     <AppBarButton x:Name="RefreshButton" x:Uid="AppBarRefresh" Click="RefreshButton_Click">
                         <AppBarButton.Icon>
                             <SymbolIcon x:Name="RefreshButtonIcon" Symbol="Refresh">
+                                <SymbolIcon.RenderTransform>
+                                    <RotateTransform x:Name="RefreshIconTransform" CenterX="10" CenterY="10"></RotateTransform>
+                                </SymbolIcon.RenderTransform>
                             </SymbolIcon>
                         </AppBarButton.Icon>
                     </AppBarButton>
@@ -73,7 +84,7 @@
             <ScrollViewer>
                 <StackPanel Padding="30, 0, 0, 0" Grid.Column="0">
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}" Padding="0, 0, 0, 10" x:Uid="Categories"></TextBlock>
-                                        <ListView x:Name="PlatformsView" IsItemClickEnabled="True" ItemClick="InVaultTimeRadioButtons_ItemClick" Margin="0, 0, 0, 10" XYFocusUp="{x:Bind CategoriesView}" GotFocus="InVaultTimeRadioButtons_GotFocus" XYFocusRight="{x:Bind GamesView}">
+                    <ListView x:Name="PlatformsView" IsItemClickEnabled="True" ItemClick="InVaultTimeRadioButtons_ItemClick" Margin="0, 0, 0, 10" XYFocusUp="{x:Bind CategoriesView}" GotFocus="InVaultTimeRadioButtons_GotFocus" XYFocusRight="{x:Bind GamesView}">
                         <RadioButton x:Name="PCRadioButton" IsChecked="True" GroupName="PlatformsRadioButtons">
                             <RadioButton.Content>
                                 <TextBlock x:Uid="PlatformPC"></TextBlock>
@@ -108,7 +119,7 @@
                 </StackPanel>
             </ScrollViewer>
             <controls:AdaptiveGridView Name="GamesView" Grid.Column="1" Padding="20, 0" Margin="0, 10, 0, 0" ItemsSource="{x:Bind GamesViewModel}" DesiredWidth="240" ItemHeight="{x:Bind GamesViewItemHeight}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
-                                   animations:ReorderGridAnimation.Duration="300" IsItemClickEnabled="True" ItemClick="GamesView_ItemClick" CacheMode="BitmapCache">
+                                    IsItemClickEnabled="True" ItemClick="GamesView_ItemClick" CacheMode="BitmapCache">
                 <controls:AdaptiveGridView.ItemTemplate>
                     <DataTemplate x:DataType="models:Game">
                         <Grid Margin="10" MaxWidth="{Binding MaxWidth}">

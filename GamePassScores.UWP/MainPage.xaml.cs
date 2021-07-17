@@ -22,6 +22,7 @@ using Microsoft.Toolkit.Uwp.UI.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using Windows.System.Profile;
+using Windows.UI.Composition;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -32,9 +33,21 @@ namespace GamePassScores.UWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        //Storyboard storyboard;
         public MainPage()
         {
             this.InitializeComponent();
+
+            //storyboard = new Storyboard();
+            //var doubleAnimation = new DoubleAnimation();
+            //doubleAnimatidon.Duration = TimeSpan.FromMilliseconds(500);
+            //doubleAnimation.EnableDependentAnimation = true;
+            //doubleAnimation.To = _angle;
+            //Storyboard.SetTargetProperty(doubleAnimation, "Angle");
+            
+            //Storyboard.SetTarget(doubleAnimation, RefreshIconTransform);
+            //storyboard.Children.Add(doubleAnimation);
+
             CacheFolderChecked += App_CacheFolderChecked;
             CheckCacheFolder();
             //从json文件读取游戏信息
@@ -138,6 +151,8 @@ namespace GamePassScores.UWP
             OrderByNameAscendItem_Click(null, null);
 
             _isRefreshing = false;
+
+            storyboard.Stop();
         }
 
         public List<Game> Games = new List<Game>();
@@ -387,15 +402,17 @@ namespace GamePassScores.UWP
         }
 
         private bool _isRefreshing = false;
-        private float _angle = 360;
+        public float RefreshIconRotateAngle { set; get; } = 360;
         private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             _isRefreshing = true;
             UpateJsonData();
-            while (_isRefreshing)
+            while (_isRefreshing) 
             {
-                await RefreshButtonIcon.Rotate(value: _angle, centerX: 10.0f, centerY: 10.0f, duration: 1000, delay: 0, easingType: EasingType.Default).StartAsync();
-                _angle += 360;
+                //Compositor rotateAnimation = Window.Current.Compositor;
+                await storyboard.BeginAsync();
+                //await RefreshButtonIcon.Rotate(value: _angle, centerX: 10.0f, centerY: 10.0f, duration: 1000, delay: 0, easingType: EasingType.Default).StartAsync();
+                RefreshIconRotateAngle += 360;
             }
         }
 
