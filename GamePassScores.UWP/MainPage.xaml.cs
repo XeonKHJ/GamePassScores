@@ -85,7 +85,7 @@ namespace GamePassScores.UWP
 
             try
             {
-                var buffer = await httpClient.GetBufferAsync(new Uri("https://github.com/XeonKHJ/GamePassScores/blob/master/QueryResults/games.json?raw=true"));
+                var buffer = await httpClient.GetBufferAsync(new Uri("https://github.com/XeonKHJ/GamePassScores/blob/GameInfos/ConsoleGames.json?raw=true"));
 
                 var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("games.json", CreationCollisionOption.ReplaceExisting);
 
@@ -151,8 +151,6 @@ namespace GamePassScores.UWP
             OrderByNameAscendItem_Click(null, null);
 
             _isRefreshing = false;
-
-            storyboard.Stop();
         }
 
         public List<Game> Games = new List<Game>();
@@ -413,6 +411,7 @@ namespace GamePassScores.UWP
                 await storyboard.BeginAsync();
                 //await RefreshButtonIcon.Rotate(value: _angle, centerX: 10.0f, centerY: 10.0f, duration: 1000, delay: 0, easingType: EasingType.Default).StartAsync();
                 RefreshIconRotateAngle += 360;
+                storyboard.Stop();
             }
         }
 
