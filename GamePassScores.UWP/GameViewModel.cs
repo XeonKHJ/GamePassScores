@@ -31,7 +31,7 @@ namespace GamePassScores.UWP
             get
             {
                 FileInfo posterCacheInfo = new FileInfo(ApplicationData.Current.LocalFolder.Path + "\\PostersCache\\" + ID + ".jpg");
-                
+
                 if (posterCacheInfo.Exists)
                 {
                     IsPosterCached = true;
@@ -49,6 +49,26 @@ namespace GamePassScores.UWP
         public List<string> Categories { set; get; } = new List<string>();
         public string ID { set; get; }
         public List<string> Screenshots { set; get; } = new List<string>();
+
+        private Dictionary<string, string> CategoriesResourcePairs = new Dictionary<string, string>
+        {
+            { "Action & adventure", "GenreActionAndAdventure"},
+            {"Card & board" ,"GenreCardAndBoard"},
+            {"Classics", "GenreClassics" },
+            {"Family & kids", "GenreFamilyAndKids" },
+            {"Fighting", "GenreFighting" },
+            {"Multi-player Online Battle Arena", "GenreMultiPlayerOnlineBattleArena" },
+            {"Music", "GenreMusic" },
+            {"Other", "GenreOther" },
+            {"Puzzle & trivia", "GenrePuzzleAndTrivia" },
+            {"Racing & flying", "GenreRacingAndFlying" },
+            {"Role playing", "GenreRolePlaying" },
+            {"Shooter","GenreShooter" },
+            {"Simulation","GenreSimulation" },
+            {"Sports","GenreSports" },
+            {"Strategy", "GenreStrategy" }
+        };
+
         public GameViewModel(Models.Game game)
         {
             Game = game;
@@ -56,7 +76,14 @@ namespace GamePassScores.UWP
             Description = game.Description.First().Value;
             PosterUrl = game.PosterUrl;
             ID = game.ID;
-            Categories.AddRange(game.Categories);
+            //Categories.AddRange(game.Categories);
+
+            
+            foreach (var genre in game.Categories)
+            {
+                Categories.Add(LocalizationResource.GetLocalizedCategoryName(genre));
+            }
+
             ReleaseDate = DateTime.FromBinary(game.ReleaseDate);
             Screenshots = game.ScreenShots;
             if (game.MetaScore.Count != 0)
@@ -70,7 +97,7 @@ namespace GamePassScores.UWP
 
             }
 
-            if(game.DownloadSize.Count != 0)
+            if (game.DownloadSize.Count != 0)
             {
                 DownloadSize = game.DownloadSize;
             }
@@ -147,7 +174,7 @@ namespace GamePassScores.UWP
                 NotifyPropertyChanged("PosterPath");
 
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 System.Diagnostics.Debug.WriteLine("网络不好，接收不到海报");
             }

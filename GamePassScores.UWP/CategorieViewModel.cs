@@ -10,6 +10,12 @@ namespace GamePassScores.UWP
 {
     public class CategorieViewModel: INotifyPropertyChanged
     {
+        public string Name { 
+            get
+            {
+                return LocalizationResource.GetLocalizedCategoryName(Categorie);
+            }
+        }
         public string Categorie { set; get; } = string.Empty;
         public CategorieViewModel(string categorie)
         {

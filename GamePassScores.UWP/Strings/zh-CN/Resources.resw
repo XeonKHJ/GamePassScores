@@ -135,8 +135,68 @@
   <data name="Categories.Text" xml:space="preserve">
     <value>类别</value>
   </data>
+  <data name="GenreActionAndAdventure" xml:space="preserve">
+    <value>动作与冒险</value>
+  </data>
+  <data name="GenreCardAndBoard" xml:space="preserve">
+    <value>卡牌和棋盘</value>
+  </data>
+  <data name="GenreClassics" xml:space="preserve">
+    <value>经典</value>
+  </data>
+  <data name="GenreFamilyAndKids" xml:space="preserve">
+    <value>家庭和孩子</value>
+  </data>
+  <data name="GenreFighting" xml:space="preserve">
+    <value>格斗</value>
+  </data>
+  <data name="GenreMultiPlayerOnlineBattleArena" xml:space="preserve">
+    <value>多人在线竞技</value>
+  </data>
+  <data name="GenreMusic" xml:space="preserve">
+    <value>音乐</value>
+  </data>
+  <data name="GenreOther" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="GenrePlatformer" xml:space="preserve">
+    <value>平台</value>
+  </data>
+  <data name="GenrePuzzleAndTrivia" xml:space="preserve">
+    <value>解密</value>
+  </data>
+  <data name="GenreRacingAndFlying" xml:space="preserve">
+    <value>赛车和飞行</value>
+  </data>
+  <data name="GenreRolePlaying" xml:space="preserve">
+    <value>角色扮演</value>
+  </data>
+  <data name="GenreShooter" xml:space="preserve">
+    <value>射击</value>
+  </data>
+  <data name="GenreSimulation" xml:space="preserve">
+    <value>模拟</value>
+  </data>
+  <data name="GenreSports" xml:space="preserve">
+    <value>体育</value>
+  </data>
+  <data name="GenreStrategy" xml:space="preserve">
+    <value>策略</value>
+  </data>
   <data name="LeavingSoon.Text" xml:space="preserve">
     <value>即将离开</value>
+  </data>
+  <data name="OrderByMetascoreAsce.Text" xml:space="preserve">
+    <value>按Metascore升序排列</value>
+  </data>
+  <data name="OrderByMetascoreDesc.Text" xml:space="preserve">
+    <value>按Metascore降序排列</value>
+  </data>
+  <data name="OrderByTitleAsce.Text" xml:space="preserve">
+    <value>按标题升序排列</value>
+  </data>
+  <data name="OrderByTitleDesc.Text" xml:space="preserve">
+    <value>按标题降序排列</value>
   </data>
   <data name="PlatformConsole.Text" xml:space="preserve">
     <value>主机</value>

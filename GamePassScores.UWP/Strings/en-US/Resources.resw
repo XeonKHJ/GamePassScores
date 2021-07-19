@@ -135,8 +135,68 @@
   <data name="Categories.Text" xml:space="preserve">
     <value>Categories</value>
   </data>
+  <data name="GenreActionAndAdventure" xml:space="preserve">
+    <value>Action &amp; Adventure</value>
+  </data>
+  <data name="GenreCardAndBoard" xml:space="preserve">
+    <value>Card &amp; Board</value>
+  </data>
+  <data name="GenreClassics" xml:space="preserve">
+    <value>Classics</value>
+  </data>
+  <data name="GenreFamilyAndKids" xml:space="preserve">
+    <value>FamilyAndKids</value>
+  </data>
+  <data name="GenreFighting" xml:space="preserve">
+    <value>Fighting</value>
+  </data>
+  <data name="GenreMultiPlayerOnlineBattleArena" xml:space="preserve">
+    <value>Multi-player Online Battle Arena</value>
+  </data>
+  <data name="GenreMusic" xml:space="preserve">
+    <value>Music</value>
+  </data>
+  <data name="GenreOther" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="GenrePlatformer" xml:space="preserve">
+    <value>Platformer</value>
+  </data>
+  <data name="GenrePuzzleAndTrival" xml:space="preserve">
+    <value>Puzzle &amp; Trival</value>
+  </data>
+  <data name="GenreRacingAndFlying" xml:space="preserve">
+    <value>Racing &amp; flying</value>
+  </data>
+  <data name="GenreRolePlaying" xml:space="preserve">
+    <value>Role Playing</value>
+  </data>
+  <data name="GenreShooter" xml:space="preserve">
+    <value>Shooter</value>
+  </data>
+  <data name="GenreSimulation" xml:space="preserve">
+    <value>Simulation</value>
+  </data>
+  <data name="GenreSports" xml:space="preserve">
+    <value>Sports</value>
+  </data>
+  <data name="GenreStrategy" xml:space="preserve">
+    <value>Strategy</value>
+  </data>
   <data name="LeavingSoon.Text" xml:space="preserve">
     <value>Leaving Soon</value>
+  </data>
+  <data name="OrderByMetascoreAsce.Text" xml:space="preserve">
+    <value>By Metascore In Ascending Order</value>
+  </data>
+  <data name="OrderByMetascoreDesc.Text" xml:space="preserve">
+    <value>By Metascore In Descending Order</value>
+  </data>
+  <data name="OrderByTitleAsce.Text" xml:space="preserve">
+    <value>By Title In Ascending Order</value>
+  </data>
+  <data name="OrderByTitleDesc.Text" xml:space="preserve">
+    <value>By Title In Descending Order</value>
   </data>
   <data name="PlatformConsole.Text" xml:space="preserve">
     <value>Console</value>

@@ -56,10 +56,10 @@
                     <AppBarButton Icon="Sort" x:Uid="AppBarSort">
                         <AppBarButton.Flyout>
                             <MenuFlyout>
-                                <MenuFlyoutItem x:Name="OrderByScoreAscendItem" Text="By Metascore In Ascending Order" Click="OrderByScoreAscendItem_Click"></MenuFlyoutItem>
-                                <MenuFlyoutItem x:Name="OrderByScoreDescendItem" Text="By Metascore In Descending Order" Click="OrderByScoreDescendItem_Click"></MenuFlyoutItem>
-                                <MenuFlyoutItem x:Name="OrderByNameAscendItem" Text="By Title In Ascending Order" Click="OrderByNameAscendItem_Click"></MenuFlyoutItem>
-                                <MenuFlyoutItem x:Name="OrderByNameDescendItem" Text="By Title In Descending Order" Click="OrderByNameDescendItem_Click"></MenuFlyoutItem>
+                                <MenuFlyoutItem x:Name="OrderByScoreAscendItem" x:Uid="OrderByMetascoreAsce" Click="OrderByScoreAscendItem_Click"></MenuFlyoutItem>
+                                <MenuFlyoutItem x:Name="OrderByScoreDescendItem" x:Uid="OrderByMetascoreDesc" Click="OrderByScoreDescendItem_Click"></MenuFlyoutItem>
+                                <MenuFlyoutItem x:Name="OrderByNameAscendItem" x:Uid="OrderByTitleAsce" Click="OrderByNameAscendItem_Click"></MenuFlyoutItem>
+                                <MenuFlyoutItem x:Name="OrderByNameDescendItem" x:Uid="OrderByTitleDesc" Click="OrderByNameDescendItem_Click"></MenuFlyoutItem>
                             </MenuFlyout>
                         </AppBarButton.Flyout>
                     </AppBarButton>
@@ -100,7 +100,7 @@
                     <ListView x:Name="CategoriesView" ItemsSource="{x:Bind Categories}" IsItemClickEnabled="True" ItemClick="CategoriesView_ItemClick" XYFocusDown="{x:Bind InVaultTimeRadioButtons}" XYFocusRight="{x:Bind GamesView}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local:CategorieViewModel">
-                                <CheckBox x:Name="CategorieCheckBox" Tag="{Binding Categorie}" Width="170" Content="{Binding Categorie}" IsChecked="{Binding IsChecked, Mode=TwoWay}" Checked="CategorieCheckBox_Checked" Unchecked="CategorieCheckBox_Unchecked"></CheckBox>
+                                <CheckBox x:Name="CategorieCheckBox" Tag="{Binding Name}" Width="170" Content="{Binding Name}" IsChecked="{Binding IsChecked, Mode=TwoWay}" Checked="CategorieCheckBox_Checked" Unchecked="CategorieCheckBox_Unchecked"></CheckBox>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
