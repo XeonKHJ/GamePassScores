@@ -135,6 +135,21 @@
   <data name="Categories.Text" xml:space="preserve">
     <value>类别</value>
   </data>
+  <data name="DetailCategories" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="DetailCategory" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="DetailDescription" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="DetailEstimatedDownloadSize" xml:space="preserve">
+    <value>预计下载大小</value>
+  </data>
+  <data name="DetailReleaseDate" xml:space="preserve">
+    <value>发布日期</value>
+  </data>
   <data name="GenreActionAndAdventure" xml:space="preserve">
     <value>动作与冒险</value>
   </data>
@@ -185,6 +200,9 @@
   </data>
   <data name="LeavingSoon.Text" xml:space="preserve">
     <value>即将离开</value>
+  </data>
+  <data name="OpenInMSStore.Content" xml:space="preserve">
+    <value>在 Microsoft Store 中打开</value>
   </data>
   <data name="OrderByMetascoreAsce.Text" xml:space="preserve">
     <value>按Metascore升序排列</value>

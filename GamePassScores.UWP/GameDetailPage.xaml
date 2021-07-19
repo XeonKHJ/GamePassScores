@@ -89,7 +89,7 @@
                             </Button.Content>
                         </Button>
                         <StackPanel Orientation="Horizontal">
-                            <Button Margin="10" x:Name="StoreButton" Click="StoreButton_ClickAsync">Open In Microsoft Store</Button>
+                            <Button Margin="10" x:Name="StoreButton" Click="StoreButton_ClickAsync" x:Uid="OpenInMSStore"></Button>
                             <TextBlock x:Name="SizeBlock" VerticalAlignment="Center" Visibility="Collapsed" ></TextBlock>
                         </StackPanel>
                     </StackPanel>

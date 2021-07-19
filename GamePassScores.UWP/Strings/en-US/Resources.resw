@@ -135,6 +135,21 @@
   <data name="Categories.Text" xml:space="preserve">
     <value>Categories</value>
   </data>
+  <data name="DetailCategories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="DetailCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="DetailDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DetailEstimatedDownloadSize" xml:space="preserve">
+    <value>Estimated Download Size</value>
+  </data>
+  <data name="DetailReleaseDate" xml:space="preserve">
+    <value>Release Date</value>
+  </data>
   <data name="GenreActionAndAdventure" xml:space="preserve">
     <value>Action &amp; Adventure</value>
   </data>
@@ -185,6 +200,9 @@
   </data>
   <data name="LeavingSoon.Text" xml:space="preserve">
     <value>Leaving Soon</value>
+  </data>
+  <data name="OpenInMSStore.Content" xml:space="preserve">
+    <value>Open in Microsoft Store</value>
   </data>
   <data name="OrderByMetascoreAsce.Text" xml:space="preserve">
     <value>By Metascore In Ascending Order</value>

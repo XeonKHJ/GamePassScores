@@ -31,7 +31,7 @@ namespace GamePassScores.UWP
         public static string GetLocalizedCategoryName(string englishCategoryName)
         {
             var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
-            string categoryName = "";
+            string categoryName;
             try
             {
                 categoryName = resourceLoader.GetString(_categoriesResourcePairs[englishCategoryName]);
@@ -43,6 +43,78 @@ namespace GamePassScores.UWP
             catch (Exception)
             {
                 categoryName = englishCategoryName;
+            }
+            return categoryName;
+        }
+
+        public static string GetReleaseDateString()
+        {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
+            string categoryName = "Release Date";
+            try
+            {
+                categoryName = resourceLoader.GetString("DetailReleaseDate");
+                if (string.IsNullOrEmpty(categoryName))
+                {
+                    categoryName = "Release Date";
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return categoryName;
+        }
+
+        public static string GetCategoryString()
+        {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
+            string categoryName = "Category";
+            try
+            {
+                categoryName = resourceLoader.GetString("DetailCategory");
+                if (string.IsNullOrEmpty(categoryName))
+                {
+                    categoryName = "Category";
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return categoryName;
+        }
+
+        public static string GetCategoriesString()
+        {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
+            string categoryName = "Categories";
+            try
+            {
+                categoryName = resourceLoader.GetString("DetailCategories");
+                if (string.IsNullOrEmpty(categoryName))
+                {
+                    categoryName = "Categories";
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return categoryName;
+        }
+
+        public static string GetEstimatedDownloadSizeString()
+        {
+            var resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
+            string categoryName = "Estimated Download Size";
+            try
+            {
+                categoryName = resourceLoader.GetString("DetailEstimatedDownloadSize");
+                if (string.IsNullOrEmpty(categoryName))
+                {
+                    categoryName = "Estimated Download Size";
+                }
+            }
+            catch (Exception)
+            {
             }
             return categoryName;
         }
