@@ -32,6 +32,7 @@ namespace GamePassScores.UWP
                 case Windows.System.VirtualKey.GamepadView:
                     this.Hide();
                     break;
+                    //test
             }
         }
     }
