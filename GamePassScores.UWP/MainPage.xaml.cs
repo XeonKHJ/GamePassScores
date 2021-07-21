@@ -23,6 +23,7 @@ using Windows.UI.Xaml.Media.Animation;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using Windows.System.Profile;
 using Windows.UI.Composition;
+using Windows.Storage.Streams;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -79,21 +80,48 @@ namespace GamePassScores.UWP
                 return GameViewModel.ItemHeight;
             }
         }
+
+        private List<Uri> _dataSource = new List<Uri>
+        {
+            new Uri("https://github.com/XeonKHJ/GamePassScores/blob/GameInfos/ConsoleGames.json?raw=true"),
+            new Uri("https://gitee.com/xeonkhj/GamePassScores/raw/GameInfos/ConsoleGames.json")
+        };
+
         private async void UpateJsonData()
         {
             var httpClient = new Windows.Web.Http.HttpClient();
 
             try
             {
-                var buffer = await httpClient.GetBufferAsync(new Uri("https://github.com/XeonKHJ/GamePassScores/blob/GameInfos/ConsoleGames.json?raw=true"));
+                IBuffer buffer = null;
+                StorageFile file = null;
 
-                var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("games.json", CreationCollisionOption.ReplaceExisting);
+                foreach(var uri in _dataSource)
+                {
+                    try
+                    {
+                        buffer = await httpClient.GetBufferAsync(uri);
+                        break;
+                    }
+                    catch
+                    {
+                        System.Diagnostics.Debug.WriteLine("Fetching from source {0} failed!", uri.AbsoluteUri);
+                    }
+                }
 
-                await FileIO.WriteBufferAsync(file, buffer);
+                if(buffer != null)
+                {
+                    file = await ApplicationData.Current.LocalFolder.CreateFileAsync("games.json", CreationCollisionOption.ReplaceExisting);
+                    await FileIO.WriteBufferAsync(file, buffer);
 
-                ReadGamesFromJson();
+                    ReadGamesFromJson();
 
-                System.Diagnostics.Debug.WriteLine("更新成功");
+                    System.Diagnostics.Debug.WriteLine("更新成功");
+                }
+                else
+                {
+                    throw new Exception();
+                }
             }
             catch(Exception exception)
             {

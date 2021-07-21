@@ -12,6 +12,8 @@ using System.Threading;
 using System.Net;
 using LibGit2Sharp;
 using LibGit2Sharp.Handlers;
+using System.IO;
+using System.IO.Compression;
 
 namespace GamePassScores.InfoCollectorConsole
 {
@@ -27,6 +29,7 @@ namespace GamePassScores.InfoCollectorConsole
         static string repoPassword = "";
         static string oldGameInfoFiles = "";
         static string newGameInfoFileName = "";
+        static string newGameCompressedInfoFileName = "";
         static async Task Main(string[] args)
         {
             try
@@ -55,9 +58,10 @@ namespace GamePassScores.InfoCollectorConsole
 
                 oldGameInfoFiles = args[0];
                 newGameInfoFileName = args[1];
-                repoLocalPath = args[2];
-                repoUserName = args[3];
-                repoPassword = args[4];
+                newGameCompressedInfoFileName = args[2];
+                repoLocalPath = args[3];
+                repoUserName = args[4];
+                repoPassword = args[5];
 
                 //HttpClient.DefaultProxy = new WebProxy("127.0.0.1", 1080);
                 #region 获取
@@ -125,6 +129,10 @@ namespace GamePassScores.InfoCollectorConsole
                 //序列化成底层数据模型
                 var serializeGames = JsonConvert.SerializeObject(newGames);
                 await System.IO.File.WriteAllTextAsync(fileName, serializeGames);
+
+                var compressedSerializeGames = Zip(serializeGames);
+                await System.IO.File.WriteAllBytesAsync(newGameCompressedInfoFileName, compressedSerializeGames);
+
                 UploadGameList(repoLocalPath, repoUserName, repoPassword);
             }
             catch(Exception exception)
@@ -139,6 +147,7 @@ namespace GamePassScores.InfoCollectorConsole
             {
                 // Stage the file
                 repo.Index.Add("ConsoleGames.json");
+                repo.Index.Add("ConsoleGamesCompressed.zip");
                 repo.Index.Write();
 
                 // Create the committer's signature and commit
@@ -765,6 +774,50 @@ namespace GamePassScores.InfoCollectorConsole
             Console.WriteLine("Error occurd!");
             Console.WriteLine(exception);
             Console.WriteLine();
+        }
+
+        public static void CopyTo(Stream src, Stream dest)
+        {
+            byte[] bytes = new byte[4096];
+
+            int cnt;
+
+            while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0)
+            {
+                dest.Write(bytes, 0, cnt);
+            }
+        }
+
+        public static byte[] Zip(string str)
+        {
+            var bytes = Encoding.UTF8.GetBytes(str);
+
+            using (var msi = new MemoryStream(bytes))
+            using (var mso = new MemoryStream())
+            {
+                using (var gs = new GZipStream(mso, CompressionMode.Compress))
+                {
+                    //msi.CopyTo(gs);
+                    CopyTo(msi, gs);
+                }
+
+                return mso.ToArray();
+            }
+        }
+
+        public static string Unzip(byte[] bytes)
+        {
+            using (var msi = new MemoryStream(bytes))
+            using (var mso = new MemoryStream())
+            {
+                using (var gs = new GZipStream(msi, CompressionMode.Decompress))
+                {
+                    //gs.CopyTo(mso);
+                    CopyTo(gs, mso);
+                }
+
+                return Encoding.UTF8.GetString(mso.ToArray());
+            }
         }
     }
 }
