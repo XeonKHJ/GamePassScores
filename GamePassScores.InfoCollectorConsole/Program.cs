@@ -23,13 +23,6 @@ namespace GamePassScores.InfoCollectorConsole
         static string pcGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=fdd9e2a7-0fee-49f6-ad69-4354098401ff&language=en-us&market=US";
         static string recentlyAddConsoleGameListInfo = "https://catalog.gamepass.com/sigls/v2?id=f13cf6b4-57e6-4459-89df-6aec18cf0538&language=en-us&market=US";
         static string leavingSoonConsoleGameListInfo = "https://catalog.gamepass.com/sigls/v2?id=393f05bf-e596-4ef6-9487-6d4fa0eab987&language=en-us&market=US";
-        static string idAtXboxConsoleGameListInfo = "";
-        static string repoLocalPath = "";
-        static string repoUserName = "";
-        static string repoPassword = "";
-        static string oldGameInfoFiles = "";
-        static string newGameInfoFileName = "";
-        static string newGameCompressedInfoFileName = "";
         static async Task Main(string[] args)
         {
             try
@@ -65,19 +58,10 @@ namespace GamePassScores.InfoCollectorConsole
                 #endregion
 
                 #region 更新类别
-                if (string.IsNullOrEmpty(oldGameInfoFiles))
-                {
-                    oldGameInfoFiles = "./games.json";
-                }
+
+                string oldGameInfoFiles = options.OldInfoFilePath;
                 var jsonFile = System.IO.File.ReadAllText(oldGameInfoFiles);
                 var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-
-                if (string.IsNullOrEmpty(newGameInfoFileName))
-                {
-                    newGameInfoFileName = "newgames.json";
-                }
-
-                var fileName = newGameInfoFileName;
                 var newGames = await UpdateGamesList(games);
                 #endregion
 
@@ -124,7 +108,7 @@ namespace GamePassScores.InfoCollectorConsole
                 var compressedSerializeGames = Zip(fileContent);
                 await File.WriteAllBytesAsync(repoOption.NewCompressedInfoFilePath, compressedSerializeGames);
 
-                using (var repo = new Repository(repoLocalPath))
+                using (var repo = new Repository(repoOption.RepoPath))
                 {
                     // Stage the file
                     repo.Index.Add(repoOption.NewInfoFilePath);
@@ -132,7 +116,7 @@ namespace GamePassScores.InfoCollectorConsole
                     repo.Index.Write();
 
                     // Create the committer's signature and commit
-                    Signature author = new Signature("GameInfo Collectors", "dont@me.please", DateTime.Now);
+                    Signature author = new("GameInfo Collectors", "dont@me.please", DateTime.Now);
                     Signature committer = author;
 
                     // Commit to the repository
