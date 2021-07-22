@@ -88,7 +88,7 @@ namespace GamePassScores.InfoCollectorConsole
                 //}
                 #endregion
 
-                UploadGameListAsync(options.RepoOptions, serializeGames);
+                await UploadGameListAsync(options.RepoOptions, serializeGames);
             }
             catch (Exception exception)
             {
@@ -96,7 +96,7 @@ namespace GamePassScores.InfoCollectorConsole
             }
         }
 
-        static async void UploadGameListAsync(List<RepoOption> repoOptions, string fileContent)
+        static async Task UploadGameListAsync(List<RepoOption> repoOptions, string fileContent)
         {
             foreach (var repoOption in repoOptions)
             {
