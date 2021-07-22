@@ -29,6 +29,8 @@ namespace GamePassScores.InfoCollectorConsole
             {
                 string arg = args[0];
                 var options = await ArgParser.ParseJsonAsync(arg);
+
+                Console.WriteLine("There are {0} repos in the config files", options.RepoOptions.Count);
                 //HttpClient.DefaultProxy = new WebProxy("127.0.0.1", 1080);
                 #region 获取
                 ////获取游戏列表
