@@ -1,0 +1,25 @@
+{
+  "OldInfoFilePath": "ddd",
+  "RepoOptions": [
+    {
+      "RepoPath": "xxx",
+      "NewInfoFilePath": "sdfsdf",
+      "NewCompressedInfoFilePath": "sdfdf",
+      "AuthenticationMethod": "ssh",
+      "PrivateKey": "sdfsdf",
+      "Username": "XeonKHJ",
+      "Password": "xeonh19975050",
+      "Branch": "GameInfos"
+    },
+    {
+      "RepoPath": "/Dev/Repos/",
+      "NewInfoFilePath": "sdfsdf",
+      "NewCompressedInfoFilePath": "sdfdf",
+      "AuthenticationMethod": "https",
+      "PrivateKey": "sdfsdf",
+      "Username": "XeonKHJ",
+      "Password": "xeonh19975050",
+      "Branch": "GameInfos"
+    }
+  ]
+}

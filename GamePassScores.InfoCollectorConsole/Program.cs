@@ -34,35 +34,8 @@ namespace GamePassScores.InfoCollectorConsole
         {
             try
             {
-                Console.WriteLine("Recevie {0} args", args);
-
-                for (int i = 0; i < args.Length; ++i)
-                {
-                    Console.WriteLine("Arg {0}: {1}", i, args[i]);
-                }
-                // Get repo info.
-                switch (args.Length)
-                {
-                    case 0:
-
-                        break;
-                    case 1:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    default:
-                        break;
-                }
-
-                oldGameInfoFiles = args[0];
-                newGameInfoFileName = args[1];
-                newGameCompressedInfoFileName = args[2];
-                repoLocalPath = args[3];
-                repoUserName = args[4];
-                repoPassword = args[5];
-
+                string arg = args[0];
+                var options = await ArgParser.ParseJsonAsync(arg);
                 //HttpClient.DefaultProxy = new WebProxy("127.0.0.1", 1080);
                 #region 获取
                 ////获取游戏列表
@@ -108,6 +81,9 @@ namespace GamePassScores.InfoCollectorConsole
                 var newGames = await UpdateGamesList(games);
                 #endregion
 
+                //序列化成底层数据模型
+                var serializeGames = JsonConvert.SerializeObject(newGames);
+                
                 #region 获取类型列表
                 //var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
                 //var gameInfos = await GetGamesInfo(gamelistInfo);
@@ -126,67 +102,78 @@ namespace GamePassScores.InfoCollectorConsole
                 //}
                 #endregion
 
-                //序列化成底层数据模型
-                var serializeGames = JsonConvert.SerializeObject(newGames);
-                await System.IO.File.WriteAllTextAsync(fileName, serializeGames);
-
-                var compressedSerializeGames = Zip(serializeGames);
-                await System.IO.File.WriteAllBytesAsync(newGameCompressedInfoFileName, compressedSerializeGames);
-
-                UploadGameList(repoLocalPath, repoUserName, repoPassword);
+                UploadGameListAsync(options.RepoOptions, serializeGames);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 Console.WriteLine("Exception! {0}", exception.Message);
             }
         }
 
-        static void UploadGameList(string repoLocalPath, string username, string password)
+        static async void UploadGameListAsync(List<RepoOption> repoOptions, string fileContent)
         {
-            using (var repo = new Repository(repoLocalPath))
+            foreach (var repoOption in repoOptions)
             {
-                // Stage the file
-                repo.Index.Add("ConsoleGames.json");
-                repo.Index.Add("ConsoleGamesCompressed.zip");
-                repo.Index.Write();
+                await System.IO.File.WriteAllTextAsync(repoOption.NewInfoFilePath, fileContent);
+                var compressedSerializeGames = Zip(fileContent);
+                await System.IO.File.WriteAllBytesAsync(repoOption.NewCompressedInfoFilePath, compressedSerializeGames);
 
-                // Create the committer's signature and commit
-                Signature author = new Signature("GameInfo Collectors", "dont@me.please", DateTime.Now);
-                Signature committer = author;
-
-                // Commit to the repository
-
-                try
+                using (var repo = new Repository(repoLocalPath))
                 {
-                    Commit commit = repo.Commit("Update games' info.", author, committer);
+                    // Stage the file
+                    repo.Index.Add(repoOption.NewInfoFilePath);
+                    repo.Index.Add(repoOption.NewCompressedInfoFilePath);
+                    repo.Index.Write();
 
+                    // Create the committer's signature and commit
+                    Signature author = new Signature("GameInfo Collectors", "dont@me.please", DateTime.Now);
+                    Signature committer = author;
 
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    System.Diagnostics.Debug.WriteLine(ex.Message);
-                }
+                    // Commit to the repository
+                    try
+                    {
+                        Commit commit = repo.Commit("Update games' info.", author, committer);
 
-                try
-                {
-                    PushOptions options = new PushOptions();
+                        Console.WriteLine("Files commited.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        System.Diagnostics.Debug.WriteLine(ex.Message);
+                    }
 
-                    options.CredentialsProvider = new CredentialsHandler(
-                        (url, usernameFromUrl, types) =>
-                            new UsernamePasswordCredentials()
-                            {
-                                Username = username,
-                                Password = password
-                            });
-                    repo.Network.Push(repo.Branches["GameInfos"], options);
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    System.Diagnostics.Debug.WriteLine("Push fault:{0}", ex.Message);
+                    //try
+                    //{
+                    //    PushOptions options = new PushOptions();
+
+                    //    if (repoOption.AuthenticationMethod == "https")
+                    //    {
+                    //        options.CredentialsProvider = new CredentialsHandler(
+                    //            (url, usernameFromUrl, types) =>
+                    //                new UsernamePasswordCredentials()
+                    //                {
+                    //                    Username = repoOption.Username,
+                    //                    Password = repoOption.Password
+                    //                });
+                    //    }
+                    //    else if(repoOption.AuthenticationMethod == "ssh")
+                    //    {
+                    //        options.CredentialsProvider = new CredentialsHandler(
+                    //            (url, usernameFromUrl, types) =>
+                    //            new LibGit2Sharp.CertificateSsh()
+                    //                );
+                    //    }
+                    //    repo.Network.Push(repo.Branches[repoOption.Branch], options);
+
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    Console.WriteLine(ex.Message);
+                    //    System.Diagnostics.Debug.WriteLine("Push fault:{0}", ex.Message);
+                    //}
                 }
             }
+
         }
 
         static async Task<List<Game>> ConvertToGames(ProductsModel gameInfos, string[] recentlyAddedList = null, string[] leavingSoonList = null)
