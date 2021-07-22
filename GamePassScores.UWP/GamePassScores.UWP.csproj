@@ -136,6 +136,7 @@
       <DependentUpon>GameDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameViewModel.cs" />
+    <Compile Include="InfoFetcher.cs" />
     <Compile Include="LocalizationResource.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

@@ -81,10 +81,10 @@ namespace GamePassScores.UWP
             }
         }
 
-        private List<Uri> _dataSource = new List<Uri>
+        private Dictionary<Uri, InfoProviderContext> _dataSource = new Dictionary<Uri, InfoProviderContext>
         {
-            new Uri("https://github.com/XeonKHJ/GamePassScores/blob/GameInfos/ConsoleGames.json?raw=true"),
-            new Uri("https://gitee.com/xeonkhj/GamePassScores/raw/GameInfos/ConsoleGames.json")
+            { new Uri("https://github.com/XeonKHJ/GamePassScores/blob/GameInfos/ConsoleGames.json?raw=true"), new InfoProviderContext{IsCompressed = false} }, 
+            { new Uri("https://gitee.com/xeonkhj/GamePassScores/raw/GameInfos/ConsoleGames.json"),new InfoProviderContext { IsCompressed = true }}
         };
 
         private async void UpateJsonData()
@@ -93,35 +93,10 @@ namespace GamePassScores.UWP
 
             try
             {
-                IBuffer buffer = null;
-                StorageFile file = null;
+                InfoFetcher fetcher = new InfoFetcher(_dataSource);
+                await fetcher.GetInfoAsync();
 
-                foreach(var uri in _dataSource)
-                {
-                    try
-                    {
-                        buffer = await httpClient.GetBufferAsync(uri);
-                        break;
-                    }
-                    catch
-                    {
-                        System.Diagnostics.Debug.WriteLine("Fetching from source {0} failed!", uri.AbsoluteUri);
-                    }
-                }
-
-                if(buffer != null)
-                {
-                    file = await ApplicationData.Current.LocalFolder.CreateFileAsync("games.json", CreationCollisionOption.ReplaceExisting);
-                    await FileIO.WriteBufferAsync(file, buffer);
-
-                    ReadGamesFromJson();
-
-                    System.Diagnostics.Debug.WriteLine("更新成功");
-                }
-                else
-                {
-                    throw new Exception();
-                }
+                ReadGamesFromJson();
             }
             catch(Exception exception)
             {
