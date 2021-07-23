@@ -20,10 +20,10 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <GenerateTestArtifacts>False</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm|arm64</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>8D44579EF94A84A3E745A732C85F31FF73DC6074</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>63EDC7BB92D7E6B92DB10756B77C4FEB9B6579D1</PackageCertificateThumbprint>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <PackageCertificateKeyFile />
@@ -158,7 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\games.json" />
-    <None Include="GamePassScores.UWP_TemporaryKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
