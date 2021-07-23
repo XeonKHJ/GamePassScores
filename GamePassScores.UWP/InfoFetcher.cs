@@ -58,7 +58,7 @@ namespace GamePassScores.UWP
                             {
                                 await FileIO.WriteBufferAsync(file, buffer);
                             }
-                            System.Diagnostics.Debug.WriteLine("更新成功");
+                            System.Diagnostics.Debug.WriteLine("从源{0}更新成功。", uri.AbsoluteUri);
                         }
                         else
                         {

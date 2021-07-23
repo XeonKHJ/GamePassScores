@@ -84,7 +84,7 @@
             <ScrollViewer>
                 <StackPanel Padding="30, 0, 0, 0" Grid.Column="0">
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}" Padding="0, 0, 0, 10" x:Uid="Categories"></TextBlock>
-                    <ListView x:Name="PlatformsView" IsItemClickEnabled="True" ItemClick="InVaultTimeRadioButtons_ItemClick" Margin="0, 0, 0, 10" XYFocusUp="{x:Bind CategoriesView}" GotFocus="InVaultTimeRadioButtons_GotFocus" XYFocusRight="{x:Bind GamesView}">
+                    <ListView x:Name="PlatformsView" IsItemClickEnabled="True" Visibility="Collapsed" ItemClick="InVaultTimeRadioButtons_ItemClick" Margin="0, 0, 0, 10" XYFocusUp="{x:Bind CategoriesView}" GotFocus="InVaultTimeRadioButtons_GotFocus" XYFocusRight="{x:Bind GamesView}">
                         <RadioButton x:Name="PCRadioButton" IsChecked="True" GroupName="PlatformsRadioButtons">
                             <RadioButton.Content>
                                 <TextBlock x:Uid="PlatformPC"></TextBlock>
@@ -96,7 +96,7 @@
                             </RadioButton.Content>
                         </RadioButton>
                     </ListView>
-                    <NavigationViewItemSeparator Padding="0" IsEnabled="False"></NavigationViewItemSeparator>
+                    <NavigationViewItemSeparator Visibility="Collapsed" Padding="0" IsEnabled="False"></NavigationViewItemSeparator>
                     <ListView x:Name="CategoriesView" ItemsSource="{x:Bind Categories}" IsItemClickEnabled="True" ItemClick="CategoriesView_ItemClick" XYFocusDown="{x:Bind InVaultTimeRadioButtons}" XYFocusRight="{x:Bind GamesView}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local:CategorieViewModel">
