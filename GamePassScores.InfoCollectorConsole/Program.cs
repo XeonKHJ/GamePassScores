@@ -100,6 +100,7 @@ namespace GamePassScores.InfoCollectorConsole
         {
             foreach (var repoOption in repoOptions)
             {
+                Console.WriteLine("Start processing repo.");
                 var newInfoFilePath = Path.Combine(repoOption.RepoPath, repoOption.NewInfoFilePath);
                 var newCompressedFilePath = Path.Combine(repoOption.RepoPath, repoOption.NewCompressedInfoFilePath);
 
@@ -109,6 +110,8 @@ namespace GamePassScores.InfoCollectorConsole
                 await File.WriteAllTextAsync(repoOption.NewInfoFilePath, fileContent);
                 var compressedSerializeGames = Zip(fileContent);
                 await File.WriteAllBytesAsync(repoOption.NewCompressedInfoFilePath, compressedSerializeGames);
+
+                Console.WriteLine("Files saved.");
 
                 using (var repo = new Repository(repoOption.RepoPath))
                 {
