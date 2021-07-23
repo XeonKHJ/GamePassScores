@@ -25,68 +25,83 @@ namespace GamePassScores.InfoCollectorConsole
         static string leavingSoonConsoleGameListInfo = "https://catalog.gamepass.com/sigls/v2?id=393f05bf-e596-4ef6-9487-6d4fa0eab987&language=en-us&market=US";
         static async Task Main(string[] args)
         {
+            string serializeGames = string.Empty;
             try
             {
                 string arg = args[0];
                 var options = await ArgParser.ParseJsonAsync(arg);
 
+
                 Console.WriteLine("There are {0} repos in the config files", options.RepoOptions.Count);
-                //HttpClient.DefaultProxy = new WebProxy("127.0.0.1", 1080);
-                #region 获取
-                ////获取游戏列表
-                //var gamelistInfo = await GetGameList();
 
-                ////从游戏列表中获取游戏详细信息
-                //var gameInfos = await GetGamesInfo(gamelistInfo);
+                if (args.Length == 2)
+                {
+                    if (args[1] == "debug")
+                    {
+                        serializeGames = System.IO.File.ReadAllText(options.OldInfoFilePath);
+                    }
+                }
+                else
+                {
 
-                ////转换成为我们的对象
-                //var games = ConvertToGames(gameInfos);
+                    //HttpClient.DefaultProxy = new WebProxy("127.0.0.1", 1080);
+                    #region 获取
+                    ////获取游戏列表
+                    //var gamelistInfo = await GetGameList();
 
-                ////获取Metascore
-                //await GetMetacriticScoresAsync(games);
+                    ////从游戏列表中获取游戏详细信息
+                    //var gameInfos = await GetGamesInfo(gamelistInfo);
 
-                ////打印一下
-                //foreach (var game in games)
-                //{
-                //    Console.WriteLine(game.MetaCriticPathName);
-                //}
-                #endregion
+                    ////转换成为我们的对象
+                    //var games = ConvertToGames(gameInfos);
 
-                #region 更新Metacritic
-                //var jsonFile = System.IO.File.ReadAllText("./games.json");
-                //var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-                //var fileName = "newgames.json";
-                //await UpdateMetacriticScoresAsync(games, Platform.XboxOne);
-                #endregion
+                    ////获取Metascore
+                    //await GetMetacriticScoresAsync(games);
 
-                #region 更新类别
+                    ////打印一下
+                    //foreach (var game in games)
+                    //{
+                    //    Console.WriteLine(game.MetaCriticPathName);
+                    //}
+                    #endregion
 
-                string oldGameInfoFiles = options.OldInfoFilePath;
-                var jsonFile = System.IO.File.ReadAllText(oldGameInfoFiles);
-                var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-                var newGames = await UpdateGamesList(games);
-                #endregion
+                    #region 更新Metacritic
+                    //var jsonFile = System.IO.File.ReadAllText("./games.json");
+                    //var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
+                    //var fileName = "newgames.json";
+                    //await UpdateMetacriticScoresAsync(games, Platform.XboxOne);
+                    #endregion
 
-                //序列化成底层数据模型
-                var serializeGames = JsonConvert.SerializeObject(newGames);
-                
-                #region 获取类型列表
-                //var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
-                //var gameInfos = await GetGamesInfo(gamelistInfo);
+                    #region 更新类别
 
-                //HashSet<string> genres = new HashSet<string>();
-                //foreach(var game in gameInfos.Products)
-                //{
-                //    genres.Add(game.Properties.Category);
-                //    if (game.Properties.Categories != null)
-                //    {
-                //        foreach (var c in game.Properties.Categories)
-                //        {
-                //            genres.Add(c);
-                //        }
-                //    }
-                //}
-                #endregion
+                    string oldGameInfoFiles = options.OldInfoFilePath;
+                    var jsonFile = System.IO.File.ReadAllText(oldGameInfoFiles);
+                    var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
+                    var newGames = await UpdateGamesList(games);
+                    #endregion
+
+                    //序列化成底层数据模型
+                    serializeGames = JsonConvert.SerializeObject(newGames);
+
+                    #region 获取类型列表
+                    //var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
+                    //var gameInfos = await GetGamesInfo(gamelistInfo);
+
+                    //HashSet<string> genres = new HashSet<string>();
+                    //foreach(var game in gameInfos.Products)
+                    //{
+                    //    genres.Add(game.Properties.Category);
+                    //    if (game.Properties.Categories != null)
+                    //    {
+                    //        foreach (var c in game.Properties.Categories)
+                    //        {
+                    //            genres.Add(c);
+                    //        }
+                    //    }
+                    //}
+                    #endregion
+                }
+
 
                 await UploadGameListAsync(options.RepoOptions, serializeGames);
             }
@@ -107,9 +122,9 @@ namespace GamePassScores.InfoCollectorConsole
                 Console.WriteLine("New info file path is {0}", newInfoFilePath);
                 Console.WriteLine("New compressed info file path is {0}", newCompressedFilePath);
 
-                await File.WriteAllTextAsync(repoOption.NewInfoFilePath, fileContent);
+                await File.WriteAllTextAsync(newInfoFilePath, fileContent);
                 var compressedSerializeGames = Zip(fileContent);
-                await File.WriteAllBytesAsync(repoOption.NewCompressedInfoFilePath, compressedSerializeGames);
+                await File.WriteAllBytesAsync(newCompressedFilePath, compressedSerializeGames);
 
                 Console.WriteLine("Files saved.");
 
