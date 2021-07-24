@@ -23,7 +23,7 @@
     <GenerateTestArtifacts>False</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm|arm64</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>63EDC7BB92D7E6B92DB10756B77C4FEB9B6579D1</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>5BD41A188D7ABD119DE66711A253C4CBE528E9DE</PackageCertificateThumbprint>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <PackageCertificateKeyFile />

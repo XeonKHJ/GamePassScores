@@ -9,7 +9,7 @@
   <Identity
     Name="49B948DFEE.GamepassScores"
     Publisher="CN=6D1D92C0-BE50-4A21-AFF0-97E77C56134C"
-    Version="1.0.42.0" />
+    Version="1.0.45.0" />
 
   <mp:PhoneIdentity PhoneProductId="de5557ce-850b-4a93-9450-583cb8165760" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
