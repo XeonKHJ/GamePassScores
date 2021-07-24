@@ -10,7 +10,7 @@
     KeyDown="ContentDialog_KeyDown">
 
     <Grid>
-        <StackPanel>
+        <StackPanel Visibility="{x:Bind IsEnglish}" d:Visibility="Collapsed">
             <TextBlock TextWrapping="WrapWholeWords">I'm a Xbox gamer (ID@XeonKHJ) and you can follow me on <Hyperlink x:Name="TwitterLink" XYFocusRight="{x:Bind WeiboLink}" XYFocusDown="{x:Bind GithubIssueLink}" NavigateUri="https://twitter.com/xeonkhj">Twitter</Hyperlink> or <Hyperlink x:Name="WeiboLink" XYFocusLeft="{x:Bind TwitterLink}" XYFocusDown="{x:Bind GithubIssueLink}" NavigateUri="https://weibo.com/u/1864765370">Weibo</Hyperlink>.</TextBlock>
             <MenuFlyoutSeparator Padding="0" Margin="0, 10"></MenuFlyoutSeparator>
             <TextBlock TextWrapping="WrapWholeWords" FontWeight="Bold">Why would I want to make this app?</TextBlock>
@@ -18,8 +18,19 @@
             <TextBlock TextWrapping="WrapWholeWords">It reminds me that we should look beyond those 3A titles. Gamepass gives us a great opportunity to try something completely new. Some of them that you might never heard before may suprise you. This is the App that can help you find those great gamepass games quickly.</TextBlock>
             <TextBlock TextWrapping="WrapWholeWords">And by the way, metascore dosn't mean everything, you might also find games that you love but have a low metascore. That's totaly fine. For me, it's <Italic>Mass Effect: Andromeda.</Italic></TextBlock>
             <MenuFlyoutSeparator Padding="0" Margin="0, 10"></MenuFlyoutSeparator>
-            <TextBlock TextWrapping="WrapWholeWords" >This app is still in very early stage, you can report any problem or suggesion on <Hyperlink x:Name="GithubIssueLink" XYFocusUp="{x:Bind WeiboLink}" NavigateUri="https://github.com/XeonKHJ/GamePassScores/issues">GitHub Issue Page</Hyperlink>, and more features are on the way.</TextBlock>
+            <TextBlock TextWrapping="WrapWholeWords" >This app is still in very early stage, you can report any problem or suggesion on <Hyperlink x:Name="GithubIssueLink" XYFocusUp="{x:Bind WeiboLinkCN}" NavigateUri="https://github.com/XeonKHJ/GamePassScores/issues">GitHub Issue Page</Hyperlink>, and more features are on the way.</TextBlock>
             <TextBlock TextWrapping="WrapWholeWords">This app is open sourced on <Hyperlink x:Name="GithubRepoLink" NavigateUri="https://github.com/XeonKHJ/GamePassScores">GitHub</Hyperlink>.</TextBlock>
+        </StackPanel>
+        <StackPanel Visibility="{x:Bind IsChinese}">
+            <TextBlock TextWrapping="WrapWholeWords">我是个Xbox玩家（ID@XeonKHJ），欢迎关注我的<Hyperlink x:Name="TwitterLinkCN" XYFocusRight="{x:Bind WeiboLinkCN}" XYFocusDown="{x:Bind GithubIssueLinkCN}" NavigateUri="https://twitter.com/xeonkhj">Twitter</Hyperlink>和<Hyperlink x:Name="WeiboLinkCN" XYFocusLeft="{x:Bind TwitterLinkCN}" XYFocusDown="{x:Bind GithubIssueLinkCN}" NavigateUri="https://weibo.com/u/1864765370">微博</Hyperlink>。</TextBlock>
+            <MenuFlyoutSeparator Padding="0" Margin="0, 10"></MenuFlyoutSeparator>
+            <TextBlock TextWrapping="WrapWholeWords" FontWeight="Bold">为什么我要做这么一款应用？</TextBlock>
+            <TextBlock TextWrapping="WrapWholeWords">如果不是因为Xbox Game Pass，我可能就玩不到我这辈子最喜欢的游戏之一——《What Remains of Edith Finch》，这是一款美丽、忧伤、故事无比优秀的第一人称叙事游戏，确确实实惊艳到我了。</TextBlock>
+            <TextBlock TextWrapping="WrapWholeWords">这提醒了我玩游戏时不要只着眼于那些3A大作。Game Pass给了我们一个很好的机会去尝试不同类型、不同规模的游戏，有那么一些你从来没听过的游戏可能会震撼到你。这款应用能够帮你找到那样的高分作品。</TextBlock>
+            <TextBlock TextWrapping="WrapWholeWords">但是别忘了，Metacritic的分数并不代表一款游戏的真正品质, 可能有一款游戏分数不搞，但是你却很喜欢，这很正常。对我来说《Mass Effect: Andromeda》就是这么一款游戏</TextBlock>
+            <MenuFlyoutSeparator Padding="0" Margin="0, 10"></MenuFlyoutSeparator>
+            <TextBlock TextWrapping="WrapWholeWords" >如果您发现这款应用有缺陷，请到<Hyperlink x:Name="GithubIssueLinkCN" XYFocusUp="{x:Bind WeiboLinkCN}" NavigateUri="https://github.com/XeonKHJ/GamePassScores/issues">GitHub Issue Page</Hyperlink>反馈问题，更多功能尽情期待。</TextBlock>
+            <TextBlock TextWrapping="WrapWholeWords">该应用开源在<Hyperlink x:Name="GithubRepoLinkCN" NavigateUri="https://github.com/XeonKHJ/GamePassScores">GitHub</Hyperlink>上。</TextBlock>
         </StackPanel>
     </Grid>
 </ContentDialog>
