@@ -18,10 +18,10 @@ namespace GamePassScores.InfoCollectorConsole
 
         public string NewCompressedInfoFilePath { set; get; }
 
-        public string AuthenticationMethod { set; get; }
-        public string PrivateKey { set; get; }
-        public string Username { set; get; }
-        public string Password { set; get; }
+        //public string AuthenticationMethod { set; get; }
+        //public string PrivateKey { set; get; }
+        //public string Username { set; get; }
+        //public string Password { set; get; }
 
         public string Branch { set; get; }
 
