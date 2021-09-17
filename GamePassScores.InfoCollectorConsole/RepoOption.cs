@@ -13,7 +13,6 @@ namespace GamePassScores.InfoCollectorConsole
         /// <summary>
         /// Relative path.
         /// </summary>
-        public string OldInfoFilePath { set; get; }
 
         public string NewInfoFilePath { set; get; }
 

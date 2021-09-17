@@ -152,35 +152,28 @@ namespace GamePassScores.InfoCollectorConsole
                         System.Diagnostics.Debug.WriteLine(ex.Message);
                     }
 
-                    //try
-                    //{
-                    //    PushOptions options = new PushOptions();
+                    try
+                    {
+                        PushOptions options = new PushOptions();
 
-                    //    if (repoOption.AuthenticationMethod == "https")
-                    //    {
-                    //        options.CredentialsProvider = new CredentialsHandler(
-                    //            (url, usernameFromUrl, types) =>
-                    //                new UsernamePasswordCredentials()
-                    //                {
-                    //                    Username = repoOption.Username,
-                    //                    Password = repoOption.Password
-                    //                });
-                    //    }
-                    //    else if(repoOption.AuthenticationMethod == "ssh")
-                    //    {
-                    //        options.CredentialsProvider = new CredentialsHandler(
-                    //            (url, usernameFromUrl, types) =>
-                    //            new LibGit2Sharp.CertificateSsh()
-                    //                );
-                    //    }
-                    //    repo.Network.Push(repo.Branches[repoOption.Branch], options);
 
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    Console.WriteLine(ex.Message);
-                    //    System.Diagnostics.Debug.WriteLine("Push fault:{0}", ex.Message);
-                    //}
+                        options.CredentialsProvider = new CredentialsHandler(
+                            (url, usernameFromUrl, types) =>
+                                new DefaultCredentials()
+                                );
+
+
+                        Console.WriteLine("Pushing repo {0}...", repoOption.RepoPath);
+
+                        repo.Network.Push(repo.Branches[repoOption.Branch], options);
+                        Console.WriteLine("Repo {0} is pushed.", repoOption.RepoPath);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        System.Diagnostics.Debug.WriteLine("Push failed:{0}", ex.Message);
+                    }
                 }
             }
 
