@@ -1,0 +1,18 @@
+{
+	"OldInfoFilePath":"/home/hongjia/Repos/GamePassScoresGameInfosOnGithub/ConsoleGames.json",
+	"RepoOptions":
+	[
+		{
+			"RepoPath":"/home/hongjia/Repos/GamePassScoresGameInfosOnGithub",
+			"NewInfoFilePath":"ConsoleGames.json",
+			"NewCompressedInfoFilePath":"CompressedConsoleGames.zip",
+			"Branch":"GameInfos"
+		},
+		{
+                        "RepoPath":"/home/hongjia/Repos/GamePassScoresGameInfosOnGitee",
+                        "NewInfoFilePath":"ConsoleGames.json",
+                        "NewCompressedInfoFilePath":"CompressedConsoleGames.zip",
+			"Branch":"master"
+                }
+	]
+}
