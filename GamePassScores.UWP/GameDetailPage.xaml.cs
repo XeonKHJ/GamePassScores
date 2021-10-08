@@ -56,7 +56,8 @@ namespace GamePassScores.UWP
 
             game = (GameViewModel)e.Parameter;
             game.PropertyChanged += Game_PropertyChanged;
-
+            PosterImage.ImageOpened -= PosterImage_ImageOpened;
+            PosterImage.ImageOpened += PosterImage_ImageOpened;
             if (game.IsPosterCached)
             {
                 var posterSource = new BitmapImage(new Uri(game.PosterPath));
@@ -118,6 +119,11 @@ namespace GamePassScores.UWP
 
 
         }
+        private bool _posterOpened = false;
+        private void PosterImage_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            _posterOpened = true;
+        }
 
         private void Game_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -131,7 +137,11 @@ namespace GamePassScores.UWP
 
         private void NavigationBackButton_Click(object sender, RoutedEventArgs e)
         {
-            ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("BackwardConnectedAnimation", PosterImage);
+            if(_posterOpened)
+            {
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("BackwardConnectedAnimation", PosterImage);
+            }
+            
             Frame.GoBack();
         }
 
