@@ -23,7 +23,7 @@
     <GenerateTestArtifacts>False</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm|arm64</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>5BD41A188D7ABD119DE66711A253C4CBE528E9DE</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>6754B44609517150366DDFE56E4798373F55AF19</PackageCertificateThumbprint>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <PackageCertificateKeyFile />
@@ -158,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\games.json" />
+    <None Include="GamePassScores.UWP_TemporaryKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -198,19 +199,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.11.36</Version>
+      <Version>1.11.37</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp">
-      <Version>7.0.2</Version>
+      <Version>7.1.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
-      <Version>7.0.2</Version>
+      <Version>7.1.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
-      <Version>7.0.2</Version>
+      <Version>7.1.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.7.0</Version>
