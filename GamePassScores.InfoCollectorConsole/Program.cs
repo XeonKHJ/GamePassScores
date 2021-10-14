@@ -165,7 +165,9 @@ namespace GamePassScores.InfoCollectorConsole
 
                         Console.WriteLine("Pushing repo {0}...", repoOption.RepoPath);
 
-                        repo.Network.Push(repo.Branches[repoOption.Branch], options);
+                        // This part requires Git installed.
+                        Console.WriteLine("Executing command: git -C \"{0}\" push", repoOption.RepoPath);
+                        System.Diagnostics.Process.Start("git", string.Format("-C \"{0}\" push", repoOption.RepoPath));
                         Console.WriteLine("Repo {0} is pushed.", repoOption.RepoPath);
 
                     }
