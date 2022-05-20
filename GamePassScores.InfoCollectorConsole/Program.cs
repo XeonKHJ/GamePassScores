@@ -14,6 +14,8 @@ using LibGit2Sharp;
 using LibGit2Sharp.Handlers;
 using System.IO;
 using System.IO.Compression;
+using GamePassScores.InfoCollectorConsole.RawModel;
+using GamePassScores.InfoCollectorConsole.DataFetcher;
 
 namespace GamePassScores.InfoCollectorConsole
 {
@@ -25,12 +27,14 @@ namespace GamePassScores.InfoCollectorConsole
         static string leavingSoonConsoleGameListInfo = "https://catalog.gamepass.com/sigls/v2?id=393f05bf-e596-4ef6-9487-6d4fa0eab987&language=en-us&market=US";
         static async Task Main(string[] args)
         {
+            RawGameDataFetcher gameDataFetcher = new RawGameDataFetcher(20);
+            GameScoreDataFetcher scoreDataFetcher = new GameScoreDataFetcher();
             string serializeGames = string.Empty;
             try
             {
                 string arg = args[0];
                 var options = await ArgParser.ParseJsonAsync(arg);
-
+                IConfigBuilder configBuilder = new RegularConfigBuilder(arg);
 
                 Console.WriteLine("There are {0} repos in the config files", options.RepoOptions.Count);
 
@@ -43,67 +47,25 @@ namespace GamePassScores.InfoCollectorConsole
                 }
                 else
                 {
+                    List<Game> newGames = null;
+                    if(options.OldInfoFilePath == null || options.OldInfoFilePath == string.Empty)
+                    {
 
-                    //HttpClient.DefaultProxy = new WebProxy("127.0.0.1", 1080);
-                    #region 获取
-                    ////获取游戏列表
-                    //var gamelistInfo = await GetGameList();
+                    }
+                    else
+                    {
+                        string oldGameInfoFile = options.OldInfoFilePath;
+                        var jsonFile = File.ReadAllText(oldGameInfoFile);
+                        List<Game> games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
+                        newGames = await gameDataFetcher.GetGamesAsync(games);
+                        await scoreDataFetcher.FetchScoresAsync(newGames);
+                    }
 
-                    ////从游戏列表中获取游戏详细信息
-                    //var gameInfos = await GetGamesInfo(gamelistInfo);
-
-                    ////转换成为我们的对象
-                    //var games = ConvertToGames(gameInfos);
-
-                    ////获取Metascore
-                    //await GetMetacriticScoresAsync(games);
-
-                    ////打印一下
-                    //foreach (var game in games)
-                    //{
-                    //    Console.WriteLine(game.MetaCriticPathName);
-                    //}
-                    #endregion
-
-                    #region 更新Metacritic
-                    //var jsonFile = System.IO.File.ReadAllText("./games.json");
-                    //var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-                    //var fileName = "newgames.json";
-                    //await UpdateMetacriticScoresAsync(games, Platform.XboxOne);
-                    #endregion
-
-                    #region 更新类别
-
-                    string oldGameInfoFiles = options.OldInfoFilePath;
-                    var jsonFile = System.IO.File.ReadAllText(oldGameInfoFiles);
-                    var games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-                    var newGames = await UpdateGamesList(games);
-                    #endregion
-
-                    //序列化成底层数据模型
-                    serializeGames = JsonConvert.SerializeObject(newGames);
-
-                    #region 获取类型列表
-                    //var gamelistInfo = await GetGameList(consoleGameListInfoUrl);
-                    //var gameInfos = await GetGamesInfo(gamelistInfo);
-
-                    //HashSet<string> genres = new HashSet<string>();
-                    //foreach(var game in gameInfos.Products)
-                    //{
-                    //    genres.Add(game.Properties.Category);
-                    //    if (game.Properties.Categories != null)
-                    //    {
-                    //        foreach (var c in game.Properties.Categories)
-                    //        {
-                    //            genres.Add(c);
-                    //        }
-                    //    }
-                    //}
-                    #endregion
+                    await configBuilder.SaveAndPublishAsync(newGames);
                 }
 
-
-                await UploadGameListAsync(options.RepoOptions, serializeGames);
+                
+                // await UploadGameListAsync(options.RepoOptions, serializeGames);
             }
             catch (Exception exception)
             {
@@ -745,20 +707,11 @@ namespace GamePassScores.InfoCollectorConsole
                 }
             }
 
-
-
             await UpdateMetacriticScoresAsync(newGames, Platform.PC);
             await UpdateMetacriticScoresAsync(newGames);
             await UpdateMetacriticScoresAsync(newGames, Platform.XboxSeriesX);
-            //await UpdateMetacriticScoresAsync(games);
-
 
             return newGames;
-        }
-
-        static void LogTraceInfo(string info)
-        {
-            Console.WriteLine(info);
         }
 
         static void HandleError(Exception exception)
@@ -766,50 +719,6 @@ namespace GamePassScores.InfoCollectorConsole
             Console.WriteLine("Error occurd!");
             Console.WriteLine(exception);
             Console.WriteLine();
-        }
-
-        public static void CopyTo(Stream src, Stream dest)
-        {
-            byte[] bytes = new byte[4096];
-
-            int cnt;
-
-            while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0)
-            {
-                dest.Write(bytes, 0, cnt);
-            }
-        }
-
-        public static byte[] Zip(string str)
-        {
-            var bytes = Encoding.UTF8.GetBytes(str);
-
-            using (var msi = new MemoryStream(bytes))
-            using (var mso = new MemoryStream())
-            {
-                using (var gs = new GZipStream(mso, CompressionMode.Compress))
-                {
-                    //msi.CopyTo(gs);
-                    CopyTo(msi, gs);
-                }
-
-                return mso.ToArray();
-            }
-        }
-
-        public static string Unzip(byte[] bytes)
-        {
-            using (var msi = new MemoryStream(bytes))
-            using (var mso = new MemoryStream())
-            {
-                using (var gs = new GZipStream(msi, CompressionMode.Decompress))
-                {
-                    //gs.CopyTo(mso);
-                    CopyTo(gs, mso);
-                }
-
-                return Encoding.UTF8.GetString(mso.ToArray());
-            }
         }
     }
 }

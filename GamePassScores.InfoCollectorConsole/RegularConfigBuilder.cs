@@ -11,17 +11,14 @@ namespace GamePassScores.InfoCollectorConsole
 {
     internal class RegularConfigBuilder : IConfigBuilder
     {
-        string _arg = string.Empty;
-        private InfoCollectorOption _option = null;
 
         List<IDataPublisher> _publishers = new List<IDataPublisher>();
         List<IDataSaver> _savers = new List<IDataSaver>();
-        public RegularConfigBuilder(string[] args)
+        public RegularConfigBuilder(string args)
         {
-            string arg = args[0];
-            _option = ArgParser.ParseJsonAsync(_arg).GetAwaiter().GetResult();
+            var option = ArgParser.ParseJsonAsync(args).GetAwaiter().GetResult();
 
-            foreach(var repoOption in _option.RepoOptions)
+            foreach(var repoOption in option.RepoOptions)
             {
                 _publishers.Add(new GitDataPublisher(repoOption.RepoPath, new List<string> { repoOption.NewInfoFilePath, repoOption.NewCompressedInfoFilePath }));
                 _savers.Add(new JsonThenZipDataSaver(repoOption.NewInfoFilePath, repoOption.NewCompressedInfoFilePath));
@@ -38,10 +35,6 @@ namespace GamePassScores.InfoCollectorConsole
             {
                 await publisher.PublishAsync();
             }
-
-
-
-            throw new NotImplementedException();
         }
     }
 }

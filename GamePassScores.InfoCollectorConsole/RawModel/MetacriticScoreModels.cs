@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GamePassScores.InfoCollectorConsole
+namespace GamePassScores.InfoCollectorConsole.RawModel
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
     public class AggregateRating
