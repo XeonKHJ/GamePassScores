@@ -204,6 +204,9 @@
   <data name="GenreStrategy" xml:space="preserve">
     <value>策略</value>
   </data>
+  <data name="GenreTools" xml:space="preserve">
+    <value>工具</value>
+  </data>
   <data name="LeavingSoon.Text" xml:space="preserve">
     <value>即将离开</value>
   </data>

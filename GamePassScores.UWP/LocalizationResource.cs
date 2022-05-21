@@ -25,7 +25,8 @@ namespace GamePassScores.UWP
             {"Simulation","GenreSimulation" },
             {"Sports","GenreSports" },
             {"Strategy", "GenreStrategy" },
-            {"Platformer", "GenrePlatformer" }
+            {"Platformer", "GenrePlatformer" },
+            {"Tools", "GenreTools"}
         };
 
         public static string GetLocalizedCategoryName(string englishCategoryName)

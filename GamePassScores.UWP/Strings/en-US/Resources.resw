@@ -204,6 +204,9 @@
   <data name="GenreStrategy" xml:space="preserve">
     <value>Strategy</value>
   </data>
+  <data name="GenreTools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
   <data name="LeavingSoon.Text" xml:space="preserve">
     <value>Leaving Soon</value>
   </data>

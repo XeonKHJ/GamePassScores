@@ -66,7 +66,8 @@ namespace GamePassScores.UWP
             {"Shooter","GenreShooter" },
             {"Simulation","GenreSimulation" },
             {"Sports","GenreSports" },
-            {"Strategy", "GenreStrategy" }
+            {"Strategy", "GenreStrategy" },
+            {"Tools", "GenreTools" }
         };
 
         public GameViewModel(Models.Game game)
