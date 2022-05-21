@@ -185,14 +185,15 @@ namespace GamePassScores.UWP
         {
             get
             {
-                double maxWidth = 202.5;
-                switch (AnalyticsInfo.VersionInfo.DeviceFamily)
-                {
-                    case "Windows.Xbox":
-                        maxWidth = 150;
-                        break;
-                }
-                return maxWidth;
+                //double maxWidth = 202.5;
+                //switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+                //{
+                //    case "Windows.Xbox":
+                //        maxWidth = 150;
+                //        break;
+                //}
+                //return maxWidth;
+                return ItemHeight / 1.4;
             }
         }
 

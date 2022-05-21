@@ -124,7 +124,7 @@
                     <DataTemplate x:DataType="models:Game">
                         <Grid Margin="10" MaxWidth="{Binding MaxWidth}">
                             <muxc:ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Visibility="{Binding IsImageLoaded}" IsActive="True"></muxc:ProgressRing>
-                            <Viewbox Grid.Row="0" Stretch="UniformToFill" StretchDirection="Both" MaxWidth="{Binding MaxWidth}">
+                            <Viewbox Grid.Row="0" Stretch="UniformToFill" StretchDirection="Both">
                                 <Image x:Name="PosterImage" Source="{Binding PosterPath}" Tag="{Binding ID}" ImageOpened="PosterImage_ImageOpened"></Image>
                             </Viewbox>
                             <Grid>
