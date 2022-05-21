@@ -81,6 +81,14 @@ namespace GamePassScores.UWP
             }
         }
 
+        public double GamesViewItemWidth
+        {
+            get
+            {
+                return GameViewModel.ItemHeight / 1.4;
+            }
+        }
+
         private Dictionary<Uri, InfoProviderContext> _dataSource = new Dictionary<Uri, InfoProviderContext>
         {
             { new Uri("https://github.com/XeonKHJ/GamePassScoresInfo/blob/main/ConsoleGames.json?raw=true"), new InfoProviderContext{IsCompressed = false} }, 

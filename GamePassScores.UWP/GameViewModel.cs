@@ -200,7 +200,7 @@ namespace GamePassScores.UWP
         {
             get
             {
-                double titleSize = 20;
+                double titleSize = 17;
                 switch (AnalyticsInfo.VersionInfo.DeviceFamily)
                 {
                     case "Windows.Xbox":
@@ -217,7 +217,7 @@ namespace GamePassScores.UWP
         {
             get
             {
-                double maxWidth = 303.75;
+                double maxWidth = 250;
                 switch (AnalyticsInfo.VersionInfo.DeviceFamily)
                 {
                     case "Windows.Xbox":
