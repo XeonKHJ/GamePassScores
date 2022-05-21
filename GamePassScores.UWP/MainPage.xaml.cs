@@ -95,7 +95,7 @@ namespace GamePassScores.UWP
             { new Uri("https://gitee.com/xeonkhj/game-pass-scores-info/raw/master/CompressedConsoleGames.zip"),new InfoProviderContext { IsCompressed = true }}
         };
 
-        private async void UpateJsonData()
+        private async void UpdateJsonData()
         {
             var httpClient = new Windows.Web.Http.HttpClient();
 
@@ -128,7 +128,7 @@ namespace GamePassScores.UWP
                 jsonFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/games.json"));
 
                 //在后台下载Gamepass游戏数据
-                UpateJsonData();
+                UpdateJsonData();
             }
 
 
@@ -419,7 +419,7 @@ namespace GamePassScores.UWP
         private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             _isRefreshing = true;
-            UpateJsonData();
+            UpdateJsonData();
             while (_isRefreshing) 
             {
                 //Compositor rotateAnimation = Window.Current.Compositor;
