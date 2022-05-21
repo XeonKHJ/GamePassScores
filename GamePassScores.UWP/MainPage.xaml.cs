@@ -100,7 +100,8 @@ namespace GamePassScores.UWP
             }
             catch(Exception exception)
             {
-                System.Diagnostics.Debug.WriteLine("网络不好，无法更新。");
+                HandleError(exception);
+                System.Diagnostics.Debug.WriteLine("Internet connection issues");
                 _isRefreshing = false;
             }
         }
@@ -124,7 +125,18 @@ namespace GamePassScores.UWP
 
 
             var jsonString = await FileIO.ReadTextAsync(jsonFile);
-            var games = JsonConvert.DeserializeObject<List<Game>>(jsonString);
+            List<Game> games = new List<Game>();
+            try
+            {
+                games = JsonConvert.DeserializeObject<List<Game>>(jsonString);
+            }
+            catch(Exception exception)
+            {
+                HandleError(exception);
+                System.Diagnostics.Debug.WriteLine(exception);
+            }
+
+            
             HashSet<string> genre = new HashSet<string>();
 
             
@@ -489,6 +501,12 @@ namespace GamePassScores.UWP
                     
                     break;
             }
+        }
+
+        private async void HandleError(Exception exception)
+        {
+            ErrorDialog aboutDialogue = new ErrorDialog(exception);
+            var result = await aboutDialogue.ShowAsync();
         }
     }
 }

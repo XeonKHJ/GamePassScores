@@ -67,16 +67,17 @@ namespace GamePassScores.UWP
 
                         break;
                     }
-                    catch
+                    catch(Exception ex)
                     {
                         System.Diagnostics.Debug.WriteLine("Fetching from source {0} failed!", uri.AbsoluteUri);
+                        throw ex;
                     }
                 }
 
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-
+                throw ex;
             }
         }
 
