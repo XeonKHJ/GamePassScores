@@ -32,6 +32,7 @@ namespace GamePassScores.InfoCollectorConsole
             
             foreach (var platform in _platformPriorities)
             {
+                int retryCount = 0;
                 string platformString = PlatformToMetacriticPathString(platform, game);
                 string requestUrlString = baseUrlString + platformString + "/" + gameString + "/";
                 try

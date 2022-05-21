@@ -83,7 +83,7 @@ namespace GamePassScores.UWP
 
         private Dictionary<Uri, InfoProviderContext> _dataSource = new Dictionary<Uri, InfoProviderContext>
         {
-            { new Uri("https://github.com/XeonKHJ/GamePassScores/blob/GameInfos/ConsoleGames.json?raw=true"), new InfoProviderContext{IsCompressed = false} }, 
+            { new Uri("https://github.com/XeonKHJ/GamePassScoresInfo/blob/main/ConsoleGames.json?raw=true"), new InfoProviderContext{IsCompressed = false} }, 
             { new Uri("https://gitee.com/xeonkhj/game-pass-scores-info/raw/master/CompressedConsoleGames.zip"),new InfoProviderContext { IsCompressed = true }}
         };
 

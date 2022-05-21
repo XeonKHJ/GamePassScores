@@ -31,8 +31,7 @@ namespace GamePassScores.InfoCollectorConsole.DataPublisher
                 // Stage the file
                 foreach(var filePath in _commitFiles)
                 {
-                    var fullFilePath = System.IO.Path.Combine(_repoFolder, filePath);
-                    repo.Index.Add(fullFilePath);
+                    repo.Index.Add(filePath);
                 }
                 repo.Index.Write();
 
