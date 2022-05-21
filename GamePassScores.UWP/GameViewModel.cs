@@ -231,7 +231,6 @@ namespace GamePassScores.UWP
                         maxHeight = 200;
                         break;
                     default:
-                        System.Diagnostics.Debug.WriteLine("Not on xbox.");
                         break;
                 }
                 return maxHeight;

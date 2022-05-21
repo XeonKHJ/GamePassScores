@@ -416,11 +416,10 @@ namespace GamePassScores.UWP
 
         private bool _isRefreshing = false;
         public float RefreshIconRotateAngle { set; get; } = 360;
-        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             if (!_isRefreshing)
             {
-           
                 UpdateJsonData();
             }
         }

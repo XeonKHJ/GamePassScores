@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using System.Threading;
 
 namespace GamePassScores.UWP
 {
@@ -20,65 +21,87 @@ namespace GamePassScores.UWP
         public Dictionary<Uri, InfoProviderContext> InfoProviderUrls { get; } = new Dictionary<Uri, InfoProviderContext>();
         public InfoFetcher(Dictionary<Uri, InfoProviderContext> infoProviderUrls)
         {
-            foreach(var pair in infoProviderUrls)
+            foreach (var pair in infoProviderUrls)
             {
                 InfoProviderUrls.Add(pair.Key, pair.Value);
             }
         }
 
-        public async Task GetInfoAsync()
+        bool _isFileFetched = false;
+        StorageFile _file;
+        public async void GetInfo(Uri uri, System.Threading.Mutex fileAccessMutex, Semaphore forLoopSemaphore)
         {
-            var httpClient = new Windows.Web.Http.HttpClient();
-
+            forLoopSemaphore.WaitOne();
+            System.Diagnostics.Debug.WriteLine("正在请求{0}。", uri);
             try
             {
-                IBuffer buffer = null;
-                StorageFile file = null;
+                var httpClient = new Windows.Web.Http.HttpClient();
 
-                foreach (var uri in InfoProviderUrls.Keys)
+                IBuffer buffer = await httpClient.GetBufferAsync(uri).AsTask().ConfigureAwait(false) ;
+                System.Diagnostics.Debug.WriteLine("shiiiiiiiiiiiiiit");
+                fileAccessMutex.WaitOne();
+                if (buffer != null && !_isFileFetched)
                 {
-                    try
-                    {
-                        buffer = await httpClient.GetBufferAsync(uri);
-                        if (buffer != null)
-                        {
-                            file = await ApplicationData.Current.LocalFolder.CreateFileAsync("games.json", CreationCollisionOption.ReplaceExisting);
-                            byte[] compressedData = new byte[buffer.Length];
+                    _isFileFetched = true;
+                    fileAccessMutex.ReleaseMutex();
+                    _file = await ApplicationData.Current.LocalFolder.CreateFileAsync("games.json", CreationCollisionOption.ReplaceExisting);
+                    byte[] compressedData = new byte[buffer.Length];
 
-                            if(InfoProviderUrls[uri].IsCompressed)
-                            {
-                                using (DataReader dataReader = DataReader.FromBuffer(buffer))
-                                {
-                                    dataReader.ReadBytes(compressedData);
-                                    string infos = Unzip(compressedData);
-                                    await FileIO.WriteTextAsync(file, infos);
-                                }
-                            }
-                            else
-                            {
-                                await FileIO.WriteBufferAsync(file, buffer);
-                            }
-                            System.Diagnostics.Debug.WriteLine("从源{0}更新成功。", uri.AbsoluteUri);
-                        }
-                        else
-                        {
-                            throw new Exception();
-                        }
-
-                        break;
-                    }
-                    catch(Exception ex)
+                    if (InfoProviderUrls[uri].IsCompressed)
                     {
-                        System.Diagnostics.Debug.WriteLine("Fetching from source {0} failed!", uri.AbsoluteUri);
-                        if(uri == InfoProviderUrls.Keys.Last())
+                        using (DataReader dataReader = DataReader.FromBuffer(buffer))
                         {
-                            throw ex;
+                            dataReader.ReadBytes(compressedData);
+                            string infos = Unzip(compressedData);
+                            await FileIO.WriteTextAsync(_file, infos);
                         }
                     }
+                    else
+                    {
+                        await FileIO.WriteBufferAsync(_file, buffer);
+                    }
+                    System.Diagnostics.Debug.WriteLine("从源{0}更新成功。", uri.AbsoluteUri);
                 }
-
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("没有从源{0}更新。", uri.AbsoluteUri);
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("lalalerror。", uri.AbsoluteUri);
+            }
+            System.Diagnostics.Debug.WriteLine("退出请求{0}。", uri);
+            forLoopSemaphore.Release();
+        }
+
+
+        public async Task GetInfoAsync()
+        {
+            try
+            {
+                bool isFileRetreived = false;
+                System.Threading.Mutex fileAccessMutex = new System.Threading.Mutex();
+                Semaphore requestThreadPool = new Semaphore(InfoProviderUrls.Keys.Count, InfoProviderUrls.Keys.Count);
+
+
+                    foreach (var uri in InfoProviderUrls.Keys)
+                    {
+                        GetInfo(uri, fileAccessMutex, requestThreadPool);
+                    }
+
+                await Task.Run(() =>
+                {
+                    requestThreadPool.WaitOne();
+                });
+                
+                System.Diagnostics.Debug.WriteLine("outsidetheloop.");
+                if (_file == null)
+                {
+                    throw new Exception("Refresh failed.");
+                }
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
