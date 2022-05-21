@@ -31,5 +31,16 @@ namespace GamePassScores.UWP
         {
             this.Hide();
         }
+
+        private void ContentDialog_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(e.Key);
+            switch (e.Key)
+            {
+                case Windows.System.VirtualKey.GamepadView:
+                    this.Hide();
+                    break;
+            }
+        }
     }
 }

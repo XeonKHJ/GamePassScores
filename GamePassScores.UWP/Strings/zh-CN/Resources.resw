@@ -156,6 +156,12 @@
   <data name="DetailReleaseDate" xml:space="preserve">
     <value>发布日期</value>
   </data>
+  <data name="ErrorDialogue.CloseButtonText" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="ErrorDialogue.Title" xml:space="preserve">
+    <value>❌错误</value>
+  </data>
   <data name="GenreActionAndAdventure" xml:space="preserve">
     <value>动作与冒险</value>
   </data>

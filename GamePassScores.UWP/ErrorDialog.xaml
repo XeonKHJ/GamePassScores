@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="TITLE"
-    PrimaryButtonText="Button1"
-    PrimaryButtonClick="ContentDialog_DismissButtonClick">
+    x:Uid="ErrorDialogue"
+    KeyDown="ContentDialog_KeyDown">
 
     <Grid>
         <TextBlock x:Name="ErrorMsgTextBlock" Text="{x:Bind ErrorMessage}">lalal</TextBlock>

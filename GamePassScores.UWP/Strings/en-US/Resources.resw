@@ -156,6 +156,12 @@
   <data name="DetailReleaseDate" xml:space="preserve">
     <value>Release Date</value>
   </data>
+  <data name="ErrorDialogue.CloseButtonText" xml:space="preserve">
+    <value>Dismiss</value>
+  </data>
+  <data name="ErrorDialogue.Title" xml:space="preserve">
+    <value>❌Error</value>
+  </data>
   <data name="GenreActionAndAdventure" xml:space="preserve">
     <value>Action &amp; Adventure</value>
   </data>
