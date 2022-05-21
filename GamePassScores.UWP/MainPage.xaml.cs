@@ -45,7 +45,7 @@ namespace GamePassScores.UWP
             //doubleAnimation.EnableDependentAnimation = true;
             //doubleAnimation.To = _angle;
             //Storyboard.SetTargetProperty(doubleAnimation, "Angle");
-            
+
             //Storyboard.SetTarget(doubleAnimation, RefreshIconTransform);
             //storyboard.Children.Add(doubleAnimation);
 
@@ -91,14 +91,14 @@ namespace GamePassScores.UWP
 
         private Dictionary<Uri, InfoProviderContext> _dataSource = new Dictionary<Uri, InfoProviderContext>
         {
-            { new Uri("https://github.com/XeonKHJ/GamePassScoresInfo/blob/main/ConsoleGames.json?raw=true"), new InfoProviderContext{IsCompressed = false} }, 
+            { new Uri("https://github.com/XeonKHJ/GamePassScoresInfo/blob/main/ConsoleGames.json?raw=true"), new InfoProviderContext{IsCompressed = false} },
             { new Uri("https://gitee.com/xeonkhj/game-pass-scores-info/raw/master/CompressedConsoleGames.zip"),new InfoProviderContext { IsCompressed = true }}
         };
 
         private async void UpdateJsonData()
         {
-            var httpClient = new Windows.Web.Http.HttpClient();
-
+            _isRefreshing = true;
+            StartRefreshAnimation();
             try
             {
                 InfoFetcher fetcher = new InfoFetcher(_dataSource);
@@ -106,12 +106,12 @@ namespace GamePassScores.UWP
 
                 ReadGamesFromJson();
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 HandleError(exception);
                 System.Diagnostics.Debug.WriteLine("Internet connection issues");
-                _isRefreshing = false;
             }
+            _isRefreshing = false;
         }
         private async void ReadGamesFromJson()
         {
@@ -138,16 +138,16 @@ namespace GamePassScores.UWP
             {
                 games = JsonConvert.DeserializeObject<List<Game>>(jsonString);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 HandleError(exception);
                 System.Diagnostics.Debug.WriteLine(exception);
             }
 
-            
+
             HashSet<string> genre = new HashSet<string>();
 
-            
+
             foreach (var game in games)
             {
                 foreach (var c in game.Categories)
@@ -173,7 +173,7 @@ namespace GamePassScores.UWP
             //SearchBox_TextChanged(SearchBox, null);
             OrderByNameAscendItem_Click(null, null);
 
-            _isRefreshing = false;
+            
         }
 
         public List<Game> Games = new List<Game>();
@@ -263,7 +263,7 @@ namespace GamePassScores.UWP
             TextBox searchBlock = sender as TextBox;
             string text = searchBlock.Text;
             var gamesFilteredByCategories = FilterByCategorie(Games.ToArray());
-            if(gamesFilteredByCategories == null)
+            if (gamesFilteredByCategories == null)
             {
                 gamesFilteredByCategories = Games.ToArray();
             }
@@ -323,11 +323,11 @@ namespace GamePassScores.UWP
 
             Game[] filteredGames = gamesFilteredByCategories;
 
-            if(RcentlyAddedRadioButton!= null && (bool)RcentlyAddedRadioButton.IsChecked)
+            if (RcentlyAddedRadioButton != null && (bool)RcentlyAddedRadioButton.IsChecked)
             {
                 filteredGames = (from g in gamesFilteredByCategories where g.InVaultTime == InVaultTime.RecentlyAdded select g).ToArray();
             }
-            else if(LeavingSoonRadioButton != null && (bool)LeavingSoonRadioButton.IsChecked)
+            else if (LeavingSoonRadioButton != null && (bool)LeavingSoonRadioButton.IsChecked)
             {
                 filteredGames = (from g in gamesFilteredByCategories where g.InVaultTime == InVaultTime.LeavingSoon select g).ToArray();
             }
@@ -418,15 +418,23 @@ namespace GamePassScores.UWP
         public float RefreshIconRotateAngle { set; get; } = 360;
         private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            _isRefreshing = true;
-            UpdateJsonData();
-            while (_isRefreshing) 
+            if (!_isRefreshing)
             {
-                //Compositor rotateAnimation = Window.Current.Compositor;
-                await storyboard.BeginAsync();
-                //await RefreshButtonIcon.Rotate(value: _angle, centerX: 10.0f, centerY: 10.0f, duration: 1000, delay: 0, easingType: EasingType.Default).StartAsync();
-                RefreshIconRotateAngle += 360;
-                storyboard.Stop();
+           
+                UpdateJsonData();
+            }
+        }
+
+        private async void StartRefreshAnimation()
+        {
+            while (_isRefreshing)
+            {
+                    //Compositor rotateAnimation = Window.Current.Compositor;
+                    await storyboard.BeginAsync();
+                    //await RefreshButtonIcon.Rotate(value: _angle, centerX: 10.0f, centerY: 10.0f, duration: 1000, delay: 0, easingType: EasingType.Default).StartAsync();
+                    RefreshIconRotateAngle += 360;
+                    storyboard.Stop();
+
             }
         }
 
@@ -449,11 +457,11 @@ namespace GamePassScores.UWP
         {
             var item = e.ClickedItem as RadioButton;
 
-            if(item != null)
+            if (item != null)
             {
                 item.IsChecked = true;
             }
-            
+
         }
 
         private void CategoriesView_ItemClick(object sender, ItemClickEventArgs e)
@@ -470,7 +478,7 @@ namespace GamePassScores.UWP
         {
             System.Diagnostics.Debug.WriteLine("StackPanel_GotFocus");
 
-            if(!OrderBar.IsOpen)
+            if (!OrderBar.IsOpen)
             {
                 OrderBar.Focus(FocusState.Programmatic);
                 OrderBar.IsOpen = true;
@@ -480,7 +488,7 @@ namespace GamePassScores.UWP
         private void Page_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(e.Key);
-            switch(e.Key)
+            switch (e.Key)
             {
                 case Windows.System.VirtualKey.GamepadMenu:
                     if (!OrderBar.IsOpen)
@@ -494,11 +502,11 @@ namespace GamePassScores.UWP
                     }
                     break;
                 case Windows.System.VirtualKey.GamepadView:
-                    if(!_isAboutDialogueOpened)
+                    if (!_isAboutDialogueOpened)
                     {
                         AboutButton_ClickAsync(null, null);
                     }
-                    
+
                     break;
             }
         }
