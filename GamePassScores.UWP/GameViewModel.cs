@@ -205,7 +205,7 @@ namespace GamePassScores.UWP
                 switch (AnalyticsInfo.VersionInfo.DeviceFamily)
                 {
                     case "Windows.Xbox":
-                        titleSize = 13;
+                        titleSize = 11;
                         break;
                 }
                 return titleSize;
@@ -213,19 +213,28 @@ namespace GamePassScores.UWP
             }
         }
 
-
+        static public double ItemWeight
+        {
+            get
+            {
+                return ItemHeight / 1.4;
+            }
+        }
         static public double ItemHeight
         {
             get
             {
-                double maxWidth = 250;
+                double maxHeight = 250;
                 switch (AnalyticsInfo.VersionInfo.DeviceFamily)
                 {
                     case "Windows.Xbox":
-                        maxWidth = 225;
+                        maxHeight = 200;
+                        break;
+                    default:
+                        System.Diagnostics.Debug.WriteLine("Not on xbox.");
                         break;
                 }
-                return maxWidth;
+                return maxHeight;
             }
         }
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

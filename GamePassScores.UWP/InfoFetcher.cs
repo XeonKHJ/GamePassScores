@@ -70,7 +70,10 @@ namespace GamePassScores.UWP
                     catch(Exception ex)
                     {
                         System.Diagnostics.Debug.WriteLine("Fetching from source {0} failed!", uri.AbsoluteUri);
-                        throw ex;
+                        if(uri == InfoProviderUrls.Keys.Last())
+                        {
+                            throw ex;
+                        }
                     }
                 }
 

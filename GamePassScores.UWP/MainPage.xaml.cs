@@ -85,7 +85,7 @@ namespace GamePassScores.UWP
         {
             get
             {
-                return GameViewModel.ItemHeight / 1.4;
+                return GameViewModel.ItemWeight;
             }
         }
 
@@ -225,14 +225,6 @@ namespace GamePassScores.UWP
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
-            {
-                case "Windows.Xbox":
-                    GamesView.DesiredWidth = 160;
-                    GamesView.ItemHeight = 240;
-                    break;
-            }
 
 
             if (animatingElement != null)
