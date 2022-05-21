@@ -2,7 +2,7 @@
   "profiles": {
     "GamePassScores.InfoCollectorConsole": {
       "commandName": "Project",
-      "commandLineArgs": "\"C:\\Dev\\Repos\\GamePassScores\\GamePassScores.InfoCollectorConsole\\Options.json\""
+      "commandLineArgs": "\"C:\\Users\\redal\\source\\repos\\GamePassScores\\GamePassScores.InfoCollectorConsole\\runtimeconfig.json\""
     }
   }
 }

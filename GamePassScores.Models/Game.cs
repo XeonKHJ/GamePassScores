@@ -31,5 +31,7 @@ namespace GamePassScores.Models
         public List<string> ScreenShots { set; get; } = new List<string>();
         public long ReleaseDate { set; get; }
         public Dictionary<string, long> DownloadSize { set; get; } = new Dictionary<string, long>();
+
+        public string MetacriticPlatform { set; get; }
     }
 }

@@ -21,17 +21,27 @@ namespace GamePassScores.InfoCollectorConsole
             foreach(var repoOption in option.RepoOptions)
             {
                 _publishers.Add(new GitDataPublisher(repoOption.RepoPath, new List<string> { repoOption.NewInfoFilePath, repoOption.NewCompressedInfoFilePath }));
-                _savers.Add(new JsonThenZipDataSaver(repoOption.NewInfoFilePath, repoOption.NewCompressedInfoFilePath));
+                _savers.Add(new JsonThenZipDataSaver(System.IO.Path.Combine(repoOption.RepoPath,repoOption.NewInfoFilePath), System.IO.Path.Combine(repoOption.RepoPath, repoOption.NewCompressedInfoFilePath)));
             }
         }
-        public async Task SaveAndPublishAsync(IList<Game> games)
+
+        public async Task SaveAsync(IList<Game> games)
         {
-            foreach(var saver in _savers)
+            foreach (var saver in _savers)
             {
                 await saver.SaveAsync(games);
             }
+        }
 
-            foreach(var publisher in _publishers)
+        public async Task SaveAndPublishAsync(IList<Game> games)
+        {
+            await SaveAsync(games);
+            await PublishAsync();
+        }
+
+        public async Task PublishAsync()
+        {
+            foreach (var publisher in _publishers)
             {
                 await publisher.PublishAsync();
             }

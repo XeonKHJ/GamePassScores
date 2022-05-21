@@ -11,6 +11,8 @@ namespace GamePassScores.InfoCollectorConsole
     {
         public string OldInfoFilePath { set; get; }
         public List<RepoOption> RepoOptions { set; get; }
+
+        public bool NoCommit { set; get; }
     }
     internal class ArgParser
     {

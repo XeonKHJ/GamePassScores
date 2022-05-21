@@ -8,5 +8,7 @@ namespace GamePassScores.InfoCollectorConsole.AppException
 {
     internal class FatalException : ApplicationException
     {
+        public FatalException(string message) : base(message) { }
+        public FatalException() { }
     }
 }

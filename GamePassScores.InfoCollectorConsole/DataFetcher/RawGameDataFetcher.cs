@@ -34,13 +34,17 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
         public async Task<List<Game>> GetGamesAsync(List<Game> existedGames = null)
         {
             var allGameList = await GetGameList(consoleGameListInfoUrl);
+            Console.WriteLine("All game list is collected.");
             var recentlyAddedList = await GetGameList(recentlyAddConsoleGameListInfo);
+            Console.WriteLine("Recently-added list is collected.");
             var leavingSoonList = await GetGameList(leavingSoonConsoleGameListInfo);
-            var infos = await GetGamesInfo(allGameList);
+            Console.WriteLine("Leaving-soon list is collected.");
+            var infos = await FetchGameInfos(allGameList);
 
+            Console.WriteLine("Collecting games' detail information...");
             List<Game> newGames = new List<Game>();
             var allGames = await RawModelsToGameModelsAsync(infos, recentlyAddedList, leavingSoonList);
-
+            Console.WriteLine("Games' detail informations are collected.");
             // Keep existed games' basic info.
             if (existedGames != null)
             {
@@ -53,8 +57,8 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
                         var oldGame = existedGames[oldGameIndex];
                         game.MetaCriticPathName = oldGame.MetaCriticPathName;
                         game.IsMetacriticInfoExist = oldGame.IsMetacriticInfoCorrect;
-                        game.MetaScore = oldGame.MetaScore;
-                        game.MetacriticUrls = oldGame.MetacriticUrls;
+                        //game.MetaScore = oldGame.MetaScore;
+                        //game.MetacriticUrls = oldGame.MetacriticUrls;
                         game.IsMetacriticInfoCorrect = oldGame.IsMetacriticInfoCorrect;
                         game.OriginalPlatforms = oldGame.OriginalPlatforms;
                         existedGames[oldGameIndex] = game;
@@ -94,8 +98,6 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
                 }
             }
             gameCodes = gameCodes.Distinct().ToList();
-
-            Console.WriteLine("成功获取游戏列表。");
             return gameCodes.ToArray();
         }
 
@@ -165,8 +167,6 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
                     game.ScreenShots = (from i in l.Images where (i.ImagePurpose.ToLower() == "screenshot") && (!i.ImagePositionInfo.ToLower().Contains("desktop")) select ("https:" + i.Uri)).ToList();
                     game.PosterUrl = "https:" + (from i in l.Images where i.ImagePurpose.ToLower() == "poster" select i.Uri).First();
                 }
-
-                //添加游戏发布日期
                 game.ReleaseDate = gameInfo.MarketProperties.First().OriginalReleaseDate.ToBinary();
                 var skuProperties = gameInfo.DisplaySkuAvailabilities.First().Sku.Properties;
                 if (skuProperties.Packages.Count > 0)
@@ -179,7 +179,7 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
                     {
                         var bundleSkus = gameInfo.DisplaySkuAvailabilities.First().Sku.Properties.BundledSkus;
                         var bundleIds = from b in bundleSkus select b.BigId;
-                        var bundleProducts = await GetGamesInfo(bundleIds.ToArray());
+                        var bundleProducts = await FetchGameInfos(bundleIds.ToArray());
 
                         long maxBytes = 0;
                         foreach (var bp in bundleProducts.Products)
@@ -190,10 +190,13 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
 
                         game.DownloadSize.Add("US", maxBytes);
                     }
-                    catch
+                    catch (ArgumentNullException)
                     {
-                        Console.WriteLine("这个捆绑包没大小");
-                        System.Diagnostics.Debug.WriteLine("这个捆绑包没大小");
+                        Console.Error.WriteLine("{0} bundle doesn't have size information.", game.Title.First().Value);
+                    }
+                    catch(InvalidOperationException)
+                    {
+                        Console.Error.WriteLine("{0} bundle doesn't have size information.", game.Title.First().Value);
                     }
                 }
 
@@ -205,16 +208,15 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
                 }
                 else
                 {
-                    game.OriginalPlatforms.Add(Platform.XboxOne);
+                    game.OriginalPlatforms.Add(Platform.XboxSeriesX);
                 }
 
                 games.Add(game);
             }
-            Console.WriteLine("成功转换成老子的模型。");
             return games;
         }
 
-        private async Task<ProductsModel> GetGamesInfo(string[] gamelistInfo)
+        private async Task<ProductsModel> FetchGameInfos(string[] gamelistInfo)
         {
             ProductsModel gamePassProductsModel = new ProductsModel();
             ProductsModel eaPlayProductsModel = new ProductsModel();
@@ -270,7 +272,6 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
                             }
                         }
                     }
-                    Console.WriteLine("结束了一个请求");
                 }
                 else
                 {
@@ -342,7 +343,7 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
             for (int i = 0; i < metaCriticPathName.Length; ++i)
             {
                 var c = metaCriticPathName[i];
-                string matchString = "01234567890qwertyuiopasdfghjklzxcvbnm-!'.";
+                string matchString = "0123456789qwertyuiopasdfghjklzxcvbnm-!'.";
                 if (!matchString.Contains(c))
                 {
                     metaCriticPathName[i] = ' ';

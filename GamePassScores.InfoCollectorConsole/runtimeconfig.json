@@ -1,0 +1,12 @@
+{
+  "OldInfoFilePath": "C:/Users/redal/source/repos/GamePassScoresInfo/ConsoleGames.json",
+  "RepoOptions": [
+    {
+      "RepoPath": "C:/Users/redal/source/repos/GamePassScoresInfo",
+      "NewInfoFilePath": "ConsoleGames.json",
+      "NewCompressedInfoFilePath": "CompressedConsoleGames.zip",
+      "Branch": "main"
+    }
+  ],
+  "NoCommit": true
+}

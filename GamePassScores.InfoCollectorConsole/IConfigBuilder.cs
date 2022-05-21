@@ -10,5 +10,7 @@ namespace GamePassScores.InfoCollectorConsole
     internal interface IConfigBuilder
     {
         public Task SaveAndPublishAsync(IList<Game> games);
+        public Task PublishAsync();
+        public Task SaveAsync(IList<Game> games);
     }
 }
