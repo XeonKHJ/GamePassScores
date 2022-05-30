@@ -7,21 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GamePassScores.InfoCollectorConsole
+namespace GamePassScores.InfoCollectorConsole.Config
 {
-    internal class RegularConfigBuilder : IConfigBuilder
+    internal class ConsoleGameConfigBuilder : IConfigBuilder
     {
 
         List<IDataPublisher> _publishers = new List<IDataPublisher>();
         List<IDataSaver> _savers = new List<IDataSaver>();
-        public RegularConfigBuilder(string args)
+        public ConsoleGameConfigBuilder(string args)
         {
             var option = ArgParser.ParseJsonAsync(args).GetAwaiter().GetResult();
 
             foreach(var repoOption in option.RepoOptions)
             {
-                _publishers.Add(new GitDataPublisher(repoOption.RepoPath, new List<string> { repoOption.NewInfoFilePath, repoOption.NewCompressedInfoFilePath }));
-                _savers.Add(new JsonThenZipDataSaver(System.IO.Path.Combine(repoOption.RepoPath,repoOption.NewInfoFilePath), System.IO.Path.Combine(repoOption.RepoPath, repoOption.NewCompressedInfoFilePath)));
+                _publishers.Add(new GitDataPublisher(repoOption.RepoPath, new List<string> { repoOption.NewConsoleGameInfoPath, repoOption.NewCompressedConsoleInfoPath }));
+                _savers.Add(new JsonThenZipDataSaver(System.IO.Path.Combine(repoOption.RepoPath,repoOption.NewConsoleGameInfoPath), System.IO.Path.Combine(repoOption.RepoPath, repoOption.NewCompressedConsoleInfoPath)));
             }
         }
 

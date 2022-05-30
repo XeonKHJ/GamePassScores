@@ -17,6 +17,7 @@ using System.IO.Compression;
 using GamePassScores.InfoCollectorConsole.RawModel;
 using GamePassScores.InfoCollectorConsole.DataFetcher;
 using GamePassScores.InfoCollectorConsole.AppException;
+using GamePassScores.InfoCollectorConsole.Config;
 
 namespace GamePassScores.InfoCollectorConsole
 {
@@ -24,44 +25,51 @@ namespace GamePassScores.InfoCollectorConsole
     {
         static async Task Main(string[] args)
         {
-            RawGameDataFetcher gameDataFetcher = new RawGameDataFetcher(20);
+            ConsoleGameDataFetcher consoleGameFetcher = new ConsoleGameDataFetcher(20);
+            PCGameDataFetcher pcGameFetcher = new PCGameDataFetcher(20);
             GameScoreDataFetcher scoreDataFetcher = new GameScoreDataFetcher();
             string serializeGames = string.Empty;
             try
             {
                 string arg = args[0];
                 var options = await ArgParser.ParseJsonAsync(arg);
-                IConfigBuilder configBuilder = new RegularConfigBuilder(arg);
-
+                IConfigBuilder consoleGamesConfigBuilder = new ConsoleGameConfigBuilder(arg);
+                IConfigBuilder pcGameConfigBuilder = new PCGameConfigBuilder(arg);
                 Console.WriteLine("There are {0} repos in the config files", options.RepoOptions.Count);
 
                 if (args.Length == 2)
                 {
                     if (args[1] == "debug")
                     {
-                        serializeGames = System.IO.File.ReadAllText(options.OldInfoFilePath);
+                        serializeGames = System.IO.File.ReadAllText(options.OldConsoleGameInfoPath);
                     }
                 }
                 else
                 {
-                    List<Game> newGames = null;
-                    if(options.OldInfoFilePath == null || options.OldInfoFilePath == string.Empty)
+                    List<Game> newConsoleGames = null;
+                    List<Game> newPCGames = null;
+                    if(options.OldConsoleGameInfoPath == null || options.OldConsoleGameInfoPath == string.Empty)
                     {
 
                     }
                     else
                     {
-                        string oldGameInfoFile = options.OldInfoFilePath;
-                        var jsonFile = File.ReadAllText(oldGameInfoFile);
+                        string oldConsoleGameInfo = options.OldConsoleGameInfoPath;
+                        var jsonFile = File.ReadAllText(oldConsoleGameInfo);
                         List<Game> games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-                        newGames = await gameDataFetcher.GetGamesAsync(games);
-                        await scoreDataFetcher.FetchScoresAsync(newGames);
+                        //newConsoleGames = await consoleGameFetcher.GetGamesAsync(games);
+                        //await scoreDataFetcher.FetchScoresAsync(newConsoleGames);
+
+                        newPCGames = await pcGameFetcher.GetGamesAsync(new List<Game>());
+                        await scoreDataFetcher.FetchScoresAsync(newPCGames);
                     }
 
-                    await configBuilder.SaveAsync(newGames);
+                    // await consoleGamesConfigBuilder.SaveAsync(newConsoleGames);
+                    await pcGameConfigBuilder.SaveAsync(newPCGames);
                     if(!options.NoCommit)
                     {
-                        await configBuilder.PublishAsync();
+                        await consoleGamesConfigBuilder.PublishAsync();
+                        await pcGameConfigBuilder.PublishAsync();
                     }
                 }
 

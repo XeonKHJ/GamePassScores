@@ -14,9 +14,13 @@ namespace GamePassScores.InfoCollectorConsole
         /// Relative path.
         /// </summary>
 
-        public string NewInfoFilePath { set; get; }
+        public string NewConsoleGameInfoPath { set; get; }
 
-        public string NewCompressedInfoFilePath { set; get; }
+        public string NewPCGameInfoPath { set; get; }
+
+        public string NewCompressedConsoleInfoPath { set; get; }
+
+        public string NewCompressedPCInfoPath { set; get; }
 
         //public string AuthenticationMethod { set; get; }
         //public string PrivateKey { set; get; }

@@ -9,7 +9,8 @@ namespace GamePassScores.InfoCollectorConsole
 {
     internal class InfoCollectorOption
     {
-        public string OldInfoFilePath { set; get; }
+        public string OldConsoleGameInfoPath { set; get; }
+        public string OldPCGameInfoPath { set; get; }
         public List<RepoOption> RepoOptions { set; get; }
 
         public bool NoCommit { set; get; } = false;

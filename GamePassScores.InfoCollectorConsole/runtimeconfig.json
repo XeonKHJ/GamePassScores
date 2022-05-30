@@ -1,12 +1,14 @@
 {
-  "OldInfoFilePath": "C:/Users/redal/source/repos/GamePassScoresInfo/ConsoleGames.json",
+  "OldConsoleGameInfoPath": "C:/Users/redal/source/repos/GamePassScoresInfo/ConsoleGames.json",
   "RepoOptions": [
     {
       "RepoPath": "C:/Users/redal/source/repos/GamePassScoresInfo",
-      "NewInfoFilePath": "ConsoleGames.json",
-      "NewCompressedInfoFilePath": "CompressedConsoleGames.zip",
+      "NewConsoleGameInfoPath": "ConsoleGames.json",
+      "NewPCGameInfoPath": "PCGames.json",
+      "NewCompressedConsoleInfoPath": "CompressedConsoleGames.zip",
+      "NewCompressedPCInfoPath": "CompressedPCGames.zip",
       "Branch": "main"
     }
   ],
-  "NoCommit": false
+  "NoCommit": true
 }
