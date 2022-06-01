@@ -20,14 +20,20 @@ namespace GamePassScores.UWP.InfoLoader
             { new Uri("https://gitee.com/xeonkhj/game-pass-scores-info/raw/master/CompressedPCGames.zip"),new InfoProviderContext { IsCompressed = true }}
         };
 
-        public static IInfoLoader GetPCGameInfoLoader()
+        public static IInfoLoader PCGameInfoLoader
         {
-            return new MultiSourceInfoLoader("PCGames.json", _pcInfoSource);
+            get
+            {
+                return new MultiSourceInfoLoader("PCGames.json", _pcInfoSource);
+            }
         }
 
-        public static IInfoLoader GetConsoleInfoLoader()
+        public static IInfoLoader ConsoleGameInfoLoader
         {
-            return new MultiSourceInfoLoader("ConsoleGames.json", _consoleInfoSource);
+            get
+            {
+                return new MultiSourceInfoLoader("ConsoleGames.json", _consoleInfoSource);
+            }
         }
     }
 }

@@ -40,11 +40,10 @@ namespace GamePassScores.UWP
             this.InitializeComponent();
 
             CacheFolderChecked += App_CacheFolderChecked;
-            CheckCacheFolder();
+            CheckPosterCacheFolder();
             //从json文件读取游戏信息
         }
-
-        private async void CheckCacheFolder()
+        private async void CheckPosterCacheFolder()
         {
             var applicationFolder = ApplicationData.Current.LocalFolder;
             App.CacheFolder = (await ApplicationData.Current.LocalFolder.TryGetItemAsync("PostersCache")) as StorageFolder;
@@ -59,7 +58,8 @@ namespace GamePassScores.UWP
         private event EventHandler CacheFolderChecked;
         private void App_CacheFolderChecked(object sender, EventArgs e)
         {
-            ReadGamesFromJson();
+            // LoadInfoFromLoader();
+            System.Diagnostics.Debug.WriteLine("App_CacheFolderChecked");
         }
 
         public double GamesViewItemHeight
@@ -78,54 +78,35 @@ namespace GamePassScores.UWP
             }
         }
 
-        private Dictionary<Uri, InfoProviderContext> _dataSource = new Dictionary<Uri, InfoProviderContext>
+        private void UpdateJsonData()
         {
-            { new Uri("https://github.com/XeonKHJ/GamePassScoresInfo/blob/main/ConsoleGames.json?raw=true"), new InfoProviderContext{IsCompressed = false} },
-            { new Uri("https://gitee.com/xeonkhj/game-pass-scores-info/raw/master/CompressedConsoleGames.zip"),new InfoProviderContext { IsCompressed = true }}
-        };
-
-        private async void UpdateJsonData()
-        {
-            _isRefreshing = true;
             StartRefreshAnimation();
             try
             {
-                InfoFetcher fetcher = new InfoFetcher(_dataSource);
-                await fetcher.GetInfoAsync();
-
-                ReadGamesFromJson();
+                if(PCRadioButton.IsChecked == true)
+                {
+                    LoadInfoFromLoader(LoaderFactory.PCGameInfoLoader);
+                }
+                else
+                {
+                    LoadInfoFromLoader(LoaderFactory.ConsoleGameInfoLoader);
+                }
+                
             }
             catch (Exception exception)
             {
                 HandleError(exception);
                 System.Diagnostics.Debug.WriteLine("Internet connection issues");
             }
-            _isRefreshing = false;
+            StopRefreshAnimation();
         }
-        private async void ReadGamesFromJson()
+
+        private async void LoadInfoFromLoader(IInfoLoader loader)
         {
-            //先检查有没有下载到games.json
-            var downloadedJsonFile = new FileInfo(ApplicationData.Current.LocalFolder.Path + "\\games.json");
-
-            StorageFile jsonFile = null;
-            if (downloadedJsonFile.Exists)
-            {
-                jsonFile = await StorageFile.GetFileFromPathAsync(ApplicationData.Current.LocalFolder.Path + "\\games.json");
-            }
-            else
-            {
-                jsonFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/games.json"));
-
-                //在后台下载Gamepass游戏数据
-                UpdateJsonData();
-            }
-
-
-            var jsonString = await FileIO.ReadTextAsync(jsonFile);
             List<Game> games = new List<Game>();
             try
             {
-                games = JsonConvert.DeserializeObject<List<Game>>(jsonString);
+                games = await loader.LoadAsync();
             }
             catch (Exception exception)
             {
@@ -133,9 +114,7 @@ namespace GamePassScores.UWP
                 System.Diagnostics.Debug.WriteLine(exception);
             }
 
-
             HashSet<string> genre = new HashSet<string>();
-
 
             foreach (var game in games)
             {
@@ -170,24 +149,12 @@ namespace GamePassScores.UWP
         private void OrderByScoreAscendItem_Click(object sender, RoutedEventArgs e)
         {
             Games = Games.OrderBy(g => g.MetaScore.First().Value).ToList();
-            //SearchBox_TextChanged
-            //GamesViewModel.Clear();
-            //foreach(var g in Games)
-            //{
-            //    GamesViewModel.Add(new GameViewModel(g));
-            //}
             SearchBox_TextChanged(SearchBox, null);
         }
 
         private void OrderByScoreDescendItem_Click(object sender, RoutedEventArgs e)
         {
             Games = Games.OrderByDescending(g => g.MetaScore.First().Value).ToList();
-
-            //GamesViewModel.Clear();
-            //foreach (var g in Games)
-            //{
-            //    GamesViewModel.Add(new GameViewModel(g));
-            //}
             SearchBox_TextChanged(SearchBox, null);
         }
 
@@ -403,16 +370,28 @@ namespace GamePassScores.UWP
 
         private bool _isRefreshing = false;
         public float RefreshIconRotateAngle { set; get; } = 360;
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!_isRefreshing)
+            try
             {
-                UpdateJsonData();
+                if (!IsRefreshing)
+                {
+                    StartRefreshAnimation();
+                    await LoaderFactory.ConsoleGameInfoLoader.RefreshAsync();
+                    await LoaderFactory.PCGameInfoLoader.RefreshAsync();
+                    UpdateJsonData();
+                    StopRefreshAnimation();
+                }
             }
+            catch(Exception ex)
+            {
+                HandleError(ex);
+            }
+            
         }
-
         private async void StartRefreshAnimation()
         {
+            _isRefreshing = true;
             while (_isRefreshing)
             {
                     //Compositor rotateAnimation = Window.Current.Compositor;
@@ -423,11 +402,18 @@ namespace GamePassScores.UWP
 
             }
         }
+        private bool IsRefreshing
+        {
+            get
+            {
+                return _isRefreshing;
+            }
+        }
+        private void StopRefreshAnimation()
+        {
+            _isRefreshing = false;
+        }
 
-        //private void InVaultTimeRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    SearchBox_TextChanged(SearchBox, null);
-        //}
 
         private void TimingRadioButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -501,6 +487,16 @@ namespace GamePassScores.UWP
         {
             ErrorDialog aboutDialogue = new ErrorDialog(exception);
             var result = await aboutDialogue.ShowAsync();
+        }
+
+        private void PCRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            UpdateJsonData();
+        }
+
+        private void ConsoleRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            UpdateJsonData();
         }
     }
 }

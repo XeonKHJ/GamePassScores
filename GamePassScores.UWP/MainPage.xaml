@@ -84,13 +84,13 @@
             <ScrollViewer>
                 <StackPanel Padding="20, 0, 0, 0" Grid.Column="0">
                     <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" FontWeight="Normal" Padding="10, 0, 0, 10" x:Uid="Categories"></TextBlock>
-                    <ListView x:Name="PlatformsView" IsItemClickEnabled="True" Visibility="Collapsed" ItemClick="InVaultTimeRadioButtons_ItemClick" Margin="0, 0, 0, 10" XYFocusUp="{x:Bind CategoriesView}" GotFocus="InVaultTimeRadioButtons_GotFocus" XYFocusRight="{x:Bind GamesView}">
-                        <RadioButton x:Name="PCRadioButton" IsChecked="True" GroupName="PlatformsRadioButtons">
+                    <ListView x:Name="PlatformsView" IsItemClickEnabled="True" ItemClick="InVaultTimeRadioButtons_ItemClick" Margin="0, 0, 0, 10" XYFocusUp="{x:Bind CategoriesView}" GotFocus="InVaultTimeRadioButtons_GotFocus" XYFocusRight="{x:Bind GamesView}">
+                        <RadioButton x:Name="PCRadioButton" IsChecked="True" Checked="PCRadioButton_Checked" GroupName="PlatformsRadioButtons">
                             <RadioButton.Content>
                                 <TextBlock x:Uid="PlatformPC"></TextBlock>
                             </RadioButton.Content>
                         </RadioButton>
-                        <RadioButton x:Name="ConsoleRadioButton" GroupName="PlatformsRadioButtons">
+                        <RadioButton x:Name="ConsoleRadioButton" GroupName="PlatformsRadioButtons" Checked="ConsoleRadioButton_Checked">
                             <RadioButton.Content>
                                 <TextBlock x:Uid="PlatformConsole"></TextBlock>
                             </RadioButton.Content>

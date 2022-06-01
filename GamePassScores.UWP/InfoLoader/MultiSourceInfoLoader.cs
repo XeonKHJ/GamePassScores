@@ -30,7 +30,7 @@ namespace GamePassScores.UWP.InfoLoader
             StorageFile jsonFile = null;
             if (downloadedJsonFile.Exists)
             {
-                jsonFile = await StorageFile.GetFileFromPathAsync(ApplicationData.Current.LocalFolder.Path + "\\games.json");
+                jsonFile = await StorageFile.GetFileFromPathAsync(Path.Combine(ApplicationData.Current.LocalFolder.Path, _fileName));
             }
             else
             {

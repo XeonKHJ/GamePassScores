@@ -133,9 +133,11 @@
     </Compile>
     <Compile Include="AppException\RefreshFailedException.cs" />
     <Compile Include="CategorieViewModel.cs" />
+    <Compile Include="Filters\CatagoryFilter.cs" />
+    <Compile Include="Filters\IGameFilter.cs" />
+    <Compile Include="Filters\PlatformFilter.cs" />
     <Compile Include="InfoLoader\CachedGeneralInfoLoader.cs" />
     <Compile Include="InfoLoader\CompressedGameInfoLoader.cs" />
-    <Compile Include="InfoLoader\GameInfoLoader.cs" />
     <Compile Include="InfoLoader\IInfoLoader.cs" />
     <Compile Include="ErrorDialog.xaml.cs">
       <DependentUpon>ErrorDialog.xaml</DependentUpon>
@@ -167,7 +169,8 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\games.json" />
+    <Content Include="Assets\ConsoleGames.json" />
+    <Content Include="Assets\PCGames.json" />
     <None Include="GamePassScores.UWP_TemporaryKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
