@@ -25,6 +25,7 @@ namespace GamePassScores.InfoCollectorConsole
     {
         static async Task Main(string[] args)
         {
+            Console.WriteLine("GamePass Scores Info Collector ver. {0}", AppInfo.Version);
             ConsoleGameDataFetcher consoleGameFetcher = new ConsoleGameDataFetcher(20);
             PCGameDataFetcher pcGameFetcher = new PCGameDataFetcher(20);
             GameScoreDataFetcher scoreDataFetcher = new GameScoreDataFetcher();
@@ -48,33 +49,53 @@ namespace GamePassScores.InfoCollectorConsole
                 {
                     List<Game> newConsoleGames = null;
                     List<Game> newPCGames = null;
-                    if(options.OldConsoleGameInfoPath == null || options.OldConsoleGameInfoPath == string.Empty)
-                    {
 
-                    }
-                    else
+                    string oldConsoleGameInfo = options.OldConsoleGameInfoPath;
+                    List<Game> consoleGames = new List<Game>();
+                    try
                     {
-                        string oldConsoleGameInfo = options.OldConsoleGameInfoPath;
-                        var jsonFile = File.ReadAllText(oldConsoleGameInfo);
-                        List<Game> games = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
-                        //newConsoleGames = await consoleGameFetcher.GetGamesAsync(games);
-                        //await scoreDataFetcher.FetchScoresAsync(newConsoleGames);
-
-                        newPCGames = await pcGameFetcher.GetGamesAsync(new List<Game>());
-                        await scoreDataFetcher.FetchScoresAsync(newPCGames);
+                        string jsonFile = File.ReadAllText(oldConsoleGameInfo);
+                        consoleGames = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
                     }
+                    catch(FileNotFoundException ex)
+                    {
+                        Console.Error.WriteLine("Old console games' information file not found. New file will be created to save the new information.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Error.WriteLine(ex.Message);
+                        Console.Error.WriteLine("Unknown error occured when reading old console games' information file. New file will be created to save the new information.");
+                    }
+
+                    newConsoleGames = await consoleGameFetcher.GetGamesAsync(consoleGames);
+                    await scoreDataFetcher.FetchScoresAsync(newConsoleGames);
+
+                    List<Game> pcGames = new List<Game>();
+                    try
+                    {
+                        string jsonFile = File.ReadAllText(options.OldPCGameInfoPath);
+                        pcGames = JsonConvert.DeserializeObject<List<Game>>(jsonFile);
+                    }
+                    catch (System.IO.FileNotFoundException ex)
+                    {
+                        Console.Error.WriteLine("Unknown error occured when reading old console games' information file. New file will be created to save the new information.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Error.WriteLine(ex.Message);
+                    }
+
+                    newPCGames = await pcGameFetcher.GetGamesAsync(pcGames);
+                    await scoreDataFetcher.FetchScoresAsync(newPCGames);
 
                     // await consoleGamesConfigBuilder.SaveAsync(newConsoleGames);
                     await pcGameConfigBuilder.SaveAsync(newPCGames);
-                    if(!options.NoCommit)
+                    if (!options.NoCommit)
                     {
                         await consoleGamesConfigBuilder.PublishAsync();
                         await pcGameConfigBuilder.PublishAsync();
                     }
                 }
-
-                
-                // await UploadGameListAsync(options.RepoOptions, serializeGames);
             }
             catch (System.IO.DirectoryNotFoundException ex)
             {
