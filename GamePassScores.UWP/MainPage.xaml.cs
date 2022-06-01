@@ -24,6 +24,7 @@ using Microsoft.Toolkit.Uwp.UI.Animations;
 using Windows.System.Profile;
 using Windows.UI.Composition;
 using Windows.Storage.Streams;
+using GamePassScores.UWP.InfoLoader;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -34,25 +35,13 @@ namespace GamePassScores.UWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        //Storyboard storyboard;
         public MainPage()
         {
             this.InitializeComponent();
 
-            //storyboard = new Storyboard();
-            //var doubleAnimation = new DoubleAnimation();
-            //doubleAnimatidon.Duration = TimeSpan.FromMilliseconds(500);
-            //doubleAnimation.EnableDependentAnimation = true;
-            //doubleAnimation.To = _angle;
-            //Storyboard.SetTargetProperty(doubleAnimation, "Angle");
-
-            //Storyboard.SetTarget(doubleAnimation, RefreshIconTransform);
-            //storyboard.Children.Add(doubleAnimation);
-
             CacheFolderChecked += App_CacheFolderChecked;
             CheckCacheFolder();
             //从json文件读取游戏信息
-
         }
 
         private async void CheckCacheFolder()
@@ -172,8 +161,6 @@ namespace GamePassScores.UWP
 
             //SearchBox_TextChanged(SearchBox, null);
             OrderByNameAscendItem_Click(null, null);
-
-            
         }
 
         public List<Game> Games = new List<Game>();

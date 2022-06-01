@@ -33,5 +33,7 @@ namespace GamePassScores.Models
         public Dictionary<string, long> DownloadSize { set; get; } = new Dictionary<string, long>();
 
         public string MetacriticPlatform { set; get; }
+
+        public HashSet<Platform> AvaliablePlatforms { set; get; } = new HashSet<Platform>();
     }
 }

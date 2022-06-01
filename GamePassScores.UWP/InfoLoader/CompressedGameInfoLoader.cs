@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace GamePassScores.UWP.InfoLoader
 {
-    internal interface IInfoLoader
+    internal class CompressedGameInfoLoader
     {
-        Task<List<Models.Game>> LoadAsync();
-        Task<List<Models.Game>> RefreshAsync();
     }
 }

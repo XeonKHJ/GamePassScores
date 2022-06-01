@@ -131,7 +131,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppException\RefreshFailedException.cs" />
     <Compile Include="CategorieViewModel.cs" />
+    <Compile Include="InfoLoader\CachedGeneralInfoLoader.cs" />
+    <Compile Include="InfoLoader\CompressedGameInfoLoader.cs" />
+    <Compile Include="InfoLoader\GameInfoLoader.cs" />
     <Compile Include="InfoLoader\IInfoLoader.cs" />
     <Compile Include="ErrorDialog.xaml.cs">
       <DependentUpon>ErrorDialog.xaml</DependentUpon>
@@ -141,6 +145,8 @@
     </Compile>
     <Compile Include="GameViewModel.cs" />
     <Compile Include="InfoFetcher.cs" />
+    <Compile Include="InfoLoader\LoaderFactory.cs" />
+    <Compile Include="InfoLoader\MultiSourceInfoLoader.cs" />
     <Compile Include="LocalizationResource.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
