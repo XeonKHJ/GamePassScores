@@ -17,8 +17,8 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
     {
         private static string consoleGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=f6f1f99f-9b49-4ccd-b3bf-4d9767a77f5e&language=en-us&market=US";
         private static string pcGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=609d944c-d395-4c0a-9ea4-e9f39b52c1ad&language=en-us&market=US";
-        private static string recentlyAddConsoleGameListInfo = "https://catalog.gamepass.com/sigls/v2?id=f13cf6b4-57e6-4459-89df-6aec18cf0538&language=en-us&market=US";
-        private static string leavingSoonConsoleGameListInfo = "https://catalog.gamepass.com/sigls/v2?id=393f05bf-e596-4ef6-9487-6d4fa0eab987&language=en-us&market=US";
+        private static string recentlyAddConsoleGameListInfo = "https://catalog.gamepass.com/sigls/v2?id=3fdd7f57-7092-4b65-bd40-5a9dac1b2b84&language=en-us&market=US";
+        private static string leavingSoonConsoleGameListInfo = "https://catalog.gamepass.com/sigls/v2?id=cc7fc951-d00f-410e-9e02-5e4628e04163&language=en-us&market=US";
 
         private int _expectedParallelNum = 20;
         public PCGameDataFetcher(int expectedParallelNum = 20)
