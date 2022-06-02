@@ -41,7 +41,18 @@ namespace GamePassScores.UWP
 
             CacheFolderChecked += App_CacheFolderChecked;
             CheckPosterCacheFolder();
-            //从json文件读取游戏信息
+
+            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+            {
+                case "Windows.Xbox":
+                    PCRadioButton.IsChecked = false;
+                    ConsoleRadioButton.IsChecked = true;
+                    break;
+                case "Windows.Desktop":
+                    PCRadioButton.IsChecked = true;
+                    ConsoleRadioButton.IsChecked = false;
+                    break;
+            }
         }
         private async void CheckPosterCacheFolder()
         {
@@ -95,6 +106,7 @@ namespace GamePassScores.UWP
             }
             catch (Exception exception)
             {
+                StopRefreshAnimation();
                 HandleError(exception);
                 System.Diagnostics.Debug.WriteLine("Internet connection issues");
             }
@@ -376,6 +388,7 @@ namespace GamePassScores.UWP
             {
                 if (!IsRefreshing)
                 {
+                    System.Diagnostics.Debug.WriteLine("开始刷新");
                     StartRefreshAnimation();
                     await LoaderFactory.ConsoleGameInfoLoader.RefreshAsync();
                     await LoaderFactory.PCGameInfoLoader.RefreshAsync();
@@ -386,8 +399,9 @@ namespace GamePassScores.UWP
             catch(Exception ex)
             {
                 HandleError(ex);
+                StopRefreshAnimation();
             }
-            
+            System.Diagnostics.Debug.WriteLine("结束刷新");
         }
         private async void StartRefreshAnimation()
         {
