@@ -5,6 +5,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Storage;
 
@@ -12,10 +13,12 @@ namespace GamePassScores.UWP.InfoLoader
 {
     abstract internal class CachedGeneralInfoLoader : IInfoLoader
     {
+        private Mutex _mutex;
         protected string _fileName;
         protected CachedGeneralInfoLoader(string fileName)
         {
             _fileName = fileName;
+            _mutex = new Mutex();
         }
         /// <summary>
         /// Load info data from cache file.
@@ -26,10 +29,12 @@ namespace GamePassScores.UWP.InfoLoader
 
         /// <summary>
         /// This functon loads the data from cache, if cache doesn't exsit, then it will load data from internet and save it as cache.
+        /// Thread-safe function.
         /// </summary>
         /// <returns>A list of games</returns>
         public async Task<List<Game>> LoadAsync()
         {
+            _mutex.WaitOne();
             List<Game> games = null;
 
             // Check local cache.
@@ -52,9 +57,11 @@ namespace GamePassScores.UWP.InfoLoader
                 }
                 catch(Exception ex)
                 {
+                    _mutex.ReleaseMutex();
                     throw ex;
                 }
             }
+            _mutex.ReleaseMutex();
             return games;
         }
 
@@ -64,6 +71,7 @@ namespace GamePassScores.UWP.InfoLoader
         /// <returns></returns>
         public async Task<List<Game>> RefreshAsync()
         {
+            _mutex.WaitOne();
             List<Game> games = new List<Game>();
             try
             {
@@ -74,6 +82,7 @@ namespace GamePassScores.UWP.InfoLoader
             {
                 throw ex;
             }
+            _mutex.ReleaseMutex();
             return games;
         }
     }
