@@ -88,7 +88,7 @@ namespace GamePassScores.InfoCollectorConsole
                     newPCGames = await pcGameFetcher.GetGamesAsync(pcGames);
                     await scoreDataFetcher.FetchScoresAsync(newPCGames);
 
-                    // await consoleGamesConfigBuilder.SaveAsync(newConsoleGames);
+                    await consoleGamesConfigBuilder.SaveAsync(newConsoleGames);
                     await pcGameConfigBuilder.SaveAsync(newPCGames);
                     if (!options.NoCommit)
                     {
