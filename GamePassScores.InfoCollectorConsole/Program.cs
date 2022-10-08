@@ -10,8 +10,6 @@ using System.Text;
 using HtmlAgilityPack;
 using System.Threading;
 using System.Net;
-using LibGit2Sharp;
-using LibGit2Sharp.Handlers;
 using System.IO;
 using System.IO.Compression;
 using GamePassScores.InfoCollectorConsole.RawModel;

@@ -1,6 +1,4 @@
-﻿using LibGit2Sharp;
-using LibGit2Sharp.Handlers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,51 +24,40 @@ namespace GamePassScores.InfoCollectorConsole.DataPublisher
         }
         public async Task PublishAsync()
         {
-            using (var repo = new Repository(_repoFolder))
+            try
             {
-                // Stage the file
-                foreach(var filePath in _commitFiles)
-                {
-                    repo.Index.Add(filePath);
-                }
-                repo.Index.Write();
+                string gitExe = "git";
+                var commitInfo = new { Message = "docs: Update game's info", Name = "InfoCollectorBot", Email = "redalertkhj@live.cn" };
 
-                // Create the committer's signature and commit
-                Signature author = new("GameInfo Collectors", "dont@me.please", DateTime.Now);
-                Signature committer = author;
+                // Format command line.
+                string commitCmdLine = string.Format("-C \"{0}\" commit -a -m \"{1}\" --author \"{2} <{3}>\"", _repoFolder, commitInfo.Message, commitInfo.Name, commitInfo.Email);
+                string pushCmdLine = string.Format("-C \"{0}\" push", _repoFolder);
 
-                // Commit to the repository
-                try
-                {
-                    Commit commit = repo.Commit("Update games' info.", author, committer);
-                    Console.WriteLine("Files commited.");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    System.Diagnostics.Debug.WriteLine(ex.Message);
-                }
-                try
-                {
-                    PushOptions options = new PushOptions();
+                System.Diagnostics.Process gitCommitProcess = new System.Diagnostics.Process();
+                gitCommitProcess.StartInfo.FileName = gitExe;
+                gitCommitProcess.StartInfo.Arguments = commitCmdLine;
 
-                    options.CredentialsProvider = new CredentialsHandler(
-                        (url, usernameFromUrl, types) =>
-                            new DefaultCredentials()
-                            );
+                System.Diagnostics.Process gitPushProcess = new System.Diagnostics.Process();
+                gitPushProcess.StartInfo.FileName = gitExe;
+                gitPushProcess.StartInfo.Arguments = pushCmdLine;
 
-                    Console.WriteLine("Pushing repo {0}...", _repoFolder);
-                    // This part requires Git installed.
-                    Console.WriteLine("Executing command: git -C \"{0}\" push", _repoFolder);
-                    System.Diagnostics.Process.Start("git", string.Format("-C \"{0}\" push", _repoFolder));
-                    Console.WriteLine("Repo {0} is pushed.", _repoFolder);
+                // Git commit
+                Console.WriteLine("Executing\t{0} {1}", gitExe, commitCmdLine);
+                gitCommitProcess.Start();
+                await gitCommitProcess.WaitForExitAsync();
 
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    System.Diagnostics.Debug.WriteLine("Push failed:{0}", ex.Message);
-                }
+                // git push
+                Console.WriteLine("Executing\t{0} {1}", gitExe, pushCmdLine);
+                gitPushProcess.Start();
+                await gitPushProcess.WaitForExitAsync();
+
+                Console.WriteLine("Status\tData published");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Status\tData published Failed.");
+                                System.Diagnostics.Debug.WriteLine("Push failed:{0}", ex.Message);
             }
         }
     }
