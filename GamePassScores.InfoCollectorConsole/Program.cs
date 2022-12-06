@@ -16,6 +16,7 @@ using GamePassScores.InfoCollectorConsole.RawModel;
 using GamePassScores.InfoCollectorConsole.DataFetcher;
 using GamePassScores.InfoCollectorConsole.AppException;
 using GamePassScores.InfoCollectorConsole.Config;
+using System.Diagnostics;
 
 namespace GamePassScores.InfoCollectorConsole
 {
@@ -32,6 +33,7 @@ namespace GamePassScores.InfoCollectorConsole
             {
                 string arg = args[0];
                 var options = await ArgParser.ParseJsonAsync(arg);
+                await InitAsync(options);
                 IConfigBuilder consoleGamesConfigBuilder = new ConsoleGameConfigBuilder(arg);
                 IConfigBuilder pcGameConfigBuilder = new PCGameConfigBuilder(arg);
                 Console.WriteLine("There are {0} repos in the config files", options.RepoOptions.Count);
@@ -102,6 +104,24 @@ namespace GamePassScores.InfoCollectorConsole
             catch (FatalException exception)
             {
                 Console.Error.WriteLine("Fatal exception: {0}", exception.Message);
+            }
+        }
+
+        static async Task InitAsync(InfoCollectorOption option)
+        {
+            foreach(var repo in option.RepoOptions)
+            {
+                Process gitProcess = new Process();
+                gitProcess.StartInfo.FileName = "git";
+                string args = string.Format("{0} {1} {2}", "-C", repo.RepoPath, "pull");
+                gitProcess.StartInfo.Arguments = args;
+                Console.WriteLine("Executing\t{0} {1}", "git", args);
+                gitProcess.Start();
+                await gitProcess.WaitForExitAsync();
+                if(gitProcess.ExitCode != 0)
+                {
+                    throw new FatalException(string.Format("{0} repo pull error.", repo.RepoPath));
+                }
             }
         }
     }
