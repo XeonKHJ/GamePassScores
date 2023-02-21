@@ -12,7 +12,7 @@ namespace GamePassScores.InfoCollectorConsole
         {
             get
             {
-                return "1.32.2";
+                return "1.32.3";
             }
         }
     }
