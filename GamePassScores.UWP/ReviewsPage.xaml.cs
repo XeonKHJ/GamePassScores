@@ -65,9 +65,10 @@ namespace GamePassScores.UWP
 
         private async void GetReviewsFromMetacriticAsync(string gamePageUrl)
         {
-            var reviewsPageUrl = gamePageUrl + "critic-reviews/";
+            var reviewsPageUrl = gamePageUrl + "/critic-reviews";
             Reviews.Clear();
             var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Add("User-Agent", "Edg/110.0.1587.50");
 
             try
             {
