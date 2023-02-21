@@ -34,10 +34,11 @@ namespace GamePassScores.InfoCollectorConsole
             {
                 int retryCount = 0;
                 string platformString = PlatformToMetacriticPathString(platform, game);
-                string requestUrlString = baseUrlString + platformString + "/" + gameString + "/";
+                string requestUrlString = baseUrlString + platformString + "/" + gameString;
                 try
                 {
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrlString);
+                    request.Headers.Add("User-Agent", "Edg/110.0.1587.50");
                     HttpClient httpClient = new HttpClient();
                     Console.WriteLine("Collecting {0} ({1}) score on {2}", game.Title.First().Value, game.MetaCriticPathName, platform == Platform.Original ? game.OriginalPlatforms.First().ToString() : platform.ToString());
                     var response = await httpClient.SendAsync(request);
