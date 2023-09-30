@@ -25,9 +25,9 @@ namespace GamePassScores.InfoCollectorConsole
         static async Task Main(string[] args)
         {
             Console.WriteLine("GamePass Scores Info Collector ver. {0}", AppInfo.Version);
-            ConsoleGameDataFetcher consoleGameFetcher = new ConsoleGameDataFetcher(20);
-            PCGameDataFetcher pcGameFetcher = new PCGameDataFetcher(20);
-            GameScoreDataFetcher scoreDataFetcher = new GameScoreDataFetcher();
+            IGameFetcher consoleGameFetcher = new ConsoleGameDataFetcher(20);
+            IGameFetcher pcGameFetcher = new PCGameDataFetcher(20);
+            IScoreFetcher scoreDataFetcher = new MetacriticScoreFetcher();
             string serializeGames = string.Empty;
             try
             {

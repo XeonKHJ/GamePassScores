@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace GamePassScores.InfoCollectorConsole.DataFetcher
 {
-    internal class ConsoleGameDataFetcher
+    internal class ConsoleGameDataFetcher: IGameFetcher
     {
         private static string consoleGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=f6f1f99f-9b49-4ccd-b3bf-4d9767a77f5e&language=en-us&market=US";
         private static string pcGameListInfoUrl = "https://catalog.gamepass.com/sigls/v2?id=fdd9e2a7-0fee-49f6-ad69-4354098401ff&language=en-us&market=US";

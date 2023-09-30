@@ -1,4 +1,5 @@
 ﻿using GamePassScores.InfoCollectorConsole.AppException;
+using GamePassScores.InfoCollectorConsole.DataFetcher;
 using GamePassScores.InfoCollectorConsole.RawModel;
 using GamePassScores.Models;
 using HtmlAgilityPack;
@@ -14,27 +15,33 @@ using System.Threading.Tasks;
 
 namespace GamePassScores.InfoCollectorConsole.DataFetcher
 {
-    internal class GameScoreDataFetcher: IScoreFetcher
+    internal class MetacriticScoreFetcher : IScoreFetcher
     {
         // Need a stucture to identify the platform priority.
-        private static string baseUrlString = "https://www.metacritic.com/game/";
+        private static string baseUrlString = "https://www.metacritic.com/game/{0}/critic-reviews/?platform={1}";
         List<Platform> _platformPriorities = new List<Platform> { Platform.Original, Platform.XboxSeriesX, Platform.XboxOne, Platform.Xbox360, Platform.Xbox, Platform.PC, Platform.PS5, Platform.PS4, Platform.PS3, Platform.PS2, Platform.PS1, Platform.Switch };
         public async Task FetchScoresAsync(IList<Game> games)
         {
-            foreach(var game in games)
+            foreach (var game in games)
             {
                 await UpdateMetascoreByPrioritesAsync(game);
             }
-        }        
+        }
+
+        private string generateUrl(string gameMtcName, string platformName)
+        {
+            return string.Format(baseUrlString, gameMtcName, platformName); 
+        }
+
         private async Task UpdateMetascoreByPrioritesAsync(Game game)
         {
             string gameString = game.MetaCriticPathName;
-            
+
             foreach (var platform in _platformPriorities)
             {
                 int retryCount = 0;
                 string platformString = PlatformToMetacriticPathString(platform, game);
-                string requestUrlString = baseUrlString + platformString + "/" + gameString;
+                string requestUrlString = generateUrl(gameString, platformString);
                 try
                 {
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrlString);
@@ -50,33 +57,36 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
                         if (!string.IsNullOrEmpty(responseContentString))
                         {
                             document.LoadHtml(responseContentString);
-                            var matchNode = document.DocumentNode.SelectSingleNode("//script[@type='application/ld+json']");
+                            var matchNode = document.DocumentNode.SelectSingleNode("//div[@class='c-ScoreCardLeft_scoreContent_number']");
 
-                            var jsonText = matchNode.InnerText;
-                            var metacriticScoreModel = JsonConvert.DeserializeObject<MetacriticScoreModel>(jsonText);
-
-                            lock (game)
+                            if (matchNode != null)
                             {
-                                game.IsMetacriticInfoExist = true;
-                                game.IsMetacriticInfoCorrect = true;
-                                if (metacriticScoreModel.aggregateRating != null)
-                                {
-                                    game.MetaScore[platform == Platform.Original ? game.OriginalPlatforms.First() : platform] = int.Parse(metacriticScoreModel.aggregateRating.ratingValue);
-                                    game.MetacriticUrls[platform == Platform.Original ? game.OriginalPlatforms.First() : platform] = new Uri(requestUrlString);
-                                    game.MetacriticPlatform = platformString;
+                                var jsonText = matchNode.InnerText;
+                                var metacriticScore = int.Parse(jsonText);
 
-                                    if (platform == Platform.XboxSeriesX || platform == Platform.XboxSeriesS || platform == Platform.XboxOne || platform == Platform.Xbox360 || platform == Platform.Xbox)
+                                lock (game)
+                                {
+                                    game.IsMetacriticInfoExist = true;
+                                    game.IsMetacriticInfoCorrect = true;
+                                    if (true)
                                     {
-                                        game.OriginalPlatforms[0] = platform;
+                                        game.MetaScore[platform == Platform.Original ? game.OriginalPlatforms.First() : platform] = metacriticScore;
+                                        game.MetacriticUrls[platform == Platform.Original ? game.OriginalPlatforms.First() : platform] = new Uri(requestUrlString);
+                                        game.MetacriticPlatform = platformString;
+
+                                        if (platform == Platform.XboxSeriesX || platform == Platform.XboxSeriesS || platform == Platform.XboxOne || platform == Platform.Xbox360 || platform == Platform.Xbox)
+                                        {
+                                            game.OriginalPlatforms[0] = platform;
+                                        }
                                     }
                                 }
-                                else
-                                {
-                                    Console.Error.WriteLine("{0} ({1})'s metacritic information on {2} is correct but the score is unavailable.", game.Title.First().Value, game.MetaCriticPathName, platform == Platform.Original ? game.OriginalPlatforms.First() : platform);
-                                    throw new ScoreNotFoundException();
-                                }
+                                Console.WriteLine("{0} ({1}) score on {2} is collected.", game.Title.First().Value, game.MetaCriticPathName, platform == Platform.Original ? game.OriginalPlatforms.First() : platform);
                             }
-                            Console.WriteLine("{0} ({1}) score on {2} is collected.", game.Title.First().Value, game.MetaCriticPathName, platform == Platform.Original ? game.OriginalPlatforms.First() : platform);
+                            else
+                            {
+                                Console.Error.WriteLine("{0} ({1})'s metacritic information on {2} is correct but the score is unavailable.", game.Title.First().Value, game.MetaCriticPathName, platform == Platform.Original ? game.OriginalPlatforms.First() : platform);
+                                throw new ScoreNotFoundException();
+                            }
                         }
                         else
                         {
@@ -105,7 +115,7 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
                     // if error occurs, searching for the score for next platform.
                     continue;
                 }
-                catch(MetacriticInfoIncorrectException)
+                catch (MetacriticInfoIncorrectException)
                 {
                     continue;
                 }
@@ -113,7 +123,7 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
                 {
                     throw ex;
                 }
-                catch(HttpRequestException)
+                catch (HttpRequestException)
                 {
                     throw new FatalException("Network error. Please try again");
                 }
@@ -125,7 +135,7 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
 
         private static string PlatformToMetacriticPathString(Platform platform, Game game = null)
         {
-            if(platform == Platform.Original && game != null)
+            if (platform == Platform.Original && game != null)
             {
                 platform = game.OriginalPlatforms.First();
             }
@@ -169,13 +179,13 @@ namespace GamePassScores.InfoCollectorConsole.DataFetcher
                     break;
             }
 
-            if(platformString == string.Empty)
+            if (platformString == string.Empty)
             {
                 throw new FatalException(String.Format("No platform specified in PlatformToMetacriticPathString(Platform, Game)! The desinated platform is {0}", platform.ToString()));
             }
 
             return platformString;
         }
-    
+
     }
 }
